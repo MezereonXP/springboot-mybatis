@@ -14,4 +14,7 @@ public interface TeamService {
      * @param teamName 队伍名
      */
     Team findTeamByName(String teamName);
+    Team login(String email);
+    void addTeam(String email, String teamName, String password, String detail);
+
 }

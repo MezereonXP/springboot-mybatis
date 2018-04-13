@@ -14,12 +14,24 @@
     <sql id="Base_Column_List">
         teamid, teamname, email, password, detail
     </sql>
+    <insert id="addTeam">
+        INSERT INTO team
+        (teamid, teamname, email, password, detail)
+        VALUES
+        (NULL , #{teamName}, #{email}, #{password}, #{detail});
+    </insert>
 
     <select id="findByName" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from team
         where teamname = #{teamName}
+    </select>
+    <select id="login" resultType="org.spring.springboot.domain.Team">
+        select
+        <include refid="Base_Column_List" />
+        from team
+        where email = #{email}
     </select>
 
 </mapper>

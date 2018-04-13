@@ -1,14 +1,14 @@
 package org.spring.springboot.controller;
 
-import org.spring.springboot.domain.City;
 import org.spring.springboot.domain.Team;
-import org.spring.springboot.service.CityService;
 import org.spring.springboot.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.sql.SQLException;
 
 /**
  * Created by Administrator on 2018/4/12.
@@ -22,6 +22,29 @@ public class TeamRestController {
     @RequestMapping(value = "/api/team", method = RequestMethod.GET)
     public Team findOneTeam(@RequestParam(value = "teamName", required = true) String teamName) {
         return teamService.findTeamByName(teamName);
+    }
+
+    @RequestMapping(value = "/api/login", method = RequestMethod.GET)
+    public boolean login(@RequestParam(value = "email", required = true) String email,
+                         @RequestParam(value = "password", required = true) String password) {
+        try {
+            return teamService.login(email).getPassword().equals(password);
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    @RequestMapping(value = "/api/regist", method = RequestMethod.GET)
+    public boolean regist(@RequestParam(value = "email", required = true) String email,
+                         @RequestParam(value = "password", required = true) String password,
+                          @RequestParam(value = "detail", required = true) String detail,
+                          @RequestParam(value = "teamName", required = true) String teamName) {
+        try {
+            teamService.addTeam(email,teamName,password,detail);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 
 }

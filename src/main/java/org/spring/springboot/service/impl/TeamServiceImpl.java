@@ -18,5 +18,14 @@ public class TeamServiceImpl implements TeamService{
         return teamDao.findByName(teamName);
     }
 
+    @Override
+    public Team login(String email) {
+        return teamDao.login(email);
+    }
+
+    @Override
+    public void addTeam(String email, String teamName, String password, String detail) {
+        teamDao.addTeam(email, teamName, password, detail);
+    }
 
 }
