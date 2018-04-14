@@ -29,6 +29,11 @@
     watersourcedetails, locationname, treatmentmethods, watershortage, picture, general_comments, 
     water_q_determination, prob_comment
   </sql>
+  <select id="getSamplesByCycleTeamid" resultType="org.spring.springboot.domain.SampleWithBLOBs">
+    select *
+    from sample
+    where cycleTeamid = #{cycleTeamid}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />

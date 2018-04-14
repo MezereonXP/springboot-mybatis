@@ -25,4 +25,6 @@ public interface SampleDao {
     int updateByPrimaryKey(Sample record);
 
     ShowSamples getAllSample();
+
+    List<SampleWithBLOBs> getSamplesByCycleTeamid(String cycleTeamid);
 }
