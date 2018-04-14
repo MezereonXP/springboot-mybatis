@@ -56,7 +56,7 @@ public class Sample {
     }
 
     public void setTeamname(String teamname) {
-        this.teamname = teamname == null ? null : teamname.trim();
+        this.teamname = teamname;
     }
 
     public Date getSamplingDate() {
@@ -80,6 +80,6 @@ public class Sample {
     }
 
     public void setCycleTeamid(String cycleTeamid) {
-        this.cycleTeamid = cycleTeamid == null ? null : cycleTeamid.trim();
+        this.cycleTeamid = cycleTeamid;
     }
 }

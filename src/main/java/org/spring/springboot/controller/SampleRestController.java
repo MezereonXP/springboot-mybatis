@@ -3,10 +3,14 @@ package org.spring.springboot.controller;
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.spring.springboot.domain.ShowSamples;
+import org.spring.springboot.domain.TestCycle;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.SampleService;
+import org.spring.springboot.service.impl.TestCycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/4/14.
@@ -16,6 +20,9 @@ public class SampleRestController {
 
     @Autowired
     private SampleService samplesService;
+
+    @Autowired
+    private TestCycleService testCycleService;
 
     @RequestMapping(value = "/api/sample", method = RequestMethod.GET)
     public Response findOneSample(@RequestParam(value = "baseid", required = true) Integer baseid) {
@@ -67,19 +74,10 @@ public class SampleRestController {
         Response response = new Response();
         try {
 //            response.setStatus(samplesService.addSample());
-            return response;
-        } catch (Exception e){
-            response.setMsg(e.getMessage());
-            response.setStatus(false);
-            return response;
-        }
-    }
-
-    @RequestMapping(value = "/api/getAllShowSamples", method = RequestMethod.GET)
-    public Response getAllShowSamples() {
-        Response response = new Response();
-        ShowSamples showSamples = new ShowSamples();
-        try {
+            List<TestCycle> testCycleList = testCycleService.getAllTestCycle();
+            for (TestCycle testCycle:testCycleList){
+//                List<Sample> samples = testCycle.getCycleteamid();
+            }
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
@@ -93,6 +91,20 @@ public class SampleRestController {
         Response response = new Response();
         try {
             response.setData(samplesService.getShowSamples(teamid));
+            response.setStatus(true);
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/getAllShowSamples", method = RequestMethod.GET)
+    public Response getAllShowSamples() {
+        Response response = new Response();
+        try {
+            response.setData(samplesService.getAllShowSamples());
             response.setStatus(true);
             return response;
         } catch (Exception e){

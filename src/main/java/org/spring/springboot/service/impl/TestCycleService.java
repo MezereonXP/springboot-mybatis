@@ -21,4 +21,8 @@ public class TestCycleService {
     public List<TestCycle> findTestCycleByTeamId(String teamid) {
         return testCycleDao.findTestCycleByTeamId(teamid);
     }
+
+    public List<TestCycle> getAllTestCycle() {
+        return testCycleDao.getAllTestCycle();
+    }
 }

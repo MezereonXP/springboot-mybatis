@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/4/14.
@@ -54,6 +57,26 @@ public class SampleService {
             showCycles.add(showCycle);
         }
         showSamples.setShowCycles(showCycles);
+        return showSamples;
+    }
+
+    public ShowSamples getAllShowSamples(){
+        ShowSamples showSamples = new ShowSamples();
+        Map<Integer, ShowSamples.ShowCycle> map = new HashMap<Integer, ShowSamples.ShowCycle>();
+        List<TestCycle> testCycleList = testCycleDao.getAllTestCycle();
+
+        for (TestCycle testCycle : testCycleList){
+            if (!map.containsKey(testCycle.getTestcycleid())){
+                map.put(testCycle.getTestcycleid(), new ShowSamples.ShowCycle());
+            }
+            ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
+            for (SampleWithBLOBs sample:sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid())){
+                showCycle.getSample().add(sample);
+            }
+        }
+        for (Integer i:map.keySet()){
+            showSamples.getShowCycles().add(map.get(i));
+        }
         return showSamples;
     }
 }

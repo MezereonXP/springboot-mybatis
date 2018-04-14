@@ -21,6 +21,7 @@ public class ShowSamples {
         }
 
         public ShowCycle() {
+            sample = new ArrayList<SampleWithBLOBs>();
         }
 
         public void setTestCycle(TestCycle testCycle) {

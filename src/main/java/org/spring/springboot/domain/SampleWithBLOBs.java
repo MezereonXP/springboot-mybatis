@@ -22,7 +22,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setWatersourcedetails(String watersourcedetails) {
-        this.watersourcedetails = watersourcedetails == null ? null : watersourcedetails.trim();
+        this.watersourcedetails = watersourcedetails;
     }
 
     public String getLocationname() {
@@ -30,7 +30,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setLocationname(String locationname) {
-        this.locationname = locationname == null ? null : locationname.trim();
+        this.locationname = locationname;
     }
 
     public String getTreatmentmethods() {
@@ -38,7 +38,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setTreatmentmethods(String treatmentmethods) {
-        this.treatmentmethods = treatmentmethods == null ? null : treatmentmethods.trim();
+        this.treatmentmethods = treatmentmethods;
     }
 
     public String getWatershortage() {
@@ -46,7 +46,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setWatershortage(String watershortage) {
-        this.watershortage = watershortage == null ? null : watershortage.trim();
+        this.watershortage = watershortage;
     }
 
     public String getPicture() {
@@ -54,7 +54,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setPicture(String picture) {
-        this.picture = picture == null ? null : picture.trim();
+        this.picture = picture;
     }
 
     public String getGeneralComments() {
@@ -62,7 +62,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setGeneralComments(String generalComments) {
-        this.generalComments = generalComments == null ? null : generalComments.trim();
+        this.generalComments = generalComments;
     }
 
     public String getWaterQDetermination() {
@@ -70,7 +70,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setWaterQDetermination(String waterQDetermination) {
-        this.waterQDetermination = waterQDetermination == null ? null : waterQDetermination.trim();
+        this.waterQDetermination = waterQDetermination;
     }
 
     public String getProbComment() {
@@ -78,6 +78,6 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setProbComment(String probComment) {
-        this.probComment = probComment == null ? null : probComment.trim();
+        this.probComment = probComment;
     }
 }
