@@ -3,9 +3,8 @@ package org.spring.springboot.controller;
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.spring.springboot.response.Response;
-import org.spring.springboot.service.SampleService;
+import org.spring.springboot.service.impl.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 /**

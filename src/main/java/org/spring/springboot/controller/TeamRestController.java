@@ -2,14 +2,12 @@ package org.spring.springboot.controller;
 
 import org.spring.springboot.domain.Team;
 import org.spring.springboot.response.Response;
-import org.spring.springboot.service.TeamService;
+import org.spring.springboot.service.impl.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.sql.SQLException;
 
 /**
  * Created by Administrator on 2018/4/12.
