@@ -18,9 +18,12 @@ public class SampleService {
     public SampleWithBLOBs selectById(Integer baseid) {
         return sampleDao.selectByPrimaryKey(baseid);
     }
-    public boolean addSample(Sample sample) {
-        return false;
+    public boolean addSample(SampleWithBLOBs sample) {
+        Integer count = sampleDao.insertSelective(sample);
+       if(count == 1){
+           return true;
+       }else{
+           return false;
+       }
     }
-
-
 }
