@@ -20,10 +20,18 @@ public class SampleService {
     }
     public boolean addSample(SampleWithBLOBs sample) {
         Integer count = sampleDao.insertSelective(sample);
-       if(count == 1){
-           return true;
-       }else{
-           return false;
-       }
+        if(count == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean updateSample(SampleWithBLOBs sample) {
+        Integer count = sampleDao.updateByPrimaryKeySelective(sample);
+        if(count == 1){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

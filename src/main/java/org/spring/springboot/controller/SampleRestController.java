@@ -45,5 +45,19 @@ public class SampleRestController {
         }
     }
 
+    @RequestMapping(value = "/api/updateSample", method = RequestMethod.POST)
+    @ResponseBody
+    public Response updateSample(@RequestBody SampleWithBLOBs sample) {
+        Response response = new Response();
+        try {
+            response.setStatus(samplesService.updateSample(sample));
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
 
 }

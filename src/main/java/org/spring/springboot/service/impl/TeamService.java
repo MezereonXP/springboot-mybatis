@@ -24,5 +24,11 @@ public class TeamService {
     public boolean addTeam(String email, String teamName, String password, String detail) {
        return teamDao.addTeam(email, teamName, password, detail);
     }
-
+    public boolean updatePassword (String email ,String oldPassword ,String newPassword) {
+        if(login(email).getPassword().equals(oldPassword)){
+            return teamDao.updatePassword(email , newPassword);
+        }else{
+            return false;
+        }
+    }
 }
