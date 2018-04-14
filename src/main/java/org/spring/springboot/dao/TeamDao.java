@@ -3,10 +3,12 @@ package org.spring.springboot.dao;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.City;
 import org.spring.springboot.domain.Team;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Administrator on 2018/4/12.
  */
+@Component
 public interface TeamDao {
 
     /**

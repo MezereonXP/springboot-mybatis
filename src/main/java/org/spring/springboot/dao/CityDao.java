@@ -2,12 +2,14 @@ package org.spring.springboot.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.City;
+import org.springframework.stereotype.Component;
 
 /**
  * 城市 DAO 接口类
  *
  * Created by bysocket on 07/02/2017.
  */
+@Component
 public interface CityDao {
 
     /**
