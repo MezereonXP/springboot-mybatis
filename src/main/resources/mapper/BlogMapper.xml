@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.BlogDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Blog">
+    <id column="blogid" jdbcType="INTEGER" property="blogid" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="locationid" jdbcType="INTEGER" property="locationid" />
+    <result column="teamid" jdbcType="INTEGER" property="teamid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Blog">
+    <result column="text" jdbcType="LONGVARCHAR" property="text" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    blogid, picture, locationid, teamid
+  </sql>
+  <sql id="Blob_Column_List">
+    text
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.Blog">
+    insert into blog (blogid, picture, locationid, 
+      teamid, text)
+    values (#{blogid,jdbcType=INTEGER}, #{picture,jdbcType=VARCHAR}, #{locationid,jdbcType=INTEGER}, 
+      #{teamid,jdbcType=INTEGER}, #{text,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Blog">
+    insert into blog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blogid != null">
+        blogid,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="locationid != null">
+        locationid,
+      </if>
+      <if test="teamid != null">
+        teamid,
+      </if>
+      <if test="text != null">
+        text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blogid != null">
+        #{blogid,jdbcType=INTEGER},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="locationid != null">
+        #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Blog">
+    update blog
+    <set>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="locationid != null">
+        locationid = #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        teamid = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="text != null">
+        text = #{text,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Blog">
+    update blog
+    set picture = #{picture,jdbcType=VARCHAR},
+      locationid = #{locationid,jdbcType=INTEGER},
+      teamid = #{teamid,jdbcType=INTEGER},
+      text = #{text,jdbcType=LONGVARCHAR}
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Blog">
+    update blog
+    set picture = #{picture,jdbcType=VARCHAR},
+      locationid = #{locationid,jdbcType=INTEGER},
+      teamid = #{teamid,jdbcType=INTEGER}
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </update>
+</mapper>
