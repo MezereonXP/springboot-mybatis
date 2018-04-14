@@ -21,12 +21,13 @@
         (NULL , #{teamName}, #{email}, #{password}, #{detail});
     </insert>
 
-    <select id="findByName" resultMap="BaseResultMap">
+    <select id="findByEmail" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from team
-        where teamname = #{teamName}
+        where email = #{email}
     </select>
+
     <select id="login" resultType="org.spring.springboot.domain.Team">
         select
         <include refid="Base_Column_List" />

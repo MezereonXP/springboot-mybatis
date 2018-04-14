@@ -104,4 +104,9 @@
       cycleteamid = #{cycleteamid,jdbcType=VARCHAR}
     where testcycleid = #{testcycleid,jdbcType=INTEGER}
   </update>
+  <select id="findTestCycleByTeamId" resultType="org.spring.springboot.domain.TestCycle">
+    select *
+    from testcycle
+    where teamid = #{teamid}
+  </select>
 </mapper>

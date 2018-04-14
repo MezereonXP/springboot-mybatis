@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by Administrator on 2018/4/12.
  */
@@ -19,16 +23,23 @@ public class TeamRestController {
     private TeamService teamService;
 
     @RequestMapping(value = "/api/team", method = RequestMethod.GET)
-    public Team findOneTeam(@RequestParam(value = "teamName", required = true) String teamName) {
-        return teamService.findTeamByName(teamName);
+    public Team findOneTeam(@RequestParam(value = "email", required = true) String email) {
+        return teamService.findTeamByEmail(email);
     }
 
     @RequestMapping(value = "/api/login", method = RequestMethod.GET)
-    public Response login(@RequestParam(value = "email", required = true) String email,
-                         @RequestParam(value = "password", required = true) String password) {
+    public Response login(HttpServletRequest req,
+                           HttpServletResponse resp,
+                           @RequestParam(value = "email", required = true) String email,
+                           @RequestParam(value = "password", required = true) String password) {
         Response response = new Response();
         try {
-            response.setStatus(teamService.login(email).getPassword().equals(password));
+            if(teamService.login(email).getPassword().equals(password)){
+                response.setStatus(true);
+                resp.addCookie(new Cookie("teamid",teamService.findTeamByEmail(email).getTeamid().toString()));
+            }else {
+                response.setStatus(false);
+            }
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

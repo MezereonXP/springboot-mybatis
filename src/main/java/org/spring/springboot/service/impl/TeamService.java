@@ -13,8 +13,8 @@ public class TeamService {
     @Autowired
     private TeamDao teamDao;
 
-    public Team findTeamByName(String teamName) {
-        return teamDao.findByName(teamName);
+    public Team findTeamByEmail(String email) {
+        return teamDao.findByEmail(email);
     }
 
     public Team login(String email) {

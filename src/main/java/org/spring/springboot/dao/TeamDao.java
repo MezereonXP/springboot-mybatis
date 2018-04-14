@@ -11,12 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface TeamDao {
 
-    /**
-     * 根据队伍名称，查询队伍信息
-     *
-     * @param teamName 队伍名
-     */
-    Team findByName(@Param("teamName") String teamName);
+    Team findByEmail(@Param("email") String mail);
     Team login(@Param("email") String email);
     boolean addTeam(@Param("email") String email,
                  @Param("teamName") String teamName,
@@ -24,4 +19,5 @@ public interface TeamDao {
                  @Param("detail") String detail);
     boolean updatePassword(@Param("email") String email,
                     @Param("password") String password);
+    boolean findCyicesByTeamId(@Param("teamid") String teamid);
 }
