@@ -11,18 +11,18 @@ public class SampleWithBLOBs extends Sample {
 
     private String picture;
 
-    private String generalComments;
+    private String generalcomments;
 
-    private String waterQDetermination;
+    private String waterqdetermination;
 
-    private String probComment;
+    private String probcomment;
 
     public String getWatersourcedetails() {
         return watersourcedetails;
     }
 
     public void setWatersourcedetails(String watersourcedetails) {
-        this.watersourcedetails = watersourcedetails;
+        this.watersourcedetails = watersourcedetails == null ? null : watersourcedetails.trim();
     }
 
     public String getLocationname() {
@@ -30,7 +30,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setLocationname(String locationname) {
-        this.locationname = locationname;
+        this.locationname = locationname == null ? null : locationname.trim();
     }
 
     public String getTreatmentmethods() {
@@ -38,7 +38,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setTreatmentmethods(String treatmentmethods) {
-        this.treatmentmethods = treatmentmethods;
+        this.treatmentmethods = treatmentmethods == null ? null : treatmentmethods.trim();
     }
 
     public String getWatershortage() {
@@ -46,7 +46,7 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setWatershortage(String watershortage) {
-        this.watershortage = watershortage;
+        this.watershortage = watershortage == null ? null : watershortage.trim();
     }
 
     public String getPicture() {
@@ -54,30 +54,30 @@ public class SampleWithBLOBs extends Sample {
     }
 
     public void setPicture(String picture) {
-        this.picture = picture;
+        this.picture = picture == null ? null : picture.trim();
     }
 
-    public String getGeneralComments() {
-        return generalComments;
+    public String getGeneralcomments() {
+        return generalcomments;
     }
 
-    public void setGeneralComments(String generalComments) {
-        this.generalComments = generalComments;
+    public void setGeneralcomments(String generalcomments) {
+        this.generalcomments = generalcomments == null ? null : generalcomments.trim();
     }
 
-    public String getWaterQDetermination() {
-        return waterQDetermination;
+    public String getWaterqdetermination() {
+        return waterqdetermination;
     }
 
-    public void setWaterQDetermination(String waterQDetermination) {
-        this.waterQDetermination = waterQDetermination;
+    public void setWaterqdetermination(String waterqdetermination) {
+        this.waterqdetermination = waterqdetermination == null ? null : waterqdetermination.trim();
     }
 
-    public String getProbComment() {
-        return probComment;
+    public String getProbcomment() {
+        return probcomment;
     }
 
-    public void setProbComment(String probComment) {
-        this.probComment = probComment;
+    public void setProbcomment(String probcomment) {
+        this.probcomment = probcomment == null ? null : probcomment.trim();
     }
 }

@@ -2,44 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.LocationDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Location">
-    <id column="villageid" jdbcType="INTEGER" property="villageid" />
-    <result column="locationid" jdbcType="INTEGER" property="locationid" />
+    <id column="locationid" jdbcType="INTEGER" property="locationid" />
+    <result column="villageid" jdbcType="INTEGER" property="villageid" />
     <result column="locationname" jdbcType="VARCHAR" property="locationname" />
-    <result column="lat" jdbcType="VARCHAR" property="lat" />
-    <result column="lon" jdbcType="VARCHAR" property="lon" />
+    <result column="lat" jdbcType="DOUBLE" property="lat" />
+    <result column="lon" jdbcType="DOUBLE" property="lon" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="created_at" jdbcType="DATE" property="createdAt" />
-    <result column="update_at" jdbcType="DATE" property="updateAt" />
+    <result column="createdat" jdbcType="DATE" property="createdat" />
+    <result column="updateat" jdbcType="DATE" property="updateat" />
   </resultMap>
   <sql id="Base_Column_List">
-    villageid, locationid, locationname, lat, lon, status, created_at, update_at
+    locationid, villageid, locationname, lat, lon, status, createdat, updateat
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from location
-    where villageid = #{villageid,jdbcType=INTEGER}
+    where locationid = #{locationid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from location
-    where villageid = #{villageid,jdbcType=INTEGER}
+    where locationid = #{locationid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" useGeneratedKeys="true" keyProperty="locationid" parameterType="org.spring.springboot.domain.Location">
-    insert into location (villageid, locationname,
-      lat, lon, status, created_at, 
-      update_at)
-    values (#{villageid,jdbcType=INTEGER}, #{locationname,jdbcType=VARCHAR},
-      #{lat,jdbcType=VARCHAR}, #{lon,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createdAt,jdbcType=DATE}, 
-      #{updateAt,jdbcType=DATE})
+  <insert id="insert" parameterType="org.spring.springboot.domain.Location">
+    insert into location (locationid, villageid, locationname, 
+      lat, lon, status, createdat, 
+      updateat)
+    values (#{locationid,jdbcType=INTEGER}, #{villageid,jdbcType=INTEGER}, #{locationname,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{createdat,jdbcType=DATE}, 
+      #{updateat,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Location">
     insert into location
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="villageid != null">
-        villageid,
-      </if>
       <if test="locationid != null">
         locationid,
+      </if>
+      <if test="villageid != null">
+        villageid,
       </if>
       <if test="locationname != null">
         locationname,
@@ -53,76 +53,76 @@
       <if test="status != null">
         status,
       </if>
-      <if test="createdAt != null">
-        created_at,
+      <if test="createdat != null">
+        createdat,
       </if>
-      <if test="updateAt != null">
-        update_at,
+      <if test="updateat != null">
+        updateat,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="villageid != null">
-        #{villageid,jdbcType=INTEGER},
-      </if>
       <if test="locationid != null">
         #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="villageid != null">
+        #{villageid,jdbcType=INTEGER},
       </if>
       <if test="locationname != null">
         #{locationname,jdbcType=VARCHAR},
       </if>
       <if test="lat != null">
-        #{lat,jdbcType=VARCHAR},
+        #{lat,jdbcType=DOUBLE},
       </if>
       <if test="lon != null">
-        #{lon,jdbcType=VARCHAR},
+        #{lon,jdbcType=DOUBLE},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="createdAt != null">
-        #{createdAt,jdbcType=DATE},
+      <if test="createdat != null">
+        #{createdat,jdbcType=DATE},
       </if>
-      <if test="updateAt != null">
-        #{updateAt,jdbcType=DATE},
+      <if test="updateat != null">
+        #{updateat,jdbcType=DATE},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Location">
     update location
     <set>
-      <if test="locationid != null">
-        locationid = #{locationid,jdbcType=INTEGER},
+      <if test="villageid != null">
+        villageid = #{villageid,jdbcType=INTEGER},
       </if>
       <if test="locationname != null">
         locationname = #{locationname,jdbcType=VARCHAR},
       </if>
       <if test="lat != null">
-        lat = #{lat,jdbcType=VARCHAR},
+        lat = #{lat,jdbcType=DOUBLE},
       </if>
       <if test="lon != null">
-        lon = #{lon,jdbcType=VARCHAR},
+        lon = #{lon,jdbcType=DOUBLE},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="createdAt != null">
-        created_at = #{createdAt,jdbcType=DATE},
+      <if test="createdat != null">
+        createdat = #{createdat,jdbcType=DATE},
       </if>
-      <if test="updateAt != null">
-        update_at = #{updateAt,jdbcType=DATE},
+      <if test="updateat != null">
+        updateat = #{updateat,jdbcType=DATE},
       </if>
     </set>
-    where villageid = #{villageid,jdbcType=INTEGER}
+    where locationid = #{locationid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Location">
     update location
-    set locationid = #{locationid,jdbcType=INTEGER},
+    set villageid = #{villageid,jdbcType=INTEGER},
       locationname = #{locationname,jdbcType=VARCHAR},
-      lat = #{lat,jdbcType=VARCHAR},
-      lon = #{lon,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=DOUBLE},
+      lon = #{lon,jdbcType=DOUBLE},
       status = #{status,jdbcType=INTEGER},
-      created_at = #{createdAt,jdbcType=DATE},
-      update_at = #{updateAt,jdbcType=DATE}
-    where villageid = #{villageid,jdbcType=INTEGER}
+      createdat = #{createdat,jdbcType=DATE},
+      updateat = #{updateat,jdbcType=DATE}
+    where locationid = #{locationid,jdbcType=INTEGER}
   </update>
 </mapper>

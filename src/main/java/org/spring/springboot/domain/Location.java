@@ -3,29 +3,21 @@ package org.spring.springboot.domain;
 import java.util.Date;
 
 public class Location {
-    private Integer villageid;
-
     private Integer locationid;
+
+    private Integer villageid;
 
     private String locationname;
 
-    private String lat;
+    private Double lat;
 
-    private String lon;
+    private Double lon;
 
     private Integer status;
 
-    private Date createdAt;
+    private Date createdat;
 
-    private Date updateAt;
-
-    public Integer getVillageid() {
-        return villageid;
-    }
-
-    public void setVillageid(Integer villageid) {
-        this.villageid = villageid;
-    }
+    private Date updateat;
 
     public Integer getLocationid() {
         return locationid;
@@ -33,6 +25,14 @@ public class Location {
 
     public void setLocationid(Integer locationid) {
         this.locationid = locationid;
+    }
+
+    public Integer getVillageid() {
+        return villageid;
+    }
+
+    public void setVillageid(Integer villageid) {
+        this.villageid = villageid;
     }
 
     public String getLocationname() {
@@ -43,20 +43,20 @@ public class Location {
         this.locationname = locationname == null ? null : locationname.trim();
     }
 
-    public String getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
-        this.lat = lat == null ? null : lat.trim();
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
-    public String getLon() {
+    public Double getLon() {
         return lon;
     }
 
-    public void setLon(String lon) {
-        this.lon = lon == null ? null : lon.trim();
+    public void setLon(Double lon) {
+        this.lon = lon;
     }
 
     public Integer getStatus() {
@@ -67,19 +67,19 @@ public class Location {
         this.status = status;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreatedat() {
+        return createdat;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedat(Date createdat) {
+        this.createdat = createdat;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
+    public Date getUpdateat() {
+        return updateat;
     }
 
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdateat(Date updateat) {
+        this.updateat = updateat;
     }
 }

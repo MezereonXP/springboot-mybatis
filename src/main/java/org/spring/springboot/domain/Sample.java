@@ -1,5 +1,8 @@
 package org.spring.springboot.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Sample {
@@ -13,11 +16,13 @@ public class Sample {
 
     private String teamname;
 
-    private Date samplingDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd hh:mm:ss")
+    private Date samplingdate;
 
-    private Date detectDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd hh:mm:ss")
+    private Date detectdate;
 
-    private String cycleTeamid;
+    private String cycleteamid;
 
     public Integer getBaseid() {
         return baseid;
@@ -56,30 +61,30 @@ public class Sample {
     }
 
     public void setTeamname(String teamname) {
-        this.teamname = teamname;
+        this.teamname = teamname == null ? null : teamname.trim();
     }
 
-    public Date getSamplingDate() {
-        return samplingDate;
+    public Date getSamplingdate() {
+        return samplingdate;
     }
 
-    public void setSamplingDate(Date samplingDate) {
-        this.samplingDate = samplingDate;
+    public void setSamplingdate(Date samplingdate) {
+        this.samplingdate = samplingdate;
     }
 
-    public Date getDetectDate() {
-        return detectDate;
+    public Date getDetectdate() {
+        return detectdate;
     }
 
-    public void setDetectDate(Date detectDate) {
-        this.detectDate = detectDate;
+    public void setDetectdate(Date detectdate) {
+        this.detectdate = detectdate;
     }
 
-    public String getCycleTeamid() {
-        return cycleTeamid;
+    public String getCycleteamid() {
+        return cycleteamid;
     }
 
-    public void setCycleTeamid(String cycleTeamid) {
-        this.cycleTeamid = cycleTeamid;
+    public void setCycleteamid(String cycleteamid) {
+        this.cycleteamid = cycleteamid == null ? null : cycleteamid.trim();
     }
 }

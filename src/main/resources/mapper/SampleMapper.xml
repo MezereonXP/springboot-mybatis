@@ -7,9 +7,9 @@
     <result column="locationid" jdbcType="INTEGER" property="locationid" />
     <result column="watersourcetype" jdbcType="INTEGER" property="watersourcetype" />
     <result column="teamname" jdbcType="VARCHAR" property="teamname" />
-    <result column="sampling_date" jdbcType="DATE" property="samplingDate" />
-    <result column="detect_date" jdbcType="DATE" property="detectDate" />
-    <result column="cycle_teamid" jdbcType="VARCHAR" property="cycleTeamid" />
+    <result column="samplingdate" jdbcType="DATE" property="samplingdate" />
+    <result column="detectdate" jdbcType="DATE" property="detectdate" />
+    <result column="cycleteamid" jdbcType="VARCHAR" property="cycleteamid" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.SampleWithBLOBs">
     <result column="watersourcedetails" jdbcType="LONGVARCHAR" property="watersourcedetails" />
@@ -17,23 +17,18 @@
     <result column="treatmentmethods" jdbcType="LONGVARCHAR" property="treatmentmethods" />
     <result column="watershortage" jdbcType="LONGVARCHAR" property="watershortage" />
     <result column="picture" jdbcType="LONGVARCHAR" property="picture" />
-    <result column="general_comments" jdbcType="LONGVARCHAR" property="generalComments" />
-    <result column="water_q_determination" jdbcType="LONGVARCHAR" property="waterQDetermination" />
-    <result column="prob_comment" jdbcType="LONGVARCHAR" property="probComment" />
+    <result column="generalcomments" jdbcType="LONGVARCHAR" property="generalcomments" />
+    <result column="waterqdetermination" jdbcType="LONGVARCHAR" property="waterqdetermination" />
+    <result column="probcomment" jdbcType="LONGVARCHAR" property="probcomment" />
   </resultMap>
   <sql id="Base_Column_List">
-    baseid, watertype, locationid, watersourcetype, teamname, sampling_date, detect_date, 
-    cycle_teamid
+    baseid, watertype, locationid, watersourcetype, teamname, samplingdate, detectdate, 
+    cycleteamid
   </sql>
   <sql id="Blob_Column_List">
-    watersourcedetails, locationname, treatmentmethods, watershortage, picture, general_comments, 
-    water_q_determination, prob_comment
+    watersourcedetails, locationname, treatmentmethods, watershortage, picture, generalcomments, 
+    waterqdetermination, probcomment
   </sql>
-  <select id="getSamplesByCycleTeamid" resultType="org.spring.springboot.domain.SampleWithBLOBs">
-    select *
-    from sample
-    where cycle_teamid = #{cycleTeamid}
-  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
@@ -48,18 +43,18 @@
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
     insert into sample (baseid, watertype, locationid, 
-      watersourcetype, teamname, sampling_date, 
-      detect_date, cycle_teamid, watersourcedetails, 
+      watersourcetype, teamname, samplingdate, 
+      detectdate, cycleteamid, watersourcedetails, 
       locationname, treatmentmethods, 
-      watershortage, picture, general_comments, 
-      water_q_determination, prob_comment
+      watershortage, picture, generalcomments, 
+      waterqdetermination, probcomment
       )
     values (#{baseid,jdbcType=INTEGER}, #{watertype,jdbcType=INTEGER}, #{locationid,jdbcType=INTEGER}, 
-      #{watersourcetype,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{samplingDate,jdbcType=DATE}, 
-      #{detectDate,jdbcType=DATE}, #{cycleTeamid,jdbcType=VARCHAR}, #{watersourcedetails,jdbcType=LONGVARCHAR}, 
+      #{watersourcetype,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{samplingdate,jdbcType=DATE}, 
+      #{detectdate,jdbcType=DATE}, #{cycleteamid,jdbcType=VARCHAR}, #{watersourcedetails,jdbcType=LONGVARCHAR}, 
       #{locationname,jdbcType=LONGVARCHAR}, #{treatmentmethods,jdbcType=LONGVARCHAR}, 
-      #{watershortage,jdbcType=LONGVARCHAR}, #{picture,jdbcType=LONGVARCHAR}, #{generalComments,jdbcType=LONGVARCHAR}, 
-      #{waterQDetermination,jdbcType=LONGVARCHAR}, #{probComment,jdbcType=LONGVARCHAR}
+      #{watershortage,jdbcType=LONGVARCHAR}, #{picture,jdbcType=LONGVARCHAR}, #{generalcomments,jdbcType=LONGVARCHAR}, 
+      #{waterqdetermination,jdbcType=LONGVARCHAR}, #{probcomment,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
@@ -80,14 +75,14 @@
       <if test="teamname != null">
         teamname,
       </if>
-      <if test="samplingDate != null">
-        sampling_date,
+      <if test="samplingdate != null">
+        samplingdate,
       </if>
-      <if test="detectDate != null">
-        detect_date,
+      <if test="detectdate != null">
+        detectdate,
       </if>
-      <if test="cycleTeamid != null">
-        cycle_teamid,
+      <if test="cycleteamid != null">
+        cycleteamid,
       </if>
       <if test="watersourcedetails != null">
         watersourcedetails,
@@ -104,14 +99,14 @@
       <if test="picture != null">
         picture,
       </if>
-      <if test="generalComments != null">
-        general_comments,
+      <if test="generalcomments != null">
+        generalcomments,
       </if>
-      <if test="waterQDetermination != null">
-        water_q_determination,
+      <if test="waterqdetermination != null">
+        waterqdetermination,
       </if>
-      <if test="probComment != null">
-        prob_comment,
+      <if test="probcomment != null">
+        probcomment,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -130,14 +125,14 @@
       <if test="teamname != null">
         #{teamname,jdbcType=VARCHAR},
       </if>
-      <if test="samplingDate != null">
-        #{samplingDate,jdbcType=DATE},
+      <if test="samplingdate != null">
+        #{samplingdate,jdbcType=DATE},
       </if>
-      <if test="detectDate != null">
-        #{detectDate,jdbcType=DATE},
+      <if test="detectdate != null">
+        #{detectdate,jdbcType=DATE},
       </if>
-      <if test="cycleTeamid != null">
-        #{cycleTeamid,jdbcType=VARCHAR},
+      <if test="cycleteamid != null">
+        #{cycleteamid,jdbcType=VARCHAR},
       </if>
       <if test="watersourcedetails != null">
         #{watersourcedetails,jdbcType=LONGVARCHAR},
@@ -154,14 +149,14 @@
       <if test="picture != null">
         #{picture,jdbcType=LONGVARCHAR},
       </if>
-      <if test="generalComments != null">
-        #{generalComments,jdbcType=LONGVARCHAR},
+      <if test="generalcomments != null">
+        #{generalcomments,jdbcType=LONGVARCHAR},
       </if>
-      <if test="waterQDetermination != null">
-        #{waterQDetermination,jdbcType=LONGVARCHAR},
+      <if test="waterqdetermination != null">
+        #{waterqdetermination,jdbcType=LONGVARCHAR},
       </if>
-      <if test="probComment != null">
-        #{probComment,jdbcType=LONGVARCHAR},
+      <if test="probcomment != null">
+        #{probcomment,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -180,14 +175,14 @@
       <if test="teamname != null">
         teamname = #{teamname,jdbcType=VARCHAR},
       </if>
-      <if test="samplingDate != null">
-        sampling_date = #{samplingDate,jdbcType=DATE},
+      <if test="samplingdate != null">
+        samplingdate = #{samplingdate,jdbcType=DATE},
       </if>
-      <if test="detectDate != null">
-        detect_date = #{detectDate,jdbcType=DATE},
+      <if test="detectdate != null">
+        detectdate = #{detectdate,jdbcType=DATE},
       </if>
-      <if test="cycleTeamid != null">
-        cycle_teamid = #{cycleTeamid,jdbcType=VARCHAR},
+      <if test="cycleteamid != null">
+        cycleteamid = #{cycleteamid,jdbcType=VARCHAR},
       </if>
       <if test="watersourcedetails != null">
         watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
@@ -204,14 +199,14 @@
       <if test="picture != null">
         picture = #{picture,jdbcType=LONGVARCHAR},
       </if>
-      <if test="generalComments != null">
-        general_comments = #{generalComments,jdbcType=LONGVARCHAR},
+      <if test="generalcomments != null">
+        generalcomments = #{generalcomments,jdbcType=LONGVARCHAR},
       </if>
-      <if test="waterQDetermination != null">
-        water_q_determination = #{waterQDetermination,jdbcType=LONGVARCHAR},
+      <if test="waterqdetermination != null">
+        waterqdetermination = #{waterqdetermination,jdbcType=LONGVARCHAR},
       </if>
-      <if test="probComment != null">
-        prob_comment = #{probComment,jdbcType=LONGVARCHAR},
+      <if test="probcomment != null">
+        probcomment = #{probcomment,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where baseid = #{baseid,jdbcType=INTEGER}
@@ -222,17 +217,17 @@
       locationid = #{locationid,jdbcType=INTEGER},
       watersourcetype = #{watersourcetype,jdbcType=INTEGER},
       teamname = #{teamname,jdbcType=VARCHAR},
-      sampling_date = #{samplingDate,jdbcType=DATE},
-      detect_date = #{detectDate,jdbcType=DATE},
-      cycle_teamid = #{cycleTeamid,jdbcType=VARCHAR},
+      samplingdate = #{samplingdate,jdbcType=DATE},
+      detectdate = #{detectdate,jdbcType=DATE},
+      cycleteamid = #{cycleteamid,jdbcType=VARCHAR},
       watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
       locationname = #{locationname,jdbcType=LONGVARCHAR},
       treatmentmethods = #{treatmentmethods,jdbcType=LONGVARCHAR},
       watershortage = #{watershortage,jdbcType=LONGVARCHAR},
       picture = #{picture,jdbcType=LONGVARCHAR},
-      general_comments = #{generalComments,jdbcType=LONGVARCHAR},
-      water_q_determination = #{waterQDetermination,jdbcType=LONGVARCHAR},
-      prob_comment = #{probComment,jdbcType=LONGVARCHAR}
+      generalcomments = #{generalcomments,jdbcType=LONGVARCHAR},
+      waterqdetermination = #{waterqdetermination,jdbcType=LONGVARCHAR},
+      probcomment = #{probcomment,jdbcType=LONGVARCHAR}
     where baseid = #{baseid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Sample">
@@ -241,9 +236,14 @@
       locationid = #{locationid,jdbcType=INTEGER},
       watersourcetype = #{watersourcetype,jdbcType=INTEGER},
       teamname = #{teamname,jdbcType=VARCHAR},
-      sampling_date = #{samplingDate,jdbcType=DATE},
-      detect_date = #{detectDate,jdbcType=DATE},
-      cycle_teamid = #{cycleTeamid,jdbcType=VARCHAR}
+      samplingdate = #{samplingdate,jdbcType=DATE},
+      detectdate = #{detectdate,jdbcType=DATE},
+      cycleteamid = #{cycleteamid,jdbcType=VARCHAR}
     where baseid = #{baseid,jdbcType=INTEGER}
   </update>
+  <select id="getSamplesByCycleTeamid" resultType="org.spring.springboot.domain.SampleWithBLOBs">
+    select *
+    from sample
+    where cycleteamid = #{cycleTeamid}
+  </select>
 </mapper>

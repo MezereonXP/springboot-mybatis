@@ -68,6 +68,7 @@ public class SampleService {
         for (TestCycle testCycle : testCycleList){
             if (!map.containsKey(testCycle.getTestcycleid())){
                 map.put(testCycle.getTestcycleid(), new ShowSamples.ShowCycle());
+                map.get(testCycle.getTestcycleid()).setTestCycle(testCycle);
             }
             ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
             for (SampleWithBLOBs sample:sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid())){
