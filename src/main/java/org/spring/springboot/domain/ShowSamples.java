@@ -1,5 +1,6 @@
 package org.spring.springboot.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,6 +8,10 @@ import java.util.List;
  */
 public class ShowSamples {
     private List<ShowCycle> showCycles;
+
+    public ShowSamples(){
+        showCycles = new ArrayList<ShowCycle>();
+    }
 
     class ShowCycle {
         private TestCycle testCycle;

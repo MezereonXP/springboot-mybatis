@@ -2,6 +2,7 @@ package org.spring.springboot.dao;
 
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
+import org.spring.springboot.domain.ShowSamples;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface SampleDao {
     int updateByPrimaryKeyWithBLOBs(SampleWithBLOBs record);
 
     int updateByPrimaryKey(Sample record);
+
+    ShowSamples getAllSample();
 }

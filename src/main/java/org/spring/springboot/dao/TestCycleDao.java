@@ -23,4 +23,6 @@ public interface TestCycleDao {
     int updateByPrimaryKey(TestCycle record);
 
     List<TestCycle> findTestCycleByTeamId(@Param("teamid") String teamid);
+
+    List<TestCycle> getAllTestCycle();
 }

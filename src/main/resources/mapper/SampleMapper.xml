@@ -9,7 +9,7 @@
     <result column="teamname" jdbcType="VARCHAR" property="teamname" />
     <result column="sampling_date" jdbcType="DATE" property="samplingDate" />
     <result column="detect_date" jdbcType="DATE" property="detectDate" />
-    <result column="cycle_teamid" jdbcType="INTEGER" property="cycleTeamid" />
+    <result column="cycle_teamid" jdbcType="VARCHAR" property="cycleTeamid" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.SampleWithBLOBs">
     <result column="watersourcedetails" jdbcType="LONGVARCHAR" property="watersourcedetails" />
@@ -51,7 +51,7 @@
       )
     values (#{baseid,jdbcType=INTEGER}, #{watertype,jdbcType=INTEGER}, #{locationid,jdbcType=INTEGER}, 
       #{watersourcetype,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{samplingDate,jdbcType=DATE}, 
-      #{detectDate,jdbcType=DATE}, #{cycleTeamid,jdbcType=INTEGER}, #{watersourcedetails,jdbcType=LONGVARCHAR}, 
+      #{detectDate,jdbcType=DATE}, #{cycleTeamid,jdbcType=VARCHAR}, #{watersourcedetails,jdbcType=LONGVARCHAR}, 
       #{locationname,jdbcType=LONGVARCHAR}, #{treatmentmethods,jdbcType=LONGVARCHAR}, 
       #{watershortage,jdbcType=LONGVARCHAR}, #{picture,jdbcType=LONGVARCHAR}, #{generalComments,jdbcType=LONGVARCHAR}, 
       #{waterQDetermination,jdbcType=LONGVARCHAR}, #{probComment,jdbcType=LONGVARCHAR}
@@ -132,7 +132,7 @@
         #{detectDate,jdbcType=DATE},
       </if>
       <if test="cycleTeamid != null">
-        #{cycleTeamid,jdbcType=INTEGER},
+        #{cycleTeamid,jdbcType=VARCHAR},
       </if>
       <if test="watersourcedetails != null">
         #{watersourcedetails,jdbcType=LONGVARCHAR},
@@ -182,7 +182,7 @@
         detect_date = #{detectDate,jdbcType=DATE},
       </if>
       <if test="cycleTeamid != null">
-        cycle_teamid = #{cycleTeamid,jdbcType=INTEGER},
+        cycle_teamid = #{cycleTeamid,jdbcType=VARCHAR},
       </if>
       <if test="watersourcedetails != null">
         watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
@@ -219,7 +219,7 @@
       teamname = #{teamname,jdbcType=VARCHAR},
       sampling_date = #{samplingDate,jdbcType=DATE},
       detect_date = #{detectDate,jdbcType=DATE},
-      cycle_teamid = #{cycleTeamid,jdbcType=INTEGER},
+      cycle_teamid = #{cycleTeamid,jdbcType=VARCHAR},
       watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
       locationname = #{locationname,jdbcType=LONGVARCHAR},
       treatmentmethods = #{treatmentmethods,jdbcType=LONGVARCHAR},
@@ -238,7 +238,7 @@
       teamname = #{teamname,jdbcType=VARCHAR},
       sampling_date = #{samplingDate,jdbcType=DATE},
       detect_date = #{detectDate,jdbcType=DATE},
-      cycle_teamid = #{cycleTeamid,jdbcType=INTEGER}
+      cycle_teamid = #{cycleTeamid,jdbcType=VARCHAR}
     where baseid = #{baseid,jdbcType=INTEGER}
   </update>
 </mapper>

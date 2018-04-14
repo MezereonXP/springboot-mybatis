@@ -2,6 +2,7 @@ package org.spring.springboot.controller;
 
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
+import org.spring.springboot.domain.ShowSamples;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,19 @@ public class SampleRestController {
         Response response = new Response();
         try {
 //            response.setStatus(samplesService.addSample());
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/getAllShowSamples", method = RequestMethod.GET)
+    public Response getAllShowSamples() {
+        Response response = new Response();
+        ShowSamples showSamples = new ShowSamples();
+        try {
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

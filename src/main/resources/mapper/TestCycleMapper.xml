@@ -109,4 +109,8 @@
     from testcycle
     where teamid = #{teamid}
   </select>
+  <select id="getAllTestCycle" resultType="org.spring.springboot.domain.TestCycle">
+    select *
+    from testcycle
+  </select>
 </mapper>
