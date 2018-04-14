@@ -3,17 +3,17 @@ package org.spring.springboot.response;
 import java.util.Map;
 
 public class Response {
-    Map data;         //数据
+    Object data;         //数据
     boolean status; //状态
     String msg;       //错误信息
     Page page;        //分页信息
     public Response() {
     }
-    public Map getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(Map data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
