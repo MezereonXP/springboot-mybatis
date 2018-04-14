@@ -19,7 +19,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/myh2o?useUnicode=true&amp;characterEncoding=UTF-8"
                         userId="root"
-                        password="">
+                        password="Myh2o2017">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -43,7 +43,7 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="myh2o" tableName="testcycle" domainObjectName="TestCycle"
+        <table schema="myh2o" tableName="sample" domainObjectName="Sample"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

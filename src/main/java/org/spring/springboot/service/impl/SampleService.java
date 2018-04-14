@@ -1,7 +1,6 @@
 package org.spring.springboot.service.impl;
 
 import org.spring.springboot.dao.SampleDao;
-import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

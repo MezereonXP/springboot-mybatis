@@ -17,6 +17,8 @@ public class Sample {
 
     private Date detectDate;
 
+    private Integer cycleTeamid;
+
     public Integer getBaseid() {
         return baseid;
     }
@@ -71,5 +73,13 @@ public class Sample {
 
     public void setDetectDate(Date detectDate) {
         this.detectDate = detectDate;
+    }
+
+    public Integer getCycleTeamid() {
+        return cycleTeamid;
+    }
+
+    public void setCycleTeamid(Integer cycleTeamid) {
+        this.cycleTeamid = cycleTeamid;
     }
 }

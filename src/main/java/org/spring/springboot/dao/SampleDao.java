@@ -1,15 +1,14 @@
 package org.spring.springboot.dao;
 
-import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface SampleDao {
-    int deleteByPrimaryKey(@Param("baseid") Integer baseid);
+    int deleteByPrimaryKey(Integer baseid);
 
-    int insert(@Param("record") SampleWithBLOBs record);
+    int insert(SampleWithBLOBs record);
 
     int insertSelective(SampleWithBLOBs record);
 
