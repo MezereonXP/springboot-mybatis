@@ -1,6 +1,7 @@
 package org.spring.springboot.controller;
 
 import org.spring.springboot.domain.SampleWithBLOBs;
+import org.spring.springboot.response.Response;
 import org.spring.springboot.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,15 @@ public class SampleRestController {
     private SampleService samplesService;
 
     @RequestMapping(value = "/api/sample", method = RequestMethod.GET)
-    public SampleWithBLOBs findOneCity(@RequestParam(value = "baseid", required = true) Integer baseid) {
-        return samplesService.selectById(baseid);
+    public Response findOneCity(@RequestParam(value = "baseid", required = true) Integer baseid) {
+        Response response = new Response();
+        try {
+            response.setStatus(samplesService.selectById(baseid)!=null);
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
     }
 }
