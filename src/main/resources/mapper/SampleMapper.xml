@@ -32,7 +32,7 @@
   <select id="getSamplesByCycleTeamid" resultType="org.spring.springboot.domain.SampleWithBLOBs">
     select *
     from sample
-    where cycleTeamid = #{cycleTeamid}
+    where cycle_teamid = #{cycleTeamid}
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 

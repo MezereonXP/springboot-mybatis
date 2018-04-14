@@ -13,11 +13,14 @@ public class ShowSamples {
         showCycles = new ArrayList<ShowCycle>();
     }
 
-    class ShowCycle {
+     public static class ShowCycle {
         private TestCycle testCycle;
         private List<SampleWithBLOBs> sample;
         public TestCycle getTestCycle() {
             return testCycle;
+        }
+
+        public ShowCycle() {
         }
 
         public void setTestCycle(TestCycle testCycle) {
