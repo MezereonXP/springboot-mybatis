@@ -17,7 +17,7 @@ public class SampleRestController {
     private SampleService samplesService;
 
     @RequestMapping(value = "/api/sample", method = RequestMethod.GET)
-    public Response findOneCity(@RequestParam(value = "baseid", required = true) Integer baseid) {
+    public Response findOneSample(@RequestParam(value = "baseid", required = true) Integer baseid) {
         Response response = new Response();
         try {
             SampleWithBLOBs sampleWithBLOBs = samplesService.selectById(baseid);
@@ -51,6 +51,21 @@ public class SampleRestController {
         Response response = new Response();
         try {
             response.setStatus(samplesService.updateSample(sample));
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+
+    @RequestMapping(value = "/api/findAllSample", method = RequestMethod.POST)
+    @ResponseBody
+    public Response findSample() {
+        Response response = new Response();
+        try {
+//            response.setStatus(samplesService.addSample());
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
