@@ -14,6 +14,13 @@ public interface TeamService {
      * @param teamName 队伍名
      */
     Team findTeamByName(String teamName);
+
+    /**
+     * 使用邮件地址获取信息
+     *
+     * @param email
+     * @return
+     */
     Team login(String email);
     boolean addTeam(String email, String teamName, String password, String detail);
 

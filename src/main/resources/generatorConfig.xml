@@ -5,8 +5,8 @@
 
 <generatorConfiguration>
     <!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
-    <!--<classPathEntry location="G:\workplace\MyH2O\mysql-connector-java-5.1.34.jar" />-->
-    <classPathEntry location="/home/myh2o/mysql-connector-java-5.1.34.jar" />
+    <classPathEntry location="G:\workplace\MyH2O\mysql-connector-java-5.1.34.jar" />
+    <!--<classPathEntry location="/home/myh2o/mysql-connector-java-5.1.34.jar" />-->
 
     <context id="wangyongzhi_mysql_tables" targetRuntime="MyBatis3">
         <!-- 防止生成的代码中有很多注释，加入下面的配置控制 -->
@@ -27,13 +27,13 @@
         </javaTypeResolver>
 
         <!-- 数据表对应的model层  -->
-        <javaModelGenerator targetPackage="org.spring.springboot/domain" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="org.spring.springboot.domain" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- sql mapper 映射配置文件 -->
-        <sqlMapGenerator targetPackage="org.spring.springboot/mapper"  targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="resources.mapper"  targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
@@ -43,7 +43,7 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="myh2o" tableName="team" domainObjectName="Team"
+        <table schema="myh2o" tableName="sample" domainObjectName="Sample"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

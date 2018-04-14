@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.SampleDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Sample">
+    <id column="baseid" jdbcType="INTEGER" property="baseid" />
+    <result column="watertype" jdbcType="INTEGER" property="watertype" />
+    <result column="locationid" jdbcType="INTEGER" property="locationid" />
+    <result column="watersourcetype" jdbcType="INTEGER" property="watersourcetype" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+    <result column="sampling_date" jdbcType="DATE" property="samplingDate" />
+    <result column="detect_date" jdbcType="DATE" property="detectDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.SampleWithBLOBs">
+    <result column="watersourcedetails" jdbcType="LONGVARCHAR" property="watersourcedetails" />
+    <result column="locationname" jdbcType="LONGVARCHAR" property="locationname" />
+    <result column="treatmentmethods" jdbcType="LONGVARCHAR" property="treatmentmethods" />
+    <result column="watershortage" jdbcType="LONGVARCHAR" property="watershortage" />
+    <result column="picture" jdbcType="LONGVARCHAR" property="picture" />
+    <result column="general_comments" jdbcType="LONGVARCHAR" property="generalComments" />
+    <result column="water_q_determination" jdbcType="LONGVARCHAR" property="waterQDetermination" />
+    <result column="prob_comment" jdbcType="LONGVARCHAR" property="probComment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    baseid, watertype, locationid, watersourcetype, teamname, sampling_date, detect_date
+  </sql>
+  <sql id="Blob_Column_List">
+    watersourcedetails, locationname, treatmentmethods, watershortage, picture, general_comments, 
+    water_q_determination, prob_comment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sample
+    where baseid = #{baseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sample
+    where baseid = #{baseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
+    insert into sample (baseid, watertype, locationid, 
+      watersourcetype, teamname, sampling_date, 
+      detect_date, watersourcedetails, locationname, 
+      treatmentmethods, watershortage, 
+      picture, general_comments, water_q_determination, 
+      prob_comment)
+    values (#{baseid,jdbcType=INTEGER}, #{watertype,jdbcType=INTEGER}, #{locationid,jdbcType=INTEGER}, 
+      #{watersourcetype,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{samplingDate,jdbcType=DATE}, 
+      #{detectDate,jdbcType=DATE}, #{watersourcedetails,jdbcType=LONGVARCHAR}, #{locationname,jdbcType=LONGVARCHAR}, 
+      #{treatmentmethods,jdbcType=LONGVARCHAR}, #{watershortage,jdbcType=LONGVARCHAR}, 
+      #{picture,jdbcType=LONGVARCHAR}, #{generalComments,jdbcType=LONGVARCHAR}, #{waterQDetermination,jdbcType=LONGVARCHAR}, 
+      #{probComment,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
+    insert into sample
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="baseid != null">
+        baseid,
+      </if>
+      <if test="watertype != null">
+        watertype,
+      </if>
+      <if test="locationid != null">
+        locationid,
+      </if>
+      <if test="watersourcetype != null">
+        watersourcetype,
+      </if>
+      <if test="teamname != null">
+        teamname,
+      </if>
+      <if test="samplingDate != null">
+        sampling_date,
+      </if>
+      <if test="detectDate != null">
+        detect_date,
+      </if>
+      <if test="watersourcedetails != null">
+        watersourcedetails,
+      </if>
+      <if test="locationname != null">
+        locationname,
+      </if>
+      <if test="treatmentmethods != null">
+        treatmentmethods,
+      </if>
+      <if test="watershortage != null">
+        watershortage,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="generalComments != null">
+        general_comments,
+      </if>
+      <if test="waterQDetermination != null">
+        water_q_determination,
+      </if>
+      <if test="probComment != null">
+        prob_comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="baseid != null">
+        #{baseid,jdbcType=INTEGER},
+      </if>
+      <if test="watertype != null">
+        #{watertype,jdbcType=INTEGER},
+      </if>
+      <if test="locationid != null">
+        #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="watersourcetype != null">
+        #{watersourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="samplingDate != null">
+        #{samplingDate,jdbcType=DATE},
+      </if>
+      <if test="detectDate != null">
+        #{detectDate,jdbcType=DATE},
+      </if>
+      <if test="watersourcedetails != null">
+        #{watersourcedetails,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="locationname != null">
+        #{locationname,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="treatmentmethods != null">
+        #{treatmentmethods,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="watershortage != null">
+        #{watershortage,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="generalComments != null">
+        #{generalComments,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="waterQDetermination != null">
+        #{waterQDetermination,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="probComment != null">
+        #{probComment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
+    update sample
+    <set>
+      <if test="watertype != null">
+        watertype = #{watertype,jdbcType=INTEGER},
+      </if>
+      <if test="locationid != null">
+        locationid = #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="watersourcetype != null">
+        watersourcetype = #{watersourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        teamname = #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="samplingDate != null">
+        sampling_date = #{samplingDate,jdbcType=DATE},
+      </if>
+      <if test="detectDate != null">
+        detect_date = #{detectDate,jdbcType=DATE},
+      </if>
+      <if test="watersourcedetails != null">
+        watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="locationname != null">
+        locationname = #{locationname,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="treatmentmethods != null">
+        treatmentmethods = #{treatmentmethods,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="watershortage != null">
+        watershortage = #{watershortage,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="generalComments != null">
+        general_comments = #{generalComments,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="waterQDetermination != null">
+        water_q_determination = #{waterQDetermination,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="probComment != null">
+        prob_comment = #{probComment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where baseid = #{baseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
+    update sample
+    set watertype = #{watertype,jdbcType=INTEGER},
+      locationid = #{locationid,jdbcType=INTEGER},
+      watersourcetype = #{watersourcetype,jdbcType=INTEGER},
+      teamname = #{teamname,jdbcType=VARCHAR},
+      sampling_date = #{samplingDate,jdbcType=DATE},
+      detect_date = #{detectDate,jdbcType=DATE},
+      watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
+      locationname = #{locationname,jdbcType=LONGVARCHAR},
+      treatmentmethods = #{treatmentmethods,jdbcType=LONGVARCHAR},
+      watershortage = #{watershortage,jdbcType=LONGVARCHAR},
+      picture = #{picture,jdbcType=LONGVARCHAR},
+      general_comments = #{generalComments,jdbcType=LONGVARCHAR},
+      water_q_determination = #{waterQDetermination,jdbcType=LONGVARCHAR},
+      prob_comment = #{probComment,jdbcType=LONGVARCHAR}
+    where baseid = #{baseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Sample">
+    update sample
+    set watertype = #{watertype,jdbcType=INTEGER},
+      locationid = #{locationid,jdbcType=INTEGER},
+      watersourcetype = #{watersourcetype,jdbcType=INTEGER},
+      teamname = #{teamname,jdbcType=VARCHAR},
+      sampling_date = #{samplingDate,jdbcType=DATE},
+      detect_date = #{detectDate,jdbcType=DATE}
+    where baseid = #{baseid,jdbcType=INTEGER}
+  </update>
+</mapper>
