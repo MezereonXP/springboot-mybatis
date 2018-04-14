@@ -43,7 +43,7 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="myh2o" tableName="blog" domainObjectName="Blog"
+        <table schema="myh2o" tableName="testcycle" domainObjectName="TestCycle"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

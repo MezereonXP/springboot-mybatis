@@ -16,10 +16,10 @@ public class LocationService {
     @Autowired
     private LocationDao locationDao;
 
-    private Integer addLocation(Location location){
+    public Integer addLocation(Location location){
         int count = locationDao.insert(location);
         if (count == 1){
-            return 1;
+            return location.getLocationid();
         } else {
             return -1;
         }

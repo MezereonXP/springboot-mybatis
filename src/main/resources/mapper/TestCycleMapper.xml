@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.TestCycleDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.TestCycle">
+    <id column="testcycleid" jdbcType="INTEGER" property="testcycleid" />
+    <result column="testcyclename" jdbcType="VARCHAR" property="testcyclename" />
+    <result column="teamid" jdbcType="INTEGER" property="teamid" />
+    <result column="cycleteamid" jdbcType="VARCHAR" property="cycleteamid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.TestCycle">
+    <result column="testcycledescribe" jdbcType="LONGVARCHAR" property="testcycledescribe" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    testcycleid, testcyclename, teamid, cycleteamid
+  </sql>
+  <sql id="Blob_Column_List">
+    testcycledescribe
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from testcycle
+    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from testcycle
+    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.TestCycle">
+    insert into testcycle (testcycleid, testcyclename, teamid, 
+      cycleteamid, testcycledescribe)
+    values (#{testcycleid,jdbcType=INTEGER}, #{testcyclename,jdbcType=VARCHAR}, #{teamid,jdbcType=INTEGER}, 
+      #{cycleteamid,jdbcType=VARCHAR}, #{testcycledescribe,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.TestCycle">
+    insert into testcycle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testcycleid != null">
+        testcycleid,
+      </if>
+      <if test="testcyclename != null">
+        testcyclename,
+      </if>
+      <if test="teamid != null">
+        teamid,
+      </if>
+      <if test="cycleteamid != null">
+        cycleteamid,
+      </if>
+      <if test="testcycledescribe != null">
+        testcycledescribe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testcycleid != null">
+        #{testcycleid,jdbcType=INTEGER},
+      </if>
+      <if test="testcyclename != null">
+        #{testcyclename,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="cycleteamid != null">
+        #{cycleteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="testcycledescribe != null">
+        #{testcycledescribe,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.TestCycle">
+    update testcycle
+    <set>
+      <if test="testcyclename != null">
+        testcyclename = #{testcyclename,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null">
+        teamid = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="cycleteamid != null">
+        cycleteamid = #{cycleteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="testcycledescribe != null">
+        testcycledescribe = #{testcycledescribe,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.TestCycle">
+    update testcycle
+    set testcyclename = #{testcyclename,jdbcType=VARCHAR},
+      teamid = #{teamid,jdbcType=INTEGER},
+      cycleteamid = #{cycleteamid,jdbcType=VARCHAR},
+      testcycledescribe = #{testcycledescribe,jdbcType=LONGVARCHAR}
+    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.TestCycle">
+    update testcycle
+    set testcyclename = #{testcyclename,jdbcType=VARCHAR},
+      teamid = #{teamid,jdbcType=INTEGER},
+      cycleteamid = #{cycleteamid,jdbcType=VARCHAR}
+    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+  </update>
+</mapper>
