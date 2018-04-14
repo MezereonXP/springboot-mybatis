@@ -33,11 +33,10 @@ public class SampleRestController {
 
     @RequestMapping(value = "/api/addSample", method = RequestMethod.POST)
     @ResponseBody
-    public Response addSample(@RequestBody Sample sample) {
+    public Response addSample(@RequestBody SampleWithBLOBs sample) {
         Response response = new Response();
         try {
-            response.setStatus(false);
-            response.setData(false);
+            response.setStatus(samplesService.addSample(sample));
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
