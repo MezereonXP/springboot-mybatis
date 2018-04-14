@@ -37,6 +37,21 @@ public class TeamRestController {
         }
     }
 
+    @RequestMapping(value = "/api/updatePassword", method = RequestMethod.GET)
+    public Response login(@RequestParam(value = "email", required = true) String email,
+                          @RequestParam(value = "oldPassword", required = true) String oldPassword,
+                          @RequestParam(value = "newPassword", required = true) String newPassword) {
+        Response response = new Response();
+        try {
+            response.setStatus(teamService.updatePassword(email,oldPassword ,newPassword));
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
     @RequestMapping(value = "/api/regist", method = RequestMethod.GET)
     public Response regist(@RequestParam(value = "email", required = true) String email,
                          @RequestParam(value = "password", required = true) String password,

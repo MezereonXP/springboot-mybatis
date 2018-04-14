@@ -22,4 +22,6 @@ public interface TeamDao {
                  @Param("teamName") String teamName,
                  @Param("password") String password,
                  @Param("detail") String detail);
+    boolean updatePassword(@Param("email") String email,
+                    @Param("password") String password);
 }

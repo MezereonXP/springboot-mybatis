@@ -33,5 +33,10 @@
         from team
         where email = #{email}
     </select>
+    <update id="updatePassword">
+        UPDATE team
+        SET password = #{password}
+        where email = #{email}
+    </update>
 
 </mapper>
