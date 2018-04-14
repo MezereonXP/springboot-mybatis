@@ -3,6 +3,7 @@ package org.spring.springboot.controller;
 import org.spring.springboot.domain.Team;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
+import org.spring.springboot.util.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +29,7 @@ public class TeamRestController {
         return teamService.findTeamByEmail(email);
     }
 
-    @RequestMapping(value = "/api/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public Response login(HttpServletRequest req,
                            HttpServletResponse resp,
                            @RequestParam(value = "email", required = true) String email,
@@ -37,7 +38,10 @@ public class TeamRestController {
         try {
             if(teamService.login(email).getPassword().equals(password)){
                 response.setStatus(true);
-                resp.addCookie(new Cookie("teamid",teamService.findTeamByEmail(email).getTeamid().toString()));
+                String teamid = teamService.findTeamByEmail(email).getTeamid().toString();
+                resp.addCookie(new Cookie("teamid",teamid));
+                resp.addCookie(new Cookie("email",email));
+                resp.addCookie(new Cookie("token", Token.getToken(email)));
             }else {
                 response.setStatus(false);
             }
