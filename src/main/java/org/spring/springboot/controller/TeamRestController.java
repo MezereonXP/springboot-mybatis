@@ -29,7 +29,7 @@ public class TeamRestController {
         return teamService.findTeamByEmail(email);
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "auth/login", method = RequestMethod.GET)
     public Response login(HttpServletRequest req,
                            HttpServletResponse resp,
                            @RequestParam(value = "email", required = true) String email,
