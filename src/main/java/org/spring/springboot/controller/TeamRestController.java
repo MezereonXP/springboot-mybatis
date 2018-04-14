@@ -68,7 +68,7 @@ public class TeamRestController {
         }
     }
 
-    @RequestMapping(value = "/api/regist", method = RequestMethod.GET)
+    @RequestMapping(value = "/auth/regist", method = RequestMethod.GET)
     public Response regist(@RequestParam(value = "email", required = true) String email,
                          @RequestParam(value = "password", required = true) String password,
                           @RequestParam(value = "detail", required = true) String detail,
