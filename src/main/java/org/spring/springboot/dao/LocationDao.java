@@ -3,7 +3,9 @@ package org.spring.springboot.dao;
 import org.spring.springboot.domain.Location;
 
 import org.spring.springboot.domain.Location;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface LocationDao {
     int deleteByPrimaryKey(Integer villageid);
 
