@@ -23,7 +23,9 @@ public class SampleRestController {
     public Response findOneCity(@RequestParam(value = "baseid", required = true) Integer baseid) {
         Response response = new Response();
         try {
-            response.setStatus(samplesService.selectById(baseid)!=null);
+            SampleWithBLOBs sampleWithBLOBs = samplesService.selectById(baseid);
+            response.setStatus(sampleWithBLOBs!=null);
+            response.setData(sampleWithBLOBs);
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
