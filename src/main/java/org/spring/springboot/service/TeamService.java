@@ -15,6 +15,6 @@ public interface TeamService {
      */
     Team findTeamByName(String teamName);
     Team login(String email);
-    void addTeam(String email, String teamName, String password, String detail);
+    boolean addTeam(String email, String teamName, String password, String detail);
 
 }

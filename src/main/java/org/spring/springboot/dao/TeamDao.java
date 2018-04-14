@@ -16,7 +16,7 @@ public interface TeamDao {
      */
     Team findByName(@Param("teamName") String teamName);
     Team login(@Param("email") String email);
-    void addTeam(@Param("email") String email,
+    boolean addTeam(@Param("email") String email,
                  @Param("teamName") String teamName,
                  @Param("password") String password,
                  @Param("detail") String detail);

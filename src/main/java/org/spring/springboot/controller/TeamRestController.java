@@ -1,6 +1,7 @@
 package org.spring.springboot.controller;
 
 import org.spring.springboot.domain.Team;
+import org.spring.springboot.response.Response;
 import org.spring.springboot.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,25 +26,32 @@ public class TeamRestController {
     }
 
     @RequestMapping(value = "/api/login", method = RequestMethod.GET)
-    public boolean login(@RequestParam(value = "email", required = true) String email,
+    public Response login(@RequestParam(value = "email", required = true) String email,
                          @RequestParam(value = "password", required = true) String password) {
+        Response response = new Response();
         try {
-            return teamService.login(email).getPassword().equals(password);
+            response.setStatus(teamService.login(email).getPassword().equals(password));
+            return response;
         } catch (Exception e){
-            return false;
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
         }
     }
 
     @RequestMapping(value = "/api/regist", method = RequestMethod.GET)
-    public boolean regist(@RequestParam(value = "email", required = true) String email,
+    public Response regist(@RequestParam(value = "email", required = true) String email,
                          @RequestParam(value = "password", required = true) String password,
                           @RequestParam(value = "detail", required = true) String detail,
                           @RequestParam(value = "teamName", required = true) String teamName) {
+        Response response = new Response();
         try {
-            teamService.addTeam(email,teamName,password,detail);
-            return true;
+            response.setStatus(teamService.addTeam(email,teamName,password,detail));
+            return response;
         } catch (Exception e){
-            return false;
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
         }
     }
 

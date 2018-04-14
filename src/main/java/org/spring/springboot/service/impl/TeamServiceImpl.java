@@ -24,8 +24,8 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @Override
-    public void addTeam(String email, String teamName, String password, String detail) {
-        teamDao.addTeam(email, teamName, password, detail);
+    public boolean addTeam(String email, String teamName, String password, String detail) {
+       return teamDao.addTeam(email, teamName, password, detail);
     }
 
 }
