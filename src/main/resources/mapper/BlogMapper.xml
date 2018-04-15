@@ -24,6 +24,14 @@
     from blog
     where blogid = #{blogid,jdbcType=INTEGER}
   </select>
+  <select id="getTeamBlog" resultType="org.spring.springboot.domain.Blog">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog
+    where teamid = #{teamid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from blog
     where blogid = #{blogid,jdbcType=INTEGER}

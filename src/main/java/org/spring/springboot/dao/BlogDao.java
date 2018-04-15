@@ -1,7 +1,11 @@
 package org.spring.springboot.dao;
 
 import org.spring.springboot.domain.Blog;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 public interface BlogDao {
     int deleteByPrimaryKey(Integer blogid);
 
@@ -16,4 +20,6 @@ public interface BlogDao {
     int updateByPrimaryKeyWithBLOBs(Blog record);
 
     int updateByPrimaryKey(Blog record);
+
+    List<Blog> getTeamBlog(Integer teamid);
 }
