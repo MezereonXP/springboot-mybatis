@@ -39,9 +39,15 @@ public class TeamRestController {
             if(teamService.login(email).getPassword().equals(password)){
                 response.setStatus(true);
                 String teamid = teamService.findTeamByEmail(email).getTeamid().toString();
-                resp.addCookie(new Cookie("teamid",teamid));
-                resp.addCookie(new Cookie("email",email));
-                resp.addCookie(new Cookie("token", Token.getToken(email)));
+                Cookie emailCookie = new Cookie("email",email);
+                Cookie tokenCookie = new Cookie("token", Token.getToken(email));
+                Cookie teamidCookie = new Cookie("teamid",teamid);
+                emailCookie.setPath("/api");
+                tokenCookie.setPath("/api");
+                teamidCookie.setPath("/api");
+                resp.addCookie(emailCookie);
+                resp.addCookie(tokenCookie);
+                resp.addCookie(teamidCookie);
             }else {
                 response.setStatus(false);
             }
