@@ -24,7 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                              HttpServletResponse response, Object handler) throws Exception {
         // TODO Auto-generated method stub
         Cookie[] cookies = request.getCookies();
-        String token = "";
+        String token = "myh2o";
         String email = "";
         if (cookies != null && cookies.length > 0) {
             for(Cookie cookie: cookies) {

@@ -54,7 +54,7 @@ public class TeamRestController {
     }
 
     @RequestMapping(value = "/api/updatePassword", method = RequestMethod.GET)
-    public Response login(@RequestParam(value = "email", required = true) String email,
+    public Response updatePassword(@RequestParam(value = "email", required = true) String email,
                           @RequestParam(value = "oldPassword", required = true) String oldPassword,
                           @RequestParam(value = "newPassword", required = true) String newPassword) {
         Response response = new Response();
