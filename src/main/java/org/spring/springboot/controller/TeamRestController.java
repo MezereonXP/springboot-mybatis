@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 public class TeamRestController {
+
+    static final String HASH = "%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&pn=30&oq=%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&ie=utf-8&rsv_idx=1&rsv_pq=fd9f2b3c00087951&rsv_t=e7c5NJGVFprZOgQdstCngJa5XGCDpWPaa%2BmgHBpTRSXj1O6T%2Bw%2FGAkVd9hM&rsv";
 
     @Autowired
     private TeamService teamService;
@@ -40,7 +44,11 @@ public class TeamRestController {
                 response.setStatus(true);
                 String teamid = teamService.findTeamByEmail(email).getTeamid().toString();
                 Cookie emailCookie = new Cookie("email",email);
-                Cookie tokenCookie = new Cookie("token", Token.getToken(email));
+                Cookie tokenCookie = new Cookie("token", Token.getToken(email
+                        +
+                        new SimpleDateFormat("yyyy-MM-dd").format(new Date())
+                        +
+                        HASH));
                 Cookie teamidCookie = new Cookie("teamid",teamid);
                 emailCookie.setPath("/api");
                 tokenCookie.setPath("/api");

@@ -10,7 +10,7 @@ public class Token {
      * @return String
      */
     public static String getToken(String str){
-        return new sun.misc.BASE64Encoder().encode(str.getBytes());
+        return new sun.misc.BASE64Encoder().encode(str.getBytes()).replace("\r\n","");
     }
 
     /**

@@ -9,9 +9,13 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Logger;
 
 public class LoginInterceptor implements HandlerInterceptor {
+
+    static final String HASH = "%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&pn=30&oq=%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&ie=utf-8&rsv_idx=1&rsv_pq=fd9f2b3c00087951&rsv_t=e7c5NJGVFprZOgQdstCngJa5XGCDpWPaa%2BmgHBpTRSXj1O6T%2Bw%2FGAkVd9hM&rsv";
 
     /**
      * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，可以同时存在
@@ -50,7 +54,12 @@ public class LoginInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        if (Token.ParseToken(token).equals(email)) {
+        String fadf = Token.ParseToken(token);
+        if (Token.ParseToken(token).equals(email
+                +
+                new SimpleDateFormat("yyyy-MM-dd").format(new Date())
+                +
+                HASH)) {
             System.out.println("Token True");
             return true;
         } else {
