@@ -9,9 +9,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.net.URLDecoder;
+import java.util.logging.Logger;
 
 public class LoginInterceptor implements HandlerInterceptor {
-
 
     /**
      * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，可以同时存在
@@ -23,11 +23,25 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
         // TODO Auto-generated method stub
+
+        //跨域访问CORS
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS,PUT,DELETE,HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "S_ID,content-type");
+        response.addHeader("Access-Control-Max-Age", "3600000");
+        response.addHeader("Access-Control-Allow-Credentials", "true");
+
+        //让请求，不被缓存，
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Cache-Control", "no-store");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+
         Cookie[] cookies = request.getCookies();
         String token = "myh2o";
         String email = "";
         if (cookies != null && cookies.length > 0) {
-            for(Cookie cookie: cookies) {
+            for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
                     token = cookie.getValue();
                 }
@@ -36,9 +50,11 @@ public class LoginInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        if(Token.ParseToken(token).equals(email)){
+        if (Token.ParseToken(token).equals(email)) {
+            System.out.println("Token True");
             return true;
-        }else {
+        } else {
+            System.out.println("Token False");
             return false;
         }
     }

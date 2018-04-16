@@ -4,6 +4,7 @@ import org.spring.springboot.domain.Location;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +38,7 @@ public class LocationRestController {
         }
     }
 
-    @RequestMapping(value = "/api/getAllLocation", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllLocation", method = RequestMethod.GET)
     public Response getAllLocation() {
         Response response = new Response();
         try {

@@ -6,6 +6,7 @@ import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.domain.Location;
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
+import org.spring.springboot.domain.SampleWithLocation;
 import org.spring.springboot.domain.ShowSamples;
 import org.spring.springboot.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,19 +43,22 @@ public class LocationService {
     }
 
     /**
-     * 获取所有的location， 并且根据测试周期进行分组， 组合成map进行返回
+     * 获取所有的location， 并且
      *
      * @return
      */
-    public Map<Integer, List<Location>> getAllLocation(){
-        Map<Integer, List<Location>> map = new HashMap<Integer, List<Location>>();
+    public Map<Integer, List<SampleWithLocation>> getAllLocation(){
+        Map<Integer, List<SampleWithLocation>> map = new HashMap<Integer, List<SampleWithLocation>>();
         ShowSamples showSamples = sampleService.getAllShowSamples();
         for (ShowSamples.ShowCycle showCycle:showSamples.getShowCycles()){
             Integer tempCycleId = showCycle.getTestCycle().getTestcycleid();
-            map.put(tempCycleId, new ArrayList<Location>());
+            map.put(tempCycleId, new ArrayList<SampleWithLocation>());
             for (SampleWithBLOBs sample:showCycle.getSample()){
+                SampleWithLocation sampleWithLocation = new SampleWithLocation();
                 Location location = locationDao.selectByPrimaryKey(sample.getLocationid());
-                map.get(tempCycleId).add(location);
+                sampleWithLocation.setLocation(location);
+                sampleWithLocation.setSampleWithBLOBs(sample);
+                map.get(tempCycleId).add(sampleWithLocation);
             }
         }
         return map;
