@@ -38,6 +38,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 
     public void excludeUserLogin(InterceptorRegistration registration){
         registration.addPathPatterns("/api/*");
+        registration.excludePathPatterns("/api/checkAuth");
     }
 
     @Override

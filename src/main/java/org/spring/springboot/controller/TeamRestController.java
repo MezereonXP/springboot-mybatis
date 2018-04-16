@@ -5,10 +5,7 @@ import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
 import org.spring.springboot.util.Token;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,6 +53,33 @@ public class TeamRestController {
                 resp.addCookie(emailCookie);
                 resp.addCookie(tokenCookie);
                 resp.addCookie(teamidCookie);
+            }else {
+                response.setStatus(false);
+            }
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "api/checkAuth", method = RequestMethod.GET)
+    public Response checkAuth(HttpServletRequest req,
+                          HttpServletResponse resp,
+                              @CookieValue(value="email" , required = false) String email,
+                              @CookieValue(value="token" , required = false) String token) {
+        Response response = new Response();
+        try {
+            if(email != null && token != null){
+                if(teamService.checkAuth(email , token)){
+                    Team team = teamService.findTeamByEmail(email);
+                    team.setPassword(null);
+                    response.setData(team);
+                    response.setStatus(true);
+                }else{
+                    response.setStatus(false);
+                }
             }else {
                 response.setStatus(false);
             }
