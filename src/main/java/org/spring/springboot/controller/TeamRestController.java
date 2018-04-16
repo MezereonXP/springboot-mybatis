@@ -44,11 +44,11 @@ public class TeamRestController {
                 response.setStatus(true);
                 String teamid = teamService.findTeamByEmail(email).getTeamid().toString();
                 Cookie emailCookie = new Cookie("email",email);
-                Cookie tokenCookie = new Cookie("token", Token.getToken(email
+                Cookie tokenCookie = new Cookie("token", Token.getToken(Token.getToken(Token.getToken(email
                         +
                         new SimpleDateFormat("yyyy-MM-dd").format(new Date())
                         +
-                        HASH));
+                        HASH))));
                 Cookie teamidCookie = new Cookie("teamid",teamid);
                 emailCookie.setPath("/api");
                 tokenCookie.setPath("/api");

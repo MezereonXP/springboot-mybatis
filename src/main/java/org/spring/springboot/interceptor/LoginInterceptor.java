@@ -54,8 +54,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        String fadf = Token.ParseToken(token);
-        if (Token.ParseToken(token).equals(email
+        if (Token.ParseToken(Token.ParseToken(Token.ParseToken(token))).equals(email
                 +
                 new SimpleDateFormat("yyyy-MM-dd").format(new Date())
                 +
