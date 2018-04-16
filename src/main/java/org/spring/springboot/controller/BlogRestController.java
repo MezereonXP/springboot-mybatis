@@ -23,6 +23,12 @@ public class BlogRestController {
     @Autowired
     private BlogService blogService;
 
+    /**
+     * 利用团队id来获取他们所有的博客
+     *
+     * @param teamid
+     * @return
+     */
     @RequestMapping(value = "/api/getTeamBlog", method = RequestMethod.GET)
     public Response getTeamBlog(@CookieValue(value = "teamid", required = true) Integer teamid) {
         Response response = new Response();

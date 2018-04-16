@@ -23,6 +23,12 @@ public class LocationRestController {
     @Autowired
     private LocationService locationService;
 
+    /**
+     * 添加Location
+     *
+     * @param location
+     * @return
+     */
     @RequestMapping(value = "/api/addLocation", method = RequestMethod.POST)
     @ResponseBody
     public Response addLocation(@RequestBody Location location) {
@@ -38,6 +44,11 @@ public class LocationRestController {
         }
     }
 
+    /**
+     * 按周期获取所有的样本点以及位置信息
+     *
+     * @return
+     */
     @RequestMapping(value = "/getAllLocation", method = RequestMethod.GET)
     public Response getAllLocation() {
         Response response = new Response();

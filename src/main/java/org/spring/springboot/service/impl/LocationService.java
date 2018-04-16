@@ -43,7 +43,7 @@ public class LocationService {
     }
 
     /**
-     * 获取所有的location， 并且
+     * 获取所有的location， 并且将Sample和对应的Location返回
      *
      * @return
      */
