@@ -13,7 +13,7 @@ public interface LocationDao {
 
     int insertSelective(Location record);
 
-    Location selectByPrimaryKey(Integer villageid);
+    Location selectByPrimaryKey(Integer locationid);
 
     int updateByPrimaryKeySelective(Location record);
 
