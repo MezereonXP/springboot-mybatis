@@ -22,4 +22,6 @@ public interface BlogDao {
     int updateByPrimaryKey(Blog record);
 
     List<Blog> getTeamBlog(Integer teamid);
+
+    Blog selectByLocation(Integer locationid);
 }

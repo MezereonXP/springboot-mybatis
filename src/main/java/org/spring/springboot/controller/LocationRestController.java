@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -63,5 +64,18 @@ public class LocationRestController {
         }
     }
 
+    @RequestMapping(value = "/api/getAllLocationForCycleTeam", method = RequestMethod.GET)
+    public Response getAllLocationForCycleTeam(@RequestParam(value = "cycleTeamName", required = true) String cycleTeamName) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            response.setData(locationService.getLocationForTeam(cycleTeamName));
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
 
 }

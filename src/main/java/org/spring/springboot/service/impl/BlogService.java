@@ -19,4 +19,8 @@ public class BlogService {
     public List<Blog> getTeamBlog(Integer teamid) {
         return blogDao.getTeamBlog(teamid);
     }
+
+    public Blog getBlogByLocation(Integer locationid){
+        return blogDao.selectByLocation(locationid);
+    }
 }
