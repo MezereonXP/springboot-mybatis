@@ -24,11 +24,11 @@
     delete from location
     where locationid = #{locationid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Location">
-    insert into location (locationid, villageid, locationname, 
+  <insert id="insert" parameterType="org.spring.springboot.domain.Location" useGeneratedKeys="true" keyProperty="locationid">
+    insert into location (villageid, locationname,
       lat, lon, status, createdat, 
       updateat)
-    values (#{locationid,jdbcType=INTEGER}, #{villageid,jdbcType=INTEGER}, #{locationname,jdbcType=VARCHAR}, 
+    values (#{villageid,jdbcType=INTEGER}, #{locationname,jdbcType=VARCHAR},
       #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{createdat,jdbcType=DATE}, 
       #{updateat,jdbcType=DATE})
   </insert>

@@ -44,10 +44,10 @@
     delete from blog
     where blogid = #{blogid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Blog">
-    insert into blog (blogid, picture, locationid, 
+  <insert id="insert" parameterType="org.spring.springboot.domain.Blog" useGeneratedKeys="true" keyProperty="blogid">
+    insert into blog (picture, locationid,
       teamid, text)
-    values (#{blogid,jdbcType=INTEGER}, #{picture,jdbcType=VARCHAR}, #{locationid,jdbcType=INTEGER}, 
+    values (#{picture,jdbcType=VARCHAR}, #{locationid,jdbcType=INTEGER},
       #{teamid,jdbcType=INTEGER}, #{text,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Blog">

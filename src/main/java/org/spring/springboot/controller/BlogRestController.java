@@ -46,11 +46,18 @@ public class BlogRestController {
         }
     }
 
-    @RequestMapping(value = "/api/addBlog", method = RequestMethod.POST)
-    @ResponseBody
-    public Response addBlog(@RequestBody Blog blog) {
+    @RequestMapping(value = "/api/addBlog", method = RequestMethod.GET)
+    public Response addBlog(@CookieValue(value = "teamid", required = true) Integer teamid,
+                            @RequestParam(value = "locationid", required = true) Integer locationid,
+                            @RequestParam(value = "picture", required = true) String picture,
+                            @RequestParam(value = "text", required = true) String text) {
         Response response = new Response();
         try {
+            Blog blog = new Blog();
+            blog.setLocationid(locationid);
+            blog.setPicture(picture);
+            blog.setTeamid(teamid);
+            blog.setText(text);
             blogService.addBlog(blog);
             response.setStatus(true);
             return response;
