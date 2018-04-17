@@ -20,6 +20,10 @@ public class BlogService {
         return blogDao.getTeamBlog(teamid);
     }
 
+    public void addBlog(Blog blog){
+        blogDao.insert(blog);
+    }
+
     public Blog getBlogByLocation(Integer locationid){
         return blogDao.selectByLocation(locationid);
     }

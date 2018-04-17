@@ -51,6 +51,7 @@ public class LocationRestController {
      * @return
      */
     @RequestMapping(value = "/getAllLocation", method = RequestMethod.GET)
+    @CrossOrigin
     public Response getAllLocation() {
         Response response = new Response();
         try {
