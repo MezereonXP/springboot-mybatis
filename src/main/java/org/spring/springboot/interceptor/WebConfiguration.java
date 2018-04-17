@@ -1,7 +1,8 @@
 package org.spring.springboot.interceptor;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.spring.springboot.controller.TeamRestController;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,11 +23,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
     /**日志*/
-    private static final Log loger = LogFactory.getLog(WebConfiguration.class);
-
+    private static Logger logger = LogManager.getLogger(WebConfiguration.class);
 
     public WebConfiguration() {
-        loger.info("开启系统登录拦截");
+        logger.info("开启系统登录拦截");
     }
 
 
