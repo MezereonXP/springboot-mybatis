@@ -63,7 +63,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         } else {
             System.out.println("Token False");
-            response.getWriter().print("{code:401}");
+            response.getWriter().print("{\"code\":401}");
             return false;
         }
     }

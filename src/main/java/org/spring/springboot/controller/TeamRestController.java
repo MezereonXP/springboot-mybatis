@@ -137,4 +137,29 @@ public class TeamRestController {
             return response;
         }
     }
+
+    @RequestMapping(value = "auth/logout", method = RequestMethod.GET)
+    public Response logout(HttpServletRequest req,
+                          HttpServletResponse resp) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            Cookie emailCookie = new Cookie("email",null);
+            Cookie tokenCookie = new Cookie("token", null);
+            Cookie teamidCookie = new Cookie("teamid",null);
+            emailCookie.setPath("/api");
+            tokenCookie.setPath("/api");
+            teamidCookie.setPath("/api");
+            resp.addCookie(emailCookie);
+            resp.addCookie(tokenCookie);
+            resp.addCookie(teamidCookie);
+            logger.info("用户Email:" + "登出成功了");
+            return response;
+        } catch (Exception e){
+            response.setMsg("登出失败了原因是Exception:" + e.getMessage());
+            response.setStatus(false);
+            logger.info("用户Email:"  + "登出失败了,原因是Exception:" + e.getMessage());
+            return response;
+        }
+    }
 }

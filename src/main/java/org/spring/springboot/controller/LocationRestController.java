@@ -4,6 +4,7 @@ import org.spring.springboot.domain.Location;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,11 +67,18 @@ public class LocationRestController {
     }
 
     @RequestMapping(value = "/api/getAllLocationForCycleTeam", method = RequestMethod.GET)
-    public Response getAllLocationForCycleTeam(@RequestParam(value = "cycleTeamName", required = true) String cycleTeamName) {
+    public Response getAllLocationForCycleTeam(@RequestParam(value = "cycleTeamName", required = true) String cycleTeamName,
+                                               @CookieValue(value="teamid", required = true) String teamid) {
         Response response = new Response();
         try {
-            response.setStatus(true);
-            response.setData(locationService.getLocationForTeam(cycleTeamName));
+            if (teamid.equals(cycleTeamName.split("Z")[0].substring(1))){
+                response.setStatus(true);
+                response.setData(locationService.getLocationForTeam(cycleTeamName));
+            } else {
+                response.setStatus(false);
+                response.setData(locationService.getLocationForTeam(cycleTeamName));
+            }
+
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
