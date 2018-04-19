@@ -1,7 +1,11 @@
 package org.spring.springboot.domain;
 
 public class SampleWithBLOBs extends Sample {
+    private String watertype;
+
     private String watersourcedetails;
+
+    private String watersourcetype;
 
     private String locationname;
 
@@ -17,12 +21,28 @@ public class SampleWithBLOBs extends Sample {
 
     private String probcomment;
 
+    public String getWatertype() {
+        return watertype;
+    }
+
+    public void setWatertype(String watertype) {
+        this.watertype = watertype == null ? null : watertype.trim();
+    }
+
     public String getWatersourcedetails() {
         return watersourcedetails;
     }
 
     public void setWatersourcedetails(String watersourcedetails) {
         this.watersourcedetails = watersourcedetails == null ? null : watersourcedetails.trim();
+    }
+
+    public String getWatersourcetype() {
+        return watersourcetype;
+    }
+
+    public void setWatersourcetype(String watersourcetype) {
+        this.watersourcetype = watersourcetype == null ? null : watersourcetype.trim();
     }
 
     public String getLocationname() {
