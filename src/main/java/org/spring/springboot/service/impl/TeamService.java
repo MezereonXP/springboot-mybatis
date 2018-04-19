@@ -31,12 +31,8 @@ public class TeamService {
        return teamDao.addTeam(email, teamName, password, detail);
     }
 
-    public boolean checkAuth(String email, String token) {
-        if (Token.ParseToken(Token.ParseToken(Token.ParseToken(token))).equals(email
-                +
-                new SimpleDateFormat("yyyy-MM-dd").format(new Date())
-                +
-                HASH)) {
+    public boolean checkAuth(String email, String token, String teamid) {
+        if (Token.checkToken(token,email,teamid)) {
             System.out.println("Token True");
             return true;
         } else {

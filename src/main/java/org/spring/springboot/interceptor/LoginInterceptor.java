@@ -15,8 +15,6 @@ import java.util.logging.Logger;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
-    static final String HASH = "%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&pn=30&oq=%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&ie=utf-8&rsv_idx=1&rsv_pq=fd9f2b3c00087951&rsv_t=e7c5NJGVFprZOgQdstCngJa5XGCDpWPaa%2BmgHBpTRSXj1O6T%2Bw%2FGAkVd9hM&rsv";
-
     /**
      * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，可以同时存在
      * 多个Interceptor，然后SpringMVC会根据声明的前后顺序一个接一个的执行，而且所有的Interceptor中的preHandle方法都会在
@@ -44,6 +42,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         Cookie[] cookies = request.getCookies();
         String token = "myh2o";
         String email = "";
+        String teamid = "";
         if (cookies != null && cookies.length > 0) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
@@ -52,13 +51,12 @@ public class LoginInterceptor implements HandlerInterceptor {
                 if (cookie.getName().equals("email")) {
                     email = cookie.getValue();
                 }
+                if (cookie.getName().equals("teamid")) {
+                    teamid = cookie.getValue();
+                }
             }
         }
-        if (Token.ParseToken(Token.ParseToken(Token.ParseToken(token))).equals(email
-                +
-                new SimpleDateFormat("yyyy-MM-dd").format(new Date())
-                +
-                HASH)) {
+        if (Token.checkToken(token,email,teamid)) {
             System.out.println("Token True");
             return true;
         } else {

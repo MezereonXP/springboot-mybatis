@@ -24,8 +24,6 @@ public class TeamRestController {
 
     private static Logger logger = LogManager.getLogger(TeamRestController.class);
 
-    static final String HASH = "%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&pn=30&oq=%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&ie=utf-8&rsv_idx=1&rsv_pq=fd9f2b3c00087951&rsv_t=e7c5NJGVFprZOgQdstCngJa5XGCDpWPaa%2BmgHBpTRSXj1O6T%2Bw%2FGAkVd9hM&rsv";
-
     @Autowired
     private TeamService teamService;
 
@@ -45,11 +43,7 @@ public class TeamRestController {
                 response.setStatus(true);
                 String teamid = teamService.findTeamByEmail(email).getTeamid().toString();
                 Cookie emailCookie = new Cookie("email",email);
-                Cookie tokenCookie = new Cookie("token", Token.getToken(Token.getToken(Token.getToken(email
-                        +
-                        new SimpleDateFormat("yyyy-MM-dd").format(new Date())
-                        +
-                        HASH))));
+                Cookie tokenCookie = new Cookie("token", Token.getMyToken(email,teamid));
                 Cookie teamidCookie = new Cookie("teamid",teamid);
                 emailCookie.setPath("/api");
                 tokenCookie.setPath("/api");
@@ -76,11 +70,12 @@ public class TeamRestController {
     public Response checkAuth(HttpServletRequest req,
                           HttpServletResponse resp,
                               @CookieValue(value="email" , required = false) String email,
+                              @CookieValue(value="teamid" , required = false) String teamid,
                               @CookieValue(value="token" , required = false) String token) {
         Response response = new Response();
         try {
-            if(email != null && token != null){
-                if(teamService.checkAuth(email , token)){
+            if(email != null && token != null && teamid != null){
+                if(teamService.checkAuth(email , token ,teamid)){
                     Team team = teamService.findTeamByEmail(email);
                     team.setPassword(null);
                     response.setData(team);
