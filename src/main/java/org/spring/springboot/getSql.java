@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class getSql {
 
-    private static final String PATH = "G:\\";
+    private static final String PATH = "D:\\";
 
     public static void main(String args[]){
         Integer i = 1;

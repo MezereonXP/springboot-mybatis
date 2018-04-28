@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/4/16.
@@ -46,18 +47,17 @@ public class BlogRestController {
         }
     }
 
-    @RequestMapping(value = "/api/addBlog", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/addBlog", method = RequestMethod.POST)
+    @ResponseBody
     public Response addBlog(@CookieValue(value = "teamid", required = true) Integer teamid,
-                            @RequestParam(value = "locationid", required = true) Integer locationid,
-                            @RequestParam(value = "picture", required = true) String picture,
-                            @RequestParam(value = "text", required = true) String text) {
+                            @RequestBody Map map) {
         Response response = new Response();
         try {
             Blog blog = new Blog();
-            blog.setLocationid(locationid);
-            blog.setPicture(picture);
+            blog.setLocationid((Integer) map.get("locationid"));
+            blog.setPicture((String) map.get("picture"));
             blog.setTeamid(teamid);
-            blog.setText(text);
+            blog.setText((String) map.get("text"));
             blogService.addBlog(blog);
             response.setStatus(true);
             return response;
