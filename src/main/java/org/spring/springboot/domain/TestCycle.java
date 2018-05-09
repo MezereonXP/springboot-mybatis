@@ -5,10 +5,6 @@ public class TestCycle {
 
     private String testcyclename;
 
-    private Integer teamid;
-
-    private String cycleteamid;
-
     private String testcycledescribe;
 
     public Integer getTestcycleid() {
@@ -25,22 +21,6 @@ public class TestCycle {
 
     public void setTestcyclename(String testcyclename) {
         this.testcyclename = testcyclename == null ? null : testcyclename.trim();
-    }
-
-    public Integer getTeamid() {
-        return teamid;
-    }
-
-    public void setTeamid(Integer teamid) {
-        this.teamid = teamid;
-    }
-
-    public String getCycleteamid() {
-        return cycleteamid;
-    }
-
-    public void setCycleteamid(String cycleteamid) {
-        this.cycleteamid = cycleteamid == null ? null : cycleteamid.trim();
     }
 
     public String getTestcycledescribe() {

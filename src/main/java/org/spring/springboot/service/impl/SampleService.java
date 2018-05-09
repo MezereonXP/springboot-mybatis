@@ -46,38 +46,40 @@ public class SampleService {
         }
     }
 
+    //需要修改
     public ShowSamples getShowSamples(String teamId) {
         ShowSamples showSamples = new ShowSamples();
-        List<ShowSamples.ShowCycle> showCycles = new ArrayList<ShowSamples.ShowCycle>();
-        List<TestCycle> testCycles = testCycleDao.findTestCycleByTeamId(teamId);
-        for(TestCycle testCycle : testCycles){
-            ShowSamples.ShowCycle showCycle = new ShowSamples.ShowCycle();
-            showCycle.setSample(sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid()));
-            showCycle.setTestCycle(testCycle);
-            showCycles.add(showCycle);
-        }
-        showSamples.setShowCycles(showCycles);
+//        List<ShowSamples.ShowCycle> showCycles = new ArrayList<ShowSamples.ShowCycle>();
+//        List<TestCycle> testCycles = testCycleDao.findTestCycleByTeamId(teamId);
+//        for(TestCycle testCycle : testCycles){
+//            ShowSamples.ShowCycle showCycle = new ShowSamples.ShowCycle();
+//            showCycle.setSample(sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid()));
+//            showCycle.setTestCycle(testCycle);
+//            showCycles.add(showCycle);
+//        }
+//        showSamples.setShowCycles(showCycles);
         return showSamples;
     }
 
+    //需要修改
     public ShowSamples getAllShowSamples(){
         ShowSamples showSamples = new ShowSamples();
-        Map<Integer, ShowSamples.ShowCycle> map = new HashMap<Integer, ShowSamples.ShowCycle>();
-        List<TestCycle> testCycleList = testCycleDao.getAllTestCycle();
-
-        for (TestCycle testCycle : testCycleList){
-            if (!map.containsKey(testCycle.getTestcycleid())){
-                map.put(testCycle.getTestcycleid(), new ShowSamples.ShowCycle());
-                map.get(testCycle.getTestcycleid()).setTestCycle(testCycle);
-            }
-            ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
-            for (SampleWithBLOBs sample:sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid())){
-                showCycle.getSample().add(sample);
-            }
-        }
-        for (Integer i:map.keySet()){
-            showSamples.getShowCycles().add(map.get(i));
-        }
+//        Map<Integer, ShowSamples.ShowCycle> map = new HashMap<Integer, ShowSamples.ShowCycle>();
+//        List<TestCycle> testCycleList = testCycleDao.getAllTestCycle();
+//
+//        for (TestCycle testCycle : testCycleList){
+//            if (!map.containsKey(testCycle.getTestcycleid())){
+//                map.put(testCycle.getTestcycleid(), new ShowSamples.ShowCycle());
+//                map.get(testCycle.getTestcycleid()).setTestCycle(testCycle);
+//            }
+//            ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
+//            for (SampleWithBLOBs sample:sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid())){
+//                showCycle.getSample().add(sample);
+//            }
+//        }
+//        for (Integer i:map.keySet()){
+//            showSamples.getShowCycles().add(map.get(i));
+//        }
         return showSamples;
     }
 }

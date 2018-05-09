@@ -1,5 +1,8 @@
 package org.spring.springboot.controller;
 
+import java.util.List;
+import org.spring.springboot.dao.CycleTeamDao;
+import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.domain.Team;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
@@ -11,16 +14,21 @@ import org.springframework.web.bind.annotation.*;
  * Created by Administrator on 2018/4/12.
  */
 @RestController
-public class TestCyiceController {
+public class TestCycleController {
 
     @Autowired
     private TestCycleService testCycleService;
 
-    @RequestMapping(value = "/api/testCyice", method = RequestMethod.GET)
+    @Autowired
+    private CycleTeamDao cycleTeamDao;
+
+    @RequestMapping(value = "/api/testCycle", method = RequestMethod.GET)
     public Response regist(@CookieValue(value="teamid") String teamid) {
         Response response = new Response();
         try {
-            response.setData(testCycleService.findTestCycleByTeamId(teamid));
+//            response.setData(testCycleService.findTestCycleByTeamId(teamid));x
+            List<CycleTeam> list = cycleTeamDao.selectByTeamId(Integer.parseInt(teamid));
+            response.setData(list);
             response.setStatus(true);
             return response;
         } catch (Exception e){

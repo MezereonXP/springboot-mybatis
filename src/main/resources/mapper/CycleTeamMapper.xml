@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.CycleTeamDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.CycleTeam">
+    <id column="cycleteamid" jdbcType="INTEGER" property="cycleteamid" />
+    <result column="testcycleid" jdbcType="INTEGER" property="testcycleid" />
+    <result column="teamid" jdbcType="INTEGER" property="teamid" />
+    <result column="report" jdbcType="VARCHAR" property="report" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.CycleTeam">
+    <result column="cycleteamdescription" jdbcType="LONGVARCHAR" property="cycleteamdescription" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cycleteamid, testcycleid, teamid, report
+  </sql>
+  <sql id="Blob_Column_List">
+    cycleteamdescription
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cycleteam
+    where cycleteamid = #{cycleteamid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cycleteam
+    where cycleteamid = #{cycleteamid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.CycleTeam">
+    insert into cycleteam (cycleteamid, testcycleid, teamid, 
+      report, cycleteamdescription)
+    values (#{cycleteamid,jdbcType=INTEGER}, #{testcycleid,jdbcType=INTEGER}, #{teamid,jdbcType=INTEGER}, 
+      #{report,jdbcType=VARCHAR}, #{cycleteamdescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.CycleTeam">
+    insert into cycleteam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cycleteamid != null">
+        cycleteamid,
+      </if>
+      <if test="testcycleid != null">
+        testcycleid,
+      </if>
+      <if test="teamid != null">
+        teamid,
+      </if>
+      <if test="report != null">
+        report,
+      </if>
+      <if test="cycleteamdescription != null">
+        cycleteamdescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cycleteamid != null">
+        #{cycleteamid,jdbcType=INTEGER},
+      </if>
+      <if test="testcycleid != null">
+        #{testcycleid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="report != null">
+        #{report,jdbcType=VARCHAR},
+      </if>
+      <if test="cycleteamdescription != null">
+        #{cycleteamdescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.CycleTeam">
+    update cycleteam
+    <set>
+      <if test="testcycleid != null">
+        testcycleid = #{testcycleid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null">
+        teamid = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="report != null">
+        report = #{report,jdbcType=VARCHAR},
+      </if>
+      <if test="cycleteamdescription != null">
+        cycleteamdescription = #{cycleteamdescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where cycleteamid = #{cycleteamid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.CycleTeam">
+    update cycleteam
+    set testcycleid = #{testcycleid,jdbcType=INTEGER},
+      teamid = #{teamid,jdbcType=INTEGER},
+      report = #{report,jdbcType=VARCHAR},
+      cycleteamdescription = #{cycleteamdescription,jdbcType=LONGVARCHAR}
+    where cycleteamid = #{cycleteamid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.CycleTeam">
+    update cycleteam
+    set testcycleid = #{testcycleid,jdbcType=INTEGER},
+      teamid = #{teamid,jdbcType=INTEGER},
+      report = #{report,jdbcType=VARCHAR}
+    where cycleteamid = #{cycleteamid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByTeamId" parameterType="java.lang.Integer"
+    resultType="org.spring.springboot.domain.CycleTeam">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cycleteam
+    where teamid = #{teamid,jdbcType=INTEGER}
+  </select>
+</mapper>
