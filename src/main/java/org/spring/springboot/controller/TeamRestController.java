@@ -120,10 +120,12 @@ public class TeamRestController {
     public Response regist(@RequestParam(value = "email", required = true) String email,
                          @RequestParam(value = "password", required = true) String password,
                           @RequestParam(value = "detail", required = true) String detail,
-                          @RequestParam(value = "teamName", required = true) String teamName) {
+                          @RequestParam(value = "teamName", required = true) String teamName,
+                          @RequestParam(value = "uniname", required = false) String uniname,
+                          @RequestParam(value = "priority", required = true) Integer priority  ) {
         Response response = new Response();
         try {
-            response.setStatus(teamService.addTeam(email,teamName,password,detail));
+            response.setStatus(teamService.addTeam(email,teamName,password,detail,uniname,priority));
             return response;
         } catch (Exception e){
             response.setMsg("注册失败,原因是:" + e.getMessage());

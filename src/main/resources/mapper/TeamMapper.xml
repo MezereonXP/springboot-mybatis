@@ -1,29 +1,141 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.TeamDao">
-    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Team">
-        <result column="teamid" property="teamid" />
-        <result column="teamname" property="teamname" />
-        <result column="email" property="email" />
-        <result column="password" property="password" />
-        <result column="detail" property="detail" />
-    </resultMap>
-
-    <parameterMap id="Team" type="org.spring.springboot.domain.Team"/>
-
-    <sql id="Base_Column_List">
-        teamid, teamname, email, password, detail
-    </sql>
-    <insert id="addTeam">
-        INSERT INTO team
-        (teamid, teamname, email, password, detail)
-        VALUES
-        (NULL , #{teamName}, #{email}, #{password}, #{detail});
-    </insert>
+<resultMap id="BaseResultMap" type="org.spring.springboot.domain.Team">
+    <id column="teamid" jdbcType="INTEGER" property="teamid" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="uniname" jdbcType="VARCHAR" property="uniname" />
+</resultMap>
+<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Team">
+    <result column="detail" jdbcType="LONGVARCHAR" property="detail" />
+</resultMap>
+<sql id="Base_Column_List">
+    teamid, teamname, email, password, priority, uniname
+</sql>
+<sql id="Blob_Column_List">
+    detail
+</sql>
+<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from team
+    where teamid = #{teamid,jdbcType=INTEGER}
+</select>
+<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from team
+    where teamid = #{teamid,jdbcType=INTEGER}
+</delete>
+<insert id="insert" parameterType="org.spring.springboot.domain.Team">
+    insert into team (teamid, teamname, email,
+    password, priority, uniname,
+    detail)
+    values (#{teamid,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+    #{password,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, #{uniname,jdbcType=VARCHAR},
+    #{detail,jdbcType=LONGVARCHAR})
+</insert>
+<insert id="insertSelective" parameterType="org.spring.springboot.domain.Team">
+    insert into team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="teamid != null">
+            teamid,
+        </if>
+        <if test="teamname != null">
+            teamname,
+        </if>
+        <if test="email != null">
+            email,
+        </if>
+        <if test="password != null">
+            password,
+        </if>
+        <if test="priority != null">
+            priority,
+        </if>
+        <if test="uniname != null">
+            uniname,
+        </if>
+        <if test="detail != null">
+            detail,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="teamid != null">
+            #{teamid,jdbcType=INTEGER},
+        </if>
+        <if test="teamname != null">
+            #{teamname,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null">
+            #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null">
+            #{password,jdbcType=VARCHAR},
+        </if>
+        <if test="priority != null">
+            #{priority,jdbcType=INTEGER},
+        </if>
+        <if test="uniname != null">
+            #{uniname,jdbcType=VARCHAR},
+        </if>
+        <if test="detail != null">
+            #{detail,jdbcType=LONGVARCHAR},
+        </if>
+    </trim>
+</insert>
+<update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Team">
+    update team
+    <set>
+        <if test="teamname != null">
+            teamname = #{teamname,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null">
+            email = #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null">
+            password = #{password,jdbcType=VARCHAR},
+        </if>
+        <if test="priority != null">
+            priority = #{priority,jdbcType=INTEGER},
+        </if>
+        <if test="uniname != null">
+            uniname = #{uniname,jdbcType=VARCHAR},
+        </if>
+        <if test="detail != null">
+            detail = #{detail,jdbcType=LONGVARCHAR},
+        </if>
+    </set>
+    where teamid = #{teamid,jdbcType=INTEGER}
+</update>
+<update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Team">
+    update team
+    set teamname = #{teamname,jdbcType=VARCHAR},
+    email = #{email,jdbcType=VARCHAR},
+    password = #{password,jdbcType=VARCHAR},
+    priority = #{priority,jdbcType=INTEGER},
+    uniname = #{uniname,jdbcType=VARCHAR},
+    detail = #{detail,jdbcType=LONGVARCHAR}
+    where teamid = #{teamid,jdbcType=INTEGER}
+</update>
+<update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Team">
+    update team
+    set teamname = #{teamname,jdbcType=VARCHAR},
+    email = #{email,jdbcType=VARCHAR},
+    password = #{password,jdbcType=VARCHAR},
+    priority = #{priority,jdbcType=INTEGER},
+    uniname = #{uniname,jdbcType=VARCHAR}
+    where teamid = #{teamid,jdbcType=INTEGER}
+</update>
 
     <select id="findByEmail" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
         from team
         where email = #{email}
     </select>
@@ -31,13 +143,15 @@
     <select id="login" resultType="org.spring.springboot.domain.Team">
         select
         <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
         from team
         where email = #{email}
     </select>
+
     <update id="updatePassword">
         UPDATE team
         SET password = #{password}
         where email = #{email}
     </update>
-
 </mapper>

@@ -27,8 +27,16 @@ public class TeamService {
         return teamDao.login(email);
     }
 
-    public boolean addTeam(String email, String teamName, String password, String detail) {
-       return teamDao.addTeam(email, teamName, password, detail);
+    public boolean addTeam(String email, String teamName, String password, String detail, String uniname,
+        Integer priority) {
+        Team team = new Team();
+        team.setEmail(email);
+        team.setTeamname(teamName);
+        team.setPassword(password);
+        team.setDetail(detail);
+        team.setUniname(uniname);
+        team.setPriority(priority);
+        return teamDao.insert(team)!=-1;
     }
 
     public boolean checkAuth(String email, String token, String teamid) {

@@ -11,6 +11,19 @@ import org.springframework.stereotype.Component;
 @Component
 public interface TeamDao {
 
+    int deleteByPrimaryKey(Integer teamid);
+
+    int insert(Team record);
+
+    int insertSelective(Team record);
+
+    Team selectByPrimaryKey(Integer teamid);
+
+    int updateByPrimaryKeySelective(Team record);
+
+    int updateByPrimaryKeyWithBLOBs(Team record);
+
+    int updateByPrimaryKey(Team record);
     Team findByEmail(@Param("email") String mail);
     Team login(@Param("email") String email);
     boolean addTeam(@Param("email") String email,
@@ -20,4 +33,5 @@ public interface TeamDao {
     boolean updatePassword(@Param("email") String email,
                     @Param("password") String password);
     boolean findCyicesByTeamId(@Param("teamid") String teamid);
+
 }

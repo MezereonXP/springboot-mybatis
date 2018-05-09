@@ -9,6 +9,10 @@ public class Team {
 
     private String password;
 
+    private Integer priority;
+
+    private String uniname;
+
     private String detail;
 
     public Integer getTeamid() {
@@ -41,6 +45,22 @@ public class Team {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    public String getUniname() {
+        return uniname;
+    }
+
+    public void setUniname(String uniname) {
+        this.uniname = uniname == null ? null : uniname.trim();
     }
 
     public String getDetail() {
