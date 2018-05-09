@@ -26,7 +26,7 @@ public class TestCycleController {
     public Response regist(@CookieValue(value="teamid") String teamid) {
         Response response = new Response();
         try {
-//            response.setData(testCycleService.findTestCycleByTeamId(teamid));x
+//            response.setData(testCycleService.findTestCycleByTeamId(teamid));
             List<CycleTeam> list = cycleTeamDao.selectByTeamId(Integer.parseInt(teamid));
             response.setData(list);
             response.setStatus(true);

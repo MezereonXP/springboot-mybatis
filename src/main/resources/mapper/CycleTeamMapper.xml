@@ -114,4 +114,20 @@
     from cycleteam
     where teamid = #{teamid,jdbcType=INTEGER}
   </select>
+  <select id="selectByTestCycleId" resultType="org.spring.springboot.domain.CycleTeam">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cycleteam
+    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByCycleTeamId" resultType="org.spring.springboot.domain.CycleTeam">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cycleteam
+    where cycleteamid = #{cycleteamid,jdbcType=INTEGER}
+  </select>
 </mapper>

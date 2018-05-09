@@ -1,7 +1,9 @@
 package org.spring.springboot.service.impl;
 
+import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.dao.SampleDao;
 import org.spring.springboot.dao.TestCycleDao;
+import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.spring.springboot.domain.ShowSamples;
 import org.spring.springboot.domain.TestCycle;
@@ -26,6 +28,9 @@ public class SampleService {
     @Autowired
     private TestCycleDao testCycleDao;
 
+    @Autowired
+    private CycleTeamDao cycleTeamDao;
+
     public SampleWithBLOBs selectById(Integer baseid) {
         return sampleDao.selectByPrimaryKey(baseid);
     }
@@ -47,39 +52,42 @@ public class SampleService {
     }
 
     //需要修改
-    public ShowSamples getShowSamples(String teamId) {
+    public ShowSamples getShowSamples(Integer teamId) {
         ShowSamples showSamples = new ShowSamples();
-//        List<ShowSamples.ShowCycle> showCycles = new ArrayList<ShowSamples.ShowCycle>();
-//        List<TestCycle> testCycles = testCycleDao.findTestCycleByTeamId(teamId);
-//        for(TestCycle testCycle : testCycles){
-//            ShowSamples.ShowCycle showCycle = new ShowSamples.ShowCycle();
-//            showCycle.setSample(sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid()));
-//            showCycle.setTestCycle(testCycle);
-//            showCycles.add(showCycle);
-//        }
-//        showSamples.setShowCycles(showCycles);
+        List<ShowSamples.ShowCycle> showCycles = new ArrayList<ShowSamples.ShowCycle>();
+        List<CycleTeam> cycleTeams = cycleTeamDao.selectByTeamId(teamId);
+        for(CycleTeam cycleTeam : cycleTeams){
+            ShowSamples.ShowCycle showCycle = new ShowSamples.ShowCycle();
+            showCycle.setSample(sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleteamid()));
+            showCycle.setTestCycle(testCycleDao.selectByPrimaryKey(cycleTeam.getTestcycleid()));
+            showCycles.add(showCycle);
+        }
+        showSamples.setShowCycles(showCycles);
         return showSamples;
     }
 
     //需要修改
     public ShowSamples getAllShowSamples(){
         ShowSamples showSamples = new ShowSamples();
-//        Map<Integer, ShowSamples.ShowCycle> map = new HashMap<Integer, ShowSamples.ShowCycle>();
-//        List<TestCycle> testCycleList = testCycleDao.getAllTestCycle();
-//
-//        for (TestCycle testCycle : testCycleList){
-//            if (!map.containsKey(testCycle.getTestcycleid())){
-//                map.put(testCycle.getTestcycleid(), new ShowSamples.ShowCycle());
-//                map.get(testCycle.getTestcycleid()).setTestCycle(testCycle);
-//            }
-//            ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
-//            for (SampleWithBLOBs sample:sampleDao.getSamplesByCycleTeamid(testCycle.getCycleteamid())){
-//                showCycle.getSample().add(sample);
-//            }
-//        }
-//        for (Integer i:map.keySet()){
-//            showSamples.getShowCycles().add(map.get(i));
-//        }
+        Map<Integer, ShowSamples.ShowCycle> map = new HashMap<Integer, ShowSamples.ShowCycle>();
+        List<TestCycle> testCycleList = testCycleDao.getAllTestCycle();
+
+        for (TestCycle testCycle : testCycleList){
+            if (!map.containsKey(testCycle.getTestcycleid())){
+                map.put(testCycle.getTestcycleid(), new ShowSamples.ShowCycle());
+                map.get(testCycle.getTestcycleid()).setTestCycle(testCycle);
+            }
+            ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
+            List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycle.getTestcycleid());
+            for (CycleTeam cycleTeam:list) {
+                for (SampleWithBLOBs sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleteamid())) {
+                    showCycle.getSample().add(sample);
+                }
+            }
+        }
+        for (Integer i:map.keySet()){
+            showSamples.getShowCycles().add(map.get(i));
+        }
         return showSamples;
     }
 }

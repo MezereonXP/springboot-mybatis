@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.MethodDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Method">
+    <id column="methodid" jdbcType="INTEGER" property="methodid" />
+    <result column="methodname" jdbcType="VARCHAR" property="methodname" />
+    <result column="methodvalue" jdbcType="VARCHAR" property="methodvalue" />
+    <result column="methodregex" jdbcType="VARCHAR" property="methodregex" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    methodid, methodname, methodvalue, methodregex
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from method
+    where methodid = #{methodid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from method
+    where methodid = #{methodid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.Method">
+    insert into method (methodid, methodname, methodvalue, 
+      methodregex)
+    values (#{methodid,jdbcType=INTEGER}, #{methodname,jdbcType=VARCHAR}, #{methodvalue,jdbcType=VARCHAR}, 
+      #{methodregex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Method">
+    insert into method
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="methodid != null">
+        methodid,
+      </if>
+      <if test="methodname != null">
+        methodname,
+      </if>
+      <if test="methodvalue != null">
+        methodvalue,
+      </if>
+      <if test="methodregex != null">
+        methodregex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="methodid != null">
+        #{methodid,jdbcType=INTEGER},
+      </if>
+      <if test="methodname != null">
+        #{methodname,jdbcType=VARCHAR},
+      </if>
+      <if test="methodvalue != null">
+        #{methodvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="methodregex != null">
+        #{methodregex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Method">
+    update method
+    <set>
+      <if test="methodname != null">
+        methodname = #{methodname,jdbcType=VARCHAR},
+      </if>
+      <if test="methodvalue != null">
+        methodvalue = #{methodvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="methodregex != null">
+        methodregex = #{methodregex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where methodid = #{methodid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Method">
+    update method
+    set methodname = #{methodname,jdbcType=VARCHAR},
+      methodvalue = #{methodvalue,jdbcType=VARCHAR},
+      methodregex = #{methodregex,jdbcType=VARCHAR}
+    where methodid = #{methodid,jdbcType=INTEGER}
+  </update>
+</mapper>

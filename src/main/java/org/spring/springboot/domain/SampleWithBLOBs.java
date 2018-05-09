@@ -1,19 +1,15 @@
 package org.spring.springboot.domain;
 
 public class SampleWithBLOBs extends Sample {
-    private String watertype;
-
     private String watersourcedetails;
-
-    private String watersourcetype;
-
-    private String locationname;
 
     private String treatmentmethods;
 
     private String watershortage;
 
-    private String picture;
+    private String visualdescription;
+
+    private String otherinformation;
 
     private String generalcomments;
 
@@ -21,13 +17,13 @@ public class SampleWithBLOBs extends Sample {
 
     private String probcomment;
 
-    public String getWatertype() {
-        return watertype;
-    }
+    private String challengescomments;
 
-    public void setWatertype(String watertype) {
-        this.watertype = watertype == null ? null : watertype.trim();
-    }
+    private String needscomments;
+
+    private String admincomm;
+
+    private String userdefine;
 
     public String getWatersourcedetails() {
         return watersourcedetails;
@@ -35,22 +31,6 @@ public class SampleWithBLOBs extends Sample {
 
     public void setWatersourcedetails(String watersourcedetails) {
         this.watersourcedetails = watersourcedetails == null ? null : watersourcedetails.trim();
-    }
-
-    public String getWatersourcetype() {
-        return watersourcetype;
-    }
-
-    public void setWatersourcetype(String watersourcetype) {
-        this.watersourcetype = watersourcetype == null ? null : watersourcetype.trim();
-    }
-
-    public String getLocationname() {
-        return locationname;
-    }
-
-    public void setLocationname(String locationname) {
-        this.locationname = locationname == null ? null : locationname.trim();
     }
 
     public String getTreatmentmethods() {
@@ -69,12 +49,20 @@ public class SampleWithBLOBs extends Sample {
         this.watershortage = watershortage == null ? null : watershortage.trim();
     }
 
-    public String getPicture() {
-        return picture;
+    public String getVisualdescription() {
+        return visualdescription;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture == null ? null : picture.trim();
+    public void setVisualdescription(String visualdescription) {
+        this.visualdescription = visualdescription == null ? null : visualdescription.trim();
+    }
+
+    public String getOtherinformation() {
+        return otherinformation;
+    }
+
+    public void setOtherinformation(String otherinformation) {
+        this.otherinformation = otherinformation == null ? null : otherinformation.trim();
     }
 
     public String getGeneralcomments() {
@@ -99,5 +87,37 @@ public class SampleWithBLOBs extends Sample {
 
     public void setProbcomment(String probcomment) {
         this.probcomment = probcomment == null ? null : probcomment.trim();
+    }
+
+    public String getChallengescomments() {
+        return challengescomments;
+    }
+
+    public void setChallengescomments(String challengescomments) {
+        this.challengescomments = challengescomments == null ? null : challengescomments.trim();
+    }
+
+    public String getNeedscomments() {
+        return needscomments;
+    }
+
+    public void setNeedscomments(String needscomments) {
+        this.needscomments = needscomments == null ? null : needscomments.trim();
+    }
+
+    public String getAdmincomm() {
+        return admincomm;
+    }
+
+    public void setAdmincomm(String admincomm) {
+        this.admincomm = admincomm == null ? null : admincomm.trim();
+    }
+
+    public String getUserdefine() {
+        return userdefine;
+    }
+
+    public void setUserdefine(String userdefine) {
+        this.userdefine = userdefine == null ? null : userdefine.trim();
     }
 }

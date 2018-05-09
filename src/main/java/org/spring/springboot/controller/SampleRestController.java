@@ -87,7 +87,7 @@ public class SampleRestController {
     }
 
     @RequestMapping(value = "/api/getShowSamples", method = RequestMethod.GET)
-    public Response getShowSamples(@CookieValue(value="teamid") String teamid) {
+    public Response getShowSamples(@CookieValue(value="teamid") Integer teamid) {
         Response response = new Response();
         try {
             response.setData(samplesService.getShowSamples(teamid));

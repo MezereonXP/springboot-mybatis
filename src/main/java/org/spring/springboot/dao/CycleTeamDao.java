@@ -21,4 +21,8 @@ public interface CycleTeamDao {
     int updateByPrimaryKey(CycleTeam record);
 
     List<CycleTeam> selectByTeamId(Integer teamid);
+
+    List<CycleTeam> selectByCycleTeamId(Integer cycleteamid);
+
+    List<CycleTeam> selectByTestCycleId(Integer testcycleid);
 }

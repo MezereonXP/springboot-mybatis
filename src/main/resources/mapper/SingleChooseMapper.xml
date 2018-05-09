@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.SingleChooseDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.SingleChoose">
+    <id column="singlechooseid" jdbcType="INTEGER" property="singlechooseid" />
+    <result column="singlechoosename" jdbcType="VARCHAR" property="singlechoosename" />
+    <result column="singlechoosevalue" jdbcType="VARCHAR" property="singlechoosevalue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    singlechooseid, singlechoosename, singlechoosevalue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from singlechoose
+    where singlechooseid = #{singlechooseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from singlechoose
+    where singlechooseid = #{singlechooseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.SingleChoose">
+    insert into singlechoose (singlechooseid, singlechoosename, 
+      singlechoosevalue)
+    values (#{singlechooseid,jdbcType=INTEGER}, #{singlechoosename,jdbcType=VARCHAR}, 
+      #{singlechoosevalue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.SingleChoose">
+    insert into singlechoose
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="singlechooseid != null">
+        singlechooseid,
+      </if>
+      <if test="singlechoosename != null">
+        singlechoosename,
+      </if>
+      <if test="singlechoosevalue != null">
+        singlechoosevalue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="singlechooseid != null">
+        #{singlechooseid,jdbcType=INTEGER},
+      </if>
+      <if test="singlechoosename != null">
+        #{singlechoosename,jdbcType=VARCHAR},
+      </if>
+      <if test="singlechoosevalue != null">
+        #{singlechoosevalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.SingleChoose">
+    update singlechoose
+    <set>
+      <if test="singlechoosename != null">
+        singlechoosename = #{singlechoosename,jdbcType=VARCHAR},
+      </if>
+      <if test="singlechoosevalue != null">
+        singlechoosevalue = #{singlechoosevalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where singlechooseid = #{singlechooseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.SingleChoose">
+    update singlechoose
+    set singlechoosename = #{singlechoosename,jdbcType=VARCHAR},
+      singlechoosevalue = #{singlechoosevalue,jdbcType=VARCHAR}
+    where singlechooseid = #{singlechooseid,jdbcType=INTEGER}
+  </update>
+</mapper>

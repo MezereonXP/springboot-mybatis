@@ -3,33 +3,98 @@
 <mapper namespace="org.spring.springboot.dao.SampleDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Sample">
     <id column="baseid" jdbcType="INTEGER" property="baseid" />
+    <result column="validation" jdbcType="INTEGER" property="validation" />
+    <result column="watertype" jdbcType="INTEGER" property="watertype" />
     <result column="locationid" jdbcType="INTEGER" property="locationid" />
-    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+    <result column="cycleteamid" jdbcType="INTEGER" property="cycleteamid" />
+    <result column="watersourcetype" jdbcType="INTEGER" property="watersourcetype" />
+    <result column="deliverymethod" jdbcType="INTEGER" property="deliverymethod" />
+    <result column="waterstorage" jdbcType="INTEGER" property="waterstorage" />
+    <result column="avgstoragehours" jdbcType="INTEGER" property="avgstoragehours" />
+    <result column="potentialcontamination" jdbcType="INTEGER" property="potentialcontamination" />
+    <result column="potentialcontaminationdist" jdbcType="INTEGER" property="potentialcontaminationdist" />
+    <result column="populationservedbysource" jdbcType="INTEGER" property="populationservedbysource" />
+    <result column="physicalindicators" jdbcType="INTEGER" property="physicalindicators" />
+    <result column="temp" jdbcType="DOUBLE" property="temp" />
+    <result column="smell" jdbcType="INTEGER" property="smell" />
+    <result column="turbidity" jdbcType="INTEGER" property="turbidity" />
+    <result column="fe" jdbcType="DOUBLE" property="fe" />
+    <result column="femethod" jdbcType="INTEGER" property="femethod" />
+    <result column="cr6" jdbcType="DOUBLE" property="cr6" />
+    <result column="cr6method" jdbcType="INTEGER" property="cr6method" />
+    <result column="as" jdbcType="DOUBLE" property="as" />
+    <result column="asmethod" jdbcType="INTEGER" property="asmethod" />
+    <result column="mn" jdbcType="DOUBLE" property="mn" />
+    <result column="mnmethod" jdbcType="INTEGER" property="mnmethod" />
+    <result column="residualchlorine" jdbcType="DOUBLE" property="residualchlorine" />
+    <result column="residualchlorinemethod" jdbcType="INTEGER" property="residualchlorinemethod" />
+    <result column="dovalue" jdbcType="DOUBLE" property="dovalue" />
+    <result column="domethod" jdbcType="INTEGER" property="domethod" />
+    <result column="no2" jdbcType="DOUBLE" property="no2" />
+    <result column="no2method" jdbcType="INTEGER" property="no2method" />
+    <result column="no3" jdbcType="DOUBLE" property="no3" />
+    <result column="no3method" jdbcType="INTEGER" property="no3method" />
+    <result column="cod" jdbcType="DOUBLE" property="cod" />
+    <result column="codmethod" jdbcType="INTEGER" property="codmethod" />
+    <result column="f" jdbcType="DOUBLE" property="f" />
+    <result column="fmethod" jdbcType="INTEGER" property="fmethod" />
+    <result column="nh3" jdbcType="DOUBLE" property="nh3" />
+    <result column="ng3method" jdbcType="INTEGER" property="ng3method" />
+    <result column="ph" jdbcType="DOUBLE" property="ph" />
+    <result column="phmethod" jdbcType="INTEGER" property="phmethod" />
+    <result column="tds" jdbcType="DOUBLE" property="tds" />
+    <result column="tdsmethod" jdbcType="INTEGER" property="tdsmethod" />
+    <result column="ecoil" jdbcType="DOUBLE" property="ecoil" />
+    <result column="ecoilmethod" jdbcType="INTEGER" property="ecoilmethod" />
+    <result column="sanitarytype" jdbcType="INTEGER" property="sanitarytype" />
+    <result column="sanitaryscore" jdbcType="INTEGER" property="sanitaryscore" />
     <result column="samplingdate" jdbcType="DATE" property="samplingdate" />
     <result column="detectdate" jdbcType="DATE" property="detectdate" />
-    <result column="cycleteamid" jdbcType="VARCHAR" property="cycleteamid" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="sanitaryscore1" jdbcType="INTEGER" property="sanitaryscore1" />
+    <result column="sanitaryscore2" jdbcType="INTEGER" property="sanitaryscore2" />
+    <result column="sanitaryscore3" jdbcType="INTEGER" property="sanitaryscore3" />
+    <result column="sanitaryscore4" jdbcType="INTEGER" property="sanitaryscore4" />
+    <result column="sanitaryscore5" jdbcType="INTEGER" property="sanitaryscore5" />
+    <result column="sanitaryscore6" jdbcType="INTEGER" property="sanitaryscore6" />
+    <result column="sanitaryscore7" jdbcType="INTEGER" property="sanitaryscore7" />
+    <result column="sanitaryscore8" jdbcType="INTEGER" property="sanitaryscore8" />
+    <result column="sanitaryscore9" jdbcType="INTEGER" property="sanitaryscore9" />
+    <result column="sanitaryscore10" jdbcType="INTEGER" property="sanitaryscore10" />
+    <result column="sanitaryscore11" jdbcType="INTEGER" property="sanitaryscore11" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.SampleWithBLOBs">
-    <result column="watertype" jdbcType="LONGVARCHAR" property="watertype" />
     <result column="watersourcedetails" jdbcType="LONGVARCHAR" property="watersourcedetails" />
-    <result column="watersourcetype" jdbcType="LONGVARCHAR" property="watersourcetype" />
-    <result column="locationname" jdbcType="LONGVARCHAR" property="locationname" />
     <result column="treatmentmethods" jdbcType="LONGVARCHAR" property="treatmentmethods" />
     <result column="watershortage" jdbcType="LONGVARCHAR" property="watershortage" />
-    <result column="picture" jdbcType="LONGVARCHAR" property="picture" />
+    <result column="visualdescription" jdbcType="LONGVARCHAR" property="visualdescription" />
+    <result column="otherinformation" jdbcType="LONGVARCHAR" property="otherinformation" />
     <result column="generalcomments" jdbcType="LONGVARCHAR" property="generalcomments" />
     <result column="waterqdetermination" jdbcType="LONGVARCHAR" property="waterqdetermination" />
     <result column="probcomment" jdbcType="LONGVARCHAR" property="probcomment" />
+    <result column="challengescomments" jdbcType="LONGVARCHAR" property="challengescomments" />
+    <result column="needscomments" jdbcType="LONGVARCHAR" property="needscomments" />
+    <result column="admincomm" jdbcType="LONGVARCHAR" property="admincomm" />
+    <result column="userdefine" jdbcType="LONGVARCHAR" property="userdefine" />
   </resultMap>
   <sql id="Base_Column_List">
-    baseid, locationid, teamname, samplingdate, detectdate, cycleteamid
+    baseid, validation, watertype, locationid, cycleteamid, watersourcetype, deliverymethod,
+    waterstorage, avgstoragehours, potentialcontamination, potentialcontaminationdist,
+    populationservedbysource, physicalindicators, temp, smell, turbidity, fe, femethod,
+    cr6, cr6method, as, asmethod, mn, mnmethod, residualchlorine, residualchlorinemethod,
+    dovalue, domethod, no2, no2method, no3, no3method, cod, codmethod, f, fmethod, nh3,
+    ng3method, ph, phmethod, tds, tdsmethod, ecoil, ecoilmethod, sanitarytype, sanitaryscore,
+    samplingdate, detectdate, picture, sanitaryscore1, sanitaryscore2, sanitaryscore3,
+    sanitaryscore4, sanitaryscore5, sanitaryscore6, sanitaryscore7, sanitaryscore8, sanitaryscore9,
+    sanitaryscore10, sanitaryscore11
   </sql>
   <sql id="Blob_Column_List">
-    watertype, watersourcedetails, watersourcetype, locationname, treatmentmethods, watershortage, 
-    picture, generalcomments, waterqdetermination, probcomment
+    watersourcedetails, treatmentmethods, watershortage, visualdescription, otherinformation,
+    generalcomments, waterqdetermination, probcomment, challengescomments, needscomments,
+    admincomm, userdefine
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -41,20 +106,58 @@
     where baseid = #{baseid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
-    insert into sample (baseid, locationid, teamname, 
-      samplingdate, detectdate, cycleteamid, 
-      watertype, watersourcedetails, 
-      watersourcetype, locationname, 
-      treatmentmethods, watershortage, 
-      picture, generalcomments, waterqdetermination, 
-      probcomment)
-    values (#{baseid,jdbcType=INTEGER}, #{locationid,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, 
-      #{samplingdate,jdbcType=DATE}, #{detectdate,jdbcType=DATE}, #{cycleteamid,jdbcType=VARCHAR}, 
-      #{watertype,jdbcType=LONGVARCHAR}, #{watersourcedetails,jdbcType=LONGVARCHAR}, 
-      #{watersourcetype,jdbcType=LONGVARCHAR}, #{locationname,jdbcType=LONGVARCHAR}, 
-      #{treatmentmethods,jdbcType=LONGVARCHAR}, #{watershortage,jdbcType=LONGVARCHAR}, 
-      #{picture,jdbcType=LONGVARCHAR}, #{generalcomments,jdbcType=LONGVARCHAR}, #{waterqdetermination,jdbcType=LONGVARCHAR}, 
-      #{probcomment,jdbcType=LONGVARCHAR})
+    insert into sample (baseid, validation, watertype,
+    locationid, cycleteamid, watersourcetype,
+    deliverymethod, waterstorage, avgstoragehours,
+    potentialcontamination, potentialcontaminationdist,
+    populationservedbysource, physicalindicators,
+    temp, smell, turbidity,
+    fe, femethod, cr6, cr6method,
+    as, asmethod, mn, mnmethod,
+    residualchlorine, residualchlorinemethod,
+    dovalue, domethod, no2,
+    no2method, no3, no3method,
+    cod, codmethod, f, fmethod,
+    nh3, ng3method, ph, phmethod,
+    tds, tdsmethod, ecoil,
+    ecoilmethod, sanitarytype, sanitaryscore,
+    samplingdate, detectdate, picture,
+    sanitaryscore1, sanitaryscore2, sanitaryscore3,
+    sanitaryscore4, sanitaryscore5, sanitaryscore6,
+    sanitaryscore7, sanitaryscore8, sanitaryscore9,
+    sanitaryscore10, sanitaryscore11, watersourcedetails,
+    treatmentmethods, watershortage,
+    visualdescription, otherinformation,
+    generalcomments, waterqdetermination,
+    probcomment, challengescomments,
+    needscomments, admincomm, userdefine
+    )
+    values (#{baseid,jdbcType=INTEGER}, #{validation,jdbcType=INTEGER}, #{watertype,jdbcType=INTEGER},
+    #{locationid,jdbcType=INTEGER}, #{cycleteamid,jdbcType=INTEGER}, #{watersourcetype,jdbcType=INTEGER},
+    #{deliverymethod,jdbcType=INTEGER}, #{waterstorage,jdbcType=INTEGER}, #{avgstoragehours,jdbcType=INTEGER},
+    #{potentialcontamination,jdbcType=INTEGER}, #{potentialcontaminationdist,jdbcType=INTEGER},
+    #{populationservedbysource,jdbcType=INTEGER}, #{physicalindicators,jdbcType=INTEGER},
+    #{temp,jdbcType=DOUBLE}, #{smell,jdbcType=INTEGER}, #{turbidity,jdbcType=INTEGER},
+    #{fe,jdbcType=DOUBLE}, #{femethod,jdbcType=INTEGER}, #{cr6,jdbcType=DOUBLE}, #{cr6method,jdbcType=INTEGER},
+    #{as,jdbcType=DOUBLE}, #{asmethod,jdbcType=INTEGER}, #{mn,jdbcType=DOUBLE}, #{mnmethod,jdbcType=INTEGER},
+    #{residualchlorine,jdbcType=DOUBLE}, #{residualchlorinemethod,jdbcType=INTEGER},
+    #{dovalue,jdbcType=DOUBLE}, #{domethod,jdbcType=INTEGER}, #{no2,jdbcType=DOUBLE},
+    #{no2method,jdbcType=INTEGER}, #{no3,jdbcType=DOUBLE}, #{no3method,jdbcType=INTEGER},
+    #{cod,jdbcType=DOUBLE}, #{codmethod,jdbcType=INTEGER}, #{f,jdbcType=DOUBLE}, #{fmethod,jdbcType=INTEGER},
+    #{nh3,jdbcType=DOUBLE}, #{ng3method,jdbcType=INTEGER}, #{ph,jdbcType=DOUBLE}, #{phmethod,jdbcType=INTEGER},
+    #{tds,jdbcType=DOUBLE}, #{tdsmethod,jdbcType=INTEGER}, #{ecoil,jdbcType=DOUBLE},
+    #{ecoilmethod,jdbcType=INTEGER}, #{sanitarytype,jdbcType=INTEGER}, #{sanitaryscore,jdbcType=INTEGER},
+    #{samplingdate,jdbcType=DATE}, #{detectdate,jdbcType=DATE}, #{picture,jdbcType=VARCHAR},
+    #{sanitaryscore1,jdbcType=INTEGER}, #{sanitaryscore2,jdbcType=INTEGER}, #{sanitaryscore3,jdbcType=INTEGER},
+    #{sanitaryscore4,jdbcType=INTEGER}, #{sanitaryscore5,jdbcType=INTEGER}, #{sanitaryscore6,jdbcType=INTEGER},
+    #{sanitaryscore7,jdbcType=INTEGER}, #{sanitaryscore8,jdbcType=INTEGER}, #{sanitaryscore9,jdbcType=INTEGER},
+    #{sanitaryscore10,jdbcType=INTEGER}, #{sanitaryscore11,jdbcType=INTEGER}, #{watersourcedetails,jdbcType=LONGVARCHAR},
+    #{treatmentmethods,jdbcType=LONGVARCHAR}, #{watershortage,jdbcType=LONGVARCHAR},
+    #{visualdescription,jdbcType=LONGVARCHAR}, #{otherinformation,jdbcType=LONGVARCHAR},
+    #{generalcomments,jdbcType=LONGVARCHAR}, #{waterqdetermination,jdbcType=LONGVARCHAR},
+    #{probcomment,jdbcType=LONGVARCHAR}, #{challengescomments,jdbcType=LONGVARCHAR},
+    #{needscomments,jdbcType=LONGVARCHAR}, #{admincomm,jdbcType=LONGVARCHAR}, #{userdefine,jdbcType=LONGVARCHAR}
+    )
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
     insert into sample
@@ -62,11 +165,140 @@
       <if test="baseid != null">
         baseid,
       </if>
+      <if test="validation != null">
+        validation,
+      </if>
+      <if test="watertype != null">
+        watertype,
+      </if>
       <if test="locationid != null">
         locationid,
       </if>
-      <if test="teamname != null">
-        teamname,
+      <if test="cycleteamid != null">
+        cycleteamid,
+      </if>
+      <if test="watersourcetype != null">
+        watersourcetype,
+      </if>
+      <if test="deliverymethod != null">
+        deliverymethod,
+      </if>
+      <if test="waterstorage != null">
+        waterstorage,
+      </if>
+      <if test="avgstoragehours != null">
+        avgstoragehours,
+      </if>
+      <if test="potentialcontamination != null">
+        potentialcontamination,
+      </if>
+      <if test="potentialcontaminationdist != null">
+        potentialcontaminationdist,
+      </if>
+      <if test="populationservedbysource != null">
+        populationservedbysource,
+      </if>
+      <if test="physicalindicators != null">
+        physicalindicators,
+      </if>
+      <if test="temp != null">
+        temp,
+      </if>
+      <if test="smell != null">
+        smell,
+      </if>
+      <if test="turbidity != null">
+        turbidity,
+      </if>
+      <if test="fe != null">
+        fe,
+      </if>
+      <if test="femethod != null">
+        femethod,
+      </if>
+      <if test="cr6 != null">
+        cr6,
+      </if>
+      <if test="cr6method != null">
+        cr6method,
+      </if>
+      <if test="as != null">
+        as,
+      </if>
+      <if test="asmethod != null">
+        asmethod,
+      </if>
+      <if test="mn != null">
+        mn,
+      </if>
+      <if test="mnmethod != null">
+        mnmethod,
+      </if>
+      <if test="residualchlorine != null">
+        residualchlorine,
+      </if>
+      <if test="residualchlorinemethod != null">
+        residualchlorinemethod,
+      </if>
+      <if test="dovalue != null">
+        dovalue,
+      </if>
+      <if test="domethod != null">
+        domethod,
+      </if>
+      <if test="no2 != null">
+        no2,
+      </if>
+      <if test="no2method != null">
+        no2method,
+      </if>
+      <if test="no3 != null">
+        no3,
+      </if>
+      <if test="no3method != null">
+        no3method,
+      </if>
+      <if test="cod != null">
+        cod,
+      </if>
+      <if test="codmethod != null">
+        codmethod,
+      </if>
+      <if test="f != null">
+        f,
+      </if>
+      <if test="fmethod != null">
+        fmethod,
+      </if>
+      <if test="nh3 != null">
+        nh3,
+      </if>
+      <if test="ng3method != null">
+        ng3method,
+      </if>
+      <if test="ph != null">
+        ph,
+      </if>
+      <if test="phmethod != null">
+        phmethod,
+      </if>
+      <if test="tds != null">
+        tds,
+      </if>
+      <if test="tdsmethod != null">
+        tdsmethod,
+      </if>
+      <if test="ecoil != null">
+        ecoil,
+      </if>
+      <if test="ecoilmethod != null">
+        ecoilmethod,
+      </if>
+      <if test="sanitarytype != null">
+        sanitarytype,
+      </if>
+      <if test="sanitaryscore != null">
+        sanitaryscore,
       </if>
       <if test="samplingdate != null">
         samplingdate,
@@ -74,20 +306,44 @@
       <if test="detectdate != null">
         detectdate,
       </if>
-      <if test="cycleteamid != null">
-        cycleteamid,
+      <if test="picture != null">
+        picture,
       </if>
-      <if test="watertype != null">
-        watertype,
+      <if test="sanitaryscore1 != null">
+        sanitaryscore1,
+      </if>
+      <if test="sanitaryscore2 != null">
+        sanitaryscore2,
+      </if>
+      <if test="sanitaryscore3 != null">
+        sanitaryscore3,
+      </if>
+      <if test="sanitaryscore4 != null">
+        sanitaryscore4,
+      </if>
+      <if test="sanitaryscore5 != null">
+        sanitaryscore5,
+      </if>
+      <if test="sanitaryscore6 != null">
+        sanitaryscore6,
+      </if>
+      <if test="sanitaryscore7 != null">
+        sanitaryscore7,
+      </if>
+      <if test="sanitaryscore8 != null">
+        sanitaryscore8,
+      </if>
+      <if test="sanitaryscore9 != null">
+        sanitaryscore9,
+      </if>
+      <if test="sanitaryscore10 != null">
+        sanitaryscore10,
+      </if>
+      <if test="sanitaryscore11 != null">
+        sanitaryscore11,
       </if>
       <if test="watersourcedetails != null">
         watersourcedetails,
-      </if>
-      <if test="watersourcetype != null">
-        watersourcetype,
-      </if>
-      <if test="locationname != null">
-        locationname,
       </if>
       <if test="treatmentmethods != null">
         treatmentmethods,
@@ -95,8 +351,11 @@
       <if test="watershortage != null">
         watershortage,
       </if>
-      <if test="picture != null">
-        picture,
+      <if test="visualdescription != null">
+        visualdescription,
+      </if>
+      <if test="otherinformation != null">
+        otherinformation,
       </if>
       <if test="generalcomments != null">
         generalcomments,
@@ -107,16 +366,157 @@
       <if test="probcomment != null">
         probcomment,
       </if>
+      <if test="challengescomments != null">
+        challengescomments,
+      </if>
+      <if test="needscomments != null">
+        needscomments,
+      </if>
+      <if test="admincomm != null">
+        admincomm,
+      </if>
+      <if test="userdefine != null">
+        userdefine,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="baseid != null">
         #{baseid,jdbcType=INTEGER},
       </if>
+      <if test="validation != null">
+        #{validation,jdbcType=INTEGER},
+      </if>
+      <if test="watertype != null">
+        #{watertype,jdbcType=INTEGER},
+      </if>
       <if test="locationid != null">
         #{locationid,jdbcType=INTEGER},
       </if>
-      <if test="teamname != null">
-        #{teamname,jdbcType=VARCHAR},
+      <if test="cycleteamid != null">
+        #{cycleteamid,jdbcType=INTEGER},
+      </if>
+      <if test="watersourcetype != null">
+        #{watersourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="deliverymethod != null">
+        #{deliverymethod,jdbcType=INTEGER},
+      </if>
+      <if test="waterstorage != null">
+        #{waterstorage,jdbcType=INTEGER},
+      </if>
+      <if test="avgstoragehours != null">
+        #{avgstoragehours,jdbcType=INTEGER},
+      </if>
+      <if test="potentialcontamination != null">
+        #{potentialcontamination,jdbcType=INTEGER},
+      </if>
+      <if test="potentialcontaminationdist != null">
+        #{potentialcontaminationdist,jdbcType=INTEGER},
+      </if>
+      <if test="populationservedbysource != null">
+        #{populationservedbysource,jdbcType=INTEGER},
+      </if>
+      <if test="physicalindicators != null">
+        #{physicalindicators,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null">
+        #{temp,jdbcType=DOUBLE},
+      </if>
+      <if test="smell != null">
+        #{smell,jdbcType=INTEGER},
+      </if>
+      <if test="turbidity != null">
+        #{turbidity,jdbcType=INTEGER},
+      </if>
+      <if test="fe != null">
+        #{fe,jdbcType=DOUBLE},
+      </if>
+      <if test="femethod != null">
+        #{femethod,jdbcType=INTEGER},
+      </if>
+      <if test="cr6 != null">
+        #{cr6,jdbcType=DOUBLE},
+      </if>
+      <if test="cr6method != null">
+        #{cr6method,jdbcType=INTEGER},
+      </if>
+      <if test="as != null">
+        #{as,jdbcType=DOUBLE},
+      </if>
+      <if test="asmethod != null">
+        #{asmethod,jdbcType=INTEGER},
+      </if>
+      <if test="mn != null">
+        #{mn,jdbcType=DOUBLE},
+      </if>
+      <if test="mnmethod != null">
+        #{mnmethod,jdbcType=INTEGER},
+      </if>
+      <if test="residualchlorine != null">
+        #{residualchlorine,jdbcType=DOUBLE},
+      </if>
+      <if test="residualchlorinemethod != null">
+        #{residualchlorinemethod,jdbcType=INTEGER},
+      </if>
+      <if test="dovalue != null">
+        #{dovalue,jdbcType=DOUBLE},
+      </if>
+      <if test="domethod != null">
+        #{domethod,jdbcType=INTEGER},
+      </if>
+      <if test="no2 != null">
+        #{no2,jdbcType=DOUBLE},
+      </if>
+      <if test="no2method != null">
+        #{no2method,jdbcType=INTEGER},
+      </if>
+      <if test="no3 != null">
+        #{no3,jdbcType=DOUBLE},
+      </if>
+      <if test="no3method != null">
+        #{no3method,jdbcType=INTEGER},
+      </if>
+      <if test="cod != null">
+        #{cod,jdbcType=DOUBLE},
+      </if>
+      <if test="codmethod != null">
+        #{codmethod,jdbcType=INTEGER},
+      </if>
+      <if test="f != null">
+        #{f,jdbcType=DOUBLE},
+      </if>
+      <if test="fmethod != null">
+        #{fmethod,jdbcType=INTEGER},
+      </if>
+      <if test="nh3 != null">
+        #{nh3,jdbcType=DOUBLE},
+      </if>
+      <if test="ng3method != null">
+        #{ng3method,jdbcType=INTEGER},
+      </if>
+      <if test="ph != null">
+        #{ph,jdbcType=DOUBLE},
+      </if>
+      <if test="phmethod != null">
+        #{phmethod,jdbcType=INTEGER},
+      </if>
+      <if test="tds != null">
+        #{tds,jdbcType=DOUBLE},
+      </if>
+      <if test="tdsmethod != null">
+        #{tdsmethod,jdbcType=INTEGER},
+      </if>
+      <if test="ecoil != null">
+        #{ecoil,jdbcType=DOUBLE},
+      </if>
+      <if test="ecoilmethod != null">
+        #{ecoilmethod,jdbcType=INTEGER},
+      </if>
+      <if test="sanitarytype != null">
+        #{sanitarytype,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore != null">
+        #{sanitaryscore,jdbcType=INTEGER},
       </if>
       <if test="samplingdate != null">
         #{samplingdate,jdbcType=DATE},
@@ -124,20 +524,44 @@
       <if test="detectdate != null">
         #{detectdate,jdbcType=DATE},
       </if>
-      <if test="cycleteamid != null">
-        #{cycleteamid,jdbcType=VARCHAR},
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
       </if>
-      <if test="watertype != null">
-        #{watertype,jdbcType=LONGVARCHAR},
+      <if test="sanitaryscore1 != null">
+        #{sanitaryscore1,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore2 != null">
+        #{sanitaryscore2,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore3 != null">
+        #{sanitaryscore3,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore4 != null">
+        #{sanitaryscore4,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore5 != null">
+        #{sanitaryscore5,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore6 != null">
+        #{sanitaryscore6,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore7 != null">
+        #{sanitaryscore7,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore8 != null">
+        #{sanitaryscore8,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore9 != null">
+        #{sanitaryscore9,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore10 != null">
+        #{sanitaryscore10,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore11 != null">
+        #{sanitaryscore11,jdbcType=INTEGER},
       </if>
       <if test="watersourcedetails != null">
         #{watersourcedetails,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="watersourcetype != null">
-        #{watersourcetype,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="locationname != null">
-        #{locationname,jdbcType=LONGVARCHAR},
       </if>
       <if test="treatmentmethods != null">
         #{treatmentmethods,jdbcType=LONGVARCHAR},
@@ -145,8 +569,11 @@
       <if test="watershortage != null">
         #{watershortage,jdbcType=LONGVARCHAR},
       </if>
-      <if test="picture != null">
-        #{picture,jdbcType=LONGVARCHAR},
+      <if test="visualdescription != null">
+        #{visualdescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="otherinformation != null">
+        #{otherinformation,jdbcType=LONGVARCHAR},
       </if>
       <if test="generalcomments != null">
         #{generalcomments,jdbcType=LONGVARCHAR},
@@ -157,16 +584,157 @@
       <if test="probcomment != null">
         #{probcomment,jdbcType=LONGVARCHAR},
       </if>
+      <if test="challengescomments != null">
+        #{challengescomments,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="needscomments != null">
+        #{needscomments,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="admincomm != null">
+        #{admincomm,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="userdefine != null">
+        #{userdefine,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
     update sample
     <set>
+      <if test="validation != null">
+        validation = #{validation,jdbcType=INTEGER},
+      </if>
+      <if test="watertype != null">
+        watertype = #{watertype,jdbcType=INTEGER},
+      </if>
       <if test="locationid != null">
         locationid = #{locationid,jdbcType=INTEGER},
       </if>
-      <if test="teamname != null">
-        teamname = #{teamname,jdbcType=VARCHAR},
+      <if test="cycleteamid != null">
+        cycleteamid = #{cycleteamid,jdbcType=INTEGER},
+      </if>
+      <if test="watersourcetype != null">
+        watersourcetype = #{watersourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="deliverymethod != null">
+        deliverymethod = #{deliverymethod,jdbcType=INTEGER},
+      </if>
+      <if test="waterstorage != null">
+        waterstorage = #{waterstorage,jdbcType=INTEGER},
+      </if>
+      <if test="avgstoragehours != null">
+        avgstoragehours = #{avgstoragehours,jdbcType=INTEGER},
+      </if>
+      <if test="potentialcontamination != null">
+        potentialcontamination = #{potentialcontamination,jdbcType=INTEGER},
+      </if>
+      <if test="potentialcontaminationdist != null">
+        potentialcontaminationdist = #{potentialcontaminationdist,jdbcType=INTEGER},
+      </if>
+      <if test="populationservedbysource != null">
+        populationservedbysource = #{populationservedbysource,jdbcType=INTEGER},
+      </if>
+      <if test="physicalindicators != null">
+        physicalindicators = #{physicalindicators,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null">
+        temp = #{temp,jdbcType=DOUBLE},
+      </if>
+      <if test="smell != null">
+        smell = #{smell,jdbcType=INTEGER},
+      </if>
+      <if test="turbidity != null">
+        turbidity = #{turbidity,jdbcType=INTEGER},
+      </if>
+      <if test="fe != null">
+        fe = #{fe,jdbcType=DOUBLE},
+      </if>
+      <if test="femethod != null">
+        femethod = #{femethod,jdbcType=INTEGER},
+      </if>
+      <if test="cr6 != null">
+        cr6 = #{cr6,jdbcType=DOUBLE},
+      </if>
+      <if test="cr6method != null">
+        cr6method = #{cr6method,jdbcType=INTEGER},
+      </if>
+      <if test="as != null">
+        as = #{as,jdbcType=DOUBLE},
+      </if>
+      <if test="asmethod != null">
+        asmethod = #{asmethod,jdbcType=INTEGER},
+      </if>
+      <if test="mn != null">
+        mn = #{mn,jdbcType=DOUBLE},
+      </if>
+      <if test="mnmethod != null">
+        mnmethod = #{mnmethod,jdbcType=INTEGER},
+      </if>
+      <if test="residualchlorine != null">
+        residualchlorine = #{residualchlorine,jdbcType=DOUBLE},
+      </if>
+      <if test="residualchlorinemethod != null">
+        residualchlorinemethod = #{residualchlorinemethod,jdbcType=INTEGER},
+      </if>
+      <if test="dovalue != null">
+        dovalue = #{dovalue,jdbcType=DOUBLE},
+      </if>
+      <if test="domethod != null">
+        domethod = #{domethod,jdbcType=INTEGER},
+      </if>
+      <if test="no2 != null">
+        no2 = #{no2,jdbcType=DOUBLE},
+      </if>
+      <if test="no2method != null">
+        no2method = #{no2method,jdbcType=INTEGER},
+      </if>
+      <if test="no3 != null">
+        no3 = #{no3,jdbcType=DOUBLE},
+      </if>
+      <if test="no3method != null">
+        no3method = #{no3method,jdbcType=INTEGER},
+      </if>
+      <if test="cod != null">
+        cod = #{cod,jdbcType=DOUBLE},
+      </if>
+      <if test="codmethod != null">
+        codmethod = #{codmethod,jdbcType=INTEGER},
+      </if>
+      <if test="f != null">
+        f = #{f,jdbcType=DOUBLE},
+      </if>
+      <if test="fmethod != null">
+        fmethod = #{fmethod,jdbcType=INTEGER},
+      </if>
+      <if test="nh3 != null">
+        nh3 = #{nh3,jdbcType=DOUBLE},
+      </if>
+      <if test="ng3method != null">
+        ng3method = #{ng3method,jdbcType=INTEGER},
+      </if>
+      <if test="ph != null">
+        ph = #{ph,jdbcType=DOUBLE},
+      </if>
+      <if test="phmethod != null">
+        phmethod = #{phmethod,jdbcType=INTEGER},
+      </if>
+      <if test="tds != null">
+        tds = #{tds,jdbcType=DOUBLE},
+      </if>
+      <if test="tdsmethod != null">
+        tdsmethod = #{tdsmethod,jdbcType=INTEGER},
+      </if>
+      <if test="ecoil != null">
+        ecoil = #{ecoil,jdbcType=DOUBLE},
+      </if>
+      <if test="ecoilmethod != null">
+        ecoilmethod = #{ecoilmethod,jdbcType=INTEGER},
+      </if>
+      <if test="sanitarytype != null">
+        sanitarytype = #{sanitarytype,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore != null">
+        sanitaryscore = #{sanitaryscore,jdbcType=INTEGER},
       </if>
       <if test="samplingdate != null">
         samplingdate = #{samplingdate,jdbcType=DATE},
@@ -174,20 +742,44 @@
       <if test="detectdate != null">
         detectdate = #{detectdate,jdbcType=DATE},
       </if>
-      <if test="cycleteamid != null">
-        cycleteamid = #{cycleteamid,jdbcType=VARCHAR},
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
       </if>
-      <if test="watertype != null">
-        watertype = #{watertype,jdbcType=LONGVARCHAR},
+      <if test="sanitaryscore1 != null">
+        sanitaryscore1 = #{sanitaryscore1,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore2 != null">
+        sanitaryscore2 = #{sanitaryscore2,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore3 != null">
+        sanitaryscore3 = #{sanitaryscore3,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore4 != null">
+        sanitaryscore4 = #{sanitaryscore4,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore5 != null">
+        sanitaryscore5 = #{sanitaryscore5,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore6 != null">
+        sanitaryscore6 = #{sanitaryscore6,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore7 != null">
+        sanitaryscore7 = #{sanitaryscore7,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore8 != null">
+        sanitaryscore8 = #{sanitaryscore8,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore9 != null">
+        sanitaryscore9 = #{sanitaryscore9,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore10 != null">
+        sanitaryscore10 = #{sanitaryscore10,jdbcType=INTEGER},
+      </if>
+      <if test="sanitaryscore11 != null">
+        sanitaryscore11 = #{sanitaryscore11,jdbcType=INTEGER},
       </if>
       <if test="watersourcedetails != null">
         watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="watersourcetype != null">
-        watersourcetype = #{watersourcetype,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="locationname != null">
-        locationname = #{locationname,jdbcType=LONGVARCHAR},
       </if>
       <if test="treatmentmethods != null">
         treatmentmethods = #{treatmentmethods,jdbcType=LONGVARCHAR},
@@ -195,8 +787,11 @@
       <if test="watershortage != null">
         watershortage = #{watershortage,jdbcType=LONGVARCHAR},
       </if>
-      <if test="picture != null">
-        picture = #{picture,jdbcType=LONGVARCHAR},
+      <if test="visualdescription != null">
+        visualdescription = #{visualdescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="otherinformation != null">
+        otherinformation = #{otherinformation,jdbcType=LONGVARCHAR},
       </if>
       <if test="generalcomments != null">
         generalcomments = #{generalcomments,jdbcType=LONGVARCHAR},
@@ -207,35 +802,157 @@
       <if test="probcomment != null">
         probcomment = #{probcomment,jdbcType=LONGVARCHAR},
       </if>
+      <if test="challengescomments != null">
+        challengescomments = #{challengescomments,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="needscomments != null">
+        needscomments = #{needscomments,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="admincomm != null">
+        admincomm = #{admincomm,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="userdefine != null">
+        userdefine = #{userdefine,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where baseid = #{baseid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.SampleWithBLOBs">
     update sample
-    set locationid = #{locationid,jdbcType=INTEGER},
-      teamname = #{teamname,jdbcType=VARCHAR},
-      samplingdate = #{samplingdate,jdbcType=DATE},
-      detectdate = #{detectdate,jdbcType=DATE},
-      cycleteamid = #{cycleteamid,jdbcType=VARCHAR},
-      watertype = #{watertype,jdbcType=LONGVARCHAR},
-      watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
-      watersourcetype = #{watersourcetype,jdbcType=LONGVARCHAR},
-      locationname = #{locationname,jdbcType=LONGVARCHAR},
-      treatmentmethods = #{treatmentmethods,jdbcType=LONGVARCHAR},
-      watershortage = #{watershortage,jdbcType=LONGVARCHAR},
-      picture = #{picture,jdbcType=LONGVARCHAR},
-      generalcomments = #{generalcomments,jdbcType=LONGVARCHAR},
-      waterqdetermination = #{waterqdetermination,jdbcType=LONGVARCHAR},
-      probcomment = #{probcomment,jdbcType=LONGVARCHAR}
+    set validation = #{validation,jdbcType=INTEGER},
+    watertype = #{watertype,jdbcType=INTEGER},
+    locationid = #{locationid,jdbcType=INTEGER},
+    cycleteamid = #{cycleteamid,jdbcType=INTEGER},
+    watersourcetype = #{watersourcetype,jdbcType=INTEGER},
+    deliverymethod = #{deliverymethod,jdbcType=INTEGER},
+    waterstorage = #{waterstorage,jdbcType=INTEGER},
+    avgstoragehours = #{avgstoragehours,jdbcType=INTEGER},
+    potentialcontamination = #{potentialcontamination,jdbcType=INTEGER},
+    potentialcontaminationdist = #{potentialcontaminationdist,jdbcType=INTEGER},
+    populationservedbysource = #{populationservedbysource,jdbcType=INTEGER},
+    physicalindicators = #{physicalindicators,jdbcType=INTEGER},
+    temp = #{temp,jdbcType=DOUBLE},
+    smell = #{smell,jdbcType=INTEGER},
+    turbidity = #{turbidity,jdbcType=INTEGER},
+    fe = #{fe,jdbcType=DOUBLE},
+    femethod = #{femethod,jdbcType=INTEGER},
+    cr6 = #{cr6,jdbcType=DOUBLE},
+    cr6method = #{cr6method,jdbcType=INTEGER},
+    as = #{as,jdbcType=DOUBLE},
+    asmethod = #{asmethod,jdbcType=INTEGER},
+    mn = #{mn,jdbcType=DOUBLE},
+    mnmethod = #{mnmethod,jdbcType=INTEGER},
+    residualchlorine = #{residualchlorine,jdbcType=DOUBLE},
+    residualchlorinemethod = #{residualchlorinemethod,jdbcType=INTEGER},
+    dovalue = #{dovalue,jdbcType=DOUBLE},
+    domethod = #{domethod,jdbcType=INTEGER},
+    no2 = #{no2,jdbcType=DOUBLE},
+    no2method = #{no2method,jdbcType=INTEGER},
+    no3 = #{no3,jdbcType=DOUBLE},
+    no3method = #{no3method,jdbcType=INTEGER},
+    cod = #{cod,jdbcType=DOUBLE},
+    codmethod = #{codmethod,jdbcType=INTEGER},
+    f = #{f,jdbcType=DOUBLE},
+    fmethod = #{fmethod,jdbcType=INTEGER},
+    nh3 = #{nh3,jdbcType=DOUBLE},
+    ng3method = #{ng3method,jdbcType=INTEGER},
+    ph = #{ph,jdbcType=DOUBLE},
+    phmethod = #{phmethod,jdbcType=INTEGER},
+    tds = #{tds,jdbcType=DOUBLE},
+    tdsmethod = #{tdsmethod,jdbcType=INTEGER},
+    ecoil = #{ecoil,jdbcType=DOUBLE},
+    ecoilmethod = #{ecoilmethod,jdbcType=INTEGER},
+    sanitarytype = #{sanitarytype,jdbcType=INTEGER},
+    sanitaryscore = #{sanitaryscore,jdbcType=INTEGER},
+    samplingdate = #{samplingdate,jdbcType=DATE},
+    detectdate = #{detectdate,jdbcType=DATE},
+    picture = #{picture,jdbcType=VARCHAR},
+    sanitaryscore1 = #{sanitaryscore1,jdbcType=INTEGER},
+    sanitaryscore2 = #{sanitaryscore2,jdbcType=INTEGER},
+    sanitaryscore3 = #{sanitaryscore3,jdbcType=INTEGER},
+    sanitaryscore4 = #{sanitaryscore4,jdbcType=INTEGER},
+    sanitaryscore5 = #{sanitaryscore5,jdbcType=INTEGER},
+    sanitaryscore6 = #{sanitaryscore6,jdbcType=INTEGER},
+    sanitaryscore7 = #{sanitaryscore7,jdbcType=INTEGER},
+    sanitaryscore8 = #{sanitaryscore8,jdbcType=INTEGER},
+    sanitaryscore9 = #{sanitaryscore9,jdbcType=INTEGER},
+    sanitaryscore10 = #{sanitaryscore10,jdbcType=INTEGER},
+    sanitaryscore11 = #{sanitaryscore11,jdbcType=INTEGER},
+    watersourcedetails = #{watersourcedetails,jdbcType=LONGVARCHAR},
+    treatmentmethods = #{treatmentmethods,jdbcType=LONGVARCHAR},
+    watershortage = #{watershortage,jdbcType=LONGVARCHAR},
+    visualdescription = #{visualdescription,jdbcType=LONGVARCHAR},
+    otherinformation = #{otherinformation,jdbcType=LONGVARCHAR},
+    generalcomments = #{generalcomments,jdbcType=LONGVARCHAR},
+    waterqdetermination = #{waterqdetermination,jdbcType=LONGVARCHAR},
+    probcomment = #{probcomment,jdbcType=LONGVARCHAR},
+    challengescomments = #{challengescomments,jdbcType=LONGVARCHAR},
+    needscomments = #{needscomments,jdbcType=LONGVARCHAR},
+    admincomm = #{admincomm,jdbcType=LONGVARCHAR},
+    userdefine = #{userdefine,jdbcType=LONGVARCHAR}
     where baseid = #{baseid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Sample">
     update sample
-    set locationid = #{locationid,jdbcType=INTEGER},
-      teamname = #{teamname,jdbcType=VARCHAR},
+    set validation = #{validation,jdbcType=INTEGER},
+      watertype = #{watertype,jdbcType=INTEGER},
+      locationid = #{locationid,jdbcType=INTEGER},
+      cycleteamid = #{cycleteamid,jdbcType=INTEGER},
+      watersourcetype = #{watersourcetype,jdbcType=INTEGER},
+      deliverymethod = #{deliverymethod,jdbcType=INTEGER},
+      waterstorage = #{waterstorage,jdbcType=INTEGER},
+      avgstoragehours = #{avgstoragehours,jdbcType=INTEGER},
+      potentialcontamination = #{potentialcontamination,jdbcType=INTEGER},
+      potentialcontaminationdist = #{potentialcontaminationdist,jdbcType=INTEGER},
+      populationservedbysource = #{populationservedbysource,jdbcType=INTEGER},
+      physicalindicators = #{physicalindicators,jdbcType=INTEGER},
+      temp = #{temp,jdbcType=DOUBLE},
+      smell = #{smell,jdbcType=INTEGER},
+      turbidity = #{turbidity,jdbcType=INTEGER},
+      fe = #{fe,jdbcType=DOUBLE},
+      femethod = #{femethod,jdbcType=INTEGER},
+      cr6 = #{cr6,jdbcType=DOUBLE},
+      cr6method = #{cr6method,jdbcType=INTEGER},
+      as = #{as,jdbcType=DOUBLE},
+      asmethod = #{asmethod,jdbcType=INTEGER},
+      mn = #{mn,jdbcType=DOUBLE},
+      mnmethod = #{mnmethod,jdbcType=INTEGER},
+      residualchlorine = #{residualchlorine,jdbcType=DOUBLE},
+      residualchlorinemethod = #{residualchlorinemethod,jdbcType=INTEGER},
+      dovalue = #{dovalue,jdbcType=DOUBLE},
+      domethod = #{domethod,jdbcType=INTEGER},
+      no2 = #{no2,jdbcType=DOUBLE},
+      no2method = #{no2method,jdbcType=INTEGER},
+      no3 = #{no3,jdbcType=DOUBLE},
+      no3method = #{no3method,jdbcType=INTEGER},
+      cod = #{cod,jdbcType=DOUBLE},
+      codmethod = #{codmethod,jdbcType=INTEGER},
+      f = #{f,jdbcType=DOUBLE},
+      fmethod = #{fmethod,jdbcType=INTEGER},
+      nh3 = #{nh3,jdbcType=DOUBLE},
+      ng3method = #{ng3method,jdbcType=INTEGER},
+      ph = #{ph,jdbcType=DOUBLE},
+      phmethod = #{phmethod,jdbcType=INTEGER},
+      tds = #{tds,jdbcType=DOUBLE},
+      tdsmethod = #{tdsmethod,jdbcType=INTEGER},
+      ecoil = #{ecoil,jdbcType=DOUBLE},
+      ecoilmethod = #{ecoilmethod,jdbcType=INTEGER},
+      sanitarytype = #{sanitarytype,jdbcType=INTEGER},
+      sanitaryscore = #{sanitaryscore,jdbcType=INTEGER},
       samplingdate = #{samplingdate,jdbcType=DATE},
       detectdate = #{detectdate,jdbcType=DATE},
-      cycleteamid = #{cycleteamid,jdbcType=VARCHAR}
+      picture = #{picture,jdbcType=VARCHAR},
+      sanitaryscore1 = #{sanitaryscore1,jdbcType=INTEGER},
+      sanitaryscore2 = #{sanitaryscore2,jdbcType=INTEGER},
+      sanitaryscore3 = #{sanitaryscore3,jdbcType=INTEGER},
+      sanitaryscore4 = #{sanitaryscore4,jdbcType=INTEGER},
+      sanitaryscore5 = #{sanitaryscore5,jdbcType=INTEGER},
+      sanitaryscore6 = #{sanitaryscore6,jdbcType=INTEGER},
+      sanitaryscore7 = #{sanitaryscore7,jdbcType=INTEGER},
+      sanitaryscore8 = #{sanitaryscore8,jdbcType=INTEGER},
+      sanitaryscore9 = #{sanitaryscore9,jdbcType=INTEGER},
+      sanitaryscore10 = #{sanitaryscore10,jdbcType=INTEGER},
+      sanitaryscore11 = #{sanitaryscore11,jdbcType=INTEGER}
     where baseid = #{baseid,jdbcType=INTEGER}
   </update>
   <select id="getSamplesByCycleTeamid" resultType="org.spring.springboot.domain.SampleWithBLOBs">
