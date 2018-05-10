@@ -1,5 +1,7 @@
 package org.spring.springboot.controller;
 
+import org.spring.springboot.dao.LocationDao;
+import org.spring.springboot.domain.Location;
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.spring.springboot.domain.ShowSamples;
@@ -20,6 +22,9 @@ public class SampleRestController {
 
     @Autowired
     private SampleService samplesService;
+
+    @Autowired
+    private LocationDao locationDao;
 
     @Autowired
     private TestCycleService testCycleService;
@@ -59,6 +64,24 @@ public class SampleRestController {
         Response response = new Response();
         try {
             response.setStatus(samplesService.updateSample(sample));
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/bindBlog", method = RequestMethod.GET)
+    public Response bindBlog(@RequestParam(value="baseid") Integer baseid,
+                                @RequestParam(value="blogid") Integer blogid) {
+        Response response = new Response();
+        try {
+            SampleWithBLOBs sampleWithBLOBs = samplesService.selectById(baseid);
+            Location location = locationDao.selectByPrimaryKey(sampleWithBLOBs.getLocationid());
+            location.setBlogid(blogid);
+            locationDao.updateByPrimaryKeySelective(location);
+            response.setStatus(true);
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

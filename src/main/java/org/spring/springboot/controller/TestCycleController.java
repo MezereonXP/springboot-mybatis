@@ -37,4 +37,22 @@ public class TestCycleController {
             return response;
         }
     }
+
+    @RequestMapping(value = "/api/uploadReport", method = RequestMethod.GET)
+    public Response uploadReport(@RequestParam(value="cycleTeamId") Integer cycleteamid,
+                                @RequestParam(value = "report") String report) {
+        Response response = new Response();
+        try {
+            CycleTeam cycleTeam = cycleTeamDao.selectByPrimaryKey(cycleteamid);
+            cycleTeam.setReport(report);
+            cycleTeamDao.updateByPrimaryKeyWithBLOBs(cycleTeam);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
 }
