@@ -10,12 +10,13 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="createdat" jdbcType="DATE" property="createdat" />
     <result column="updateat" jdbcType="DATE" property="updateat" />
+    <result column="blogid" jdbcType="INTEGER" property="blogid" />
   </resultMap>
   <sql id="Base_Column_List">
-    locationid, villageid, locationname, lat, lon, status, createdat, updateat
+    locationid, villageid, locationname, lat, lon, status, createdat, updateat, blogid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from location
     where locationid = #{locationid,jdbcType=INTEGER}
@@ -24,13 +25,13 @@
     delete from location
     where locationid = #{locationid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Location" useGeneratedKeys="true" keyProperty="locationid">
-    insert into location (villageid, locationname,
-      lat, lon, status, createdat, 
-      updateat)
-    values (#{villageid,jdbcType=INTEGER}, #{locationname,jdbcType=VARCHAR},
-      #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{createdat,jdbcType=DATE}, 
-      #{updateat,jdbcType=DATE})
+  <insert id="insert" parameterType="org.spring.springboot.domain.Location">
+    insert into location (locationid, villageid, locationname,
+    lat, lon, status, createdat,
+    updateat, blogid)
+    values (#{locationid,jdbcType=INTEGER}, #{villageid,jdbcType=INTEGER}, #{locationname,jdbcType=VARCHAR},
+    #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{createdat,jdbcType=DATE},
+    #{updateat,jdbcType=DATE}, #{blogid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Location">
     insert into location
@@ -59,6 +60,9 @@
       <if test="updateat != null">
         updateat,
       </if>
+      <if test="blogid != null">
+        blogid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="locationid != null">
@@ -84,6 +88,9 @@
       </if>
       <if test="updateat != null">
         #{updateat,jdbcType=DATE},
+      </if>
+      <if test="blogid != null">
+        #{blogid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -111,6 +118,9 @@
       <if test="updateat != null">
         updateat = #{updateat,jdbcType=DATE},
       </if>
+      <if test="blogid != null">
+        blogid = #{blogid,jdbcType=INTEGER},
+      </if>
     </set>
     where locationid = #{locationid,jdbcType=INTEGER}
   </update>
@@ -122,7 +132,8 @@
       lon = #{lon,jdbcType=DOUBLE},
       status = #{status,jdbcType=INTEGER},
       createdat = #{createdat,jdbcType=DATE},
-      updateat = #{updateat,jdbcType=DATE}
+      updateat = #{updateat,jdbcType=DATE},
+      blogid = #{blogid,jdbcType=INTEGER}
     where locationid = #{locationid,jdbcType=INTEGER}
   </update>
 </mapper>

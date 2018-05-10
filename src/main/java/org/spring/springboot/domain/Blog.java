@@ -5,11 +5,7 @@ public class Blog {
 
     private String picture;
 
-    private Integer locationid;
-
-    private Integer teamid;
-
-    private String text;
+    private Integer validation;
 
     public Integer getBlogid() {
         return blogid;
@@ -27,27 +23,11 @@ public class Blog {
         this.picture = picture == null ? null : picture.trim();
     }
 
-    public Integer getLocationid() {
-        return locationid;
+    public Integer getValidation() {
+        return validation;
     }
 
-    public void setLocationid(Integer locationid) {
-        this.locationid = locationid;
-    }
-
-    public Integer getTeamid() {
-        return teamid;
-    }
-
-    public void setTeamid(Integer teamid) {
-        this.teamid = teamid;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text == null ? null : text.trim();
+    public void setValidation(Integer validation) {
+        this.validation = validation;
     }
 }

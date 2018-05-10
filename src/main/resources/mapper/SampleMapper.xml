@@ -18,33 +18,33 @@
     <result column="temp" jdbcType="DOUBLE" property="temp" />
     <result column="smell" jdbcType="INTEGER" property="smell" />
     <result column="turbidity" jdbcType="INTEGER" property="turbidity" />
-    <result column="fe" jdbcType="DOUBLE" property="fe" />
+    <result column="fevalue" jdbcType="DOUBLE" property="fevalue" />
     <result column="femethod" jdbcType="INTEGER" property="femethod" />
-    <result column="cr6" jdbcType="DOUBLE" property="cr6" />
+    <result column="cr6value" jdbcType="DOUBLE" property="cr6value" />
     <result column="cr6method" jdbcType="INTEGER" property="cr6method" />
-    <result column="as" jdbcType="DOUBLE" property="as" />
+    <result column="asvalue" jdbcType="DOUBLE" property="asvalue" />
     <result column="asmethod" jdbcType="INTEGER" property="asmethod" />
-    <result column="mn" jdbcType="DOUBLE" property="mn" />
+    <result column="mnvalue" jdbcType="DOUBLE" property="mnvalue" />
     <result column="mnmethod" jdbcType="INTEGER" property="mnmethod" />
     <result column="residualchlorine" jdbcType="DOUBLE" property="residualchlorine" />
     <result column="residualchlorinemethod" jdbcType="INTEGER" property="residualchlorinemethod" />
     <result column="dovalue" jdbcType="DOUBLE" property="dovalue" />
     <result column="domethod" jdbcType="INTEGER" property="domethod" />
-    <result column="no2" jdbcType="DOUBLE" property="no2" />
+    <result column="no2value" jdbcType="DOUBLE" property="no2value" />
     <result column="no2method" jdbcType="INTEGER" property="no2method" />
-    <result column="no3" jdbcType="DOUBLE" property="no3" />
+    <result column="no3value" jdbcType="DOUBLE" property="no3value" />
     <result column="no3method" jdbcType="INTEGER" property="no3method" />
-    <result column="cod" jdbcType="DOUBLE" property="cod" />
+    <result column="codvalue" jdbcType="DOUBLE" property="codvalue" />
     <result column="codmethod" jdbcType="INTEGER" property="codmethod" />
-    <result column="f" jdbcType="DOUBLE" property="f" />
+    <result column="fvalue" jdbcType="DOUBLE" property="fvalue" />
     <result column="fmethod" jdbcType="INTEGER" property="fmethod" />
-    <result column="nh3" jdbcType="DOUBLE" property="nh3" />
+    <result column="nh3value" jdbcType="DOUBLE" property="nh3value" />
     <result column="ng3method" jdbcType="INTEGER" property="ng3method" />
-    <result column="ph" jdbcType="DOUBLE" property="ph" />
+    <result column="phvalue" jdbcType="DOUBLE" property="phvalue" />
     <result column="phmethod" jdbcType="INTEGER" property="phmethod" />
-    <result column="tds" jdbcType="DOUBLE" property="tds" />
+    <result column="tdsvalue" jdbcType="DOUBLE" property="tdsvalue" />
     <result column="tdsmethod" jdbcType="INTEGER" property="tdsmethod" />
-    <result column="ecoil" jdbcType="DOUBLE" property="ecoil" />
+    <result column="ecoilvalue" jdbcType="DOUBLE" property="ecoilvalue" />
     <result column="ecoilmethod" jdbcType="INTEGER" property="ecoilmethod" />
     <result column="sanitarytype" jdbcType="INTEGER" property="sanitarytype" />
     <result column="sanitaryscore" jdbcType="INTEGER" property="sanitaryscore" />
@@ -80,13 +80,13 @@
   <sql id="Base_Column_List">
     baseid, validation, watertype, locationid, cycleteamid, watersourcetype, deliverymethod,
     waterstorage, avgstoragehours, potentialcontamination, potentialcontaminationdist,
-    populationservedbysource, physicalindicators, temp, smell, turbidity, fe, femethod,
-    cr6, cr6method, as, asmethod, mn, mnmethod, residualchlorine, residualchlorinemethod,
-    dovalue, domethod, no2, no2method, no3, no3method, cod, codmethod, f, fmethod, nh3,
-    ng3method, ph, phmethod, tds, tdsmethod, ecoil, ecoilmethod, sanitarytype, sanitaryscore,
-    samplingdate, detectdate, picture, sanitaryscore1, sanitaryscore2, sanitaryscore3,
-    sanitaryscore4, sanitaryscore5, sanitaryscore6, sanitaryscore7, sanitaryscore8, sanitaryscore9,
-    sanitaryscore10, sanitaryscore11
+    populationservedbysource, physicalindicators, temp, smell, turbidity, fevalue, femethod,
+    cr6value, cr6method, asvalue, asmethod, mnvalue, mnmethod, residualchlorine, residualchlorinemethod,
+    dovalue, domethod, no2value, no2method, no3value, no3method, codvalue, codmethod,
+    fvalue, fmethod, nh3value, ng3method, phvalue, phmethod, tdsvalue, tdsmethod, ecoilvalue,
+    ecoilmethod, sanitarytype, sanitaryscore, samplingdate, detectdate, picture, sanitaryscore1,
+    sanitaryscore2, sanitaryscore3, sanitaryscore4, sanitaryscore5, sanitaryscore6, sanitaryscore7,
+    sanitaryscore8, sanitaryscore9, sanitaryscore10, sanitaryscore11
   </sql>
   <sql id="Blob_Column_List">
     watersourcedetails, treatmentmethods, watershortage, visualdescription, otherinformation,
@@ -112,14 +112,15 @@
     potentialcontamination, potentialcontaminationdist,
     populationservedbysource, physicalindicators,
     temp, smell, turbidity,
-    fe, femethod, cr6, cr6method,
-    as, asmethod, mn, mnmethod,
-    residualchlorine, residualchlorinemethod,
-    dovalue, domethod, no2,
-    no2method, no3, no3method,
-    cod, codmethod, f, fmethod,
-    nh3, ng3method, ph, phmethod,
-    tds, tdsmethod, ecoil,
+    fevalue, femethod, cr6value,
+    cr6method, asvalue, asmethod,
+    mnvalue, mnmethod, residualchlorine,
+    residualchlorinemethod, dovalue, domethod,
+    no2value, no2method, no3value,
+    no3method, codvalue, codmethod,
+    fvalue, fmethod, nh3value,
+    ng3method, phvalue, phmethod,
+    tdsvalue, tdsmethod, ecoilvalue,
     ecoilmethod, sanitarytype, sanitaryscore,
     samplingdate, detectdate, picture,
     sanitaryscore1, sanitaryscore2, sanitaryscore3,
@@ -138,14 +139,15 @@
     #{potentialcontamination,jdbcType=INTEGER}, #{potentialcontaminationdist,jdbcType=INTEGER},
     #{populationservedbysource,jdbcType=INTEGER}, #{physicalindicators,jdbcType=INTEGER},
     #{temp,jdbcType=DOUBLE}, #{smell,jdbcType=INTEGER}, #{turbidity,jdbcType=INTEGER},
-    #{fe,jdbcType=DOUBLE}, #{femethod,jdbcType=INTEGER}, #{cr6,jdbcType=DOUBLE}, #{cr6method,jdbcType=INTEGER},
-    #{as,jdbcType=DOUBLE}, #{asmethod,jdbcType=INTEGER}, #{mn,jdbcType=DOUBLE}, #{mnmethod,jdbcType=INTEGER},
-    #{residualchlorine,jdbcType=DOUBLE}, #{residualchlorinemethod,jdbcType=INTEGER},
-    #{dovalue,jdbcType=DOUBLE}, #{domethod,jdbcType=INTEGER}, #{no2,jdbcType=DOUBLE},
-    #{no2method,jdbcType=INTEGER}, #{no3,jdbcType=DOUBLE}, #{no3method,jdbcType=INTEGER},
-    #{cod,jdbcType=DOUBLE}, #{codmethod,jdbcType=INTEGER}, #{f,jdbcType=DOUBLE}, #{fmethod,jdbcType=INTEGER},
-    #{nh3,jdbcType=DOUBLE}, #{ng3method,jdbcType=INTEGER}, #{ph,jdbcType=DOUBLE}, #{phmethod,jdbcType=INTEGER},
-    #{tds,jdbcType=DOUBLE}, #{tdsmethod,jdbcType=INTEGER}, #{ecoil,jdbcType=DOUBLE},
+    #{fevalue,jdbcType=DOUBLE}, #{femethod,jdbcType=INTEGER}, #{cr6value,jdbcType=DOUBLE},
+    #{cr6method,jdbcType=INTEGER}, #{asvalue,jdbcType=DOUBLE}, #{asmethod,jdbcType=INTEGER},
+    #{mnvalue,jdbcType=DOUBLE}, #{mnmethod,jdbcType=INTEGER}, #{residualchlorine,jdbcType=DOUBLE},
+    #{residualchlorinemethod,jdbcType=INTEGER}, #{dovalue,jdbcType=DOUBLE}, #{domethod,jdbcType=INTEGER},
+    #{no2value,jdbcType=DOUBLE}, #{no2method,jdbcType=INTEGER}, #{no3value,jdbcType=DOUBLE},
+    #{no3method,jdbcType=INTEGER}, #{codvalue,jdbcType=DOUBLE}, #{codmethod,jdbcType=INTEGER},
+    #{fvalue,jdbcType=DOUBLE}, #{fmethod,jdbcType=INTEGER}, #{nh3value,jdbcType=DOUBLE},
+    #{ng3method,jdbcType=INTEGER}, #{phvalue,jdbcType=DOUBLE}, #{phmethod,jdbcType=INTEGER},
+    #{tdsvalue,jdbcType=DOUBLE}, #{tdsmethod,jdbcType=INTEGER}, #{ecoilvalue,jdbcType=DOUBLE},
     #{ecoilmethod,jdbcType=INTEGER}, #{sanitarytype,jdbcType=INTEGER}, #{sanitaryscore,jdbcType=INTEGER},
     #{samplingdate,jdbcType=DATE}, #{detectdate,jdbcType=DATE}, #{picture,jdbcType=VARCHAR},
     #{sanitaryscore1,jdbcType=INTEGER}, #{sanitaryscore2,jdbcType=INTEGER}, #{sanitaryscore3,jdbcType=INTEGER},
@@ -210,26 +212,26 @@
       <if test="turbidity != null">
         turbidity,
       </if>
-      <if test="fe != null">
-        fe,
+      <if test="fevalue != null">
+        fevalue,
       </if>
       <if test="femethod != null">
         femethod,
       </if>
-      <if test="cr6 != null">
-        cr6,
+      <if test="cr6value != null">
+        cr6value,
       </if>
       <if test="cr6method != null">
         cr6method,
       </if>
-      <if test="as != null">
-        as,
+      <if test="asvalue != null">
+        asvalue,
       </if>
       <if test="asmethod != null">
         asmethod,
       </if>
-      <if test="mn != null">
-        mn,
+      <if test="mnvalue != null">
+        mnvalue,
       </if>
       <if test="mnmethod != null">
         mnmethod,
@@ -246,50 +248,50 @@
       <if test="domethod != null">
         domethod,
       </if>
-      <if test="no2 != null">
-        no2,
+      <if test="no2value != null">
+        no2value,
       </if>
       <if test="no2method != null">
         no2method,
       </if>
-      <if test="no3 != null">
-        no3,
+      <if test="no3value != null">
+        no3value,
       </if>
       <if test="no3method != null">
         no3method,
       </if>
-      <if test="cod != null">
-        cod,
+      <if test="codvalue != null">
+        codvalue,
       </if>
       <if test="codmethod != null">
         codmethod,
       </if>
-      <if test="f != null">
-        f,
+      <if test="fvalue != null">
+        fvalue,
       </if>
       <if test="fmethod != null">
         fmethod,
       </if>
-      <if test="nh3 != null">
-        nh3,
+      <if test="nh3value != null">
+        nh3value,
       </if>
       <if test="ng3method != null">
         ng3method,
       </if>
-      <if test="ph != null">
-        ph,
+      <if test="phvalue != null">
+        phvalue,
       </if>
       <if test="phmethod != null">
         phmethod,
       </if>
-      <if test="tds != null">
-        tds,
+      <if test="tdsvalue != null">
+        tdsvalue,
       </if>
       <if test="tdsmethod != null">
         tdsmethod,
       </if>
-      <if test="ecoil != null">
-        ecoil,
+      <if test="ecoilvalue != null">
+        ecoilvalue,
       </if>
       <if test="ecoilmethod != null">
         ecoilmethod,
@@ -428,26 +430,26 @@
       <if test="turbidity != null">
         #{turbidity,jdbcType=INTEGER},
       </if>
-      <if test="fe != null">
-        #{fe,jdbcType=DOUBLE},
+      <if test="fevalue != null">
+        #{fevalue,jdbcType=DOUBLE},
       </if>
       <if test="femethod != null">
         #{femethod,jdbcType=INTEGER},
       </if>
-      <if test="cr6 != null">
-        #{cr6,jdbcType=DOUBLE},
+      <if test="cr6value != null">
+        #{cr6value,jdbcType=DOUBLE},
       </if>
       <if test="cr6method != null">
         #{cr6method,jdbcType=INTEGER},
       </if>
-      <if test="as != null">
-        #{as,jdbcType=DOUBLE},
+      <if test="asvalue != null">
+        #{asvalue,jdbcType=DOUBLE},
       </if>
       <if test="asmethod != null">
         #{asmethod,jdbcType=INTEGER},
       </if>
-      <if test="mn != null">
-        #{mn,jdbcType=DOUBLE},
+      <if test="mnvalue != null">
+        #{mnvalue,jdbcType=DOUBLE},
       </if>
       <if test="mnmethod != null">
         #{mnmethod,jdbcType=INTEGER},
@@ -464,50 +466,50 @@
       <if test="domethod != null">
         #{domethod,jdbcType=INTEGER},
       </if>
-      <if test="no2 != null">
-        #{no2,jdbcType=DOUBLE},
+      <if test="no2value != null">
+        #{no2value,jdbcType=DOUBLE},
       </if>
       <if test="no2method != null">
         #{no2method,jdbcType=INTEGER},
       </if>
-      <if test="no3 != null">
-        #{no3,jdbcType=DOUBLE},
+      <if test="no3value != null">
+        #{no3value,jdbcType=DOUBLE},
       </if>
       <if test="no3method != null">
         #{no3method,jdbcType=INTEGER},
       </if>
-      <if test="cod != null">
-        #{cod,jdbcType=DOUBLE},
+      <if test="codvalue != null">
+        #{codvalue,jdbcType=DOUBLE},
       </if>
       <if test="codmethod != null">
         #{codmethod,jdbcType=INTEGER},
       </if>
-      <if test="f != null">
-        #{f,jdbcType=DOUBLE},
+      <if test="fvalue != null">
+        #{fvalue,jdbcType=DOUBLE},
       </if>
       <if test="fmethod != null">
         #{fmethod,jdbcType=INTEGER},
       </if>
-      <if test="nh3 != null">
-        #{nh3,jdbcType=DOUBLE},
+      <if test="nh3value != null">
+        #{nh3value,jdbcType=DOUBLE},
       </if>
       <if test="ng3method != null">
         #{ng3method,jdbcType=INTEGER},
       </if>
-      <if test="ph != null">
-        #{ph,jdbcType=DOUBLE},
+      <if test="phvalue != null">
+        #{phvalue,jdbcType=DOUBLE},
       </if>
       <if test="phmethod != null">
         #{phmethod,jdbcType=INTEGER},
       </if>
-      <if test="tds != null">
-        #{tds,jdbcType=DOUBLE},
+      <if test="tdsvalue != null">
+        #{tdsvalue,jdbcType=DOUBLE},
       </if>
       <if test="tdsmethod != null">
         #{tdsmethod,jdbcType=INTEGER},
       </if>
-      <if test="ecoil != null">
-        #{ecoil,jdbcType=DOUBLE},
+      <if test="ecoilvalue != null">
+        #{ecoilvalue,jdbcType=DOUBLE},
       </if>
       <if test="ecoilmethod != null">
         #{ecoilmethod,jdbcType=INTEGER},
@@ -646,26 +648,26 @@
       <if test="turbidity != null">
         turbidity = #{turbidity,jdbcType=INTEGER},
       </if>
-      <if test="fe != null">
-        fe = #{fe,jdbcType=DOUBLE},
+      <if test="fevalue != null">
+        fevalue = #{fevalue,jdbcType=DOUBLE},
       </if>
       <if test="femethod != null">
         femethod = #{femethod,jdbcType=INTEGER},
       </if>
-      <if test="cr6 != null">
-        cr6 = #{cr6,jdbcType=DOUBLE},
+      <if test="cr6value != null">
+        cr6value = #{cr6value,jdbcType=DOUBLE},
       </if>
       <if test="cr6method != null">
         cr6method = #{cr6method,jdbcType=INTEGER},
       </if>
-      <if test="as != null">
-        as = #{as,jdbcType=DOUBLE},
+      <if test="asvalue != null">
+        asvalue = #{asvalue,jdbcType=DOUBLE},
       </if>
       <if test="asmethod != null">
         asmethod = #{asmethod,jdbcType=INTEGER},
       </if>
-      <if test="mn != null">
-        mn = #{mn,jdbcType=DOUBLE},
+      <if test="mnvalue != null">
+        mnvalue = #{mnvalue,jdbcType=DOUBLE},
       </if>
       <if test="mnmethod != null">
         mnmethod = #{mnmethod,jdbcType=INTEGER},
@@ -682,50 +684,50 @@
       <if test="domethod != null">
         domethod = #{domethod,jdbcType=INTEGER},
       </if>
-      <if test="no2 != null">
-        no2 = #{no2,jdbcType=DOUBLE},
+      <if test="no2value != null">
+        no2value = #{no2value,jdbcType=DOUBLE},
       </if>
       <if test="no2method != null">
         no2method = #{no2method,jdbcType=INTEGER},
       </if>
-      <if test="no3 != null">
-        no3 = #{no3,jdbcType=DOUBLE},
+      <if test="no3value != null">
+        no3value = #{no3value,jdbcType=DOUBLE},
       </if>
       <if test="no3method != null">
         no3method = #{no3method,jdbcType=INTEGER},
       </if>
-      <if test="cod != null">
-        cod = #{cod,jdbcType=DOUBLE},
+      <if test="codvalue != null">
+        codvalue = #{codvalue,jdbcType=DOUBLE},
       </if>
       <if test="codmethod != null">
         codmethod = #{codmethod,jdbcType=INTEGER},
       </if>
-      <if test="f != null">
-        f = #{f,jdbcType=DOUBLE},
+      <if test="fvalue != null">
+        fvalue = #{fvalue,jdbcType=DOUBLE},
       </if>
       <if test="fmethod != null">
         fmethod = #{fmethod,jdbcType=INTEGER},
       </if>
-      <if test="nh3 != null">
-        nh3 = #{nh3,jdbcType=DOUBLE},
+      <if test="nh3value != null">
+        nh3value = #{nh3value,jdbcType=DOUBLE},
       </if>
       <if test="ng3method != null">
         ng3method = #{ng3method,jdbcType=INTEGER},
       </if>
-      <if test="ph != null">
-        ph = #{ph,jdbcType=DOUBLE},
+      <if test="phvalue != null">
+        phvalue = #{phvalue,jdbcType=DOUBLE},
       </if>
       <if test="phmethod != null">
         phmethod = #{phmethod,jdbcType=INTEGER},
       </if>
-      <if test="tds != null">
-        tds = #{tds,jdbcType=DOUBLE},
+      <if test="tdsvalue != null">
+        tdsvalue = #{tdsvalue,jdbcType=DOUBLE},
       </if>
       <if test="tdsmethod != null">
         tdsmethod = #{tdsmethod,jdbcType=INTEGER},
       </if>
-      <if test="ecoil != null">
-        ecoil = #{ecoil,jdbcType=DOUBLE},
+      <if test="ecoilvalue != null">
+        ecoilvalue = #{ecoilvalue,jdbcType=DOUBLE},
       </if>
       <if test="ecoilmethod != null">
         ecoilmethod = #{ecoilmethod,jdbcType=INTEGER},
@@ -834,33 +836,33 @@
     temp = #{temp,jdbcType=DOUBLE},
     smell = #{smell,jdbcType=INTEGER},
     turbidity = #{turbidity,jdbcType=INTEGER},
-    fe = #{fe,jdbcType=DOUBLE},
+    fevalue = #{fevalue,jdbcType=DOUBLE},
     femethod = #{femethod,jdbcType=INTEGER},
-    cr6 = #{cr6,jdbcType=DOUBLE},
+    cr6value = #{cr6value,jdbcType=DOUBLE},
     cr6method = #{cr6method,jdbcType=INTEGER},
-    as = #{as,jdbcType=DOUBLE},
+    asvalue = #{asvalue,jdbcType=DOUBLE},
     asmethod = #{asmethod,jdbcType=INTEGER},
-    mn = #{mn,jdbcType=DOUBLE},
+    mnvalue = #{mnvalue,jdbcType=DOUBLE},
     mnmethod = #{mnmethod,jdbcType=INTEGER},
     residualchlorine = #{residualchlorine,jdbcType=DOUBLE},
     residualchlorinemethod = #{residualchlorinemethod,jdbcType=INTEGER},
     dovalue = #{dovalue,jdbcType=DOUBLE},
     domethod = #{domethod,jdbcType=INTEGER},
-    no2 = #{no2,jdbcType=DOUBLE},
+    no2value = #{no2value,jdbcType=DOUBLE},
     no2method = #{no2method,jdbcType=INTEGER},
-    no3 = #{no3,jdbcType=DOUBLE},
+    no3value = #{no3value,jdbcType=DOUBLE},
     no3method = #{no3method,jdbcType=INTEGER},
-    cod = #{cod,jdbcType=DOUBLE},
+    codvalue = #{codvalue,jdbcType=DOUBLE},
     codmethod = #{codmethod,jdbcType=INTEGER},
-    f = #{f,jdbcType=DOUBLE},
+    fvalue = #{fvalue,jdbcType=DOUBLE},
     fmethod = #{fmethod,jdbcType=INTEGER},
-    nh3 = #{nh3,jdbcType=DOUBLE},
+    nh3value = #{nh3value,jdbcType=DOUBLE},
     ng3method = #{ng3method,jdbcType=INTEGER},
-    ph = #{ph,jdbcType=DOUBLE},
+    phvalue = #{phvalue,jdbcType=DOUBLE},
     phmethod = #{phmethod,jdbcType=INTEGER},
-    tds = #{tds,jdbcType=DOUBLE},
+    tdsvalue = #{tdsvalue,jdbcType=DOUBLE},
     tdsmethod = #{tdsmethod,jdbcType=INTEGER},
-    ecoil = #{ecoil,jdbcType=DOUBLE},
+    ecoilvalue = #{ecoilvalue,jdbcType=DOUBLE},
     ecoilmethod = #{ecoilmethod,jdbcType=INTEGER},
     sanitarytype = #{sanitarytype,jdbcType=INTEGER},
     sanitaryscore = #{sanitaryscore,jdbcType=INTEGER},
@@ -909,33 +911,33 @@
       temp = #{temp,jdbcType=DOUBLE},
       smell = #{smell,jdbcType=INTEGER},
       turbidity = #{turbidity,jdbcType=INTEGER},
-      fe = #{fe,jdbcType=DOUBLE},
+      fevalue = #{fevalue,jdbcType=DOUBLE},
       femethod = #{femethod,jdbcType=INTEGER},
-      cr6 = #{cr6,jdbcType=DOUBLE},
+      cr6value = #{cr6value,jdbcType=DOUBLE},
       cr6method = #{cr6method,jdbcType=INTEGER},
-      as = #{as,jdbcType=DOUBLE},
+      asvalue = #{asvalue,jdbcType=DOUBLE},
       asmethod = #{asmethod,jdbcType=INTEGER},
-      mn = #{mn,jdbcType=DOUBLE},
+      mnvalue = #{mnvalue,jdbcType=DOUBLE},
       mnmethod = #{mnmethod,jdbcType=INTEGER},
       residualchlorine = #{residualchlorine,jdbcType=DOUBLE},
       residualchlorinemethod = #{residualchlorinemethod,jdbcType=INTEGER},
       dovalue = #{dovalue,jdbcType=DOUBLE},
       domethod = #{domethod,jdbcType=INTEGER},
-      no2 = #{no2,jdbcType=DOUBLE},
+      no2value = #{no2value,jdbcType=DOUBLE},
       no2method = #{no2method,jdbcType=INTEGER},
-      no3 = #{no3,jdbcType=DOUBLE},
+      no3value = #{no3value,jdbcType=DOUBLE},
       no3method = #{no3method,jdbcType=INTEGER},
-      cod = #{cod,jdbcType=DOUBLE},
+      codvalue = #{codvalue,jdbcType=DOUBLE},
       codmethod = #{codmethod,jdbcType=INTEGER},
-      f = #{f,jdbcType=DOUBLE},
+      fvalue = #{fvalue,jdbcType=DOUBLE},
       fmethod = #{fmethod,jdbcType=INTEGER},
-      nh3 = #{nh3,jdbcType=DOUBLE},
+      nh3value = #{nh3value,jdbcType=DOUBLE},
       ng3method = #{ng3method,jdbcType=INTEGER},
-      ph = #{ph,jdbcType=DOUBLE},
+      phvalue = #{phvalue,jdbcType=DOUBLE},
       phmethod = #{phmethod,jdbcType=INTEGER},
-      tds = #{tds,jdbcType=DOUBLE},
+      tdsvalue = #{tdsvalue,jdbcType=DOUBLE},
       tdsmethod = #{tdsmethod,jdbcType=INTEGER},
-      ecoil = #{ecoil,jdbcType=DOUBLE},
+      ecoilvalue = #{ecoilvalue,jdbcType=DOUBLE},
       ecoilmethod = #{ecoilmethod,jdbcType=INTEGER},
       sanitarytype = #{sanitarytype,jdbcType=INTEGER},
       sanitaryscore = #{sanitaryscore,jdbcType=INTEGER},

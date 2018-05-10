@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.MultiChooseDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.MultiChoose">
+    <id column="multichooseid" jdbcType="INTEGER" property="multichooseid" />
+    <result column="multichoosename" jdbcType="VARCHAR" property="multichoosename" />
+    <result column="multichoosevalue" jdbcType="VARCHAR" property="multichoosevalue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    multichooseid, multichoosename, multichoosevalue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from multichoose
+    where multichooseid = #{multichooseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from multichoose
+    where multichooseid = #{multichooseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.MultiChoose">
+    insert into multichoose (multichooseid, multichoosename, multichoosevalue
+      )
+    values (#{multichooseid,jdbcType=INTEGER}, #{multichoosename,jdbcType=VARCHAR}, #{multichoosevalue,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.MultiChoose">
+    insert into multichoose
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="multichooseid != null">
+        multichooseid,
+      </if>
+      <if test="multichoosename != null">
+        multichoosename,
+      </if>
+      <if test="multichoosevalue != null">
+        multichoosevalue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="multichooseid != null">
+        #{multichooseid,jdbcType=INTEGER},
+      </if>
+      <if test="multichoosename != null">
+        #{multichoosename,jdbcType=VARCHAR},
+      </if>
+      <if test="multichoosevalue != null">
+        #{multichoosevalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.MultiChoose">
+    update multichoose
+    <set>
+      <if test="multichoosename != null">
+        multichoosename = #{multichoosename,jdbcType=VARCHAR},
+      </if>
+      <if test="multichoosevalue != null">
+        multichoosevalue = #{multichoosevalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where multichooseid = #{multichooseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.MultiChoose">
+    update multichoose
+    set multichoosename = #{multichoosename,jdbcType=VARCHAR},
+      multichoosevalue = #{multichoosevalue,jdbcType=VARCHAR}
+    where multichooseid = #{multichooseid,jdbcType=INTEGER}
+  </update>
+</mapper>

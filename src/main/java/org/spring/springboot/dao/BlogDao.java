@@ -1,27 +1,23 @@
 package org.spring.springboot.dao;
 
-import org.spring.springboot.domain.Blog;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
+import org.spring.springboot.domain.Blog;
+import org.spring.springboot.domain.BlogWithBLOBs;
+import org.springframework.stereotype.Component;
 
 @Component
 public interface BlogDao {
     int deleteByPrimaryKey(Integer blogid);
 
-    int insert(Blog record);
+    int insert(BlogWithBLOBs record);
 
-    int insertSelective(Blog record);
+    int insertSelective(BlogWithBLOBs record);
 
-    Blog selectByPrimaryKey(Integer blogid);
+    BlogWithBLOBs selectByPrimaryKey(Integer blogid);
 
-    int updateByPrimaryKeySelective(Blog record);
+    int updateByPrimaryKeySelective(BlogWithBLOBs record);
 
-    int updateByPrimaryKeyWithBLOBs(Blog record);
+    int updateByPrimaryKeyWithBLOBs(BlogWithBLOBs record);
 
     int updateByPrimaryKey(Blog record);
-
-    List<Blog> getTeamBlog(Integer teamid);
-
-    Blog selectByLocation(Integer locationid);
 }

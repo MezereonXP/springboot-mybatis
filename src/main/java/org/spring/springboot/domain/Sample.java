@@ -35,19 +35,19 @@ public class Sample {
 
     private Integer turbidity;
 
-    private Double fe;
+    private Double fevalue;
 
     private Integer femethod;
 
-    private Double cr6;
+    private Double cr6value;
 
     private Integer cr6method;
 
-    private Double as;
+    private Double asvalue;
 
     private Integer asmethod;
 
-    private Double mn;
+    private Double mnvalue;
 
     private Integer mnmethod;
 
@@ -59,35 +59,35 @@ public class Sample {
 
     private Integer domethod;
 
-    private Double no2;
+    private Double no2value;
 
     private Integer no2method;
 
-    private Double no3;
+    private Double no3value;
 
     private Integer no3method;
 
-    private Double cod;
+    private Double codvalue;
 
     private Integer codmethod;
 
-    private Double f;
+    private Double fvalue;
 
     private Integer fmethod;
 
-    private Double nh3;
+    private Double nh3value;
 
     private Integer ng3method;
 
-    private Double ph;
+    private Double phvalue;
 
     private Integer phmethod;
 
-    private Double tds;
+    private Double tdsvalue;
 
     private Integer tdsmethod;
 
-    private Double ecoil;
+    private Double ecoilvalue;
 
     private Integer ecoilmethod;
 
@@ -251,12 +251,12 @@ public class Sample {
         this.turbidity = turbidity;
     }
 
-    public Double getFe() {
-        return fe;
+    public Double getFevalue() {
+        return fevalue;
     }
 
-    public void setFe(Double fe) {
-        this.fe = fe;
+    public void setFevalue(Double fevalue) {
+        this.fevalue = fevalue;
     }
 
     public Integer getFemethod() {
@@ -267,12 +267,12 @@ public class Sample {
         this.femethod = femethod;
     }
 
-    public Double getCr6() {
-        return cr6;
+    public Double getCr6value() {
+        return cr6value;
     }
 
-    public void setCr6(Double cr6) {
-        this.cr6 = cr6;
+    public void setCr6value(Double cr6value) {
+        this.cr6value = cr6value;
     }
 
     public Integer getCr6method() {
@@ -283,12 +283,12 @@ public class Sample {
         this.cr6method = cr6method;
     }
 
-    public Double getAs() {
-        return as;
+    public Double getAsvalue() {
+        return asvalue;
     }
 
-    public void setAs(Double as) {
-        this.as = as;
+    public void setAsvalue(Double asvalue) {
+        this.asvalue = asvalue;
     }
 
     public Integer getAsmethod() {
@@ -299,12 +299,12 @@ public class Sample {
         this.asmethod = asmethod;
     }
 
-    public Double getMn() {
-        return mn;
+    public Double getMnvalue() {
+        return mnvalue;
     }
 
-    public void setMn(Double mn) {
-        this.mn = mn;
+    public void setMnvalue(Double mnvalue) {
+        this.mnvalue = mnvalue;
     }
 
     public Integer getMnmethod() {
@@ -347,12 +347,12 @@ public class Sample {
         this.domethod = domethod;
     }
 
-    public Double getNo2() {
-        return no2;
+    public Double getNo2value() {
+        return no2value;
     }
 
-    public void setNo2(Double no2) {
-        this.no2 = no2;
+    public void setNo2value(Double no2value) {
+        this.no2value = no2value;
     }
 
     public Integer getNo2method() {
@@ -363,12 +363,12 @@ public class Sample {
         this.no2method = no2method;
     }
 
-    public Double getNo3() {
-        return no3;
+    public Double getNo3value() {
+        return no3value;
     }
 
-    public void setNo3(Double no3) {
-        this.no3 = no3;
+    public void setNo3value(Double no3value) {
+        this.no3value = no3value;
     }
 
     public Integer getNo3method() {
@@ -379,12 +379,12 @@ public class Sample {
         this.no3method = no3method;
     }
 
-    public Double getCod() {
-        return cod;
+    public Double getCodvalue() {
+        return codvalue;
     }
 
-    public void setCod(Double cod) {
-        this.cod = cod;
+    public void setCodvalue(Double codvalue) {
+        this.codvalue = codvalue;
     }
 
     public Integer getCodmethod() {
@@ -395,12 +395,12 @@ public class Sample {
         this.codmethod = codmethod;
     }
 
-    public Double getF() {
-        return f;
+    public Double getFvalue() {
+        return fvalue;
     }
 
-    public void setF(Double f) {
-        this.f = f;
+    public void setFvalue(Double fvalue) {
+        this.fvalue = fvalue;
     }
 
     public Integer getFmethod() {
@@ -411,12 +411,12 @@ public class Sample {
         this.fmethod = fmethod;
     }
 
-    public Double getNh3() {
-        return nh3;
+    public Double getNh3value() {
+        return nh3value;
     }
 
-    public void setNh3(Double nh3) {
-        this.nh3 = nh3;
+    public void setNh3value(Double nh3value) {
+        this.nh3value = nh3value;
     }
 
     public Integer getNg3method() {
@@ -427,12 +427,12 @@ public class Sample {
         this.ng3method = ng3method;
     }
 
-    public Double getPh() {
-        return ph;
+    public Double getPhvalue() {
+        return phvalue;
     }
 
-    public void setPh(Double ph) {
-        this.ph = ph;
+    public void setPhvalue(Double phvalue) {
+        this.phvalue = phvalue;
     }
 
     public Integer getPhmethod() {
@@ -443,12 +443,12 @@ public class Sample {
         this.phmethod = phmethod;
     }
 
-    public Double getTds() {
-        return tds;
+    public Double getTdsvalue() {
+        return tdsvalue;
     }
 
-    public void setTds(Double tds) {
-        this.tds = tds;
+    public void setTdsvalue(Double tdsvalue) {
+        this.tdsvalue = tdsvalue;
     }
 
     public Integer getTdsmethod() {
@@ -459,12 +459,12 @@ public class Sample {
         this.tdsmethod = tdsmethod;
     }
 
-    public Double getEcoil() {
-        return ecoil;
+    public Double getEcoilvalue() {
+        return ecoilvalue;
     }
 
-    public void setEcoil(Double ecoil) {
-        this.ecoil = ecoil;
+    public void setEcoilvalue(Double ecoilvalue) {
+        this.ecoilvalue = ecoilvalue;
     }
 
     public Integer getEcoilmethod() {

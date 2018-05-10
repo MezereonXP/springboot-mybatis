@@ -1,9 +1,9 @@
 package org.spring.springboot.controller;
 
-import org.spring.springboot.dao.BlogDao;
+import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.domain.Blog;
-import org.spring.springboot.domain.City;
-import org.spring.springboot.domain.SampleWithBLOBs;
+import org.spring.springboot.domain.BlogWithBLOBs;
+import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,17 +27,17 @@ public class BlogRestController {
     private BlogService blogService;
 
     /**
-     * 利用团队id来获取他们所有的博客
+     * 利用id来获取博客
      *
-     * @param teamid
+     * @param blogid
      * @return
      */
-    @RequestMapping(value = "/api/getTeamBlog", method = RequestMethod.GET)
-    public Response getTeamBlog(@CookieValue(value = "teamid", required = true) Integer teamid) {
+    @RequestMapping(value = "/api/getBlog", method = RequestMethod.GET)
+    public Response getTeamBlog(@RequestParam(value = "blogid", required = true) Integer blogid) {
         Response response = new Response();
         try {
             response.setStatus(true);
-            response.setData(blogService.getTeamBlog(teamid));
+            response.setData(blogService.getBlogByBlogId(blogid));
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
@@ -47,19 +46,36 @@ public class BlogRestController {
         }
     }
 
+    /**
+     * 利用cycleteamid来获取博客
+     *
+     * @param cycleteamid
+     * @return
+     */
+    @RequestMapping(value = "/api/getBlogByCycleTeamId", method = RequestMethod.GET)
+    public Response getBlogsByCycleTeamId(@RequestParam(value = "cycleTeamId", required = true) Integer cycleteamid) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            response.setData(blogService.getBlogsByCycleTeamId(cycleteamid));
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+
     @RequestMapping(value = "/api/addBlog", method = RequestMethod.POST)
     @ResponseBody
     public Response addBlog(@CookieValue(value = "teamid", required = true) Integer teamid,
-                            @RequestBody Map map) {
+                            @RequestBody BlogWithBLOBs blogWithBLOBs) {
         Response response = new Response();
         try {
-            Blog blog = new Blog();
-            blog.setLocationid((Integer) map.get("locationid"));
-            blog.setPicture((String) map.get("picture"));
-            blog.setTeamid(teamid);
-            blog.setText((String) map.get("text"));
-            blogService.addBlog(blog);
+            blogService.addBlog(blogWithBLOBs);
             response.setStatus(true);
+            response.setMsg(String.valueOf(blogWithBLOBs.getBlogid()));
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

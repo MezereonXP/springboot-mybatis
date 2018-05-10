@@ -1,7 +1,5 @@
 package org.spring.springboot.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class Location {
@@ -17,11 +15,11 @@ public class Location {
 
     private Integer status;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd hh:mm:ss")
     private Date createdat;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd hh:mm:ss")
     private Date updateat;
+
+    private Integer blogid;
 
     public Integer getLocationid() {
         return locationid;
@@ -85,5 +83,13 @@ public class Location {
 
     public void setUpdateat(Date updateat) {
         this.updateat = updateat;
+    }
+
+    public Integer getBlogid() {
+        return blogid;
+    }
+
+    public void setBlogid(Integer blogid) {
+        this.blogid = blogid;
     }
 }

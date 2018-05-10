@@ -34,6 +34,11 @@ public class SampleService {
     public SampleWithBLOBs selectById(Integer baseid) {
         return sampleDao.selectByPrimaryKey(baseid);
     }
+
+    public List<SampleWithBLOBs> selectByCycleTeamId(Integer cycleTeamId){
+        return sampleDao.getSamplesByCycleTeamid(cycleTeamId);
+    }
+    
     public boolean addSample(SampleWithBLOBs sample) {
         Integer count = sampleDao.insertSelective(sample);
         if(count == 1){

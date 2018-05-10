@@ -67,18 +67,12 @@ public class LocationRestController {
     }
 
     @RequestMapping(value = "/api/getAllLocationForCycleTeam", method = RequestMethod.GET)
-    public Response getAllLocationForCycleTeam(@RequestParam(value = "cycleTeamName", required = true) String cycleTeamName,
+    public Response getAllLocationForCycleTeam(@RequestParam(value = "cycleTeamName", required = true) Integer cycleTeamName,
                                                @CookieValue(value="teamid", required = true) String teamid) {
         Response response = new Response();
         try {
-            if (teamid.equals(cycleTeamName.split("Z")[0].substring(1))){
-                response.setStatus(true);
-                response.setData(locationService.getLocationForTeam(cycleTeamName));
-            } else {
-                response.setStatus(false);
-                response.setData(locationService.getLocationForTeam(cycleTeamName));
-            }
-
+            response.setStatus(true);
+            response.setData(locationService.getLocationForTeam(cycleTeamName));
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

@@ -75,7 +75,7 @@ public class LocationService {
      * @param cycleTeamId
      * @return
      */
-    public Map<Integer, List<MapShowModel>> getLocationForTeam(String cycleTeamId){
+    public Map<Integer, List<MapShowModel>> getLocationForTeam(Integer cycleTeamId){
         Map<Integer, List<MapShowModel>> map = new HashMap<Integer, List<MapShowModel>>();
         ShowSamples showSamples = sampleService.getAllShowSamples();
         for (ShowSamples.ShowCycle showCycle:showSamples.getShowCycles()){
@@ -86,7 +86,7 @@ public class LocationService {
                 if (sample.getCycleteamid().equals(cycleTeamId)) {
                     MapShowModel mapShowModel = new MapShowModel();
                     Location location = locationDao.selectByPrimaryKey(sample.getLocationid());
-                    Blog blog = blogService.getBlogByLocation(location.getLocationid());
+                    Blog blog = blogService.getBlogByBlogId(location.getBlogid());
                     mapShowModel.setLocation(location);
                     mapShowModel.setSampleWithBLOBs(sample);
                     mapShowModel.setBlog(blog);
