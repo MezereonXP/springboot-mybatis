@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.PrefectureDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Prefecture">
+    <id column="prefectureid" jdbcType="INTEGER" property="prefectureid" />
+    <result column="prefecturename" jdbcType="VARCHAR" property="prefecturename" />
+    <result column="provinceid" jdbcType="VARCHAR" property="provinceid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Prefecture">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    prefectureid, prefecturename, provinceid
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from prefecture
+    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from prefecture
+    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.Prefecture">
+    insert into prefecture (prefectureid, prefecturename, provinceid, 
+      description)
+    values (#{prefectureid,jdbcType=INTEGER}, #{prefecturename,jdbcType=VARCHAR}, #{provinceid,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Prefecture">
+    insert into prefecture
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="prefectureid != null">
+        prefectureid,
+      </if>
+      <if test="prefecturename != null">
+        prefecturename,
+      </if>
+      <if test="provinceid != null">
+        provinceid,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="prefectureid != null">
+        #{prefectureid,jdbcType=INTEGER},
+      </if>
+      <if test="prefecturename != null">
+        #{prefecturename,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null">
+        #{provinceid,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Prefecture">
+    update prefecture
+    <set>
+      <if test="prefecturename != null">
+        prefecturename = #{prefecturename,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null">
+        provinceid = #{provinceid,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Prefecture">
+    update prefecture
+    set prefecturename = #{prefecturename,jdbcType=VARCHAR},
+      provinceid = #{provinceid,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Prefecture">
+    update prefecture
+    set prefecturename = #{prefecturename,jdbcType=VARCHAR},
+      provinceid = #{provinceid,jdbcType=VARCHAR}
+    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+  </update>
+</mapper>

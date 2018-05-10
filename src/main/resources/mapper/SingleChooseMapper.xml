@@ -15,6 +15,13 @@
     from singlechoose
     where singlechooseid = #{singlechooseid,jdbcType=INTEGER}
   </select>
+  <select id="getSingleChooseListByName"
+    resultType="org.spring.springboot.domain.SingleChoose">
+    select
+    <include refid="Base_Column_List" />
+    from singlechoose
+    where singlechoosename = #{singlechoosename,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from singlechoose
     where singlechooseid = #{singlechooseid,jdbcType=INTEGER}

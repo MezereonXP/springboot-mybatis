@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.TownshipDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Township">
+    <id column="townid" jdbcType="INTEGER" property="townid" />
+    <result column="countyid" jdbcType="INTEGER" property="countyid" />
+    <result column="townname" jdbcType="VARCHAR" property="townname" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Township">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    townid, countyid, townname
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from township
+    where townid = #{townid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from township
+    where townid = #{townid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.Township">
+    insert into township (townid, countyid, townname, 
+      description)
+    values (#{townid,jdbcType=INTEGER}, #{countyid,jdbcType=INTEGER}, #{townname,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Township">
+    insert into township
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="townid != null">
+        townid,
+      </if>
+      <if test="countyid != null">
+        countyid,
+      </if>
+      <if test="townname != null">
+        townname,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="townid != null">
+        #{townid,jdbcType=INTEGER},
+      </if>
+      <if test="countyid != null">
+        #{countyid,jdbcType=INTEGER},
+      </if>
+      <if test="townname != null">
+        #{townname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Township">
+    update township
+    <set>
+      <if test="countyid != null">
+        countyid = #{countyid,jdbcType=INTEGER},
+      </if>
+      <if test="townname != null">
+        townname = #{townname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where townid = #{townid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Township">
+    update township
+    set countyid = #{countyid,jdbcType=INTEGER},
+      townname = #{townname,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where townid = #{townid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Township">
+    update township
+    set countyid = #{countyid,jdbcType=INTEGER},
+      townname = #{townname,jdbcType=VARCHAR}
+    where townid = #{townid,jdbcType=INTEGER}
+  </update>
+</mapper>

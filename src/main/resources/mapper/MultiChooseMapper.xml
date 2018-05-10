@@ -15,6 +15,13 @@
     from multichoose
     where multichooseid = #{multichooseid,jdbcType=INTEGER}
   </select>
+  <select id="getMultiChooseListByName"
+    resultType="org.spring.springboot.domain.MultiChoose">
+    select
+    <include refid="Base_Column_List" />
+    from multichoose
+    where multichoosename = #{multichoosename,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from multichoose
     where multichooseid = #{multichooseid,jdbcType=INTEGER}

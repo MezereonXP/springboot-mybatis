@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.ExtraDao">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Extra">
+    <id column="extraid" jdbcType="INTEGER" property="extraid" />
+    <result column="extraname" jdbcType="VARCHAR" property="extraname" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Extra">
+    <result column="extravalue" jdbcType="LONGVARCHAR" property="extravalue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    extraid, extraname
+  </sql>
+  <sql id="Blob_Column_List">
+    extravalue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from extra
+    where extraid = #{extraid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from extra
+    where extraid = #{extraid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.Extra">
+    insert into extra (extraid, extraname, extravalue
+      )
+    values (#{extraid,jdbcType=INTEGER}, #{extraname,jdbcType=VARCHAR}, #{extravalue,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Extra">
+    insert into extra
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="extraid != null">
+        extraid,
+      </if>
+      <if test="extraname != null">
+        extraname,
+      </if>
+      <if test="extravalue != null">
+        extravalue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="extraid != null">
+        #{extraid,jdbcType=INTEGER},
+      </if>
+      <if test="extraname != null">
+        #{extraname,jdbcType=VARCHAR},
+      </if>
+      <if test="extravalue != null">
+        #{extravalue,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Extra">
+    update extra
+    <set>
+      <if test="extraname != null">
+        extraname = #{extraname,jdbcType=VARCHAR},
+      </if>
+      <if test="extravalue != null">
+        extravalue = #{extravalue,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where extraid = #{extraid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Extra">
+    update extra
+    set extraname = #{extraname,jdbcType=VARCHAR},
+      extravalue = #{extravalue,jdbcType=LONGVARCHAR}
+    where extraid = #{extraid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Extra">
+    update extra
+    set extraname = #{extraname,jdbcType=VARCHAR}
+    where extraid = #{extraid,jdbcType=INTEGER}
+  </update>
+</mapper>

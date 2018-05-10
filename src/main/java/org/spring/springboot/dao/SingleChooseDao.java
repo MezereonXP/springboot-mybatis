@@ -1,4 +1,5 @@
 package org.spring.springboot.dao;
+import java.util.List;
 import org.springframework.stereotype.Component;
 import org.spring.springboot.domain.SingleChoose;
 
@@ -15,4 +16,6 @@ public interface SingleChooseDao {
     int updateByPrimaryKeySelective(SingleChoose record);
 
     int updateByPrimaryKey(SingleChoose record);
+
+    List<SingleChoose> getSingleChooseListByName(String singleChooseName);
 }
