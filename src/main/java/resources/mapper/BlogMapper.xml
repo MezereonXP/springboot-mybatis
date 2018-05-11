@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot/dao.BlogMapper">
+  <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Blog">
+    <id column="blogid" jdbcType="INTEGER" property="blogid" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="validation" jdbcType="INTEGER" property="validation" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.BlogWithBLOBs">
+    <result column="text" jdbcType="LONGVARCHAR" property="text" />
+    <result column="admincomment" jdbcType="LONGVARCHAR" property="admincomment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    blogid, picture, validation
+  </sql>
+  <sql id="Blob_Column_List">
+    text, admincomment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </select>
+  <select id="getTeamBlog" resultType="org.spring.springboot.domain.Blog">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog
+    where teamid = #{teamid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByLocation" resultType="org.spring.springboot.domain.Blog">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog
+    where locationid = #{locationid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.BlogWithBLOBs">
+    insert into blog (blogid, picture, validation, 
+      text, admincomment)
+    values (#{blogid,jdbcType=INTEGER}, #{picture,jdbcType=VARCHAR}, #{validation,jdbcType=INTEGER}, 
+      #{text,jdbcType=LONGVARCHAR}, #{admincomment,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.BlogWithBLOBs">
+    insert into blog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blogid != null">
+        blogid,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="validation != null">
+        validation,
+      </if>
+      <if test="text != null">
+        text,
+      </if>
+      <if test="admincomment != null">
+        admincomment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blogid != null">
+        #{blogid,jdbcType=INTEGER},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="validation != null">
+        #{validation,jdbcType=INTEGER},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="admincomment != null">
+        #{admincomment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.BlogWithBLOBs">
+    update blog
+    <set>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="validation != null">
+        validation = #{validation,jdbcType=INTEGER},
+      </if>
+      <if test="text != null">
+        text = #{text,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="admincomment != null">
+        admincomment = #{admincomment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.BlogWithBLOBs">
+    update blog
+    set picture = #{picture,jdbcType=VARCHAR},
+      validation = #{validation,jdbcType=INTEGER},
+      text = #{text,jdbcType=LONGVARCHAR},
+      admincomment = #{admincomment,jdbcType=LONGVARCHAR}
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Blog">
+    update blog
+    set picture = #{picture,jdbcType=VARCHAR},
+      validation = #{validation,jdbcType=INTEGER}
+    where blogid = #{blogid,jdbcType=INTEGER}
+  </update>
+</mapper>
