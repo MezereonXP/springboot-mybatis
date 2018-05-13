@@ -10,10 +10,11 @@ import java.util.List;
 public class getDataSql {
 
     private static final String PATH = "J:\\2016行政区划数据";
-    private static final String OUT = "J:\\sql.txt";
+    private static final String OUT = "J:\\sql.sql";
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static void main(String args[]) {
+        StringBuilder sql = new StringBuilder();
         File rootFile = new File(PATH);
         File[] files = rootFile.listFiles();
         int provinceId = 1;
@@ -24,7 +25,7 @@ public class getDataSql {
         for (File file : files) {
             List<Data> datas = new ArrayList<Data>();
             String name = file.getName().replace(".json", "");
-            writeToFile("insert into province values(" + provinceId + ",'" + name + "','');");
+            sql.append("insert into province values(" + provinceId + ",'" + name + "','');");
             System.out.println("insert into province values(" + provinceId + ",'" + name + "','');");
             provinceId++;
             try {
@@ -34,23 +35,23 @@ public class getDataSql {
                 e.printStackTrace();
             }
             for (Data prefecturedata : datas) {
-                writeToFile("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + provinceId + ",'');");
-                System.out.println("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + provinceId + ",'');");
+                sql.append("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + (provinceId - 1) + ",'');");
+                System.out.println("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + (provinceId - 1) + ",'');");
                 prefectureId++;
                 if (prefecturedata.getChildren() != null && prefecturedata.getChildren().size() != 0) {
                     for (Data countydata : prefecturedata.getChildren()) {
-                        writeToFile("insert into county values(" + prefectureId + "," + countyId + ",'" + countydata.getName() + "',"+ "'');");
-                        System.out.println("insert into county values(" + prefectureId + "," + countyId + ",'" + countydata.getName() + "',"+ "'');");
+                        sql.append("insert into county values(" + (prefectureId - 1) + "," + countyId + ",'" + countydata.getName() + "'," + "'');");
+                        System.out.println("insert into county values(" + (prefectureId - 1) + "," + countyId + ",'" + countydata.getName() + "'," + "'');");
                         countyId++;
                         if (countydata.getChildren() != null && countydata.getChildren().size() != 0) {
                             for (Data townshipdata : countydata.getChildren()) {
-                                writeToFile("insert into township values(" + countyId + "," + townshipId + ",'" + townshipdata.getName() + "',"+ "'');");
-                                System.out.println("insert into township values(" + countyId + "," + townshipId + ",'" + townshipdata.getName() + "',"+ "'');");
+                                sql.append("insert into township values(" + (countyId - 1) + "," + townshipId + ",'" + townshipdata.getName() + "'," + "'');");
+                                System.out.println("insert into township values(" + (countyId - 1) + "," + townshipId + ",'" + townshipdata.getName() + "'," + "'');");
                                 townshipId++;
                                 if (townshipdata.getChildren() != null && townshipdata.getChildren().size() != 0) {
                                     for (Data villagedata : townshipdata.getChildren()) {
-                                        writeToFile("insert into village values(" + townshipId + "," + villageId + ",'" + villagedata.getName() + "',"+ "'');");
-                                        System.out.println("insert into village values(" + townshipId + "," + villageId + ",'" + villagedata.getName() + "',"+ "'');");
+                                        sql.append("insert into village values(" + (townshipId - 1) + "," + villageId + ",'" + villagedata.getName() + "'," + "'');");
+                                        System.out.println("insert into village values(" + (townshipId - 1) + "," + villageId + ",'" + villagedata.getName() + "'," + "'');");
                                         villageId++;
                                     }
                                 }
@@ -60,6 +61,7 @@ public class getDataSql {
                 }
             }
         }
+        writeToFile(sql.toString());
     }
 
 
@@ -84,17 +86,19 @@ public class getDataSql {
             return null;
         }
     }
-    public static void writeToFile(String sql){
+
+    public static void writeToFile(String sql) {
         try {
             File file = new File(OUT);
             //文件不存在时候，主动穿件文件。
-            if(!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
             }
-            FileWriter fw = new FileWriter(file,true);
+            FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(sql);
-            bw.close(); fw.close();
+            bw.close();
+            fw.close();
             System.out.println("done!");
 
         } catch (Exception e) {
