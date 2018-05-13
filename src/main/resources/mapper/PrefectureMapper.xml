@@ -92,4 +92,10 @@
       provinceid = #{provinceid,jdbcType=VARCHAR}
     where prefectureid = #{prefectureid,jdbcType=INTEGER}
   </update>
+
+  <select id="getPrefectureByProvinceId" resultType="org.spring.springboot.domain.Prefecture">
+    select *
+    from prefecture
+    where provinceid = #{provinceId}
+  </select>
 </mapper>

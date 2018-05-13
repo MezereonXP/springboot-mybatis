@@ -80,4 +80,8 @@
     set provincename = #{provincename,jdbcType=VARCHAR}
     where provinceid = #{provinceid,jdbcType=VARCHAR}
   </update>
+  <select id="getAllProvince" resultType="org.spring.springboot.domain.Province">
+    select *
+    from province
+  </select>
 </mapper>

@@ -1,7 +1,12 @@
 package org.spring.springboot.dao;
 
 import org.spring.springboot.domain.County;
+import org.spring.springboot.domain.Prefecture;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 public interface CountyDao {
     int deleteByPrimaryKey(Integer countyid);
 
@@ -16,4 +21,7 @@ public interface CountyDao {
     int updateByPrimaryKeyWithBLOBs(County record);
 
     int updateByPrimaryKey(County record);
+
+    public List<County> getCountyByPrefectureId(String prefectureId);
+
 }

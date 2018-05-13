@@ -92,4 +92,10 @@
       townname = #{townname,jdbcType=VARCHAR}
     where townid = #{townid,jdbcType=INTEGER}
   </update>
+
+  <select id="getTownshipByCountyId" resultType="org.spring.springboot.domain.Township">
+    select *
+    from township
+    where countyid = #{countyId}
+  </select>
 </mapper>

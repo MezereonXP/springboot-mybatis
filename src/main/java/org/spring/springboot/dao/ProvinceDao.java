@@ -1,7 +1,11 @@
 package org.spring.springboot.dao;
 
 import org.spring.springboot.domain.Province;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 public interface ProvinceDao {
     int deleteByPrimaryKey(String provinceid);
 
@@ -16,4 +20,6 @@ public interface ProvinceDao {
     int updateByPrimaryKeyWithBLOBs(Province record);
 
     int updateByPrimaryKey(Province record);
+
+    List<Province> getAllProvince();
 }
