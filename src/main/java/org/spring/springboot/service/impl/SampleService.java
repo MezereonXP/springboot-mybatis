@@ -1,11 +1,15 @@
 package org.spring.springboot.service.impl;
 
 import org.spring.springboot.dao.CycleTeamDao;
+import org.spring.springboot.dao.LocationDao;
 import org.spring.springboot.dao.SampleDao;
+import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.domain.SampleWithBLOBs;
+import org.spring.springboot.domain.ShowForIndex;
 import org.spring.springboot.domain.ShowSamples;
+import org.spring.springboot.domain.Team;
 import org.spring.springboot.domain.TestCycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +34,12 @@ public class SampleService {
 
     @Autowired
     private CycleTeamDao cycleTeamDao;
+
+    @Autowired
+    private LocationDao locationDao;
+
+    @Autowired
+    private TeamDao teamDao;
 
     public SampleWithBLOBs selectById(Integer baseid) {
         return sampleDao.selectByPrimaryKey(baseid);
@@ -95,4 +105,18 @@ public class SampleService {
         }
         return showSamples;
     }
+
+    public List<ShowForIndex> getShowForIndex(Integer testCycleId){
+        List<ShowForIndex> showForIndexList = new ArrayList<ShowForIndex>();
+
+        List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
+        for (CycleTeam cycleTeam:list) {
+            Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamid());
+            for (SampleWithBLOBs sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleteamid())) {
+                showForIndexList.add(new ShowForIndex(team.getTeamname(),  locationDao.selectByPrimaryKey(sample.getLocationid()), sample));
+            }
+        }
+        return showForIndexList;
+    }
+
 }

@@ -137,5 +137,18 @@ public class SampleRestController {
         }
     }
 
+    @RequestMapping(value = "/getShowForIndex", method = RequestMethod.GET)
+    public Response getShowForIndex(@RequestParam(value = "testCycleId") Integer testCycleId) {
+        Response response = new Response();
+        try {
+            response.setData(samplesService.getShowForIndex(testCycleId));
+            response.setStatus(true);
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.domain.Team;
+import org.spring.springboot.domain.TestCycle;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
 import org.spring.springboot.service.impl.TestCycleService;
@@ -21,6 +22,21 @@ public class TestCycleController {
 
     @Autowired
     private CycleTeamDao cycleTeamDao;
+
+    @RequestMapping(value = "/getTestCycle", method = RequestMethod.GET)
+    public Response getTestCycle() {
+        Response response = new Response();
+        try {
+            List<TestCycle> list = testCycleService.getAllTestCycle();
+            response.setData(list);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
 
     @RequestMapping(value = "/api/testCycle", method = RequestMethod.GET)
     public Response regist(@CookieValue(value="teamid") String teamid) {
