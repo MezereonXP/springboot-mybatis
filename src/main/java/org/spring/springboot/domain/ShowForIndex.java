@@ -3,6 +3,7 @@ package org.spring.springboot.domain;/**
  */
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * @program: ShowForIndex
@@ -15,16 +16,19 @@ public class ShowForIndex {
   private double lon;
   private String teamName;
   private String positionName;
+  private String sourceType;
   private Date samplingDate;
   private String generalComments;
+  private String probComment;
 
-  public ShowForIndex(String teamName, Location location, SampleWithBLOBs sample){
+  public ShowForIndex(String teamName, Location location, SampleWithBLOBs sample, Map<Integer, String> choose){
     this.lat = location.getLat();
     this.lon = location.getLon();
     this.teamName = teamName;
     this.positionName = location.getLocationname();
     this.samplingDate = sample.getSamplingdate();
     this.generalComments = sample.getGeneralcomments();
+    this.sourceType = choose.get(sample.getWatersourcetype());
   }
 
   public String getProbComment() {
@@ -83,5 +87,11 @@ public class ShowForIndex {
     this.lat = lat;
   }
 
-  private String probComment;
+  public String getSourceType() {
+    return sourceType;
+  }
+
+  public void setSourceType(String sourceType) {
+    this.sourceType = sourceType;
+  }
 }

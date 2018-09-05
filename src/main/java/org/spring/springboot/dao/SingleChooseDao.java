@@ -18,4 +18,6 @@ public interface SingleChooseDao {
     int updateByPrimaryKey(SingleChoose record);
 
     List<SingleChoose> getSingleChooseListByName(String singleChooseName);
+
+    List<SingleChoose> getSingleChooseList();
 }
