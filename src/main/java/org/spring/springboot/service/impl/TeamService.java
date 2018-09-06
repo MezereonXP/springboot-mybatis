@@ -2,6 +2,7 @@ package org.spring.springboot.service.impl;
 
 import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.domain.Team;
+import org.spring.springboot.domain.TeamExample;
 import org.spring.springboot.util.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.Cookie;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/4/12.
@@ -24,7 +26,14 @@ public class TeamService {
     }
 
     public Team login(String email) {
-        return teamDao.login(email);
+        TeamExample teamExample = new TeamExample();
+        teamExample.createCriteria().andEmailEqualTo(email);
+        List<Team> teamList = teamDao.selectByExample(teamExample);
+        if (teamList.size() == 0) {
+            return new Team();
+        } else {
+            return teamList.get(0);
+        }
     }
 
     public boolean addTeam(String email, String teamName, String password, String detail, String uniname,
@@ -35,7 +44,7 @@ public class TeamService {
         team.setPassword(password);
         team.setDetails(detail);
         team.setUniname(uniname);
-        team.setOrder(priority);
+        team.setPriority(priority);
         return teamDao.insert(team)!=-1;
     }
 

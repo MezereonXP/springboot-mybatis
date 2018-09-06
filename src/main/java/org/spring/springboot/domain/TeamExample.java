@@ -444,63 +444,63 @@ public class TeamExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderIsNull() {
-            addCriterion("order is null");
+        public Criteria andPriorityIsNull() {
+            addCriterion("priority is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderIsNotNull() {
-            addCriterion("order is not null");
+        public Criteria andPriorityIsNotNull() {
+            addCriterion("priority is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderEqualTo(Integer value) {
-            addCriterion("order =", value, "order");
+        public Criteria andPriorityEqualTo(Integer value) {
+            addCriterion("priority =", value, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotEqualTo(Integer value) {
-            addCriterion("order <>", value, "order");
+        public Criteria andPriorityNotEqualTo(Integer value) {
+            addCriterion("priority <>", value, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderGreaterThan(Integer value) {
-            addCriterion("order >", value, "order");
+        public Criteria andPriorityGreaterThan(Integer value) {
+            addCriterion("priority >", value, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderGreaterThanOrEqualTo(Integer value) {
-            addCriterion("order >=", value, "order");
+        public Criteria andPriorityGreaterThanOrEqualTo(Integer value) {
+            addCriterion("priority >=", value, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderLessThan(Integer value) {
-            addCriterion("order <", value, "order");
+        public Criteria andPriorityLessThan(Integer value) {
+            addCriterion("priority <", value, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderLessThanOrEqualTo(Integer value) {
-            addCriterion("order <=", value, "order");
+        public Criteria andPriorityLessThanOrEqualTo(Integer value) {
+            addCriterion("priority <=", value, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderIn(List<Integer> values) {
-            addCriterion("order in", values, "order");
+        public Criteria andPriorityIn(List<Integer> values) {
+            addCriterion("priority in", values, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotIn(List<Integer> values) {
-            addCriterion("order not in", values, "order");
+        public Criteria andPriorityNotIn(List<Integer> values) {
+            addCriterion("priority not in", values, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBetween(Integer value1, Integer value2) {
-            addCriterion("order between", value1, value2, "order");
+        public Criteria andPriorityBetween(Integer value1, Integer value2) {
+            addCriterion("priority between", value1, value2, "priority");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotBetween(Integer value1, Integer value2) {
-            addCriterion("order not between", value1, value2, "order");
+        public Criteria andPriorityNotBetween(Integer value1, Integer value2) {
+            addCriterion("priority not between", value1, value2, "priority");
             return (Criteria) this;
         }
     }

@@ -11,7 +11,7 @@ public class Team {
 
     private String password;
 
-    private Integer order;
+    private Integer priority;
 
     private String details;
 
@@ -55,12 +55,12 @@ public class Team {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getPriority() {
+        return priority;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setPriority(Integer priority) {
+        this.priority = priority;
     }
 
     public String getDetails() {

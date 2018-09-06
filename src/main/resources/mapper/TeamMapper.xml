@@ -7,7 +7,7 @@
     <result column="teamName" jdbcType="VARCHAR" property="teamName"/>
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="order" jdbcType="INTEGER" property="order"/>
+    <result column="priority" jdbcType="INTEGER" property="priority"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Team">
     <result column="details" jdbcType="LONGVARCHAR" property="details"/>
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    teamId, uniname, teamName, email, password, order
+    teamId, uniname, teamName, email, password, priority
   </sql>
   <sql id="Blob_Column_List">
     details
@@ -128,10 +128,10 @@
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Team">
     insert into team (teamId, uniname, teamName, 
-      email, password, order, 
+      email, password, priority, 
       details)
     values (#{teamId,jdbcType=INTEGER}, #{uniname,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER}, 
+      #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, 
       #{details,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Team">
@@ -152,8 +152,8 @@
       <if test="password != null">
         password,
       </if>
-      <if test="order != null">
-        order,
+      <if test="priority != null">
+        priority,
       </if>
       <if test="details != null">
         details,
@@ -175,8 +175,8 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="order != null">
-        #{order,jdbcType=INTEGER},
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
       </if>
       <if test="details != null">
         #{details,jdbcType=LONGVARCHAR},
@@ -207,8 +207,8 @@
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.order != null">
-        order = #{record.order,jdbcType=INTEGER},
+      <if test="record.priority != null">
+        priority = #{record.priority,jdbcType=INTEGER},
       </if>
       <if test="record.details != null">
         details = #{record.details,jdbcType=LONGVARCHAR},
@@ -225,7 +225,7 @@
     teamName = #{record.teamName,jdbcType=VARCHAR},
     email = #{record.email,jdbcType=VARCHAR},
     password = #{record.password,jdbcType=VARCHAR},
-    order = #{record.order,jdbcType=INTEGER},
+    priority = #{record.priority,jdbcType=INTEGER},
     details = #{record.details,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause"/>
@@ -238,7 +238,7 @@
     teamName = #{record.teamName,jdbcType=VARCHAR},
     email = #{record.email,jdbcType=VARCHAR},
     password = #{record.password,jdbcType=VARCHAR},
-    order = #{record.order,jdbcType=INTEGER}
+    priority = #{record.priority,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause"/>
     </if>
@@ -258,8 +258,8 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="order != null">
-        order = #{order,jdbcType=INTEGER},
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
       </if>
       <if test="details != null">
         details = #{details,jdbcType=LONGVARCHAR},
@@ -273,7 +273,7 @@
       teamName = #{teamName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      order = #{order,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
       details = #{details,jdbcType=LONGVARCHAR}
     where teamId = #{teamId,jdbcType=INTEGER}
   </update>
@@ -283,7 +283,7 @@
       teamName = #{teamName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      order = #{order,jdbcType=INTEGER}
+      priority = #{priority,jdbcType=INTEGER}
     where teamId = #{teamId,jdbcType=INTEGER}
   </update>
   <select id="findByEmail" resultMap="BaseResultMap">
