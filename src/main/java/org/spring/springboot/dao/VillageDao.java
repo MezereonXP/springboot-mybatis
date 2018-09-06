@@ -17,10 +17,8 @@ public interface VillageDao {
 
     int updateByPrimaryKeySelective(Village record);
 
-    int updateByPrimaryKeyWithBLOBs(Village record);
-
     int updateByPrimaryKey(Village record);
 
-    public List<Village> getVillageByTownshipId(String townshipId);
+    List<Village> getVillageByTownshipId(String townshipId);
 
 }

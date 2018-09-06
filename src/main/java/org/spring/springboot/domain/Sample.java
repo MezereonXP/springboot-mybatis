@@ -3,508 +3,798 @@ package org.spring.springboot.domain;
 import java.util.Date;
 
 public class Sample {
-    private Integer baseid;
+    private Integer baseId;
 
-    private Integer validation;
+    private Integer waterTypeId;
 
-    private Integer watertype;
+    private Integer isValidated;
 
-    private Integer locationid;
+    private Integer locationId;
 
-    private Integer cycleteamid;
+    private Integer cycleTeamId;
 
-    private Integer watersourcetype;
+    private Integer drinkingWaterId;
 
-    private Integer deliverymethod;
+    private Integer waterSourceTypeId;
 
-    private Integer waterstorage;
+    private Integer deliveryMethodId;
 
-    private Integer avgstoragehours;
+    private Integer inTakeMethodId;
 
-    private Integer potentialcontamination;
+    private Integer centralizedWaterTreatmentMethodId;
 
-    private Integer potentialcontaminationdist;
+    private Integer treatmentMethodId;
 
-    private Integer populationservedbysource;
+    private Integer waterStorageId;
 
-    private Integer physicalindicators;
+    private String waterShortage;
 
-    private Double temp;
+    private String potentialContamination;
 
-    private Integer smell;
+    private Integer potentialContaminationDistance;
 
-    private Integer turbidity;
+    private Integer populationServedBySource;
 
-    private Double fevalue;
+    private Integer physicalIndicators;
 
-    private Integer femethod;
+    private Float temp;
 
-    private Double cr6value;
+    private Integer smellId;
 
-    private Integer cr6method;
+    private Integer visualId;
 
-    private Double asvalue;
+    private String otherInformation;
 
-    private Integer asmethod;
+    private Float feElement;
 
-    private Double mnvalue;
+    private String feMethod;
 
-    private Integer mnmethod;
+    private Float cr6Element;
 
-    private Double residualchlorine;
+    private String cr6Method;
 
-    private Integer residualchlorinemethod;
+    private Float asElement;
 
-    private Double dovalue;
+    private String asMethod;
 
-    private Integer domethod;
+    private Float mnElement;
 
-    private Double no2value;
+    private String mnMethod;
 
-    private Integer no2method;
+    private Float residualChlorineElement;
 
-    private Double no3value;
+    private String residualChlorineMethod;
 
-    private Integer no3method;
+    private Float dissolvedOxygenElement;
 
-    private Double codvalue;
+    private String dissolvedOxygenMethod;
 
-    private Integer codmethod;
+    private Float no2Element;
 
-    private Double fvalue;
+    private String no2Method;
 
-    private Integer fmethod;
+    private Float no3Element;
 
-    private Double nh3value;
+    private Integer no3dilutionrate;
 
-    private Integer ng3method;
+    private Float no3Original;
 
-    private Double phvalue;
+    private String no3Method;
 
-    private Integer phmethod;
+    private Float codElement;
 
-    private Double tdsvalue;
+    private String codMethod;
 
-    private Integer tdsmethod;
+    private Float fElement;
 
-    private Double ecoilvalue;
+    private Integer fDilutionrate;
 
-    private Integer ecoilmethod;
+    private Float fOriginal;
 
-    private Integer sanitarytype;
+    private String fMethod;
 
-    private Integer sanitaryscore;
+    private Float nh3Element;
 
-    private Date samplingdate;
+    private String nh3Method;
 
-    private Date detectdate;
+    private Float phElement;
+
+    private String phMethod;
+
+    private Float tdsElement;
+
+    private String tdsMethod;
+
+    private Float ecoilElement;
+
+    private String ecoilMethod;
+
+    private Float ammoniaNitrogenElement;
+
+    private String ammoniaNitrogenMethod;
+
+    private Float tetcNumberElement;
+
+    private String tetcNumberDescription;
+
+    private String additionalParameter1;
+
+    private Float additionalValue1;
+
+    private String additionalUnit1;
+
+    private String additionalParameter2;
+
+    private Float additionalValue2;
+
+    private String additionalUnit2;
+
+    private Integer sanitaryScore1;
+
+    private Integer sanitaryScore2;
+
+    private Integer sanitaryScore3;
+
+    private Integer sanitaryScore4;
+
+    private Integer sanitaryScore5;
+
+    private Integer sanitaryScore6;
+
+    private Integer sanitaryScore7;
+
+    private Integer sanitaryScore8;
+
+    private Integer sanitaryScore9;
+
+    private Integer sanitaryScore10;
+
+    private Integer sanitaryScore11;
+
+    private Integer sanitaryTypeId;
+
+    private Date samplingDate;
+
+    private Date detectDate;
 
     private String picture;
 
-    private Integer sanitaryscore1;
+    private String generalComments;
 
-    private Integer sanitaryscore2;
+    private String waterQDeterminationComments;
 
-    private Integer sanitaryscore3;
+    private String probComments;
 
-    private Integer sanitaryscore4;
+    private String challengesComments;
 
-    private Integer sanitaryscore5;
+    private String needsComments;
 
-    private Integer sanitaryscore6;
+    private String healthCenterId;
 
-    private Integer sanitaryscore7;
+    private String waterCollector;
 
-    private Integer sanitaryscore8;
+    private Integer distanceWaterCollection;
 
-    private Integer sanitaryscore9;
+    private Integer waterWaitTime;
 
-    private Integer sanitaryscore10;
+    private String diarrheaCause;
 
-    private Integer sanitaryscore11;
+    private Integer waterSatisfaction;
 
-    public Integer getBaseid() {
-        return baseid;
+    public Integer getBaseId() {
+        return baseId;
     }
 
-    public void setBaseid(Integer baseid) {
-        this.baseid = baseid;
+    public void setBaseId(Integer baseId) {
+        this.baseId = baseId;
     }
 
-    public Integer getValidation() {
-        return validation;
+    public Integer getWaterTypeId() {
+        return waterTypeId;
     }
 
-    public void setValidation(Integer validation) {
-        this.validation = validation;
+    public void setWaterTypeId(Integer waterTypeId) {
+        this.waterTypeId = waterTypeId;
     }
 
-    public Integer getWatertype() {
-        return watertype;
+    public Integer getIsValidated() {
+        return isValidated;
     }
 
-    public void setWatertype(Integer watertype) {
-        this.watertype = watertype;
+    public void setIsValidated(Integer isValidated) {
+        this.isValidated = isValidated;
     }
 
-    public Integer getLocationid() {
-        return locationid;
+    public Integer getLocationId() {
+        return locationId;
     }
 
-    public void setLocationid(Integer locationid) {
-        this.locationid = locationid;
+    public void setLocationId(Integer locationId) {
+        this.locationId = locationId;
     }
 
-    public Integer getCycleteamid() {
-        return cycleteamid;
+    public Integer getCycleTeamId() {
+        return cycleTeamId;
     }
 
-    public void setCycleteamid(Integer cycleteamid) {
-        this.cycleteamid = cycleteamid;
+    public void setCycleTeamId(Integer cycleTeamId) {
+        this.cycleTeamId = cycleTeamId;
     }
 
-    public Integer getWatersourcetype() {
-        return watersourcetype;
+    public Integer getDrinkingWaterId() {
+        return drinkingWaterId;
     }
 
-    public void setWatersourcetype(Integer watersourcetype) {
-        this.watersourcetype = watersourcetype;
+    public void setDrinkingWaterId(Integer drinkingWaterId) {
+        this.drinkingWaterId = drinkingWaterId;
     }
 
-    public Integer getDeliverymethod() {
-        return deliverymethod;
+    public Integer getWaterSourceTypeId() {
+        return waterSourceTypeId;
     }
 
-    public void setDeliverymethod(Integer deliverymethod) {
-        this.deliverymethod = deliverymethod;
+    public void setWaterSourceTypeId(Integer waterSourceTypeId) {
+        this.waterSourceTypeId = waterSourceTypeId;
     }
 
-    public Integer getWaterstorage() {
-        return waterstorage;
+    public Integer getDeliveryMethodId() {
+        return deliveryMethodId;
     }
 
-    public void setWaterstorage(Integer waterstorage) {
-        this.waterstorage = waterstorage;
+    public void setDeliveryMethodId(Integer deliveryMethodId) {
+        this.deliveryMethodId = deliveryMethodId;
     }
 
-    public Integer getAvgstoragehours() {
-        return avgstoragehours;
+    public Integer getInTakeMethodId() {
+        return inTakeMethodId;
     }
 
-    public void setAvgstoragehours(Integer avgstoragehours) {
-        this.avgstoragehours = avgstoragehours;
+    public void setInTakeMethodId(Integer inTakeMethodId) {
+        this.inTakeMethodId = inTakeMethodId;
     }
 
-    public Integer getPotentialcontamination() {
-        return potentialcontamination;
+    public Integer getCentralizedWaterTreatmentMethodId() {
+        return centralizedWaterTreatmentMethodId;
     }
 
-    public void setPotentialcontamination(Integer potentialcontamination) {
-        this.potentialcontamination = potentialcontamination;
+    public void setCentralizedWaterTreatmentMethodId(Integer centralizedWaterTreatmentMethodId) {
+        this.centralizedWaterTreatmentMethodId = centralizedWaterTreatmentMethodId;
     }
 
-    public Integer getPotentialcontaminationdist() {
-        return potentialcontaminationdist;
+    public Integer getTreatmentMethodId() {
+        return treatmentMethodId;
     }
 
-    public void setPotentialcontaminationdist(Integer potentialcontaminationdist) {
-        this.potentialcontaminationdist = potentialcontaminationdist;
+    public void setTreatmentMethodId(Integer treatmentMethodId) {
+        this.treatmentMethodId = treatmentMethodId;
     }
 
-    public Integer getPopulationservedbysource() {
-        return populationservedbysource;
+    public Integer getWaterStorageId() {
+        return waterStorageId;
     }
 
-    public void setPopulationservedbysource(Integer populationservedbysource) {
-        this.populationservedbysource = populationservedbysource;
+    public void setWaterStorageId(Integer waterStorageId) {
+        this.waterStorageId = waterStorageId;
     }
 
-    public Integer getPhysicalindicators() {
-        return physicalindicators;
+    public String getWaterShortage() {
+        return waterShortage;
     }
 
-    public void setPhysicalindicators(Integer physicalindicators) {
-        this.physicalindicators = physicalindicators;
+    public void setWaterShortage(String waterShortage) {
+        this.waterShortage = waterShortage == null ? null : waterShortage.trim();
     }
 
-    public Double getTemp() {
+    public String getPotentialContamination() {
+        return potentialContamination;
+    }
+
+    public void setPotentialContamination(String potentialContamination) {
+        this.potentialContamination = potentialContamination == null ? null : potentialContamination.trim();
+    }
+
+    public Integer getPotentialContaminationDistance() {
+        return potentialContaminationDistance;
+    }
+
+    public void setPotentialContaminationDistance(Integer potentialContaminationDistance) {
+        this.potentialContaminationDistance = potentialContaminationDistance;
+    }
+
+    public Integer getPopulationServedBySource() {
+        return populationServedBySource;
+    }
+
+    public void setPopulationServedBySource(Integer populationServedBySource) {
+        this.populationServedBySource = populationServedBySource;
+    }
+
+    public Integer getPhysicalIndicators() {
+        return physicalIndicators;
+    }
+
+    public void setPhysicalIndicators(Integer physicalIndicators) {
+        this.physicalIndicators = physicalIndicators;
+    }
+
+    public Float getTemp() {
         return temp;
     }
 
-    public void setTemp(Double temp) {
+    public void setTemp(Float temp) {
         this.temp = temp;
     }
 
-    public Integer getSmell() {
-        return smell;
+    public Integer getSmellId() {
+        return smellId;
     }
 
-    public void setSmell(Integer smell) {
-        this.smell = smell;
+    public void setSmellId(Integer smellId) {
+        this.smellId = smellId;
     }
 
-    public Integer getTurbidity() {
-        return turbidity;
+    public Integer getVisualId() {
+        return visualId;
     }
 
-    public void setTurbidity(Integer turbidity) {
-        this.turbidity = turbidity;
+    public void setVisualId(Integer visualId) {
+        this.visualId = visualId;
     }
 
-    public Double getFevalue() {
-        return fevalue;
+    public String getOtherInformation() {
+        return otherInformation;
     }
 
-    public void setFevalue(Double fevalue) {
-        this.fevalue = fevalue;
+    public void setOtherInformation(String otherInformation) {
+        this.otherInformation = otherInformation == null ? null : otherInformation.trim();
     }
 
-    public Integer getFemethod() {
-        return femethod;
+    public Float getFeElement() {
+        return feElement;
     }
 
-    public void setFemethod(Integer femethod) {
-        this.femethod = femethod;
+    public void setFeElement(Float feElement) {
+        this.feElement = feElement;
     }
 
-    public Double getCr6value() {
-        return cr6value;
+    public String getFeMethod() {
+        return feMethod;
     }
 
-    public void setCr6value(Double cr6value) {
-        this.cr6value = cr6value;
+    public void setFeMethod(String feMethod) {
+        this.feMethod = feMethod == null ? null : feMethod.trim();
     }
 
-    public Integer getCr6method() {
-        return cr6method;
+    public Float getCr6Element() {
+        return cr6Element;
     }
 
-    public void setCr6method(Integer cr6method) {
-        this.cr6method = cr6method;
+    public void setCr6Element(Float cr6Element) {
+        this.cr6Element = cr6Element;
     }
 
-    public Double getAsvalue() {
-        return asvalue;
+    public String getCr6Method() {
+        return cr6Method;
     }
 
-    public void setAsvalue(Double asvalue) {
-        this.asvalue = asvalue;
+    public void setCr6Method(String cr6Method) {
+        this.cr6Method = cr6Method == null ? null : cr6Method.trim();
     }
 
-    public Integer getAsmethod() {
-        return asmethod;
+    public Float getAsElement() {
+        return asElement;
     }
 
-    public void setAsmethod(Integer asmethod) {
-        this.asmethod = asmethod;
+    public void setAsElement(Float asElement) {
+        this.asElement = asElement;
     }
 
-    public Double getMnvalue() {
-        return mnvalue;
+    public String getAsMethod() {
+        return asMethod;
     }
 
-    public void setMnvalue(Double mnvalue) {
-        this.mnvalue = mnvalue;
+    public void setAsMethod(String asMethod) {
+        this.asMethod = asMethod == null ? null : asMethod.trim();
     }
 
-    public Integer getMnmethod() {
-        return mnmethod;
+    public Float getMnElement() {
+        return mnElement;
     }
 
-    public void setMnmethod(Integer mnmethod) {
-        this.mnmethod = mnmethod;
+    public void setMnElement(Float mnElement) {
+        this.mnElement = mnElement;
     }
 
-    public Double getResidualchlorine() {
-        return residualchlorine;
+    public String getMnMethod() {
+        return mnMethod;
     }
 
-    public void setResidualchlorine(Double residualchlorine) {
-        this.residualchlorine = residualchlorine;
+    public void setMnMethod(String mnMethod) {
+        this.mnMethod = mnMethod == null ? null : mnMethod.trim();
     }
 
-    public Integer getResidualchlorinemethod() {
-        return residualchlorinemethod;
+    public Float getResidualChlorineElement() {
+        return residualChlorineElement;
     }
 
-    public void setResidualchlorinemethod(Integer residualchlorinemethod) {
-        this.residualchlorinemethod = residualchlorinemethod;
+    public void setResidualChlorineElement(Float residualChlorineElement) {
+        this.residualChlorineElement = residualChlorineElement;
     }
 
-    public Double getDovalue() {
-        return dovalue;
+    public String getResidualChlorineMethod() {
+        return residualChlorineMethod;
     }
 
-    public void setDovalue(Double dovalue) {
-        this.dovalue = dovalue;
+    public void setResidualChlorineMethod(String residualChlorineMethod) {
+        this.residualChlorineMethod = residualChlorineMethod == null ? null : residualChlorineMethod.trim();
     }
 
-    public Integer getDomethod() {
-        return domethod;
+    public Float getDissolvedOxygenElement() {
+        return dissolvedOxygenElement;
     }
 
-    public void setDomethod(Integer domethod) {
-        this.domethod = domethod;
+    public void setDissolvedOxygenElement(Float dissolvedOxygenElement) {
+        this.dissolvedOxygenElement = dissolvedOxygenElement;
     }
 
-    public Double getNo2value() {
-        return no2value;
+    public String getDissolvedOxygenMethod() {
+        return dissolvedOxygenMethod;
     }
 
-    public void setNo2value(Double no2value) {
-        this.no2value = no2value;
+    public void setDissolvedOxygenMethod(String dissolvedOxygenMethod) {
+        this.dissolvedOxygenMethod = dissolvedOxygenMethod == null ? null : dissolvedOxygenMethod.trim();
     }
 
-    public Integer getNo2method() {
-        return no2method;
+    public Float getNo2Element() {
+        return no2Element;
     }
 
-    public void setNo2method(Integer no2method) {
-        this.no2method = no2method;
+    public void setNo2Element(Float no2Element) {
+        this.no2Element = no2Element;
     }
 
-    public Double getNo3value() {
-        return no3value;
+    public String getNo2Method() {
+        return no2Method;
     }
 
-    public void setNo3value(Double no3value) {
-        this.no3value = no3value;
+    public void setNo2Method(String no2Method) {
+        this.no2Method = no2Method == null ? null : no2Method.trim();
     }
 
-    public Integer getNo3method() {
-        return no3method;
+    public Float getNo3Element() {
+        return no3Element;
     }
 
-    public void setNo3method(Integer no3method) {
-        this.no3method = no3method;
+    public void setNo3Element(Float no3Element) {
+        this.no3Element = no3Element;
     }
 
-    public Double getCodvalue() {
-        return codvalue;
+    public Integer getNo3dilutionrate() {
+        return no3dilutionrate;
     }
 
-    public void setCodvalue(Double codvalue) {
-        this.codvalue = codvalue;
+    public void setNo3dilutionrate(Integer no3dilutionrate) {
+        this.no3dilutionrate = no3dilutionrate;
     }
 
-    public Integer getCodmethod() {
-        return codmethod;
+    public Float getNo3Original() {
+        return no3Original;
     }
 
-    public void setCodmethod(Integer codmethod) {
-        this.codmethod = codmethod;
+    public void setNo3Original(Float no3Original) {
+        this.no3Original = no3Original;
     }
 
-    public Double getFvalue() {
-        return fvalue;
+    public String getNo3Method() {
+        return no3Method;
     }
 
-    public void setFvalue(Double fvalue) {
-        this.fvalue = fvalue;
+    public void setNo3Method(String no3Method) {
+        this.no3Method = no3Method == null ? null : no3Method.trim();
     }
 
-    public Integer getFmethod() {
-        return fmethod;
+    public Float getCodElement() {
+        return codElement;
     }
 
-    public void setFmethod(Integer fmethod) {
-        this.fmethod = fmethod;
+    public void setCodElement(Float codElement) {
+        this.codElement = codElement;
     }
 
-    public Double getNh3value() {
-        return nh3value;
+    public String getCodMethod() {
+        return codMethod;
     }
 
-    public void setNh3value(Double nh3value) {
-        this.nh3value = nh3value;
+    public void setCodMethod(String codMethod) {
+        this.codMethod = codMethod == null ? null : codMethod.trim();
     }
 
-    public Integer getNg3method() {
-        return ng3method;
+    public Float getfElement() {
+        return fElement;
     }
 
-    public void setNg3method(Integer ng3method) {
-        this.ng3method = ng3method;
+    public void setfElement(Float fElement) {
+        this.fElement = fElement;
     }
 
-    public Double getPhvalue() {
-        return phvalue;
+    public Integer getfDilutionrate() {
+        return fDilutionrate;
     }
 
-    public void setPhvalue(Double phvalue) {
-        this.phvalue = phvalue;
+    public void setfDilutionrate(Integer fDilutionrate) {
+        this.fDilutionrate = fDilutionrate;
     }
 
-    public Integer getPhmethod() {
-        return phmethod;
+    public Float getfOriginal() {
+        return fOriginal;
     }
 
-    public void setPhmethod(Integer phmethod) {
-        this.phmethod = phmethod;
+    public void setfOriginal(Float fOriginal) {
+        this.fOriginal = fOriginal;
     }
 
-    public Double getTdsvalue() {
-        return tdsvalue;
+    public String getfMethod() {
+        return fMethod;
     }
 
-    public void setTdsvalue(Double tdsvalue) {
-        this.tdsvalue = tdsvalue;
+    public void setfMethod(String fMethod) {
+        this.fMethod = fMethod == null ? null : fMethod.trim();
     }
 
-    public Integer getTdsmethod() {
-        return tdsmethod;
+    public Float getNh3Element() {
+        return nh3Element;
     }
 
-    public void setTdsmethod(Integer tdsmethod) {
-        this.tdsmethod = tdsmethod;
+    public void setNh3Element(Float nh3Element) {
+        this.nh3Element = nh3Element;
     }
 
-    public Double getEcoilvalue() {
-        return ecoilvalue;
+    public String getNh3Method() {
+        return nh3Method;
     }
 
-    public void setEcoilvalue(Double ecoilvalue) {
-        this.ecoilvalue = ecoilvalue;
+    public void setNh3Method(String nh3Method) {
+        this.nh3Method = nh3Method == null ? null : nh3Method.trim();
     }
 
-    public Integer getEcoilmethod() {
-        return ecoilmethod;
+    public Float getPhElement() {
+        return phElement;
     }
 
-    public void setEcoilmethod(Integer ecoilmethod) {
-        this.ecoilmethod = ecoilmethod;
+    public void setPhElement(Float phElement) {
+        this.phElement = phElement;
     }
 
-    public Integer getSanitarytype() {
-        return sanitarytype;
+    public String getPhMethod() {
+        return phMethod;
     }
 
-    public void setSanitarytype(Integer sanitarytype) {
-        this.sanitarytype = sanitarytype;
+    public void setPhMethod(String phMethod) {
+        this.phMethod = phMethod == null ? null : phMethod.trim();
     }
 
-    public Integer getSanitaryscore() {
-        return sanitaryscore;
+    public Float getTdsElement() {
+        return tdsElement;
     }
 
-    public void setSanitaryscore(Integer sanitaryscore) {
-        this.sanitaryscore = sanitaryscore;
+    public void setTdsElement(Float tdsElement) {
+        this.tdsElement = tdsElement;
     }
 
-    public Date getSamplingdate() {
-        return samplingdate;
+    public String getTdsMethod() {
+        return tdsMethod;
     }
 
-    public void setSamplingdate(Date samplingdate) {
-        this.samplingdate = samplingdate;
+    public void setTdsMethod(String tdsMethod) {
+        this.tdsMethod = tdsMethod == null ? null : tdsMethod.trim();
     }
 
-    public Date getDetectdate() {
-        return detectdate;
+    public Float getEcoilElement() {
+        return ecoilElement;
     }
 
-    public void setDetectdate(Date detectdate) {
-        this.detectdate = detectdate;
+    public void setEcoilElement(Float ecoilElement) {
+        this.ecoilElement = ecoilElement;
+    }
+
+    public String getEcoilMethod() {
+        return ecoilMethod;
+    }
+
+    public void setEcoilMethod(String ecoilMethod) {
+        this.ecoilMethod = ecoilMethod == null ? null : ecoilMethod.trim();
+    }
+
+    public Float getAmmoniaNitrogenElement() {
+        return ammoniaNitrogenElement;
+    }
+
+    public void setAmmoniaNitrogenElement(Float ammoniaNitrogenElement) {
+        this.ammoniaNitrogenElement = ammoniaNitrogenElement;
+    }
+
+    public String getAmmoniaNitrogenMethod() {
+        return ammoniaNitrogenMethod;
+    }
+
+    public void setAmmoniaNitrogenMethod(String ammoniaNitrogenMethod) {
+        this.ammoniaNitrogenMethod = ammoniaNitrogenMethod == null ? null : ammoniaNitrogenMethod.trim();
+    }
+
+    public Float getTetcNumberElement() {
+        return tetcNumberElement;
+    }
+
+    public void setTetcNumberElement(Float tetcNumberElement) {
+        this.tetcNumberElement = tetcNumberElement;
+    }
+
+    public String getTetcNumberDescription() {
+        return tetcNumberDescription;
+    }
+
+    public void setTetcNumberDescription(String tetcNumberDescription) {
+        this.tetcNumberDescription = tetcNumberDescription == null ? null : tetcNumberDescription.trim();
+    }
+
+    public String getAdditionalParameter1() {
+        return additionalParameter1;
+    }
+
+    public void setAdditionalParameter1(String additionalParameter1) {
+        this.additionalParameter1 = additionalParameter1 == null ? null : additionalParameter1.trim();
+    }
+
+    public Float getAdditionalValue1() {
+        return additionalValue1;
+    }
+
+    public void setAdditionalValue1(Float additionalValue1) {
+        this.additionalValue1 = additionalValue1;
+    }
+
+    public String getAdditionalUnit1() {
+        return additionalUnit1;
+    }
+
+    public void setAdditionalUnit1(String additionalUnit1) {
+        this.additionalUnit1 = additionalUnit1 == null ? null : additionalUnit1.trim();
+    }
+
+    public String getAdditionalParameter2() {
+        return additionalParameter2;
+    }
+
+    public void setAdditionalParameter2(String additionalParameter2) {
+        this.additionalParameter2 = additionalParameter2 == null ? null : additionalParameter2.trim();
+    }
+
+    public Float getAdditionalValue2() {
+        return additionalValue2;
+    }
+
+    public void setAdditionalValue2(Float additionalValue2) {
+        this.additionalValue2 = additionalValue2;
+    }
+
+    public String getAdditionalUnit2() {
+        return additionalUnit2;
+    }
+
+    public void setAdditionalUnit2(String additionalUnit2) {
+        this.additionalUnit2 = additionalUnit2 == null ? null : additionalUnit2.trim();
+    }
+
+    public Integer getSanitaryScore1() {
+        return sanitaryScore1;
+    }
+
+    public void setSanitaryScore1(Integer sanitaryScore1) {
+        this.sanitaryScore1 = sanitaryScore1;
+    }
+
+    public Integer getSanitaryScore2() {
+        return sanitaryScore2;
+    }
+
+    public void setSanitaryScore2(Integer sanitaryScore2) {
+        this.sanitaryScore2 = sanitaryScore2;
+    }
+
+    public Integer getSanitaryScore3() {
+        return sanitaryScore3;
+    }
+
+    public void setSanitaryScore3(Integer sanitaryScore3) {
+        this.sanitaryScore3 = sanitaryScore3;
+    }
+
+    public Integer getSanitaryScore4() {
+        return sanitaryScore4;
+    }
+
+    public void setSanitaryScore4(Integer sanitaryScore4) {
+        this.sanitaryScore4 = sanitaryScore4;
+    }
+
+    public Integer getSanitaryScore5() {
+        return sanitaryScore5;
+    }
+
+    public void setSanitaryScore5(Integer sanitaryScore5) {
+        this.sanitaryScore5 = sanitaryScore5;
+    }
+
+    public Integer getSanitaryScore6() {
+        return sanitaryScore6;
+    }
+
+    public void setSanitaryScore6(Integer sanitaryScore6) {
+        this.sanitaryScore6 = sanitaryScore6;
+    }
+
+    public Integer getSanitaryScore7() {
+        return sanitaryScore7;
+    }
+
+    public void setSanitaryScore7(Integer sanitaryScore7) {
+        this.sanitaryScore7 = sanitaryScore7;
+    }
+
+    public Integer getSanitaryScore8() {
+        return sanitaryScore8;
+    }
+
+    public void setSanitaryScore8(Integer sanitaryScore8) {
+        this.sanitaryScore8 = sanitaryScore8;
+    }
+
+    public Integer getSanitaryScore9() {
+        return sanitaryScore9;
+    }
+
+    public void setSanitaryScore9(Integer sanitaryScore9) {
+        this.sanitaryScore9 = sanitaryScore9;
+    }
+
+    public Integer getSanitaryScore10() {
+        return sanitaryScore10;
+    }
+
+    public void setSanitaryScore10(Integer sanitaryScore10) {
+        this.sanitaryScore10 = sanitaryScore10;
+    }
+
+    public Integer getSanitaryScore11() {
+        return sanitaryScore11;
+    }
+
+    public void setSanitaryScore11(Integer sanitaryScore11) {
+        this.sanitaryScore11 = sanitaryScore11;
+    }
+
+    public Integer getSanitaryTypeId() {
+        return sanitaryTypeId;
+    }
+
+    public void setSanitaryTypeId(Integer sanitaryTypeId) {
+        this.sanitaryTypeId = sanitaryTypeId;
+    }
+
+    public Date getSamplingDate() {
+        return samplingDate;
+    }
+
+    public void setSamplingDate(Date samplingDate) {
+        this.samplingDate = samplingDate;
+    }
+
+    public Date getDetectDate() {
+        return detectDate;
+    }
+
+    public void setDetectDate(Date detectDate) {
+        this.detectDate = detectDate;
     }
 
     public String getPicture() {
@@ -515,91 +805,91 @@ public class Sample {
         this.picture = picture == null ? null : picture.trim();
     }
 
-    public Integer getSanitaryscore1() {
-        return sanitaryscore1;
+    public String getGeneralComments() {
+        return generalComments;
     }
 
-    public void setSanitaryscore1(Integer sanitaryscore1) {
-        this.sanitaryscore1 = sanitaryscore1;
+    public void setGeneralComments(String generalComments) {
+        this.generalComments = generalComments == null ? null : generalComments.trim();
     }
 
-    public Integer getSanitaryscore2() {
-        return sanitaryscore2;
+    public String getWaterQDeterminationComments() {
+        return waterQDeterminationComments;
     }
 
-    public void setSanitaryscore2(Integer sanitaryscore2) {
-        this.sanitaryscore2 = sanitaryscore2;
+    public void setWaterQDeterminationComments(String waterQDeterminationComments) {
+        this.waterQDeterminationComments = waterQDeterminationComments == null ? null : waterQDeterminationComments.trim();
     }
 
-    public Integer getSanitaryscore3() {
-        return sanitaryscore3;
+    public String getProbComments() {
+        return probComments;
     }
 
-    public void setSanitaryscore3(Integer sanitaryscore3) {
-        this.sanitaryscore3 = sanitaryscore3;
+    public void setProbComments(String probComments) {
+        this.probComments = probComments == null ? null : probComments.trim();
     }
 
-    public Integer getSanitaryscore4() {
-        return sanitaryscore4;
+    public String getChallengesComments() {
+        return challengesComments;
     }
 
-    public void setSanitaryscore4(Integer sanitaryscore4) {
-        this.sanitaryscore4 = sanitaryscore4;
+    public void setChallengesComments(String challengesComments) {
+        this.challengesComments = challengesComments == null ? null : challengesComments.trim();
     }
 
-    public Integer getSanitaryscore5() {
-        return sanitaryscore5;
+    public String getNeedsComments() {
+        return needsComments;
     }
 
-    public void setSanitaryscore5(Integer sanitaryscore5) {
-        this.sanitaryscore5 = sanitaryscore5;
+    public void setNeedsComments(String needsComments) {
+        this.needsComments = needsComments == null ? null : needsComments.trim();
     }
 
-    public Integer getSanitaryscore6() {
-        return sanitaryscore6;
+    public String getHealthCenterId() {
+        return healthCenterId;
     }
 
-    public void setSanitaryscore6(Integer sanitaryscore6) {
-        this.sanitaryscore6 = sanitaryscore6;
+    public void setHealthCenterId(String healthCenterId) {
+        this.healthCenterId = healthCenterId == null ? null : healthCenterId.trim();
     }
 
-    public Integer getSanitaryscore7() {
-        return sanitaryscore7;
+    public String getWaterCollector() {
+        return waterCollector;
     }
 
-    public void setSanitaryscore7(Integer sanitaryscore7) {
-        this.sanitaryscore7 = sanitaryscore7;
+    public void setWaterCollector(String waterCollector) {
+        this.waterCollector = waterCollector == null ? null : waterCollector.trim();
     }
 
-    public Integer getSanitaryscore8() {
-        return sanitaryscore8;
+    public Integer getDistanceWaterCollection() {
+        return distanceWaterCollection;
     }
 
-    public void setSanitaryscore8(Integer sanitaryscore8) {
-        this.sanitaryscore8 = sanitaryscore8;
+    public void setDistanceWaterCollection(Integer distanceWaterCollection) {
+        this.distanceWaterCollection = distanceWaterCollection;
     }
 
-    public Integer getSanitaryscore9() {
-        return sanitaryscore9;
+    public Integer getWaterWaitTime() {
+        return waterWaitTime;
     }
 
-    public void setSanitaryscore9(Integer sanitaryscore9) {
-        this.sanitaryscore9 = sanitaryscore9;
+    public void setWaterWaitTime(Integer waterWaitTime) {
+        this.waterWaitTime = waterWaitTime;
     }
 
-    public Integer getSanitaryscore10() {
-        return sanitaryscore10;
+    public String getDiarrheaCause() {
+        return diarrheaCause;
     }
 
-    public void setSanitaryscore10(Integer sanitaryscore10) {
-        this.sanitaryscore10 = sanitaryscore10;
+    public void setDiarrheaCause(String diarrheaCause) {
+        this.diarrheaCause = diarrheaCause == null ? null : diarrheaCause.trim();
     }
 
-    public Integer getSanitaryscore11() {
-        return sanitaryscore11;
+    public Integer getWaterSatisfaction() {
+        return waterSatisfaction;
     }
 
-    public void setSanitaryscore11(Integer sanitaryscore11) {
-        this.sanitaryscore11 = sanitaryscore11;
+    public void setWaterSatisfaction(Integer waterSatisfaction) {
+        this.waterSatisfaction = waterSatisfaction;
     }
 }

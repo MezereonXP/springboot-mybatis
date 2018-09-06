@@ -2,138 +2,273 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.LocationDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Location">
-    <id column="locationid" jdbcType="INTEGER" property="locationid" />
-    <result column="villageid" jdbcType="INTEGER" property="villageid" />
-    <result column="locationname" jdbcType="VARCHAR" property="locationname" />
+    <id column="locationId" jdbcType="INTEGER" property="locationId"/>
+    <result column="villageId" jdbcType="INTEGER" property="villageId"/>
+    <result column="locationName" jdbcType="VARCHAR" property="locationName"/>
     <result column="lat" jdbcType="DOUBLE" property="lat" />
-    <result column="lon" jdbcType="DOUBLE" property="lon" />
+    <result column="log" jdbcType="DOUBLE" property="log"/>
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="createdat" jdbcType="DATE" property="createdat" />
-    <result column="updateat" jdbcType="DATE" property="updateat" />
-    <result column="blogid" jdbcType="INTEGER" property="blogid" />
+    <result column="createdAt" jdbcType="DATE" property="createdAt"/>
+    <result column="updatedAt" jdbcType="DATE" property="updatedAt"/>
+    <result column="blogId" jdbcType="INTEGER" property="blogId"/>
   </resultMap>
-  <sql id="Base_Column_List">
-    locationid, villageid, locationname, lat, lon, status, createdat, updateat, blogid
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    locationId, villageId, locationName, lat, log, status, createdAt, updatedAt, blogId
+  </sql>
+  <select id="selectByExample" parameterType="org.spring.springboot.domain.LocationExample" resultMap="BaseResultMap">
     select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List"/>
+    from location
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
     <include refid="Base_Column_List" />
     from location
-    where locationid = #{locationid,jdbcType=INTEGER}
+    where locationId = #{locationId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from location
-    where locationid = #{locationid,jdbcType=INTEGER}
+    where locationId = #{locationId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.spring.springboot.domain.LocationExample">
+    delete from location
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Location">
-    insert into location (locationid, villageid, locationname,
-    lat, lon, status, createdat,
-    updateat, blogid)
-    values (#{locationid,jdbcType=INTEGER}, #{villageid,jdbcType=INTEGER}, #{locationname,jdbcType=VARCHAR},
-    #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{createdat,jdbcType=DATE},
-    #{updateat,jdbcType=DATE}, #{blogid,jdbcType=INTEGER})
+    insert into location (locationId, villageId, locationName, 
+      lat, log, status, createdAt, 
+      updatedAt, blogId)
+    values (#{locationId,jdbcType=INTEGER}, #{villageId,jdbcType=INTEGER}, #{locationName,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=DOUBLE}, #{log,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{createdAt,jdbcType=DATE}, 
+      #{updatedAt,jdbcType=DATE}, #{blogId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Location">
     insert into location
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="locationid != null">
-        locationid,
+      <if test="locationId != null">
+        locationId,
       </if>
-      <if test="villageid != null">
-        villageid,
+      <if test="villageId != null">
+        villageId,
       </if>
-      <if test="locationname != null">
-        locationname,
+      <if test="locationName != null">
+        locationName,
       </if>
       <if test="lat != null">
         lat,
       </if>
-      <if test="lon != null">
-        lon,
+      <if test="log != null">
+        log,
       </if>
       <if test="status != null">
         status,
       </if>
-      <if test="createdat != null">
-        createdat,
+      <if test="createdAt != null">
+        createdAt,
       </if>
-      <if test="updateat != null">
-        updateat,
+      <if test="updatedAt != null">
+        updatedAt,
       </if>
-      <if test="blogid != null">
-        blogid,
+      <if test="blogId != null">
+        blogId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="locationid != null">
-        #{locationid,jdbcType=INTEGER},
+      <if test="locationId != null">
+        #{locationId,jdbcType=INTEGER},
       </if>
-      <if test="villageid != null">
-        #{villageid,jdbcType=INTEGER},
+      <if test="villageId != null">
+        #{villageId,jdbcType=INTEGER},
       </if>
-      <if test="locationname != null">
-        #{locationname,jdbcType=VARCHAR},
+      <if test="locationName != null">
+        #{locationName,jdbcType=VARCHAR},
       </if>
       <if test="lat != null">
         #{lat,jdbcType=DOUBLE},
       </if>
-      <if test="lon != null">
-        #{lon,jdbcType=DOUBLE},
+      <if test="log != null">
+        #{log,jdbcType=DOUBLE},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="createdat != null">
-        #{createdat,jdbcType=DATE},
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=DATE},
       </if>
-      <if test="updateat != null">
-        #{updateat,jdbcType=DATE},
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=DATE},
       </if>
-      <if test="blogid != null">
-        #{blogid,jdbcType=INTEGER},
+      <if test="blogId != null">
+        #{blogId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="org.spring.springboot.domain.LocationExample" resultType="java.lang.Long">
+    select count(*) from location
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update location
+    <set>
+      <if test="record.locationId != null">
+        locationId = #{record.locationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.villageId != null">
+        villageId = #{record.villageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.locationName != null">
+        locationName = #{record.locationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lat != null">
+        lat = #{record.lat,jdbcType=DOUBLE},
+      </if>
+      <if test="record.log != null">
+        log = #{record.log,jdbcType=DOUBLE},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null">
+        createdAt = #{record.createdAt,jdbcType=DATE},
+      </if>
+      <if test="record.updatedAt != null">
+        updatedAt = #{record.updatedAt,jdbcType=DATE},
+      </if>
+      <if test="record.blogId != null">
+        blogId = #{record.blogId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update location
+    set locationId = #{record.locationId,jdbcType=INTEGER},
+    villageId = #{record.villageId,jdbcType=INTEGER},
+    locationName = #{record.locationName,jdbcType=VARCHAR},
+    lat = #{record.lat,jdbcType=DOUBLE},
+    log = #{record.log,jdbcType=DOUBLE},
+    status = #{record.status,jdbcType=INTEGER},
+    createdAt = #{record.createdAt,jdbcType=DATE},
+    updatedAt = #{record.updatedAt,jdbcType=DATE},
+    blogId = #{record.blogId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Location">
     update location
     <set>
-      <if test="villageid != null">
-        villageid = #{villageid,jdbcType=INTEGER},
+      <if test="villageId != null">
+        villageId = #{villageId,jdbcType=INTEGER},
       </if>
-      <if test="locationname != null">
-        locationname = #{locationname,jdbcType=VARCHAR},
+      <if test="locationName != null">
+        locationName = #{locationName,jdbcType=VARCHAR},
       </if>
       <if test="lat != null">
         lat = #{lat,jdbcType=DOUBLE},
       </if>
-      <if test="lon != null">
-        lon = #{lon,jdbcType=DOUBLE},
+      <if test="log != null">
+        log = #{log,jdbcType=DOUBLE},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="createdat != null">
-        createdat = #{createdat,jdbcType=DATE},
+      <if test="createdAt != null">
+        createdAt = #{createdAt,jdbcType=DATE},
       </if>
-      <if test="updateat != null">
-        updateat = #{updateat,jdbcType=DATE},
+      <if test="updatedAt != null">
+        updatedAt = #{updatedAt,jdbcType=DATE},
       </if>
-      <if test="blogid != null">
-        blogid = #{blogid,jdbcType=INTEGER},
+      <if test="blogId != null">
+        blogId = #{blogId,jdbcType=INTEGER},
       </if>
     </set>
-    where locationid = #{locationid,jdbcType=INTEGER}
+    where locationId = #{locationId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Location">
     update location
-    set villageid = #{villageid,jdbcType=INTEGER},
-      locationname = #{locationname,jdbcType=VARCHAR},
+    set villageId = #{villageId,jdbcType=INTEGER},
+      locationName = #{locationName,jdbcType=VARCHAR},
       lat = #{lat,jdbcType=DOUBLE},
-      lon = #{lon,jdbcType=DOUBLE},
+      log = #{log,jdbcType=DOUBLE},
       status = #{status,jdbcType=INTEGER},
-      createdat = #{createdat,jdbcType=DATE},
-      updateat = #{updateat,jdbcType=DATE},
-      blogid = #{blogid,jdbcType=INTEGER}
-    where locationid = #{locationid,jdbcType=INTEGER}
+      createdAt = #{createdAt,jdbcType=DATE},
+      updatedAt = #{updatedAt,jdbcType=DATE},
+      blogId = #{blogId,jdbcType=INTEGER}
+    where locationId = #{locationId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,18 +1,22 @@
 package org.spring.springboot.domain;
 
 public class Blog {
-    private Integer blogid;
+    private Integer blogId;
 
     private String picture;
 
-    private Integer validation;
+    private Integer locationId;
 
-    public Integer getBlogid() {
-        return blogid;
+    private Integer teamId;
+
+    private String text;
+
+    public Integer getBlogId() {
+        return blogId;
     }
 
-    public void setBlogid(Integer blogid) {
-        this.blogid = blogid;
+    public void setBlogId(Integer blogId) {
+        this.blogId = blogId;
     }
 
     public String getPicture() {
@@ -23,11 +27,27 @@ public class Blog {
         this.picture = picture == null ? null : picture.trim();
     }
 
-    public Integer getValidation() {
-        return validation;
+    public Integer getLocationId() {
+        return locationId;
     }
 
-    public void setValidation(Integer validation) {
-        this.validation = validation;
+    public void setLocationId(Integer locationId) {
+        this.locationId = locationId;
+    }
+
+    public Integer getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Integer teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text == null ? null : text.trim();
     }
 }

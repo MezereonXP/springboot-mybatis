@@ -15,24 +15,24 @@ public class ShowSamples {
 
      public static class ShowCycle {
         private TestCycle testCycle;
-        private List<SampleWithBLOBs> sample;
+         private List<Sample> sample;
         public TestCycle getTestCycle() {
             return testCycle;
         }
 
         public ShowCycle() {
-            sample = new ArrayList<SampleWithBLOBs>();
+            sample = new ArrayList<Sample>();
         }
 
         public void setTestCycle(TestCycle testCycle) {
             this.testCycle = testCycle;
         }
 
-        public List<SampleWithBLOBs> getSample() {
+         public List<Sample> getSample() {
             return sample;
         }
 
-        public void setSample(List<SampleWithBLOBs> sample) {
+         public void setSample(List<Sample> sample) {
             this.sample = sample;
         }
     }

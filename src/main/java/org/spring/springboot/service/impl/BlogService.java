@@ -29,20 +29,20 @@ public class BlogService {
     @Autowired
     private LocationDao locationDao;
 
-    public void addBlog(BlogWithBLOBs blog){
+    public void addBlog(Blog blog) {
         blogDao.insert(blog);
     }
 
-    public BlogWithBLOBs getBlogByBlogId(Integer blogid){
+    public Blog getBlogByBlogId(Integer blogid) {
         return blogDao.selectByPrimaryKey(blogid);
     }
 
-    public List<BlogWithBLOBs> getBlogsByCycleTeamId(Integer cycleTeamId){
-        List<BlogWithBLOBs> result = new ArrayList<BlogWithBLOBs>();
-        List<SampleWithBLOBs> list = sampleDao.getSamplesByCycleTeamid(cycleTeamId);
+    public List<Blog> getBlogsByCycleTeamId(Integer cycleTeamId) {
+        List<Blog> result = new ArrayList<Blog>();
+        List<Sample> list = sampleDao.getSamplesByCycleTeamid(cycleTeamId);
         ArrayList idList = new ArrayList();//为了防止id相同的博客多次被加
-        for (SampleWithBLOBs sampleWithBLOBs:list){
-            Integer tempId = locationDao.selectByPrimaryKey(sampleWithBLOBs.getLocationid()).getBlogid();
+        for (Sample sample : list) {
+            Integer tempId = locationDao.selectByPrimaryKey(sample.getLocationId()).getBlogId();
             if (!idList.contains(tempId)) {
                 idList.add(tempId);
                 result.add(blogDao.selectByPrimaryKey(tempId));

@@ -3,6 +3,7 @@ package org.spring.springboot.controller;
 import java.util.List;
 import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.domain.CycleTeam;
+import org.spring.springboot.domain.CycleTeamWithBLOBs;
 import org.spring.springboot.domain.Team;
 import org.spring.springboot.domain.TestCycle;
 import org.spring.springboot.response.Response;
@@ -59,7 +60,7 @@ public class TestCycleController {
                                 @RequestParam(value = "report") String report) {
         Response response = new Response();
         try {
-            CycleTeam cycleTeam = cycleTeamDao.selectByPrimaryKey(cycleteamid);
+            CycleTeamWithBLOBs cycleTeam = cycleTeamDao.selectByPrimaryKey(cycleteamid);
             cycleTeam.setReport(report);
             cycleTeamDao.updateByPrimaryKeyWithBLOBs(cycleTeam);
             response.setStatus(true);

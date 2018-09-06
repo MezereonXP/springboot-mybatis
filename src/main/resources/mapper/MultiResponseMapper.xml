@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.MultiResponseMapper">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.MultiResponse">
+        <id column="baseId" jdbcType="INTEGER" property="baseId"/>
+        <result column="healthCenterId" jdbcType="INTEGER" property="healthCenterId"/>
+        <result column="treatmentMethodId" jdbcType="INTEGER" property="treatmentMethodId"/>
+        <result column="centreWaterTreatmentId" jdbcType="INTEGER" property="centreWaterTreatmentId"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    baseId, healthCenterId, treatmentMethodId, centreWaterTreatmentId
+  </sql>
+    <select id="selectByExample" parameterType="org.spring.springboot.domain.MultiResponseExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from multiresponse
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from multiresponse
+        where baseId = #{baseId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from multiresponse
+    where baseId = #{baseId,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="org.spring.springboot.domain.MultiResponseExample">
+        delete from multiresponse
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.spring.springboot.domain.MultiResponse">
+    insert into multiresponse (baseId, healthCenterId, treatmentMethodId, 
+      centreWaterTreatmentId)
+    values (#{baseId,jdbcType=INTEGER}, #{healthCenterId,jdbcType=INTEGER}, #{treatmentMethodId,jdbcType=INTEGER}, 
+      #{centreWaterTreatmentId,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.MultiResponse">
+        insert into multiresponse
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="baseId != null">
+                baseId,
+            </if>
+            <if test="healthCenterId != null">
+                healthCenterId,
+            </if>
+            <if test="treatmentMethodId != null">
+                treatmentMethodId,
+            </if>
+            <if test="centreWaterTreatmentId != null">
+                centreWaterTreatmentId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="baseId != null">
+                #{baseId,jdbcType=INTEGER},
+            </if>
+            <if test="healthCenterId != null">
+                #{healthCenterId,jdbcType=INTEGER},
+            </if>
+            <if test="treatmentMethodId != null">
+                #{treatmentMethodId,jdbcType=INTEGER},
+            </if>
+            <if test="centreWaterTreatmentId != null">
+                #{centreWaterTreatmentId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.spring.springboot.domain.MultiResponseExample" resultType="java.lang.Long">
+        select count(*) from multiresponse
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update multiresponse
+        <set>
+            <if test="record.baseId != null">
+                baseId = #{record.baseId,jdbcType=INTEGER},
+            </if>
+            <if test="record.healthCenterId != null">
+                healthCenterId = #{record.healthCenterId,jdbcType=INTEGER},
+            </if>
+            <if test="record.treatmentMethodId != null">
+                treatmentMethodId = #{record.treatmentMethodId,jdbcType=INTEGER},
+            </if>
+            <if test="record.centreWaterTreatmentId != null">
+                centreWaterTreatmentId = #{record.centreWaterTreatmentId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update multiresponse
+        set baseId = #{record.baseId,jdbcType=INTEGER},
+        healthCenterId = #{record.healthCenterId,jdbcType=INTEGER},
+        treatmentMethodId = #{record.treatmentMethodId,jdbcType=INTEGER},
+        centreWaterTreatmentId = #{record.centreWaterTreatmentId,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.MultiResponse">
+        update multiresponse
+        <set>
+            <if test="healthCenterId != null">
+                healthCenterId = #{healthCenterId,jdbcType=INTEGER},
+            </if>
+            <if test="treatmentMethodId != null">
+                treatmentMethodId = #{treatmentMethodId,jdbcType=INTEGER},
+            </if>
+            <if test="centreWaterTreatmentId != null">
+                centreWaterTreatmentId = #{centreWaterTreatmentId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where baseId = #{baseId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.MultiResponse">
+    update multiresponse
+    set healthCenterId = #{healthCenterId,jdbcType=INTEGER},
+      treatmentMethodId = #{treatmentMethodId,jdbcType=INTEGER},
+      centreWaterTreatmentId = #{centreWaterTreatmentId,jdbcType=INTEGER}
+    where baseId = #{baseId,jdbcType=INTEGER}
+  </update>
+</mapper>

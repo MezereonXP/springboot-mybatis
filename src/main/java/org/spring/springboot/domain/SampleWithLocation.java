@@ -1,23 +1,23 @@
 package org.spring.springboot.domain;
 
 public class SampleWithLocation {
-    private SampleWithBLOBs sampleWithBLOBs;
+    private Sample sample;
     private Location location;
 
-    public SampleWithLocation(SampleWithBLOBs sampleWithBLOBs, Location location) {
-        this.sampleWithBLOBs = sampleWithBLOBs;
+    public SampleWithLocation(Sample sample, Location location) {
+        this.sample = sample;
         this.location = location;
     }
 
     public SampleWithLocation() {
     }
 
-    public SampleWithBLOBs getSampleWithBLOBs() {
-        return sampleWithBLOBs;
+    public Sample getSample() {
+        return sample;
     }
 
-    public void setSampleWithBLOBs(SampleWithBLOBs sampleWithBLOBs) {
-        this.sampleWithBLOBs = sampleWithBLOBs;
+    public void setSample(Sample sample) {
+        this.sample = sample;
     }
 
     public Location getLocation() {

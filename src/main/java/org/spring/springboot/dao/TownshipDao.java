@@ -7,17 +7,15 @@ import java.util.List;
 
 @Component
 public interface TownshipDao {
-    int deleteByPrimaryKey(Integer townid);
+    int deleteByPrimaryKey(Integer townshipId);
 
     int insert(Township record);
 
     int insertSelective(Township record);
 
-    Township selectByPrimaryKey(Integer townid);
+    Township selectByPrimaryKey(Integer townshipId);
 
     int updateByPrimaryKeySelective(Township record);
-
-    int updateByPrimaryKeyWithBLOBs(Township record);
 
     int updateByPrimaryKey(Township record);
 

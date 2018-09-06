@@ -1,33 +1,33 @@
 package org.spring.springboot.domain;
 
 public class Province {
-    private String provinceid;
+    private Integer provinceId;
 
-    private String provincename;
+    private String provinceName;
 
-    private String description;
+    private String status;
 
-    public String getProvinceid() {
-        return provinceid;
+    public Integer getProvinceId() {
+        return provinceId;
     }
 
-    public void setProvinceid(String provinceid) {
-        this.provinceid = provinceid == null ? null : provinceid.trim();
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
     }
 
-    public String getProvincename() {
-        return provincename;
+    public String getProvinceName() {
+        return provinceName;
     }
 
-    public void setProvincename(String provincename) {
-        this.provincename = provincename == null ? null : provincename.trim();
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName == null ? null : provinceName.trim();
     }
 
-    public String getDescription() {
-        return description;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

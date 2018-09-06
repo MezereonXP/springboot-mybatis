@@ -75,7 +75,7 @@ public class BlogRestController {
         try {
             blogService.addBlog(blogWithBLOBs);
             response.setStatus(true);
-            response.setMsg(String.valueOf(blogWithBLOBs.getBlogid()));
+            response.setMsg(String.valueOf(blogWithBLOBs.getBlogId()));
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

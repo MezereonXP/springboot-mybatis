@@ -1,6 +1,8 @@
 package org.spring.springboot.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.Sample;
+import org.spring.springboot.domain.SampleExample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.spring.springboot.domain.ShowSamples;
 import org.springframework.stereotype.Component;
@@ -10,19 +12,27 @@ import java.util.Map;
 
 @Component
 public interface SampleDao {
-    int deleteByPrimaryKey(Integer baseid);
+    long countByExample(SampleExample example);
 
-    int insert(SampleWithBLOBs record);
+    int deleteByExample(SampleExample example);
 
-    int insertSelective(SampleWithBLOBs record);
+    int deleteByPrimaryKey(Integer baseId);
 
-    SampleWithBLOBs selectByPrimaryKey(Integer baseid);
+    int insert(Sample record);
 
-    int updateByPrimaryKeySelective(SampleWithBLOBs record);
+    int insertSelective(Sample record);
 
-    int updateByPrimaryKeyWithBLOBs(SampleWithBLOBs record);
+    List<Sample> selectByExample(SampleExample example);
+
+    Sample selectByPrimaryKey(Integer baseId);
+
+    int updateByExampleSelective(@Param("record") Sample record, @Param("example") SampleExample example);
+
+    int updateByExample(@Param("record") Sample record, @Param("example") SampleExample example);
+
+    int updateByPrimaryKeySelective(Sample record);
 
     int updateByPrimaryKey(Sample record);
 
-    List<SampleWithBLOBs> getSamplesByCycleTeamid(Integer cycleTeamid);
+    List<Sample> getSamplesByCycleTeamid(Integer cycleTeamid);
 }

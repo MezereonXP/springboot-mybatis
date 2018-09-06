@@ -41,7 +41,7 @@ public class LocationService {
     public Integer addLocation(Location location){
         int count = locationDao.insert(location);
         if (count == 1){
-            return location.getLocationid();
+            return location.getLocationId();
         } else {
             return -1;
         }
@@ -58,11 +58,11 @@ public class LocationService {
         for (ShowSamples.ShowCycle showCycle:showSamples.getShowCycles()){
             Integer tempCycleId = showCycle.getTestCycle().getTestcycleid();
             map.put(tempCycleId, new ArrayList<SampleWithLocation>());
-            for (SampleWithBLOBs sample:showCycle.getSample()){
+            for (Sample sample : showCycle.getSample()) {
                 SampleWithLocation sampleWithLocation = new SampleWithLocation();
-                Location location = locationDao.selectByPrimaryKey(sample.getLocationid());
+                Location location = locationDao.selectByPrimaryKey(sample.getLocationId());
                 sampleWithLocation.setLocation(location);
-                sampleWithLocation.setSampleWithBLOBs(sample);
+                sampleWithLocation.setSample(sample);
                 map.get(tempCycleId).add(sampleWithLocation);
             }
         }
@@ -82,13 +82,13 @@ public class LocationService {
             Integer tempCycleId = showCycle.getTestCycle().getTestcycleid();
             map.put(tempCycleId, new ArrayList<MapShowModel>());
             int flag=0;
-            for (SampleWithBLOBs sample:showCycle.getSample()){
-                if (sample.getCycleteamid().equals(cycleTeamId)) {
+            for (Sample sample : showCycle.getSample()) {
+                if (sample.getCycleTeamId().equals(cycleTeamId)) {
                     MapShowModel mapShowModel = new MapShowModel();
-                    Location location = locationDao.selectByPrimaryKey(sample.getLocationid());
-                    Blog blog = blogService.getBlogByBlogId(location.getBlogid());
+                    Location location = locationDao.selectByPrimaryKey(sample.getLocationId());
+                    Blog blog = blogService.getBlogByBlogId(location.getBlogId());
                     mapShowModel.setLocation(location);
-                    mapShowModel.setSampleWithBLOBs(sample);
+                    mapShowModel.setSample(sample);
                     mapShowModel.setBlog(blog);
                     map.get(tempCycleId).add(mapShowModel);
                     flag=1;

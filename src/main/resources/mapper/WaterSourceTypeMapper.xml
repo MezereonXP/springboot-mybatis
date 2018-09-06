@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.WaterSourceTypeMapper">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.WaterSourceType">
+        <id column="waterSourceId" jdbcType="INTEGER" property="waterSourceId"/>
+        <result column="waterSourceDesc" jdbcType="VARCHAR" property="waterSourceDesc"/>
+        <result column="waterSourceDetails" jdbcType="VARCHAR" property="waterSourceDetails"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    waterSourceId, waterSourceDesc, waterSourceDetails
+  </sql>
+    <select id="selectByExample" parameterType="org.spring.springboot.domain.WaterSourceTypeExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from watersourcetype
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from watersourcetype
+        where waterSourceId = #{waterSourceId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from watersourcetype
+    where waterSourceId = #{waterSourceId,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="org.spring.springboot.domain.WaterSourceTypeExample">
+        delete from watersourcetype
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.spring.springboot.domain.WaterSourceType">
+    insert into watersourcetype (waterSourceId, waterSourceDesc, waterSourceDetails
+      )
+    values (#{waterSourceId,jdbcType=INTEGER}, #{waterSourceDesc,jdbcType=VARCHAR}, #{waterSourceDetails,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.WaterSourceType">
+        insert into watersourcetype
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="waterSourceId != null">
+                waterSourceId,
+            </if>
+            <if test="waterSourceDesc != null">
+                waterSourceDesc,
+            </if>
+            <if test="waterSourceDetails != null">
+                waterSourceDetails,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="waterSourceId != null">
+                #{waterSourceId,jdbcType=INTEGER},
+            </if>
+            <if test="waterSourceDesc != null">
+                #{waterSourceDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="waterSourceDetails != null">
+                #{waterSourceDetails,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.spring.springboot.domain.WaterSourceTypeExample" resultType="java.lang.Long">
+        select count(*) from watersourcetype
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update watersourcetype
+        <set>
+            <if test="record.waterSourceId != null">
+                waterSourceId = #{record.waterSourceId,jdbcType=INTEGER},
+            </if>
+            <if test="record.waterSourceDesc != null">
+                waterSourceDesc = #{record.waterSourceDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="record.waterSourceDetails != null">
+                waterSourceDetails = #{record.waterSourceDetails,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update watersourcetype
+        set waterSourceId = #{record.waterSourceId,jdbcType=INTEGER},
+        waterSourceDesc = #{record.waterSourceDesc,jdbcType=VARCHAR},
+        waterSourceDetails = #{record.waterSourceDetails,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.WaterSourceType">
+        update watersourcetype
+        <set>
+            <if test="waterSourceDesc != null">
+                waterSourceDesc = #{waterSourceDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="waterSourceDetails != null">
+                waterSourceDetails = #{waterSourceDetails,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where waterSourceId = #{waterSourceId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.WaterSourceType">
+    update watersourcetype
+    set waterSourceDesc = #{waterSourceDesc,jdbcType=VARCHAR},
+      waterSourceDetails = #{waterSourceDetails,jdbcType=VARCHAR}
+    where waterSourceId = #{waterSourceId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -2,83 +2,71 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.ProvinceDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Province">
-    <id column="provinceid" jdbcType="VARCHAR" property="provinceid" />
-    <result column="provincename" jdbcType="VARCHAR" property="provincename" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Province">
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <id column="provinceId" jdbcType="INTEGER" property="provinceId"/>
+    <result column="provinceName" jdbcType="VARCHAR" property="provinceName"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
   </resultMap>
   <sql id="Base_Column_List">
-    provinceid, provincename
+    provinceId, provinceName, status
   </sql>
-  <sql id="Blob_Column_List">
-    description
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
-    select 
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from province
-    where provinceid = #{provinceid,jdbcType=VARCHAR}
+    where provinceId = #{provinceId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from province
-    where provinceid = #{provinceid,jdbcType=VARCHAR}
+    where provinceId = #{provinceId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Province">
-    insert into province (provinceid, provincename, description
+    insert into province (provinceId, provinceName, status
       )
-    values (#{provinceid,jdbcType=VARCHAR}, #{provincename,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}
+    values (#{provinceId,jdbcType=INTEGER}, #{provinceName,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Province">
     insert into province
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="provinceid != null">
-        provinceid,
+      <if test="provinceId != null">
+        provinceId,
       </if>
-      <if test="provincename != null">
-        provincename,
+      <if test="provinceName != null">
+        provinceName,
       </if>
-      <if test="description != null">
-        description,
+      <if test="status != null">
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="provinceid != null">
-        #{provinceid,jdbcType=VARCHAR},
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=INTEGER},
       </if>
-      <if test="provincename != null">
-        #{provincename,jdbcType=VARCHAR},
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        #{description,jdbcType=LONGVARCHAR},
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Province">
     update province
     <set>
-      <if test="provincename != null">
-        provincename = #{provincename,jdbcType=VARCHAR},
+      <if test="provinceName != null">
+        provinceName = #{provinceName,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        description = #{description,jdbcType=LONGVARCHAR},
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
       </if>
     </set>
-    where provinceid = #{provinceid,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Province">
-    update province
-    set provincename = #{provincename,jdbcType=VARCHAR},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where provinceid = #{provinceid,jdbcType=VARCHAR}
+    where provinceId = #{provinceId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Province">
     update province
-    set provincename = #{provincename,jdbcType=VARCHAR}
-    where provinceid = #{provinceid,jdbcType=VARCHAR}
+    set provinceName = #{provinceName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where provinceId = #{provinceId,jdbcType=INTEGER}
   </update>
   <select id="getAllProvince" resultType="org.spring.springboot.domain.Province">
     select *

@@ -1,34 +1,42 @@
 package org.spring.springboot.domain;
 
 public class Team {
-    private Integer teamid;
+    private Integer teamId;
 
-    private String teamname;
+    private String uniname;
+
+    private String teamName;
 
     private String email;
 
     private String password;
 
-    private Integer priority;
+    private Integer order;
 
-    private String uniname;
+    private String details;
 
-    private String detail;
-
-    public Integer getTeamid() {
-        return teamid;
+    public Integer getTeamId() {
+        return teamId;
     }
 
-    public void setTeamid(Integer teamid) {
-        this.teamid = teamid;
+    public void setTeamId(Integer teamId) {
+        this.teamId = teamId;
     }
 
-    public String getTeamname() {
-        return teamname;
+    public String getUniname() {
+        return uniname;
     }
 
-    public void setTeamname(String teamname) {
-        this.teamname = teamname == null ? null : teamname.trim();
+    public void setUniname(String uniname) {
+        this.uniname = uniname == null ? null : uniname.trim();
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName == null ? null : teamName.trim();
     }
 
     public String getEmail() {
@@ -47,27 +55,19 @@ public class Team {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getPriority() {
-        return priority;
+    public Integer getOrder() {
+        return order;
     }
 
-    public void setPriority(Integer priority) {
-        this.priority = priority;
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
-    public String getUniname() {
-        return uniname;
+    public String getDetails() {
+        return details;
     }
 
-    public void setUniname(String uniname) {
-        this.uniname = uniname == null ? null : uniname.trim();
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail == null ? null : detail.trim();
+    public void setDetails(String details) {
+        this.details = details == null ? null : details.trim();
     }
 }

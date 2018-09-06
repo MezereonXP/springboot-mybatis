@@ -2,100 +2,202 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.PrefectureDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Prefecture">
-    <id column="prefectureid" jdbcType="INTEGER" property="prefectureid" />
-    <result column="prefecturename" jdbcType="VARCHAR" property="prefecturename" />
-    <result column="provinceid" jdbcType="VARCHAR" property="provinceid" />
+    <id column="prefectureId" jdbcType="INTEGER" property="prefectureId"/>
+    <result column="provinceId" jdbcType="INTEGER" property="provinceId"/>
+    <result column="prefectureName" jdbcType="VARCHAR" property="prefectureName"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Prefecture">
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
-  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List">
-    prefectureid, prefecturename, provinceid
+    prefectureId, provinceId, prefectureName, status
   </sql>
-  <sql id="Blob_Column_List">
-    description
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExample" parameterType="org.spring.springboot.domain.PrefectureExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List"/>
+    from prefecture
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from prefecture
-    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+    where prefectureId = #{prefectureId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from prefecture
-    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+    where prefectureId = #{prefectureId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.spring.springboot.domain.PrefectureExample">
+    delete from prefecture
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Prefecture">
-    insert into prefecture (prefectureid, prefecturename, provinceid, 
-      description)
-    values (#{prefectureid,jdbcType=INTEGER}, #{prefecturename,jdbcType=VARCHAR}, #{provinceid,jdbcType=VARCHAR}, 
-      #{description,jdbcType=LONGVARCHAR})
+    insert into prefecture (prefectureId, provinceId, prefectureName, 
+      status)
+    values (#{prefectureId,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, #{prefectureName,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Prefecture">
     insert into prefecture
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="prefectureid != null">
-        prefectureid,
+      <if test="prefectureId != null">
+        prefectureId,
       </if>
-      <if test="prefecturename != null">
-        prefecturename,
+      <if test="provinceId != null">
+        provinceId,
       </if>
-      <if test="provinceid != null">
-        provinceid,
+      <if test="prefectureName != null">
+        prefectureName,
       </if>
-      <if test="description != null">
-        description,
+      <if test="status != null">
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="prefectureid != null">
-        #{prefectureid,jdbcType=INTEGER},
+      <if test="prefectureId != null">
+        #{prefectureId,jdbcType=INTEGER},
       </if>
-      <if test="prefecturename != null">
-        #{prefecturename,jdbcType=VARCHAR},
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=INTEGER},
       </if>
-      <if test="provinceid != null">
-        #{provinceid,jdbcType=VARCHAR},
+      <if test="prefectureName != null">
+        #{prefectureName,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        #{description,jdbcType=LONGVARCHAR},
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="org.spring.springboot.domain.PrefectureExample" resultType="java.lang.Long">
+    select count(*) from prefecture
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update prefecture
+    <set>
+      <if test="record.prefectureId != null">
+        prefectureId = #{record.prefectureId,jdbcType=INTEGER},
+      </if>
+      <if test="record.provinceId != null">
+        provinceId = #{record.provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prefectureName != null">
+        prefectureName = #{record.prefectureName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update prefecture
+    set prefectureId = #{record.prefectureId,jdbcType=INTEGER},
+    provinceId = #{record.provinceId,jdbcType=INTEGER},
+    prefectureName = #{record.prefectureName,jdbcType=VARCHAR},
+    status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Prefecture">
     update prefecture
     <set>
-      <if test="prefecturename != null">
-        prefecturename = #{prefecturename,jdbcType=VARCHAR},
+      <if test="provinceId != null">
+        provinceId = #{provinceId,jdbcType=INTEGER},
       </if>
-      <if test="provinceid != null">
-        provinceid = #{provinceid,jdbcType=VARCHAR},
+      <if test="prefectureName != null">
+        prefectureName = #{prefectureName,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        description = #{description,jdbcType=LONGVARCHAR},
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
       </if>
     </set>
-    where prefectureid = #{prefectureid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Prefecture">
-    update prefecture
-    set prefecturename = #{prefecturename,jdbcType=VARCHAR},
-      provinceid = #{provinceid,jdbcType=VARCHAR},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+    where prefectureId = #{prefectureId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Prefecture">
     update prefecture
-    set prefecturename = #{prefecturename,jdbcType=VARCHAR},
-      provinceid = #{provinceid,jdbcType=VARCHAR}
-    where prefectureid = #{prefectureid,jdbcType=INTEGER}
+    set provinceId = #{provinceId,jdbcType=INTEGER},
+      prefectureName = #{prefectureName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where prefectureId = #{prefectureId,jdbcType=INTEGER}
   </update>
 
   <select id="getPrefectureByProvinceId" resultType="org.spring.springboot.domain.Prefecture">
     select *
     from prefecture
-    where provinceid = #{provinceId}
+    where provinceId = #{provinceId}
   </select>
 </mapper>

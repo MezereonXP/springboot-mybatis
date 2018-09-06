@@ -3,46 +3,46 @@ package org.spring.springboot.domain;
 import java.util.Date;
 
 public class Location {
-    private Integer locationid;
+    private Integer locationId;
 
-    private Integer villageid;
+    private Integer villageId;
 
-    private String locationname;
+    private String locationName;
 
     private Double lat;
 
-    private Double lon;
+    private Double log;
 
     private Integer status;
 
-    private Date createdat;
+    private Date createdAt;
 
-    private Date updateat;
+    private Date updatedAt;
 
-    private Integer blogid;
+    private Integer blogId;
 
-    public Integer getLocationid() {
-        return locationid;
+    public Integer getLocationId() {
+        return locationId;
     }
 
-    public void setLocationid(Integer locationid) {
-        this.locationid = locationid;
+    public void setLocationId(Integer locationId) {
+        this.locationId = locationId;
     }
 
-    public Integer getVillageid() {
-        return villageid;
+    public Integer getVillageId() {
+        return villageId;
     }
 
-    public void setVillageid(Integer villageid) {
-        this.villageid = villageid;
+    public void setVillageId(Integer villageId) {
+        this.villageId = villageId;
     }
 
-    public String getLocationname() {
-        return locationname;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setLocationname(String locationname) {
-        this.locationname = locationname == null ? null : locationname.trim();
+    public void setLocationName(String locationName) {
+        this.locationName = locationName == null ? null : locationName.trim();
     }
 
     public Double getLat() {
@@ -53,12 +53,12 @@ public class Location {
         this.lat = lat;
     }
 
-    public Double getLon() {
-        return lon;
+    public Double getLog() {
+        return log;
     }
 
-    public void setLon(Double lon) {
-        this.lon = lon;
+    public void setLog(Double log) {
+        this.log = log;
     }
 
     public Integer getStatus() {
@@ -69,27 +69,27 @@ public class Location {
         this.status = status;
     }
 
-    public Date getCreatedat() {
-        return createdat;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedat(Date createdat) {
-        this.createdat = createdat;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getUpdateat() {
-        return updateat;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateat(Date updateat) {
-        this.updateat = updateat;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public Integer getBlogid() {
-        return blogid;
+    public Integer getBlogId() {
+        return blogId;
     }
 
-    public void setBlogid(Integer blogid) {
-        this.blogid = blogid;
+    public void setBlogId(Integer blogId) {
+        this.blogId = blogId;
     }
 }

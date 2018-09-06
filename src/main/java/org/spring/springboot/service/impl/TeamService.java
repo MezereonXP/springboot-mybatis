@@ -31,11 +31,11 @@ public class TeamService {
         Integer priority) {
         Team team = new Team();
         team.setEmail(email);
-        team.setTeamname(teamName);
+        team.setTeamName(teamName);
         team.setPassword(password);
-        team.setDetail(detail);
+        team.setDetails(detail);
         team.setUniname(uniname);
-        team.setPriority(priority);
+        team.setOrder(priority);
         return teamDao.insert(team)!=-1;
     }
 

@@ -7,6 +7,7 @@ import org.spring.springboot.dao.SingleChooseDao;
 import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.domain.CycleTeam;
+import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.spring.springboot.domain.ShowForIndex;
 import org.spring.springboot.domain.ShowSamples;
@@ -47,11 +48,11 @@ public class SampleService {
     @Autowired
     private SingleChooseDao singleChooseDao;
 
-    public SampleWithBLOBs selectById(Integer baseid) {
+    public Sample selectById(Integer baseid) {
         return sampleDao.selectByPrimaryKey(baseid);
     }
 
-    public List<SampleWithBLOBs> selectByCycleTeamId(Integer cycleTeamId){
+    public List<Sample> selectByCycleTeamId(Integer cycleTeamId) {
         return sampleDao.getSamplesByCycleTeamid(cycleTeamId);
     }
     
@@ -79,8 +80,8 @@ public class SampleService {
         List<CycleTeam> cycleTeams = cycleTeamDao.selectByTeamId(teamId);
         for(CycleTeam cycleTeam : cycleTeams){
             ShowSamples.ShowCycle showCycle = new ShowSamples.ShowCycle();
-            showCycle.setSample(sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleteamid()));
-            showCycle.setTestCycle(testCycleDao.selectByPrimaryKey(cycleTeam.getTestcycleid()));
+            showCycle.setSample(sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId()));
+            showCycle.setTestCycle(testCycleDao.selectByPrimaryKey(cycleTeam.getTestCycleId()));
             showCycles.add(showCycle);
         }
         showSamples.setShowCycles(showCycles);
@@ -101,7 +102,7 @@ public class SampleService {
             ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
             List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycle.getTestcycleid());
             for (CycleTeam cycleTeam:list) {
-                for (SampleWithBLOBs sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleteamid())) {
+                for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
                     showCycle.getSample().add(sample);
                 }
             }
@@ -117,11 +118,11 @@ public class SampleService {
 
         List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
         for (CycleTeam cycleTeam:list) {
-            Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamid());
-            for (SampleWithBLOBs sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleteamid())) {
+            Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
+            for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
                 List<SingleChoose> singleChooseList = singleChooseDao.getSingleChooseList();
-                showForIndexList.add(new ShowForIndex(team.getTeamname(),
-                    locationDao.selectByPrimaryKey(sample.getLocationid()),
+                showForIndexList.add(new ShowForIndex(team.getTeamName(),
+                        locationDao.selectByPrimaryKey(sample.getLocationId()),
                     sample, ListConverter.convertSingleChooseList(singleChooseList)));
             }
         }

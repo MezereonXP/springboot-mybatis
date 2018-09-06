@@ -1,43 +1,43 @@
 package org.spring.springboot.domain;
 
 public class County {
-    private Integer countyid;
+    private Integer countyId;
 
-    private Integer prefectureid;
+    private Integer prefectureId;
 
-    private String countyname;
+    private String countryName;
 
-    private String description;
+    private String status;
 
-    public Integer getCountyid() {
-        return countyid;
+    public Integer getCountyId() {
+        return countyId;
     }
 
-    public void setCountyid(Integer countyid) {
-        this.countyid = countyid;
+    public void setCountyId(Integer countyId) {
+        this.countyId = countyId;
     }
 
-    public Integer getPrefectureid() {
-        return prefectureid;
+    public Integer getPrefectureId() {
+        return prefectureId;
     }
 
-    public void setPrefectureid(Integer prefectureid) {
-        this.prefectureid = prefectureid;
+    public void setPrefectureId(Integer prefectureId) {
+        this.prefectureId = prefectureId;
     }
 
-    public String getCountyname() {
-        return countyname;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCountyname(String countyname) {
-        this.countyname = countyname == null ? null : countyname.trim();
+    public void setCountryName(String countryName) {
+        this.countryName = countryName == null ? null : countryName.trim();
     }
 
-    public String getDescription() {
-        return description;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

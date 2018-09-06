@@ -33,9 +33,9 @@ public class SampleRestController {
     public Response findOneSample(@RequestParam(value = "baseid", required = true) Integer baseid) {
         Response response = new Response();
         try {
-            SampleWithBLOBs sampleWithBLOBs = samplesService.selectById(baseid);
-            response.setStatus(sampleWithBLOBs!=null);
-            response.setData(sampleWithBLOBs);
+            Sample sample = samplesService.selectById(baseid);
+            response.setStatus(sample != null);
+            response.setData(sample);
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
@@ -77,9 +77,9 @@ public class SampleRestController {
                                 @RequestParam(value="blogid") Integer blogid) {
         Response response = new Response();
         try {
-            SampleWithBLOBs sampleWithBLOBs = samplesService.selectById(baseid);
-            Location location = locationDao.selectByPrimaryKey(sampleWithBLOBs.getLocationid());
-            location.setBlogid(blogid);
+            Sample sample = samplesService.selectById(baseid);
+            Location location = locationDao.selectByPrimaryKey(sample.getLocationId());
+            location.setBlogId(blogid);
             locationDao.updateByPrimaryKeySelective(location);
             response.setStatus(true);
             return response;

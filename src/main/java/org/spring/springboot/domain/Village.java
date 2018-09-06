@@ -1,43 +1,43 @@
 package org.spring.springboot.domain;
 
 public class Village {
-    private Integer villageid;
+    private Integer villageId;
 
-    private Integer townid;
+    private Integer townshipId;
 
-    private String villagename;
+    private String villageName;
 
-    private String description;
+    private Integer status;
 
-    public Integer getVillageid() {
-        return villageid;
+    public Integer getVillageId() {
+        return villageId;
     }
 
-    public void setVillageid(Integer villageid) {
-        this.villageid = villageid;
+    public void setVillageId(Integer villageId) {
+        this.villageId = villageId;
     }
 
-    public Integer getTownid() {
-        return townid;
+    public Integer getTownshipId() {
+        return townshipId;
     }
 
-    public void setTownid(Integer townid) {
-        this.townid = townid;
+    public void setTownshipId(Integer townshipId) {
+        this.townshipId = townshipId;
     }
 
-    public String getVillagename() {
-        return villagename;
+    public String getVillageName() {
+        return villageName;
     }
 
-    public void setVillagename(String villagename) {
-        this.villagename = villagename == null ? null : villagename.trim();
+    public void setVillageName(String villageName) {
+        this.villageName = villageName == null ? null : villageName.trim();
     }
 
-    public String getDescription() {
-        return description;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

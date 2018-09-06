@@ -1,53 +1,33 @@
 package org.spring.springboot.domain;
 
 public class CycleTeam {
-    private Integer cycleteamid;
+    private Integer cycleTeamId;
 
-    private Integer testcycleid;
+    private Integer testCycleId;
 
-    private Integer teamid;
+    private Integer teamId;
 
-    private String report;
-
-    private String cycleteamdescription;
-
-    public Integer getCycleteamid() {
-        return cycleteamid;
+    public Integer getCycleTeamId() {
+        return cycleTeamId;
     }
 
-    public void setCycleteamid(Integer cycleteamid) {
-        this.cycleteamid = cycleteamid;
+    public void setCycleTeamId(Integer cycleTeamId) {
+        this.cycleTeamId = cycleTeamId;
     }
 
-    public Integer getTestcycleid() {
-        return testcycleid;
+    public Integer getTestCycleId() {
+        return testCycleId;
     }
 
-    public void setTestcycleid(Integer testcycleid) {
-        this.testcycleid = testcycleid;
+    public void setTestCycleId(Integer testCycleId) {
+        this.testCycleId = testCycleId;
     }
 
-    public Integer getTeamid() {
-        return teamid;
+    public Integer getTeamId() {
+        return teamId;
     }
 
-    public void setTeamid(Integer teamid) {
-        this.teamid = teamid;
-    }
-
-    public String getReport() {
-        return report;
-    }
-
-    public void setReport(String report) {
-        this.report = report == null ? null : report.trim();
-    }
-
-    public String getCycleteamdescription() {
-        return cycleteamdescription;
-    }
-
-    public void setCycleteamdescription(String cycleteamdescription) {
-        this.cycleteamdescription = cycleteamdescription == null ? null : cycleteamdescription.trim();
+    public void setTeamId(Integer teamId) {
+        this.teamId = teamId;
     }
 }

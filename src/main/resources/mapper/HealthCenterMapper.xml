@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.HealthCenterMapper">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.HealthCenter">
+        <id column="healthCenterId" jdbcType="INTEGER" property="healthCenterId"/>
+        <result column="healthCenterDesc" jdbcType="VARCHAR" property="healthCenterDesc"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    healthCenterId, healthCenterDesc
+  </sql>
+    <select id="selectByExample" parameterType="org.spring.springboot.domain.HealthCenterExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from healthcenter
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from healthcenter
+        where healthCenterId = #{healthCenterId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from healthcenter
+    where healthCenterId = #{healthCenterId,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="org.spring.springboot.domain.HealthCenterExample">
+        delete from healthcenter
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.spring.springboot.domain.HealthCenter">
+    insert into healthcenter (healthCenterId, healthCenterDesc)
+    values (#{healthCenterId,jdbcType=INTEGER}, #{healthCenterDesc,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.HealthCenter">
+        insert into healthcenter
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="healthCenterId != null">
+                healthCenterId,
+            </if>
+            <if test="healthCenterDesc != null">
+                healthCenterDesc,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="healthCenterId != null">
+                #{healthCenterId,jdbcType=INTEGER},
+            </if>
+            <if test="healthCenterDesc != null">
+                #{healthCenterDesc,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.spring.springboot.domain.HealthCenterExample" resultType="java.lang.Long">
+        select count(*) from healthcenter
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update healthcenter
+        <set>
+            <if test="record.healthCenterId != null">
+                healthCenterId = #{record.healthCenterId,jdbcType=INTEGER},
+            </if>
+            <if test="record.healthCenterDesc != null">
+                healthCenterDesc = #{record.healthCenterDesc,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update healthcenter
+        set healthCenterId = #{record.healthCenterId,jdbcType=INTEGER},
+        healthCenterDesc = #{record.healthCenterDesc,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.HealthCenter">
+        update healthcenter
+        <set>
+            <if test="healthCenterDesc != null">
+                healthCenterDesc = #{healthCenterDesc,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where healthCenterId = #{healthCenterId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.HealthCenter">
+    update healthcenter
+    set healthCenterDesc = #{healthCenterDesc,jdbcType=VARCHAR}
+    where healthCenterId = #{healthCenterId,jdbcType=INTEGER}
+  </update>
+</mapper>

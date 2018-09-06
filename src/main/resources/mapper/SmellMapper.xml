@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.SmellMapper">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Smell">
+        <id column="smellId" jdbcType="INTEGER" property="smellId"/>
+        <result column="smellDesc" jdbcType="VARCHAR" property="smellDesc"/>
+        <result column="smellDescDetails" jdbcType="VARCHAR" property="smellDescDetails"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    smellId, smellDesc, smellDescDetails
+  </sql>
+    <select id="selectByExample" parameterType="org.spring.springboot.domain.SmellExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from smell
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from smell
+        where smellId = #{smellId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from smell
+    where smellId = #{smellId,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="org.spring.springboot.domain.SmellExample">
+        delete from smell
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.spring.springboot.domain.Smell">
+    insert into smell (smellId, smellDesc, smellDescDetails
+      )
+    values (#{smellId,jdbcType=INTEGER}, #{smellDesc,jdbcType=VARCHAR}, #{smellDescDetails,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Smell">
+        insert into smell
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="smellId != null">
+                smellId,
+            </if>
+            <if test="smellDesc != null">
+                smellDesc,
+            </if>
+            <if test="smellDescDetails != null">
+                smellDescDetails,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="smellId != null">
+                #{smellId,jdbcType=INTEGER},
+            </if>
+            <if test="smellDesc != null">
+                #{smellDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="smellDescDetails != null">
+                #{smellDescDetails,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.spring.springboot.domain.SmellExample" resultType="java.lang.Long">
+        select count(*) from smell
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update smell
+        <set>
+            <if test="record.smellId != null">
+                smellId = #{record.smellId,jdbcType=INTEGER},
+            </if>
+            <if test="record.smellDesc != null">
+                smellDesc = #{record.smellDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="record.smellDescDetails != null">
+                smellDescDetails = #{record.smellDescDetails,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update smell
+        set smellId = #{record.smellId,jdbcType=INTEGER},
+        smellDesc = #{record.smellDesc,jdbcType=VARCHAR},
+        smellDescDetails = #{record.smellDescDetails,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Smell">
+        update smell
+        <set>
+            <if test="smellDesc != null">
+                smellDesc = #{smellDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="smellDescDetails != null">
+                smellDescDetails = #{smellDescDetails,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where smellId = #{smellId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Smell">
+    update smell
+    set smellDesc = #{smellDesc,jdbcType=VARCHAR},
+      smellDescDetails = #{smellDescDetails,jdbcType=VARCHAR}
+    where smellId = #{smellId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -2,83 +2,182 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.TestCycleDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.TestCycle">
-    <id column="testcycleid" jdbcType="INTEGER" property="testcycleid" />
-    <result column="testcyclename" jdbcType="VARCHAR" property="testcyclename" />
+    <id column="testCycleId" jdbcType="INTEGER" property="testCycleId"/>
+    <result column="testCycleName" jdbcType="VARCHAR" property="testCycleName"/>
+    <result column="testCycleDescribe" jdbcType="VARCHAR" property="testCycleDescribe"/>
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.TestCycle">
-    <result column="testcycledescribe" jdbcType="LONGVARCHAR" property="testcycledescribe" />
-  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List">
-    testcycleid, testcyclename
+    testCycleId, testCycleName, testCycleDescribe
   </sql>
-  <sql id="Blob_Column_List">
-    testcycledescribe
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExample" parameterType="org.spring.springboot.domain.TestCycleExample" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List"/>
     from testcycle
-    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from testcycle
+    where testCycleId = #{testCycleId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from testcycle
-    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+    where testCycleId = #{testCycleId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.spring.springboot.domain.TestCycleExample">
+    delete from testcycle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.TestCycle">
-    insert into testcycle (testcycleid, testcyclename, testcycledescribe
-    )
-    values (#{testcycleid,jdbcType=INTEGER}, #{testcyclename,jdbcType=VARCHAR}, #{testcycledescribe,jdbcType=LONGVARCHAR}
-    )
+    insert into testcycle (testCycleId, testCycleName, testCycleDescribe
+      )
+    values (#{testCycleId,jdbcType=INTEGER}, #{testCycleName,jdbcType=VARCHAR}, #{testCycleDescribe,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.TestCycle">
     insert into testcycle
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="testcycleid != null">
-        testcycleid,
+      <if test="testCycleId != null">
+        testCycleId,
       </if>
-      <if test="testcyclename != null">
-        testcyclename,
+      <if test="testCycleName != null">
+        testCycleName,
       </if>
-      <if test="testcycledescribe != null">
-        testcycledescribe,
+      <if test="testCycleDescribe != null">
+        testCycleDescribe,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="testcycleid != null">
-        #{testcycleid,jdbcType=INTEGER},
+      <if test="testCycleId != null">
+        #{testCycleId,jdbcType=INTEGER},
       </if>
-      <if test="testcyclename != null">
-        #{testcyclename,jdbcType=VARCHAR},
+      <if test="testCycleName != null">
+        #{testCycleName,jdbcType=VARCHAR},
       </if>
-      <if test="testcycledescribe != null">
-        #{testcycledescribe,jdbcType=LONGVARCHAR},
+      <if test="testCycleDescribe != null">
+        #{testCycleDescribe,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="org.spring.springboot.domain.TestCycleExample" resultType="java.lang.Long">
+    select count(*) from testcycle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update testcycle
+    <set>
+      <if test="record.testCycleId != null">
+        testCycleId = #{record.testCycleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.testCycleName != null">
+        testCycleName = #{record.testCycleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testCycleDescribe != null">
+        testCycleDescribe = #{record.testCycleDescribe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update testcycle
+    set testCycleId = #{record.testCycleId,jdbcType=INTEGER},
+    testCycleName = #{record.testCycleName,jdbcType=VARCHAR},
+    testCycleDescribe = #{record.testCycleDescribe,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.TestCycle">
     update testcycle
     <set>
-      <if test="testcyclename != null">
-        testcyclename = #{testcyclename,jdbcType=VARCHAR},
+      <if test="testCycleName != null">
+        testCycleName = #{testCycleName,jdbcType=VARCHAR},
       </if>
-      <if test="testcycledescribe != null">
-        testcycledescribe = #{testcycledescribe,jdbcType=LONGVARCHAR},
+      <if test="testCycleDescribe != null">
+        testCycleDescribe = #{testCycleDescribe,jdbcType=VARCHAR},
       </if>
     </set>
-    where testcycleid = #{testcycleid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.TestCycle">
-    update testcycle
-    set testcyclename = #{testcyclename,jdbcType=VARCHAR},
-    testcycledescribe = #{testcycledescribe,jdbcType=LONGVARCHAR}
-    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+    where testCycleId = #{testCycleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.TestCycle">
     update testcycle
-    set testcyclename = #{testcyclename,jdbcType=VARCHAR}
-    where testcycleid = #{testcycleid,jdbcType=INTEGER}
+    set testCycleName = #{testCycleName,jdbcType=VARCHAR},
+      testCycleDescribe = #{testCycleDescribe,jdbcType=VARCHAR}
+    where testCycleId = #{testCycleId,jdbcType=INTEGER}
   </update>
   <select id="findTestCycleByTeamId" resultType="org.spring.springboot.domain.TestCycle">
     select *

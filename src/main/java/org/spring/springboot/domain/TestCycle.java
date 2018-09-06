@@ -1,33 +1,33 @@
 package org.spring.springboot.domain;
 
 public class TestCycle {
-    private Integer testcycleid;
+    private Integer testCycleId;
 
-    private String testcyclename;
+    private String testCycleName;
 
-    private String testcycledescribe;
+    private String testCycleDescribe;
 
-    public Integer getTestcycleid() {
-        return testcycleid;
+    public Integer getTestCycleId() {
+        return testCycleId;
     }
 
-    public void setTestcycleid(Integer testcycleid) {
-        this.testcycleid = testcycleid;
+    public void setTestCycleId(Integer testCycleId) {
+        this.testCycleId = testCycleId;
     }
 
-    public String getTestcyclename() {
-        return testcyclename;
+    public String getTestCycleName() {
+        return testCycleName;
     }
 
-    public void setTestcyclename(String testcyclename) {
-        this.testcyclename = testcyclename == null ? null : testcyclename.trim();
+    public void setTestCycleName(String testCycleName) {
+        this.testCycleName = testCycleName == null ? null : testCycleName.trim();
     }
 
-    public String getTestcycledescribe() {
-        return testcycledescribe;
+    public String getTestCycleDescribe() {
+        return testCycleDescribe;
     }
 
-    public void setTestcycledescribe(String testcycledescribe) {
-        this.testcycledescribe = testcycledescribe == null ? null : testcycledescribe.trim();
+    public void setTestCycleDescribe(String testCycleDescribe) {
+        this.testCycleDescribe = testCycleDescribe == null ? null : testCycleDescribe.trim();
     }
 }

@@ -37,7 +37,7 @@ public class LocationRestController {
         Response response = new Response();
         try {
             response.setStatus(locationService.addLocation(location)!=-1);
-            response.setData(location.getLocationid());
+            response.setData(location.getLocationId());
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

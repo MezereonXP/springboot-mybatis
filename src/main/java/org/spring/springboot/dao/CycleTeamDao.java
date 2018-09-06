@@ -1,22 +1,40 @@
 package org.spring.springboot.dao;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.CycleTeam;
+import org.spring.springboot.domain.CycleTeamExample;
+import org.spring.springboot.domain.CycleTeamWithBLOBs;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface CycleTeamDao {
-    int deleteByPrimaryKey(Integer cycleteamid);
+    long countByExample(CycleTeamExample example);
 
-    int insert(CycleTeam record);
+    int deleteByExample(CycleTeamExample example);
 
-    int insertSelective(CycleTeam record);
+    int deleteByPrimaryKey(Integer cycleTeamId);
 
-    CycleTeam selectByPrimaryKey(Integer cycleteamid);
+    int insert(CycleTeamWithBLOBs record);
 
-    int updateByPrimaryKeySelective(CycleTeam record);
+    int insertSelective(CycleTeamWithBLOBs record);
 
-    int updateByPrimaryKeyWithBLOBs(CycleTeam record);
+    List<CycleTeamWithBLOBs> selectByExampleWithBLOBs(CycleTeamExample example);
+
+    List<CycleTeam> selectByExample(CycleTeamExample example);
+
+    CycleTeamWithBLOBs selectByPrimaryKey(Integer cycleTeamId);
+
+    int updateByExampleSelective(@Param("record") CycleTeamWithBLOBs record, @Param("example") CycleTeamExample example);
+
+    int updateByExampleWithBLOBs(@Param("record") CycleTeamWithBLOBs record, @Param("example") CycleTeamExample example);
+
+    int updateByExample(@Param("record") CycleTeam record, @Param("example") CycleTeamExample example);
+
+    int updateByPrimaryKeySelective(CycleTeamWithBLOBs record);
+
+    int updateByPrimaryKeyWithBLOBs(CycleTeamWithBLOBs record);
 
     int updateByPrimaryKey(CycleTeam record);
 

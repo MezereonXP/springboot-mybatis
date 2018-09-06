@@ -2,30 +2,22 @@ package org.spring.springboot.domain;
 
 public class MapShowModel {
 
-    private SampleWithBLOBs sampleWithBLOBs;
+    private Sample sample;
     private Location location;
     private Blog blog;
 
     public MapShowModel() {
     }
 
-    public MapShowModel(SampleWithBLOBs sampleWithBLOBs, Location location) {
-        this.sampleWithBLOBs = sampleWithBLOBs;
+    public MapShowModel(Sample sample, Location location) {
+        this.sample = sample;
         this.location = location;
     }
 
-    public MapShowModel(SampleWithBLOBs sampleWithBLOBs, Location location, Blog blog) {
-        this.sampleWithBLOBs = sampleWithBLOBs;
+    public MapShowModel(Sample sample, Location location, Blog blog) {
+        this.sample = sample;
         this.location = location;
         this.blog = blog;
-    }
-
-    public SampleWithBLOBs getSampleWithBLOBs() {
-        return sampleWithBLOBs;
-    }
-
-    public void setSampleWithBLOBs(SampleWithBLOBs sampleWithBLOBs) {
-        this.sampleWithBLOBs = sampleWithBLOBs;
     }
 
     public Location getLocation() {
@@ -42,5 +34,13 @@ public class MapShowModel {
 
     public void setBlog(Blog blog) {
         this.blog = blog;
+    }
+
+    public Sample getSample() {
+        return sample;
+    }
+
+    public void setSample(Sample sample) {
+        this.sample = sample;
     }
 }

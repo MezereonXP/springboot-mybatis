@@ -7,17 +7,15 @@ import java.util.List;
 
 @Component
 public interface ProvinceDao {
-    int deleteByPrimaryKey(String provinceid);
+    int deleteByPrimaryKey(Integer provinceId);
 
     int insert(Province record);
 
     int insertSelective(Province record);
 
-    Province selectByPrimaryKey(String provinceid);
+    Province selectByPrimaryKey(Integer provinceId);
 
     int updateByPrimaryKeySelective(Province record);
-
-    int updateByPrimaryKeyWithBLOBs(Province record);
 
     int updateByPrimaryKey(Province record);
 

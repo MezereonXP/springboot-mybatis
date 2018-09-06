@@ -2,105 +2,252 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.BlogDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Blog">
-    <id column="blogid" jdbcType="INTEGER" property="blogid" />
+    <id column="blogId" jdbcType="INTEGER" property="blogId"/>
     <result column="picture" jdbcType="VARCHAR" property="picture" />
-    <result column="validation" jdbcType="INTEGER" property="validation" />
+    <result column="locationId" jdbcType="INTEGER" property="locationId"/>
+    <result column="teamId" jdbcType="INTEGER" property="teamId"/>
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.BlogWithBLOBs">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Blog">
     <result column="text" jdbcType="LONGVARCHAR" property="text" />
-    <result column="admincomment" jdbcType="LONGVARCHAR" property="admincomment" />
   </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List">
-    blogid, picture, validation
+    blogId, picture, locationId, teamId
   </sql>
   <sql id="Blob_Column_List">
-    text, admincomment
+    text
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="org.spring.springboot.domain.BlogExample" resultMap="ResultMapWithBLOBs">
     select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List"/>
+    from blog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="org.spring.springboot.domain.BlogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List"/>
+    from blog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from blog
-    where blogid = #{blogid,jdbcType=INTEGER}
+    where blogId = #{blogId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from blog
-    where blogid = #{blogid,jdbcType=INTEGER}
+    where blogId = #{blogId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.BlogWithBLOBs" useGeneratedKeys="true" keyProperty="blogid">
-    insert into blog (blogid, picture, validation,
-    text, admincomment)
-    values (#{blogid,jdbcType=INTEGER}, #{picture,jdbcType=VARCHAR}, #{validation,jdbcType=INTEGER},
-    #{text,jdbcType=LONGVARCHAR}, #{admincomment,jdbcType=LONGVARCHAR})
+  <delete id="deleteByExample" parameterType="org.spring.springboot.domain.BlogExample">
+    delete from blog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.spring.springboot.domain.Blog">
+    insert into blog (blogId, picture, locationId, 
+      teamId, text)
+    values (#{blogId,jdbcType=INTEGER}, #{picture,jdbcType=VARCHAR}, #{locationId,jdbcType=INTEGER}, 
+      #{teamId,jdbcType=INTEGER}, #{text,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.spring.springboot.domain.BlogWithBLOBs">
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Blog">
     insert into blog
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="blogid != null">
-        blogid,
+      <if test="blogId != null">
+        blogId,
       </if>
       <if test="picture != null">
         picture,
       </if>
-      <if test="validation != null">
-        validation,
+      <if test="locationId != null">
+        locationId,
+      </if>
+      <if test="teamId != null">
+        teamId,
       </if>
       <if test="text != null">
         text,
       </if>
-      <if test="admincomment != null">
-        admincomment,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="blogid != null">
-        #{blogid,jdbcType=INTEGER},
+      <if test="blogId != null">
+        #{blogId,jdbcType=INTEGER},
       </if>
       <if test="picture != null">
         #{picture,jdbcType=VARCHAR},
       </if>
-      <if test="validation != null">
-        #{validation,jdbcType=INTEGER},
+      <if test="locationId != null">
+        #{locationId,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null">
+        #{teamId,jdbcType=INTEGER},
       </if>
       <if test="text != null">
         #{text,jdbcType=LONGVARCHAR},
       </if>
-      <if test="admincomment != null">
-        #{admincomment,jdbcType=LONGVARCHAR},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.BlogWithBLOBs">
+  <select id="countByExample" parameterType="org.spring.springboot.domain.BlogExample" resultType="java.lang.Long">
+    select count(*) from blog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update blog
+    <set>
+      <if test="record.blogId != null">
+        blogId = #{record.blogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.picture != null">
+        picture = #{record.picture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.locationId != null">
+        locationId = #{record.locationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.teamId != null">
+        teamId = #{record.teamId,jdbcType=INTEGER},
+      </if>
+      <if test="record.text != null">
+        text = #{record.text,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update blog
+    set blogId = #{record.blogId,jdbcType=INTEGER},
+    picture = #{record.picture,jdbcType=VARCHAR},
+    locationId = #{record.locationId,jdbcType=INTEGER},
+    teamId = #{record.teamId,jdbcType=INTEGER},
+    text = #{record.text,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update blog
+    set blogId = #{record.blogId,jdbcType=INTEGER},
+    picture = #{record.picture,jdbcType=VARCHAR},
+    locationId = #{record.locationId,jdbcType=INTEGER},
+    teamId = #{record.teamId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Blog">
     update blog
     <set>
       <if test="picture != null">
         picture = #{picture,jdbcType=VARCHAR},
       </if>
-      <if test="validation != null">
-        validation = #{validation,jdbcType=INTEGER},
+      <if test="locationId != null">
+        locationId = #{locationId,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null">
+        teamId = #{teamId,jdbcType=INTEGER},
       </if>
       <if test="text != null">
         text = #{text,jdbcType=LONGVARCHAR},
       </if>
-      <if test="admincomment != null">
-        admincomment = #{admincomment,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where blogid = #{blogid,jdbcType=INTEGER}
+    where blogId = #{blogId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.BlogWithBLOBs">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Blog">
     update blog
     set picture = #{picture,jdbcType=VARCHAR},
-    validation = #{validation,jdbcType=INTEGER},
-    text = #{text,jdbcType=LONGVARCHAR},
-    admincomment = #{admincomment,jdbcType=LONGVARCHAR}
-    where blogid = #{blogid,jdbcType=INTEGER}
+      locationId = #{locationId,jdbcType=INTEGER},
+      teamId = #{teamId,jdbcType=INTEGER},
+      text = #{text,jdbcType=LONGVARCHAR}
+    where blogId = #{blogId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Blog">
     update blog
     set picture = #{picture,jdbcType=VARCHAR},
-      validation = #{validation,jdbcType=INTEGER}
-    where blogid = #{blogid,jdbcType=INTEGER}
+      locationId = #{locationId,jdbcType=INTEGER},
+      teamId = #{teamId,jdbcType=INTEGER}
+    where blogId = #{blogId,jdbcType=INTEGER}
   </update>
 </mapper>

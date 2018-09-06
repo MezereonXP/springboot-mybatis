@@ -2,97 +2,83 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.CountyDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.County">
-    <id column="countyid" jdbcType="INTEGER" property="countyid" />
-    <result column="prefectureid" jdbcType="INTEGER" property="prefectureid" />
-    <result column="countyname" jdbcType="VARCHAR" property="countyname" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.County">
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <id column="countyId" jdbcType="INTEGER" property="countyId"/>
+    <result column="prefectureId" jdbcType="INTEGER" property="prefectureId"/>
+    <result column="countryName" jdbcType="VARCHAR" property="countryName"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
   </resultMap>
   <sql id="Base_Column_List">
-    countyid, prefectureid, countyname
+    countyId, prefectureId, countryName, status
   </sql>
-  <sql id="Blob_Column_List">
-    description
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from county
-    where countyid = #{countyid,jdbcType=INTEGER}
+    where countyId = #{countyId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from county
-    where countyid = #{countyid,jdbcType=INTEGER}
+    where countyId = #{countyId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.County">
-    insert into county (countyid, prefectureid, countyname, 
-      description)
-    values (#{countyid,jdbcType=INTEGER}, #{prefectureid,jdbcType=INTEGER}, #{countyname,jdbcType=VARCHAR}, 
-      #{description,jdbcType=LONGVARCHAR})
+    insert into county (countyId, prefectureId, countryName, 
+      status)
+    values (#{countyId,jdbcType=INTEGER}, #{prefectureId,jdbcType=INTEGER}, #{countryName,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.County">
     insert into county
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="countyid != null">
-        countyid,
+      <if test="countyId != null">
+        countyId,
       </if>
-      <if test="prefectureid != null">
-        prefectureid,
+      <if test="prefectureId != null">
+        prefectureId,
       </if>
-      <if test="countyname != null">
-        countyname,
+      <if test="countryName != null">
+        countryName,
       </if>
-      <if test="description != null">
-        description,
+      <if test="status != null">
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="countyid != null">
-        #{countyid,jdbcType=INTEGER},
+      <if test="countyId != null">
+        #{countyId,jdbcType=INTEGER},
       </if>
-      <if test="prefectureid != null">
-        #{prefectureid,jdbcType=INTEGER},
+      <if test="prefectureId != null">
+        #{prefectureId,jdbcType=INTEGER},
       </if>
-      <if test="countyname != null">
-        #{countyname,jdbcType=VARCHAR},
+      <if test="countryName != null">
+        #{countryName,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        #{description,jdbcType=LONGVARCHAR},
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.County">
     update county
     <set>
-      <if test="prefectureid != null">
-        prefectureid = #{prefectureid,jdbcType=INTEGER},
+      <if test="prefectureId != null">
+        prefectureId = #{prefectureId,jdbcType=INTEGER},
       </if>
-      <if test="countyname != null">
-        countyname = #{countyname,jdbcType=VARCHAR},
+      <if test="countryName != null">
+        countryName = #{countryName,jdbcType=VARCHAR},
       </if>
-      <if test="description != null">
-        description = #{description,jdbcType=LONGVARCHAR},
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
       </if>
     </set>
-    where countyid = #{countyid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.County">
-    update county
-    set prefectureid = #{prefectureid,jdbcType=INTEGER},
-      countyname = #{countyname,jdbcType=VARCHAR},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where countyid = #{countyid,jdbcType=INTEGER}
+    where countyId = #{countyId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.County">
     update county
-    set prefectureid = #{prefectureid,jdbcType=INTEGER},
-      countyname = #{countyname,jdbcType=VARCHAR}
-    where countyid = #{countyid,jdbcType=INTEGER}
+    set prefectureId = #{prefectureId,jdbcType=INTEGER},
+      countryName = #{countryName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where countyId = #{countyId,jdbcType=INTEGER}
   </update>
-
   <select id="getCountyByPrefectureId" resultType="org.spring.springboot.domain.County">
     select *
     from county

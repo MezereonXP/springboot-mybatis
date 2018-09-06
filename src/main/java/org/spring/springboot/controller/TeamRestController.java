@@ -41,7 +41,7 @@ public class TeamRestController {
         try {
             if(teamService.login(email).getPassword().equals(password)){
                 response.setStatus(true);
-                String teamid = teamService.findTeamByEmail(email).getTeamid().toString();
+                String teamid = teamService.findTeamByEmail(email).getTeamId().toString();
                 Cookie emailCookie = new Cookie("email",email);
                 Cookie tokenCookie = new Cookie("token", Token.getMyToken(email,teamid));
                 Cookie teamidCookie = new Cookie("teamid",teamid);

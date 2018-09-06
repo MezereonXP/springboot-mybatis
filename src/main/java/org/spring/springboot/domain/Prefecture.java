@@ -1,43 +1,43 @@
 package org.spring.springboot.domain;
 
 public class Prefecture {
-    private Integer prefectureid;
+    private Integer prefectureId;
 
-    private String prefecturename;
+    private Integer provinceId;
 
-    private String provinceid;
+    private String prefectureName;
 
-    private String description;
+    private String status;
 
-    public Integer getPrefectureid() {
-        return prefectureid;
+    public Integer getPrefectureId() {
+        return prefectureId;
     }
 
-    public void setPrefectureid(Integer prefectureid) {
-        this.prefectureid = prefectureid;
+    public void setPrefectureId(Integer prefectureId) {
+        this.prefectureId = prefectureId;
     }
 
-    public String getPrefecturename() {
-        return prefecturename;
+    public Integer getProvinceId() {
+        return provinceId;
     }
 
-    public void setPrefecturename(String prefecturename) {
-        this.prefecturename = prefecturename == null ? null : prefecturename.trim();
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
     }
 
-    public String getProvinceid() {
-        return provinceid;
+    public String getPrefectureName() {
+        return prefectureName;
     }
 
-    public void setProvinceid(String provinceid) {
-        this.provinceid = provinceid == null ? null : provinceid.trim();
+    public void setPrefectureName(String prefectureName) {
+        this.prefectureName = prefectureName == null ? null : prefectureName.trim();
     }
 
-    public String getDescription() {
-        return description;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }
