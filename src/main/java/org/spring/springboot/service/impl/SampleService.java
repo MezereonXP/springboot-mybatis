@@ -95,12 +95,12 @@ public class SampleService {
         List<TestCycle> testCycleList = testCycleDao.getAllTestCycle();
 
         for (TestCycle testCycle : testCycleList){
-            if (!map.containsKey(testCycle.getTestcycleid())){
-                map.put(testCycle.getTestcycleid(), new ShowSamples.ShowCycle());
-                map.get(testCycle.getTestcycleid()).setTestCycle(testCycle);
+            if (!map.containsKey(testCycle.getTestCycleId())) {
+                map.put(testCycle.getTestCycleId(), new ShowSamples.ShowCycle());
+                map.get(testCycle.getTestCycleId()).setTestCycle(testCycle);
             }
-            ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestcycleid());
-            List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycle.getTestcycleid());
+            ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestCycleId());
+            List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycle.getTestCycleId());
             for (CycleTeam cycleTeam:list) {
                 for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
                     showCycle.getSample().add(sample);
