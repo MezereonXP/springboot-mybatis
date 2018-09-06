@@ -46,7 +46,7 @@ public class SampleRestController {
 
     @RequestMapping(value = "/api/addSample", method = RequestMethod.POST)
     @ResponseBody
-    public Response addSample(@RequestBody SampleWithBLOBs sample) {
+    public Response addSample(@RequestBody Sample sample) {
         Response response = new Response();
         try {
             response.setStatus(samplesService.addSample(sample));
@@ -60,7 +60,7 @@ public class SampleRestController {
 
     @RequestMapping(value = "/api/updateSample", method = RequestMethod.POST)
     @ResponseBody
-    public Response updateSample(@RequestBody SampleWithBLOBs sample) {
+    public Response updateSample(@RequestBody Sample sample) {
         Response response = new Response();
         try {
             response.setStatus(samplesService.updateSample(sample));

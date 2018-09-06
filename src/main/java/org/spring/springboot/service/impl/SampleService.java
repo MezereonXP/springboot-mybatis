@@ -55,8 +55,8 @@ public class SampleService {
     public List<Sample> selectByCycleTeamId(Integer cycleTeamId) {
         return sampleDao.getSamplesByCycleTeamid(cycleTeamId);
     }
-    
-    public boolean addSample(SampleWithBLOBs sample) {
+
+    public boolean addSample(Sample sample) {
         Integer count = sampleDao.insertSelective(sample);
         if(count == 1){
             return true;
@@ -64,7 +64,8 @@ public class SampleService {
             return false;
         }
     }
-    public boolean updateSample(SampleWithBLOBs sample) {
+
+    public boolean updateSample(Sample sample) {
         Integer count = sampleDao.updateByPrimaryKeySelective(sample);
         if(count == 1){
             return true;
