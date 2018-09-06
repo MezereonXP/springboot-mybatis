@@ -56,7 +56,7 @@ public class LocationService {
         Map<Integer, List<SampleWithLocation>> map = new HashMap<Integer, List<SampleWithLocation>>();
         ShowSamples showSamples = sampleService.getAllShowSamples();
         for (ShowSamples.ShowCycle showCycle:showSamples.getShowCycles()){
-            Integer tempCycleId = showCycle.getTestCycle().getTestcycleid();
+            Integer tempCycleId = showCycle.getTestCycle().getTestCycleId();
             map.put(tempCycleId, new ArrayList<SampleWithLocation>());
             for (Sample sample : showCycle.getSample()) {
                 SampleWithLocation sampleWithLocation = new SampleWithLocation();
@@ -79,7 +79,7 @@ public class LocationService {
         Map<Integer, List<MapShowModel>> map = new HashMap<Integer, List<MapShowModel>>();
         ShowSamples showSamples = sampleService.getAllShowSamples();
         for (ShowSamples.ShowCycle showCycle:showSamples.getShowCycles()){
-            Integer tempCycleId = showCycle.getTestCycle().getTestcycleid();
+            Integer tempCycleId = showCycle.getTestCycle().getTestCycleId();
             map.put(tempCycleId, new ArrayList<MapShowModel>());
             int flag=0;
             for (Sample sample : showCycle.getSample()) {
