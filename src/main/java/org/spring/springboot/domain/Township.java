@@ -3,7 +3,7 @@ package org.spring.springboot.domain;
 public class Township {
     private Integer townshipId;
 
-    private Integer countryId;
+    private Integer countyId;
 
     private String townName;
 
@@ -17,12 +17,12 @@ public class Township {
         this.townshipId = townshipId;
     }
 
-    public Integer getCountryId() {
-        return countryId;
+    public Integer getCountyId() {
+        return countyId;
     }
 
-    public void setCountryId(Integer countryId) {
-        this.countryId = countryId;
+    public void setCountyId(Integer countyId) {
+        this.countyId = countyId;
     }
 
     public String getTownName() {

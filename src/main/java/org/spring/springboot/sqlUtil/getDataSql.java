@@ -9,8 +9,8 @@ import java.util.List;
 
 public class getDataSql {
 
-    private static final String PATH = "J:\\2016行政区划数据";
-    private static final String OUT = "J:\\sql.sql";
+    private static final String PATH = "F:\\Project\\MyH2O\\2016行政区划数据";
+    private static final String OUT = "F:\\Project\\MyH2O\\sql.sql";
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static void main(String args[]) {
@@ -25,8 +25,8 @@ public class getDataSql {
         for (File file : files) {
             List<Data> datas = new ArrayList<Data>();
             String name = file.getName().replace(".json", "");
-            sql.append("insert into province values(" + provinceId + ",'" + name + "','');");
-            System.out.println("insert into province values(" + provinceId + ",'" + name + "','');");
+            sql.append("insert into province values(" + provinceId + ",'" + name + "', 0);");
+            System.out.println("insert into province values(" + provinceId + ",'" + name + "', 0);");
             provinceId++;
             try {
                 datas = objectMapper.readValue(readToString(file), new TypeReference<List<Data>>() {
@@ -35,23 +35,23 @@ public class getDataSql {
                 e.printStackTrace();
             }
             for (Data prefecturedata : datas) {
-                sql.append("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + (provinceId - 1) + ",'');");
-                System.out.println("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + (provinceId - 1) + ",'');");
+                sql.append("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + (provinceId - 1) + ", 0);");
+                System.out.println("insert into prefecture values(" + prefectureId + ",'" + prefecturedata.getName() + "'," + (provinceId - 1) + ", 0);");
                 prefectureId++;
                 if (prefecturedata.getChildren() != null && prefecturedata.getChildren().size() != 0) {
                     for (Data countydata : prefecturedata.getChildren()) {
-                        sql.append("insert into county values(" + (prefectureId - 1) + "," + countyId + ",'" + countydata.getName() + "'," + "'');");
-                        System.out.println("insert into county values(" + (prefectureId - 1) + "," + countyId + ",'" + countydata.getName() + "'," + "'');");
+                        sql.append("insert into county values(" + (prefectureId - 1) + "," + countyId + ",'" + countydata.getName() + "'," + "0);");
+                        System.out.println("insert into county values(" + (prefectureId - 1) + "," + countyId + ",'" + countydata.getName() + "'," + "0);");
                         countyId++;
                         if (countydata.getChildren() != null && countydata.getChildren().size() != 0) {
                             for (Data townshipdata : countydata.getChildren()) {
-                                sql.append("insert into township values(" + (countyId - 1) + "," + townshipId + ",'" + townshipdata.getName() + "'," + "'');");
-                                System.out.println("insert into township values(" + (countyId - 1) + "," + townshipId + ",'" + townshipdata.getName() + "'," + "'');");
+                                sql.append("insert into township values(" + (countyId - 1) + "," + townshipId + ",'" + townshipdata.getName() + "'," + "0);");
+                                System.out.println("insert into township values(" + (countyId - 1) + "," + townshipId + ",'" + townshipdata.getName() + "'," + "0);");
                                 townshipId++;
                                 if (townshipdata.getChildren() != null && townshipdata.getChildren().size() != 0) {
                                     for (Data villagedata : townshipdata.getChildren()) {
-                                        sql.append("insert into village values(" + (townshipId - 1) + "," + villageId + ",'" + villagedata.getName() + "'," + "'');");
-                                        System.out.println("insert into village values(" + (townshipId - 1) + "," + villageId + ",'" + villagedata.getName() + "'," + "'');");
+                                        sql.append("insert into village values(" + (townshipId - 1) + "," + villageId + ",'" + villagedata.getName() + "'," + "0);");
+                                        System.out.println("insert into village values(" + (townshipId - 1) + "," + villageId + ",'" + villagedata.getName() + "'," + "0);");
                                         villageId++;
                                     }
                                 }

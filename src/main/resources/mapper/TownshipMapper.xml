@@ -3,12 +3,12 @@
 <mapper namespace="org.spring.springboot.dao.TownshipDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Township">
     <id column="townshipId" jdbcType="INTEGER" property="townshipId"/>
-    <result column="countryId" jdbcType="INTEGER" property="countryId"/>
+    <result column="countyId" jdbcType="INTEGER" property="countyId"/>
     <result column="townName" jdbcType="VARCHAR" property="townName"/>
     <result column="status" jdbcType="INTEGER" property="status"/>
   </resultMap>
   <sql id="Base_Column_List">
-    townshipId, countryId, townName, status
+    townshipId, countyId, townName, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -21,9 +21,9 @@
     where townshipId = #{townshipId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Township">
-    insert into township (townshipId, countryId, townName, 
+    insert into township (townshipId, countyId, townName, 
       status)
-    values (#{townshipId,jdbcType=INTEGER}, #{countryId,jdbcType=INTEGER}, #{townName,jdbcType=VARCHAR}, 
+    values (#{townshipId,jdbcType=INTEGER}, #{countyId,jdbcType=INTEGER}, #{townName,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Township">
@@ -32,8 +32,8 @@
       <if test="townshipId != null">
         townshipId,
       </if>
-      <if test="countryId != null">
-        countryId,
+      <if test="countyId != null">
+        countyId,
       </if>
       <if test="townName != null">
         townName,
@@ -46,8 +46,8 @@
       <if test="townshipId != null">
         #{townshipId,jdbcType=INTEGER},
       </if>
-      <if test="countryId != null">
-        #{countryId,jdbcType=INTEGER},
+      <if test="countyId != null">
+        #{countyId,jdbcType=INTEGER},
       </if>
       <if test="townName != null">
         #{townName,jdbcType=VARCHAR},
@@ -60,8 +60,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Township">
     update township
     <set>
-      <if test="countryId != null">
-        countryId = #{countryId,jdbcType=INTEGER},
+      <if test="countyId != null">
+        countyId = #{countyId,jdbcType=INTEGER},
       </if>
       <if test="townName != null">
         townName = #{townName,jdbcType=VARCHAR},
@@ -74,7 +74,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Township">
     update township
-    set countryId = #{countryId,jdbcType=INTEGER},
+    set countyId = #{countyId,jdbcType=INTEGER},
       townName = #{townName,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where townshipId = #{townshipId,jdbcType=INTEGER}
@@ -82,6 +82,6 @@
   <select id="getTownshipByCountyId" resultType="org.spring.springboot.domain.Township">
     select *
     from township
-    where countyid = #{countyId}
+    where countyId = #{countyId}
   </select>
 </mapper>

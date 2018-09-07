@@ -5,7 +5,7 @@ public class County {
 
     private Integer prefectureId;
 
-    private String countryName;
+    private String countyName;
 
     private String status;
 
@@ -25,12 +25,12 @@ public class County {
         this.prefectureId = prefectureId;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCountyName() {
+        return countyName;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName == null ? null : countryName.trim();
+    public void setCountyName(String countyName) {
+        this.countyName = countyName == null ? null : countyName.trim();
     }
 
     public String getStatus() {

@@ -4,11 +4,11 @@
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.County">
     <id column="countyId" jdbcType="INTEGER" property="countyId"/>
     <result column="prefectureId" jdbcType="INTEGER" property="prefectureId"/>
-    <result column="countryName" jdbcType="VARCHAR" property="countryName"/>
+    <result column="countyName" jdbcType="VARCHAR" property="countyName"/>
     <result column="status" jdbcType="VARCHAR" property="status"/>
   </resultMap>
   <sql id="Base_Column_List">
-    countyId, prefectureId, countryName, status
+    countyId, prefectureId, countyName, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -21,9 +21,9 @@
     where countyId = #{countyId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.County">
-    insert into county (countyId, prefectureId, countryName, 
+    insert into county (countyId, prefectureId, countyName, 
       status)
-    values (#{countyId,jdbcType=INTEGER}, #{prefectureId,jdbcType=INTEGER}, #{countryName,jdbcType=VARCHAR}, 
+    values (#{countyId,jdbcType=INTEGER}, #{prefectureId,jdbcType=INTEGER}, #{countyName,jdbcType=VARCHAR}, 
       #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.County">
@@ -35,8 +35,8 @@
       <if test="prefectureId != null">
         prefectureId,
       </if>
-      <if test="countryName != null">
-        countryName,
+      <if test="countyName != null">
+        countyName,
       </if>
       <if test="status != null">
         status,
@@ -49,8 +49,8 @@
       <if test="prefectureId != null">
         #{prefectureId,jdbcType=INTEGER},
       </if>
-      <if test="countryName != null">
-        #{countryName,jdbcType=VARCHAR},
+      <if test="countyName != null">
+        #{countyName,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
@@ -63,8 +63,8 @@
       <if test="prefectureId != null">
         prefectureId = #{prefectureId,jdbcType=INTEGER},
       </if>
-      <if test="countryName != null">
-        countryName = #{countryName,jdbcType=VARCHAR},
+      <if test="countyName != null">
+        countyName = #{countyName,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
@@ -75,7 +75,7 @@
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.County">
     update county
     set prefectureId = #{prefectureId,jdbcType=INTEGER},
-      countryName = #{countryName,jdbcType=VARCHAR},
+      countyName = #{countyName,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR}
     where countyId = #{countyId,jdbcType=INTEGER}
   </update>
