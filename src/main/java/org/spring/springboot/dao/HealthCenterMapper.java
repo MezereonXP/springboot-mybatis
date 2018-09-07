@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.HealthCenter;
 import org.spring.springboot.domain.HealthCenterExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface HealthCenterMapper {
     long countByExample(HealthCenterExample example);
 

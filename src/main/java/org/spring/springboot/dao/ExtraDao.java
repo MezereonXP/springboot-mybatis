@@ -1,7 +1,9 @@
 package org.spring.springboot.dao;
 
 import org.spring.springboot.domain.Extra;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface ExtraDao {
     int deleteByPrimaryKey(Integer extraid);
 

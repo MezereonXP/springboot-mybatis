@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.MultiResponse;
 import org.spring.springboot.domain.MultiResponseExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface MultiResponseMapper {
     long countByExample(MultiResponseExample example);
 

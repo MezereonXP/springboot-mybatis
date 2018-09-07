@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.TreamentMethod;
 import org.spring.springboot.domain.TreamentMethodExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface TreamentMethodMapper {
     long countByExample(TreamentMethodExample example);
 

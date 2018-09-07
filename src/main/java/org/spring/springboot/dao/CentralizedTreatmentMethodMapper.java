@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.CentralizedTreatmentMethod;
 import org.spring.springboot.domain.CentralizedTreatmentMethodExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface CentralizedTreatmentMethodMapper {
     long countByExample(CentralizedTreatmentMethodExample example);
 

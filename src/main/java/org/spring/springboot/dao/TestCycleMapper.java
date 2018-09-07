@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.TestCycle;
 import org.spring.springboot.domain.TestCycleExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface TestCycleMapper {
     long countByExample(TestCycleExample example);
 

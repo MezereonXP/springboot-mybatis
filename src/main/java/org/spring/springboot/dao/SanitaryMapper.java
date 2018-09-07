@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.Sanitary;
 import org.spring.springboot.domain.SanitaryExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface SanitaryMapper {
     long countByExample(SanitaryExample example);
 

@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.Turbidity;
 import org.spring.springboot.domain.TurbidityExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface TurbidityMapper {
     long countByExample(TurbidityExample example);
 

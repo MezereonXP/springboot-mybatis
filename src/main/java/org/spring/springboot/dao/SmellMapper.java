@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.Smell;
 import org.spring.springboot.domain.SmellExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface SmellMapper {
     long countByExample(SmellExample example);
 
