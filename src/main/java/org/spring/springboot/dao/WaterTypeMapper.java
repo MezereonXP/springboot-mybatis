@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.WaterType;
 import org.spring.springboot.domain.WaterTypeExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface WaterTypeMapper {
     long countByExample(WaterTypeExample example);
 
