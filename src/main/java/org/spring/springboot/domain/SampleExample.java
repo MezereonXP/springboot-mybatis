@@ -192,6 +192,66 @@ public class SampleExample {
             return (Criteria) this;
         }
 
+        public Criteria andWaterIdIsNull() {
+            addCriterion("waterId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdIsNotNull() {
+            addCriterion("waterId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdEqualTo(Integer value) {
+            addCriterion("waterId =", value, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdNotEqualTo(Integer value) {
+            addCriterion("waterId <>", value, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdGreaterThan(Integer value) {
+            addCriterion("waterId >", value, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("waterId >=", value, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdLessThan(Integer value) {
+            addCriterion("waterId <", value, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdLessThanOrEqualTo(Integer value) {
+            addCriterion("waterId <=", value, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdIn(List<Integer> values) {
+            addCriterion("waterId in", values, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdNotIn(List<Integer> values) {
+            addCriterion("waterId not in", values, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdBetween(Integer value1, Integer value2) {
+            addCriterion("waterId between", value1, value2, "waterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("waterId not between", value1, value2, "waterId");
+            return (Criteria) this;
+        }
+
         public Criteria andWaterTypeIdIsNull() {
             addCriterion("waterTypeId is null");
             return (Criteria) this;
@@ -1422,6 +1482,66 @@ public class SampleExample {
             return (Criteria) this;
         }
 
+        public Criteria andTurbidityIdIsNull() {
+            addCriterion("turbidityId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdIsNotNull() {
+            addCriterion("turbidityId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdEqualTo(Integer value) {
+            addCriterion("turbidityId =", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdNotEqualTo(Integer value) {
+            addCriterion("turbidityId <>", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdGreaterThan(Integer value) {
+            addCriterion("turbidityId >", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("turbidityId >=", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdLessThan(Integer value) {
+            addCriterion("turbidityId <", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdLessThanOrEqualTo(Integer value) {
+            addCriterion("turbidityId <=", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdIn(List<Integer> values) {
+            addCriterion("turbidityId in", values, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdNotIn(List<Integer> values) {
+            addCriterion("turbidityId not in", values, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdBetween(Integer value1, Integer value2) {
+            addCriterion("turbidityId between", value1, value2, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("turbidityId not between", value1, value2, "turbidityId");
+            return (Criteria) this;
+        }
+
         public Criteria andFeElementIsNull() {
             addCriterion("feElement is null");
             return (Criteria) this;
@@ -2392,63 +2512,63 @@ public class SampleExample {
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateIsNull() {
-            addCriterion("no3dilutionrate is null");
+        public Criteria andNo3DilutionrateIsNull() {
+            addCriterion("no3Dilutionrate is null");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateIsNotNull() {
-            addCriterion("no3dilutionrate is not null");
+        public Criteria andNo3DilutionrateIsNotNull() {
+            addCriterion("no3Dilutionrate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateEqualTo(Integer value) {
-            addCriterion("no3dilutionrate =", value, "no3dilutionrate");
+        public Criteria andNo3DilutionrateEqualTo(Integer value) {
+            addCriterion("no3Dilutionrate =", value, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateNotEqualTo(Integer value) {
-            addCriterion("no3dilutionrate <>", value, "no3dilutionrate");
+        public Criteria andNo3DilutionrateNotEqualTo(Integer value) {
+            addCriterion("no3Dilutionrate <>", value, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateGreaterThan(Integer value) {
-            addCriterion("no3dilutionrate >", value, "no3dilutionrate");
+        public Criteria andNo3DilutionrateGreaterThan(Integer value) {
+            addCriterion("no3Dilutionrate >", value, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateGreaterThanOrEqualTo(Integer value) {
-            addCriterion("no3dilutionrate >=", value, "no3dilutionrate");
+        public Criteria andNo3DilutionrateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("no3Dilutionrate >=", value, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateLessThan(Integer value) {
-            addCriterion("no3dilutionrate <", value, "no3dilutionrate");
+        public Criteria andNo3DilutionrateLessThan(Integer value) {
+            addCriterion("no3Dilutionrate <", value, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateLessThanOrEqualTo(Integer value) {
-            addCriterion("no3dilutionrate <=", value, "no3dilutionrate");
+        public Criteria andNo3DilutionrateLessThanOrEqualTo(Integer value) {
+            addCriterion("no3Dilutionrate <=", value, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateIn(List<Integer> values) {
-            addCriterion("no3dilutionrate in", values, "no3dilutionrate");
+        public Criteria andNo3DilutionrateIn(List<Integer> values) {
+            addCriterion("no3Dilutionrate in", values, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateNotIn(List<Integer> values) {
-            addCriterion("no3dilutionrate not in", values, "no3dilutionrate");
+        public Criteria andNo3DilutionrateNotIn(List<Integer> values) {
+            addCriterion("no3Dilutionrate not in", values, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateBetween(Integer value1, Integer value2) {
-            addCriterion("no3dilutionrate between", value1, value2, "no3dilutionrate");
+        public Criteria andNo3DilutionrateBetween(Integer value1, Integer value2) {
+            addCriterion("no3Dilutionrate between", value1, value2, "no3Dilutionrate");
             return (Criteria) this;
         }
 
-        public Criteria andNo3dilutionrateNotBetween(Integer value1, Integer value2) {
-            addCriterion("no3dilutionrate not between", value1, value2, "no3dilutionrate");
+        public Criteria andNo3DilutionrateNotBetween(Integer value1, Integer value2) {
+            addCriterion("no3Dilutionrate not between", value1, value2, "no3Dilutionrate");
             return (Criteria) this;
         }
 
@@ -3019,6 +3139,126 @@ public class SampleExample {
 
         public Criteria andNh3ElementNotBetween(Float value1, Float value2) {
             addCriterion("nh3Element not between", value1, value2, "nh3Element");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateIsNull() {
+            addCriterion("nh3Dilutionrate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateIsNotNull() {
+            addCriterion("nh3Dilutionrate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateEqualTo(Integer value) {
+            addCriterion("nh3Dilutionrate =", value, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateNotEqualTo(Integer value) {
+            addCriterion("nh3Dilutionrate <>", value, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateGreaterThan(Integer value) {
+            addCriterion("nh3Dilutionrate >", value, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("nh3Dilutionrate >=", value, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateLessThan(Integer value) {
+            addCriterion("nh3Dilutionrate <", value, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateLessThanOrEqualTo(Integer value) {
+            addCriterion("nh3Dilutionrate <=", value, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateIn(List<Integer> values) {
+            addCriterion("nh3Dilutionrate in", values, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateNotIn(List<Integer> values) {
+            addCriterion("nh3Dilutionrate not in", values, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateBetween(Integer value1, Integer value2) {
+            addCriterion("nh3Dilutionrate between", value1, value2, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3DilutionrateNotBetween(Integer value1, Integer value2) {
+            addCriterion("nh3Dilutionrate not between", value1, value2, "nh3Dilutionrate");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalIsNull() {
+            addCriterion("nh3Original is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalIsNotNull() {
+            addCriterion("nh3Original is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalEqualTo(Float value) {
+            addCriterion("nh3Original =", value, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalNotEqualTo(Float value) {
+            addCriterion("nh3Original <>", value, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalGreaterThan(Float value) {
+            addCriterion("nh3Original >", value, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalGreaterThanOrEqualTo(Float value) {
+            addCriterion("nh3Original >=", value, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalLessThan(Float value) {
+            addCriterion("nh3Original <", value, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalLessThanOrEqualTo(Float value) {
+            addCriterion("nh3Original <=", value, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalIn(List<Float> values) {
+            addCriterion("nh3Original in", values, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalNotIn(List<Float> values) {
+            addCriterion("nh3Original not in", values, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalBetween(Float value1, Float value2) {
+            addCriterion("nh3Original between", value1, value2, "nh3Original");
+            return (Criteria) this;
+        }
+
+        public Criteria andNh3OriginalNotBetween(Float value1, Float value2) {
+            addCriterion("nh3Original not between", value1, value2, "nh3Original");
             return (Criteria) this;
         }
 

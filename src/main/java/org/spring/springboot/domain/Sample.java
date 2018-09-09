@@ -5,6 +5,8 @@ import java.util.Date;
 public class Sample {
     private Integer baseId;
 
+    private Integer waterId;
+
     private Integer waterTypeId;
 
     private Integer isValidated;
@@ -45,6 +47,8 @@ public class Sample {
 
     private String otherInformation;
 
+    private Integer turbidityId;
+
     private Float feElement;
 
     private String feMethod;
@@ -75,7 +79,7 @@ public class Sample {
 
     private Float no3Element;
 
-    private Integer no3dilutionrate;
+    private Integer no3Dilutionrate;
 
     private Float no3Original;
 
@@ -94,6 +98,10 @@ public class Sample {
     private String fMethod;
 
     private Float nh3Element;
+
+    private Integer nh3Dilutionrate;
+
+    private Float nh3Original;
 
     private String nh3Method;
 
@@ -187,6 +195,14 @@ public class Sample {
 
     public void setBaseId(Integer baseId) {
         this.baseId = baseId;
+    }
+
+    public Integer getWaterId() {
+        return waterId;
+    }
+
+    public void setWaterId(Integer waterId) {
+        this.waterId = waterId;
     }
 
     public Integer getWaterTypeId() {
@@ -349,6 +365,14 @@ public class Sample {
         this.otherInformation = otherInformation == null ? null : otherInformation.trim();
     }
 
+    public Integer getTurbidityId() {
+        return turbidityId;
+    }
+
+    public void setTurbidityId(Integer turbidityId) {
+        this.turbidityId = turbidityId;
+    }
+
     public Float getFeElement() {
         return feElement;
     }
@@ -469,12 +493,12 @@ public class Sample {
         this.no3Element = no3Element;
     }
 
-    public Integer getNo3dilutionrate() {
-        return no3dilutionrate;
+    public Integer getNo3Dilutionrate() {
+        return no3Dilutionrate;
     }
 
-    public void setNo3dilutionrate(Integer no3dilutionrate) {
-        this.no3dilutionrate = no3dilutionrate;
+    public void setNo3Dilutionrate(Integer no3Dilutionrate) {
+        this.no3Dilutionrate = no3Dilutionrate;
     }
 
     public Float getNo3Original() {
@@ -547,6 +571,22 @@ public class Sample {
 
     public void setNh3Element(Float nh3Element) {
         this.nh3Element = nh3Element;
+    }
+
+    public Integer getNh3Dilutionrate() {
+        return nh3Dilutionrate;
+    }
+
+    public void setNh3Dilutionrate(Integer nh3Dilutionrate) {
+        this.nh3Dilutionrate = nh3Dilutionrate;
+    }
+
+    public Float getNh3Original() {
+        return nh3Original;
+    }
+
+    public void setNh3Original(Float nh3Original) {
+        this.nh3Original = nh3Original;
     }
 
     public String getNh3Method() {
