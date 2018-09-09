@@ -6,6 +6,7 @@ import org.spring.springboot.dao.SampleDao;
 import org.spring.springboot.dao.SingleChooseDao;
 import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.dao.TestCycleDao;
+import org.spring.springboot.dao.WaterSourceTypeMapper;
 import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
@@ -14,6 +15,7 @@ import org.spring.springboot.domain.ShowSamples;
 import org.spring.springboot.domain.SingleChoose;
 import org.spring.springboot.domain.Team;
 import org.spring.springboot.domain.TestCycle;
+import org.spring.springboot.domain.WaterSourceType;
 import org.spring.springboot.util.ListConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,9 @@ public class SampleService {
 
     @Autowired
     private SingleChooseDao singleChooseDao;
+
+    @Autowired
+    private WaterSourceTypeMapper waterSourceTypeMapper;
 
     public Sample selectById(Integer baseid) {
         return sampleDao.selectByPrimaryKey(baseid);
@@ -121,10 +126,15 @@ public class SampleService {
         for (CycleTeam cycleTeam:list) {
             Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
             for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
-                List<SingleChoose> singleChooseList = singleChooseDao.getSingleChooseList();
+                WaterSourceType waterSourceType;
+                waterSourceType = waterSourceTypeMapper.selectByPrimaryKey(sample.getWaterSourceTypeId());
+                if (waterSourceType == null) {
+                    waterSourceType = new WaterSourceType();
+                    waterSourceType.setWaterSourceDesc("暂无");
+                }
                 showForIndexList.add(new ShowForIndex(team.getTeamName(),
                         locationDao.selectByPrimaryKey(sample.getLocationId()),
-                    sample, ListConverter.convertSingleChooseList(singleChooseList)));
+                        sample, waterSourceType.getWaterSourceDesc()));
             }
         }
         return showForIndexList;

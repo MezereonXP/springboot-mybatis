@@ -29,9 +29,9 @@
                 <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
                 <java.version>1.8</java.version>
                 <spring-boot-admin.version>2.0.1</spring-boot-admin.version>
-                <host>cdb-pappuj6p.gz.tencentcdb.com</host>
-                <port>10031</port>
-                <pwd>8888+8888=17776</pwd>
+                <host>47.93.11.200</host>
+                <port>3306</port>
+                <pwd>root</pwd>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>

@@ -21,14 +21,14 @@ public class ShowForIndex {
   private String generalComments;
   private String probComment;
 
-    public ShowForIndex(String teamName, Location location, Sample sample, Map<Integer, String> choose) {
+  public ShowForIndex(String teamName, Location location, Sample sample, String sourceType) {
     this.lat = location.getLat();
         this.lon = location.getLog();
     this.teamName = teamName;
         this.positionName = location.getLocationName();
         this.samplingDate = sample.getSamplingDate();
         this.generalComments = sample.getGeneralComments();
-        this.sourceType = choose.get(sample.getWaterSourceTypeId());
+    this.sourceType = sourceType;
   }
 
   public String getProbComment() {
