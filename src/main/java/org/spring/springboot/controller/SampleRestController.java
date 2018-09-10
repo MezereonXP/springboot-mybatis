@@ -1,14 +1,12 @@
 package org.spring.springboot.controller;
 
+import org.spring.springboot.dao.CentralizedTreatmentMethodMapper;
 import org.spring.springboot.dao.LocationDao;
-import org.spring.springboot.domain.Location;
-import org.spring.springboot.domain.Sample;
-import org.spring.springboot.domain.SampleWithBLOBs;
-import org.spring.springboot.domain.ShowSamples;
-import org.spring.springboot.domain.TestCycle;
+import org.spring.springboot.domain.*;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.SampleService;
 import org.spring.springboot.service.impl.TestCycleService;
+import org.spring.springboot.util.SetSampleDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +26,10 @@ public class SampleRestController {
 
     @Autowired
     private TestCycleService testCycleService;
+
+    @Autowired
+    private SetSampleDetails setSampleDetails;
+
 
     @RequestMapping(value = "/api/sample", method = RequestMethod.GET)
     public Response findOneSample(@RequestParam(value = "baseid", required = true) Integer baseid) {
@@ -150,5 +152,24 @@ public class SampleRestController {
             return response;
         }
     }
+
+    @RequestMapping(value = "/api/getSamppleDetailsById", method = RequestMethod.GET)
+    public Response getSamppleDetailsById(@RequestParam(value = "baseid") Integer baseid) {
+        Response response = new Response();
+        try {
+            Sample sample = samplesService.selectById(baseid);
+            SampleDetails sampleDetails = new SampleDetails();
+            sampleDetails.setSample(sample);
+            setSampleDetails.setSampleDetails(sampleDetails);
+            response.setData(sampleDetails);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
 
 }
