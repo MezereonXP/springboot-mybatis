@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.springboot.dao.UniversityMapper">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.University">
+        <id column="universityId" jdbcType="INTEGER" property="universityId"/>
+        <result column="universityName" jdbcType="VARCHAR" property="universityName"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    universityId, universityName
+  </sql>
+    <select id="selectByExample" parameterType="org.spring.springboot.domain.UniversityExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from university
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from university
+        where universityId = #{universityId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from university
+    where universityId = #{universityId,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="org.spring.springboot.domain.UniversityExample">
+        delete from university
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.spring.springboot.domain.University">
+    insert into university (universityId, universityName)
+    values (#{universityId,jdbcType=INTEGER}, #{universityName,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.University">
+        insert into university
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="universityId != null">
+                universityId,
+            </if>
+            <if test="universityName != null">
+                universityName,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="universityId != null">
+                #{universityId,jdbcType=INTEGER},
+            </if>
+            <if test="universityName != null">
+                #{universityName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.spring.springboot.domain.UniversityExample" resultType="java.lang.Long">
+        select count(*) from university
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update university
+        <set>
+            <if test="record.universityId != null">
+                universityId = #{record.universityId,jdbcType=INTEGER},
+            </if>
+            <if test="record.universityName != null">
+                universityName = #{record.universityName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update university
+        set universityId = #{record.universityId,jdbcType=INTEGER},
+        universityName = #{record.universityName,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.University">
+        update university
+        <set>
+            <if test="universityName != null">
+                universityName = #{universityName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where universityId = #{universityId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.University">
+    update university
+    set universityName = #{universityName,jdbcType=VARCHAR}
+    where universityId = #{universityId,jdbcType=INTEGER}
+  </update>
+</mapper>
