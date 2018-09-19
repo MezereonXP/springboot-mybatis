@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.TeamDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Team">
-    <id column="teamId" jdbcType="INTEGER" property="teamId"/>
-    <result column="uniname" jdbcType="VARCHAR" property="uniname"/>
-    <result column="teamName" jdbcType="VARCHAR" property="teamName"/>
+      <id column="teamId" jdbcType="INTEGER" property="teamId"/>
+      <result column="universityId" jdbcType="INTEGER" property="universityId"/>
+      <result column="teamName" jdbcType="VARCHAR" property="teamName"/>
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="priority" jdbcType="INTEGER" property="priority"/>
+      <result column="priority" jdbcType="INTEGER" property="priority"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Team">
-    <result column="details" jdbcType="LONGVARCHAR" property="details"/>
+      <result column="details" jdbcType="LONGVARCHAR" property="details"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    teamId, uniname, teamName, email, password, priority
+    teamId, universityId, teamName, email, password, priority
   </sql>
   <sql id="Blob_Column_List">
     details
@@ -82,12 +82,12 @@
       distinct
     </if>
     'true' as QUERYID,
-    <include refid="Base_Column_List"/>
+      <include refid="Base_Column_List"/>
     ,
-    <include refid="Blob_Column_List"/>
+      <include refid="Blob_Column_List"/>
     from team
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
@@ -99,10 +99,10 @@
       distinct
     </if>
     'true' as QUERYID,
-    <include refid="Base_Column_List"/>
+      <include refid="Base_Column_List"/>
     from team
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
@@ -123,14 +123,14 @@
   <delete id="deleteByExample" parameterType="org.spring.springboot.domain.TeamExample">
     delete from team
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Team">
-    insert into team (teamId, uniname, teamName, 
+    insert into team (teamId, universityId, teamName, 
       email, password, priority, 
       details)
-    values (#{teamId,jdbcType=INTEGER}, #{uniname,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, 
+    values (#{teamId,jdbcType=INTEGER}, #{universityId,jdbcType=INTEGER}, #{teamName,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, 
       #{details,jdbcType=LONGVARCHAR})
   </insert>
@@ -140,8 +140,8 @@
       <if test="teamId != null">
         teamId,
       </if>
-      <if test="uniname != null">
-        uniname,
+        <if test="universityId != null">
+            universityId,
       </if>
       <if test="teamName != null">
         teamName,
@@ -163,8 +163,8 @@
       <if test="teamId != null">
         #{teamId,jdbcType=INTEGER},
       </if>
-      <if test="uniname != null">
-        #{uniname,jdbcType=VARCHAR},
+        <if test="universityId != null">
+            #{universityId,jdbcType=INTEGER},
       </if>
       <if test="teamName != null">
         #{teamName,jdbcType=VARCHAR},
@@ -186,7 +186,7 @@
   <select id="countByExample" parameterType="org.spring.springboot.domain.TeamExample" resultType="java.lang.Long">
     select count(*) from team
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
@@ -195,8 +195,8 @@
       <if test="record.teamId != null">
         teamId = #{record.teamId,jdbcType=INTEGER},
       </if>
-      <if test="record.uniname != null">
-        uniname = #{record.uniname,jdbcType=VARCHAR},
+        <if test="record.universityId != null">
+            universityId = #{record.universityId,jdbcType=INTEGER},
       </if>
       <if test="record.teamName != null">
         teamName = #{record.teamName,jdbcType=VARCHAR},
@@ -215,39 +215,39 @@
       </if>
     </set>
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
+        <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update team
     set teamId = #{record.teamId,jdbcType=INTEGER},
-    uniname = #{record.uniname,jdbcType=VARCHAR},
-    teamName = #{record.teamName,jdbcType=VARCHAR},
-    email = #{record.email,jdbcType=VARCHAR},
-    password = #{record.password,jdbcType=VARCHAR},
-    priority = #{record.priority,jdbcType=INTEGER},
-    details = #{record.details,jdbcType=LONGVARCHAR}
+      universityId = #{record.universityId,jdbcType=INTEGER},
+      teamName = #{record.teamName,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      priority = #{record.priority,jdbcType=INTEGER},
+      details = #{record.details,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
+        <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update team
     set teamId = #{record.teamId,jdbcType=INTEGER},
-    uniname = #{record.uniname,jdbcType=VARCHAR},
-    teamName = #{record.teamName,jdbcType=VARCHAR},
-    email = #{record.email,jdbcType=VARCHAR},
-    password = #{record.password,jdbcType=VARCHAR},
-    priority = #{record.priority,jdbcType=INTEGER}
+      universityId = #{record.universityId,jdbcType=INTEGER},
+      teamName = #{record.teamName,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      priority = #{record.priority,jdbcType=INTEGER}
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
+        <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Team">
     update team
     <set>
-      <if test="uniname != null">
-        uniname = #{uniname,jdbcType=VARCHAR},
+        <if test="universityId != null">
+            universityId = #{universityId,jdbcType=INTEGER},
       </if>
       <if test="teamName != null">
         teamName = #{teamName,jdbcType=VARCHAR},
@@ -269,7 +269,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.spring.springboot.domain.Team">
     update team
-    set uniname = #{uniname,jdbcType=VARCHAR},
+    set universityId = #{universityId,jdbcType=INTEGER},
       teamName = #{teamName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -279,7 +279,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Team">
     update team
-    set uniname = #{uniname,jdbcType=VARCHAR},
+    set universityId = #{universityId,jdbcType=INTEGER},
       teamName = #{teamName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

@@ -164,73 +164,63 @@ public class TeamExample {
             return (Criteria) this;
         }
 
-        public Criteria andUninameIsNull() {
-            addCriterion("uniname is null");
+        public Criteria andUniversityIdIsNull() {
+            addCriterion("universityId is null");
             return (Criteria) this;
         }
 
-        public Criteria andUninameIsNotNull() {
-            addCriterion("uniname is not null");
+        public Criteria andUniversityIdIsNotNull() {
+            addCriterion("universityId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUninameEqualTo(String value) {
-            addCriterion("uniname =", value, "uniname");
+        public Criteria andUniversityIdEqualTo(Integer value) {
+            addCriterion("universityId =", value, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameNotEqualTo(String value) {
-            addCriterion("uniname <>", value, "uniname");
+        public Criteria andUniversityIdNotEqualTo(Integer value) {
+            addCriterion("universityId <>", value, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameGreaterThan(String value) {
-            addCriterion("uniname >", value, "uniname");
+        public Criteria andUniversityIdGreaterThan(Integer value) {
+            addCriterion("universityId >", value, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameGreaterThanOrEqualTo(String value) {
-            addCriterion("uniname >=", value, "uniname");
+        public Criteria andUniversityIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("universityId >=", value, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameLessThan(String value) {
-            addCriterion("uniname <", value, "uniname");
+        public Criteria andUniversityIdLessThan(Integer value) {
+            addCriterion("universityId <", value, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameLessThanOrEqualTo(String value) {
-            addCriterion("uniname <=", value, "uniname");
+        public Criteria andUniversityIdLessThanOrEqualTo(Integer value) {
+            addCriterion("universityId <=", value, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameLike(String value) {
-            addCriterion("uniname like", value, "uniname");
+        public Criteria andUniversityIdIn(List<Integer> values) {
+            addCriterion("universityId in", values, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameNotLike(String value) {
-            addCriterion("uniname not like", value, "uniname");
+        public Criteria andUniversityIdNotIn(List<Integer> values) {
+            addCriterion("universityId not in", values, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameIn(List<String> values) {
-            addCriterion("uniname in", values, "uniname");
+        public Criteria andUniversityIdBetween(Integer value1, Integer value2) {
+            addCriterion("universityId between", value1, value2, "universityId");
             return (Criteria) this;
         }
 
-        public Criteria andUninameNotIn(List<String> values) {
-            addCriterion("uniname not in", values, "uniname");
-            return (Criteria) this;
-        }
-
-        public Criteria andUninameBetween(String value1, String value2) {
-            addCriterion("uniname between", value1, value2, "uniname");
-            return (Criteria) this;
-        }
-
-        public Criteria andUninameNotBetween(String value1, String value2) {
-            addCriterion("uniname not between", value1, value2, "uniname");
+        public Criteria andUniversityIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("universityId not between", value1, value2, "universityId");
             return (Criteria) this;
         }
 

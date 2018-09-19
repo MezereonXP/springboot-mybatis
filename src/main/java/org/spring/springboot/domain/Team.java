@@ -3,7 +3,7 @@ package org.spring.springboot.domain;
 public class Team {
     private Integer teamId;
 
-    private String uniname;
+    private Integer universityId;
 
     private String teamName;
 
@@ -23,12 +23,12 @@ public class Team {
         this.teamId = teamId;
     }
 
-    public String getUniname() {
-        return uniname;
+    public Integer getUniversityId() {
+        return universityId;
     }
 
-    public void setUniname(String uniname) {
-        this.uniname = uniname == null ? null : uniname.trim();
+    public void setUniversityId(Integer universityId) {
+        this.universityId = universityId;
     }
 
     public String getTeamName() {
