@@ -303,6 +303,76 @@ public class TestCycleExample {
             addCriterion("testCycleDescribe not between", value1, value2, "testCycleDescribe");
             return (Criteria) this;
         }
+
+        public Criteria andTestCycleDateIsNull() {
+            addCriterion("testCycleDate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateIsNotNull() {
+            addCriterion("testCycleDate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateEqualTo(String value) {
+            addCriterion("testCycleDate =", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateNotEqualTo(String value) {
+            addCriterion("testCycleDate <>", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateGreaterThan(String value) {
+            addCriterion("testCycleDate >", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateGreaterThanOrEqualTo(String value) {
+            addCriterion("testCycleDate >=", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateLessThan(String value) {
+            addCriterion("testCycleDate <", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateLessThanOrEqualTo(String value) {
+            addCriterion("testCycleDate <=", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateLike(String value) {
+            addCriterion("testCycleDate like", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateNotLike(String value) {
+            addCriterion("testCycleDate not like", value, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateIn(List<String> values) {
+            addCriterion("testCycleDate in", values, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateNotIn(List<String> values) {
+            addCriterion("testCycleDate not in", values, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateBetween(String value1, String value2) {
+            addCriterion("testCycleDate between", value1, value2, "testCycleDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestCycleDateNotBetween(String value1, String value2) {
+            addCriterion("testCycleDate not between", value1, value2, "testCycleDate");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

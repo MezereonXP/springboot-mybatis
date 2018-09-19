@@ -7,6 +7,8 @@ public class TestCycle {
 
     private String testCycleDescribe;
 
+    private String testCycleDate;
+
     public Integer getTestCycleId() {
         return testCycleId;
     }
@@ -29,5 +31,13 @@ public class TestCycle {
 
     public void setTestCycleDescribe(String testCycleDescribe) {
         this.testCycleDescribe = testCycleDescribe == null ? null : testCycleDescribe.trim();
+    }
+
+    public String getTestCycleDate() {
+        return testCycleDate;
+    }
+
+    public void setTestCycleDate(String testCycleDate) {
+        this.testCycleDate = testCycleDate == null ? null : testCycleDate.trim();
     }
 }

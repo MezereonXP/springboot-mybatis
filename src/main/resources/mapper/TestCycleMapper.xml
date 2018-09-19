@@ -5,6 +5,7 @@
     <id column="testCycleId" jdbcType="INTEGER" property="testCycleId"/>
     <result column="testCycleName" jdbcType="VARCHAR" property="testCycleName"/>
     <result column="testCycleDescribe" jdbcType="VARCHAR" property="testCycleDescribe"/>
+    <result column="testCycleDate" jdbcType="VARCHAR" property="testCycleDate"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    testCycleId, testCycleName, testCycleDescribe
+    testCycleId, testCycleName, testCycleDescribe, testCycleDate
   </sql>
   <select id="selectByExample" parameterType="org.spring.springboot.domain.TestCycleExample" resultMap="BaseResultMap">
     select
@@ -99,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.TestCycle">
-    insert into testcycle (testCycleId, testCycleName, testCycleDescribe
-      )
-    values (#{testCycleId,jdbcType=INTEGER}, #{testCycleName,jdbcType=VARCHAR}, #{testCycleDescribe,jdbcType=VARCHAR}
-      )
+    insert into testcycle (testCycleId, testCycleName, testCycleDescribe, 
+      testCycleDate)
+    values (#{testCycleId,jdbcType=INTEGER}, #{testCycleName,jdbcType=VARCHAR}, #{testCycleDescribe,jdbcType=VARCHAR}, 
+      #{testCycleDate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.TestCycle">
     insert into testcycle
@@ -116,6 +117,9 @@
       <if test="testCycleDescribe != null">
         testCycleDescribe,
       </if>
+      <if test="testCycleDate != null">
+        testCycleDate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="testCycleId != null">
@@ -126,6 +130,9 @@
       </if>
       <if test="testCycleDescribe != null">
         #{testCycleDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="testCycleDate != null">
+        #{testCycleDate,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -147,6 +154,9 @@
       <if test="record.testCycleDescribe != null">
         testCycleDescribe = #{record.testCycleDescribe,jdbcType=VARCHAR},
       </if>
+      <if test="record.testCycleDate != null">
+        testCycleDate = #{record.testCycleDate,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause"/>
@@ -156,7 +166,8 @@
     update testcycle
     set testCycleId = #{record.testCycleId,jdbcType=INTEGER},
     testCycleName = #{record.testCycleName,jdbcType=VARCHAR},
-    testCycleDescribe = #{record.testCycleDescribe,jdbcType=VARCHAR}
+    testCycleDescribe = #{record.testCycleDescribe,jdbcType=VARCHAR},
+    testCycleDate = #{record.testCycleDate,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause"/>
     </if>
@@ -170,13 +181,17 @@
       <if test="testCycleDescribe != null">
         testCycleDescribe = #{testCycleDescribe,jdbcType=VARCHAR},
       </if>
+      <if test="testCycleDate != null">
+        testCycleDate = #{testCycleDate,jdbcType=VARCHAR},
+      </if>
     </set>
     where testCycleId = #{testCycleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.TestCycle">
     update testcycle
     set testCycleName = #{testCycleName,jdbcType=VARCHAR},
-      testCycleDescribe = #{testCycleDescribe,jdbcType=VARCHAR}
+      testCycleDescribe = #{testCycleDescribe,jdbcType=VARCHAR},
+      testCycleDate = #{testCycleDate,jdbcType=VARCHAR}
     where testCycleId = #{testCycleId,jdbcType=INTEGER}
   </update>
   <select id="findTestCycleByTeamId" resultType="org.spring.springboot.domain.TestCycle">

@@ -1,43 +1,23 @@
 package org.spring.springboot.domain;
 
 public class Method {
-    private Integer methodid;
+    private Integer methodId;
 
-    private String methodname;
+    private String methodType;
 
-    private String methodvalue;
-
-    private String methodregex;
-
-    public Integer getMethodid() {
-        return methodid;
+    public Integer getMethodId() {
+        return methodId;
     }
 
-    public void setMethodid(Integer methodid) {
-        this.methodid = methodid;
+    public void setMethodId(Integer methodId) {
+        this.methodId = methodId;
     }
 
-    public String getMethodname() {
-        return methodname;
+    public String getMethodType() {
+        return methodType;
     }
 
-    public void setMethodname(String methodname) {
-        this.methodname = methodname == null ? null : methodname.trim();
-    }
-
-    public String getMethodvalue() {
-        return methodvalue;
-    }
-
-    public void setMethodvalue(String methodvalue) {
-        this.methodvalue = methodvalue == null ? null : methodvalue.trim();
-    }
-
-    public String getMethodregex() {
-        return methodregex;
-    }
-
-    public void setMethodregex(String methodregex) {
-        this.methodregex = methodregex == null ? null : methodregex.trim();
+    public void setMethodType(String methodType) {
+        this.methodType = methodType == null ? null : methodType.trim();
     }
 }
