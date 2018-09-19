@@ -9,7 +9,7 @@ public class Sample {
 
     private Integer waterTypeId;
 
-    private Integer isValidated;
+    private Integer validationId;
 
     private Integer locationId;
 
@@ -213,12 +213,12 @@ public class Sample {
         this.waterTypeId = waterTypeId;
     }
 
-    public Integer getIsValidated() {
-        return isValidated;
+    public Integer getValidationId() {
+        return validationId;
     }
 
-    public void setIsValidated(Integer isValidated) {
-        this.isValidated = isValidated;
+    public void setValidationId(Integer validationId) {
+        this.validationId = validationId;
     }
 
     public Integer getLocationId() {

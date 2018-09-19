@@ -312,63 +312,63 @@ public class SampleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedIsNull() {
-            addCriterion("IsValidated is null");
+        public Criteria andValidationIdIsNull() {
+            addCriterion("validationId is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedIsNotNull() {
-            addCriterion("IsValidated is not null");
+        public Criteria andValidationIdIsNotNull() {
+            addCriterion("validationId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedEqualTo(Integer value) {
-            addCriterion("IsValidated =", value, "isValidated");
+        public Criteria andValidationIdEqualTo(Integer value) {
+            addCriterion("validationId =", value, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedNotEqualTo(Integer value) {
-            addCriterion("IsValidated <>", value, "isValidated");
+        public Criteria andValidationIdNotEqualTo(Integer value) {
+            addCriterion("validationId <>", value, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedGreaterThan(Integer value) {
-            addCriterion("IsValidated >", value, "isValidated");
+        public Criteria andValidationIdGreaterThan(Integer value) {
+            addCriterion("validationId >", value, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedGreaterThanOrEqualTo(Integer value) {
-            addCriterion("IsValidated >=", value, "isValidated");
+        public Criteria andValidationIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("validationId >=", value, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedLessThan(Integer value) {
-            addCriterion("IsValidated <", value, "isValidated");
+        public Criteria andValidationIdLessThan(Integer value) {
+            addCriterion("validationId <", value, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedLessThanOrEqualTo(Integer value) {
-            addCriterion("IsValidated <=", value, "isValidated");
+        public Criteria andValidationIdLessThanOrEqualTo(Integer value) {
+            addCriterion("validationId <=", value, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedIn(List<Integer> values) {
-            addCriterion("IsValidated in", values, "isValidated");
+        public Criteria andValidationIdIn(List<Integer> values) {
+            addCriterion("validationId in", values, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedNotIn(List<Integer> values) {
-            addCriterion("IsValidated not in", values, "isValidated");
+        public Criteria andValidationIdNotIn(List<Integer> values) {
+            addCriterion("validationId not in", values, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedBetween(Integer value1, Integer value2) {
-            addCriterion("IsValidated between", value1, value2, "isValidated");
+        public Criteria andValidationIdBetween(Integer value1, Integer value2) {
+            addCriterion("validationId between", value1, value2, "validationId");
             return (Criteria) this;
         }
 
-        public Criteria andIsValidatedNotBetween(Integer value1, Integer value2) {
-            addCriterion("IsValidated not between", value1, value2, "isValidated");
+        public Criteria andValidationIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("validationId not between", value1, value2, "validationId");
             return (Criteria) this;
         }
 
