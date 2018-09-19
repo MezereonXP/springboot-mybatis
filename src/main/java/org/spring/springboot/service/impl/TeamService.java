@@ -36,14 +36,14 @@ public class TeamService {
         }
     }
 
-    public boolean addTeam(String email, String teamName, String password, String detail, String uniname,
-        Integer priority) {
+    public boolean addTeam(String email, String teamName, String password, String detail, Integer universityId,
+                           Integer priority) {
         Team team = new Team();
         team.setEmail(email);
         team.setTeamName(teamName);
         team.setPassword(password);
         team.setDetails(detail);
-        team.setUniname(uniname);
+        team.setUniversityId(universityId);
         team.setPriority(priority);
         return teamDao.insert(team)!=-1;
     }
