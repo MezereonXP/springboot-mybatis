@@ -164,6 +164,76 @@ public class MethodExample {
             return (Criteria) this;
         }
 
+        public Criteria andIndexNameIsNull() {
+            addCriterion("indexName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameIsNotNull() {
+            addCriterion("indexName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameEqualTo(String value) {
+            addCriterion("indexName =", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameNotEqualTo(String value) {
+            addCriterion("indexName <>", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameGreaterThan(String value) {
+            addCriterion("indexName >", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameGreaterThanOrEqualTo(String value) {
+            addCriterion("indexName >=", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameLessThan(String value) {
+            addCriterion("indexName <", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameLessThanOrEqualTo(String value) {
+            addCriterion("indexName <=", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameLike(String value) {
+            addCriterion("indexName like", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameNotLike(String value) {
+            addCriterion("indexName not like", value, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameIn(List<String> values) {
+            addCriterion("indexName in", values, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameNotIn(List<String> values) {
+            addCriterion("indexName not in", values, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameBetween(String value1, String value2) {
+            addCriterion("indexName between", value1, value2, "indexName");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNameNotBetween(String value1, String value2) {
+            addCriterion("indexName not between", value1, value2, "indexName");
+            return (Criteria) this;
+        }
+
         public Criteria andMethodTypeIsNull() {
             addCriterion("methodType is null");
             return (Criteria) this;

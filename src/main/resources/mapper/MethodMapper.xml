@@ -3,6 +3,7 @@
 <mapper namespace="org.spring.springboot.dao.MethodMapper">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Method">
       <id column="methodId" jdbcType="INTEGER" property="methodId"/>
+      <result column="indexName" jdbcType="VARCHAR" property="indexName"/>
       <result column="methodType" jdbcType="VARCHAR" property="methodType"/>
       <result column="methodValue" jdbcType="VARCHAR" property="methodValue"/>
   </resultMap>
@@ -65,7 +66,7 @@
         </where>
     </sql>
   <sql id="Base_Column_List">
-    methodId, methodType, methodValue
+    methodId, indexName, methodType, methodValue
   </sql>
     <select id="selectByExample" parameterType="org.spring.springboot.domain.MethodExample" resultMap="BaseResultMap">
         select
@@ -99,17 +100,20 @@
         </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Method">
-    insert into method (methodId, methodType, methodValue
-      )
-    values (#{methodId,jdbcType=INTEGER}, #{methodType,jdbcType=VARCHAR}, #{methodValue,jdbcType=VARCHAR}
-      )
+    insert into method (methodId, indexName, methodType, 
+      methodValue)
+    values (#{methodId,jdbcType=INTEGER}, #{indexName,jdbcType=VARCHAR}, #{methodType,jdbcType=VARCHAR}, 
+      #{methodValue,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Method">
     insert into method
     <trim prefix="(" suffix=")" suffixOverrides=",">
         <if test="methodId != null">
             methodId,
-      </if>
+        </if>
+        <if test="indexName != null">
+            indexName,
+        </if>
         <if test="methodType != null">
             methodType,
         </if>
@@ -121,6 +125,9 @@
         <if test="methodId != null">
             #{methodId,jdbcType=INTEGER},
       </if>
+        <if test="indexName != null">
+            #{indexName,jdbcType=VARCHAR},
+        </if>
         <if test="methodType != null">
             #{methodType,jdbcType=VARCHAR},
       </if>
@@ -141,6 +148,9 @@
         <if test="record.methodId != null">
             methodId = #{record.methodId,jdbcType=INTEGER},
         </if>
+        <if test="record.indexName != null">
+            indexName = #{record.indexName,jdbcType=VARCHAR},
+        </if>
         <if test="record.methodType != null">
             methodType = #{record.methodType,jdbcType=VARCHAR},
         </if>
@@ -155,6 +165,7 @@
     <update id="updateByExample" parameterType="map">
         update method
         set methodId = #{record.methodId,jdbcType=INTEGER},
+        indexName = #{record.indexName,jdbcType=VARCHAR},
         methodType = #{record.methodType,jdbcType=VARCHAR},
         methodValue = #{record.methodValue,jdbcType=VARCHAR}
         <if test="_parameter != null">
@@ -164,6 +175,9 @@
     <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Method">
         update method
         <set>
+            <if test="indexName != null">
+                indexName = #{indexName,jdbcType=VARCHAR},
+            </if>
             <if test="methodType != null">
                 methodType = #{methodType,jdbcType=VARCHAR},
       </if>
@@ -175,7 +189,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Method">
     update method
-    set methodType = #{methodType,jdbcType=VARCHAR},
+    set indexName = #{indexName,jdbcType=VARCHAR},
+      methodType = #{methodType,jdbcType=VARCHAR},
       methodValue = #{methodValue,jdbcType=VARCHAR}
     where methodId = #{methodId,jdbcType=INTEGER}
   </update>

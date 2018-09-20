@@ -3,6 +3,8 @@ package org.spring.springboot.domain;
 public class Method {
     private Integer methodId;
 
+    private String indexName;
+
     private String methodType;
 
     private String methodValue;
@@ -13,6 +15,14 @@ public class Method {
 
     public void setMethodId(Integer methodId) {
         this.methodId = methodId;
+    }
+
+    public String getIndexName() {
+        return indexName;
+    }
+
+    public void setIndexName(String indexName) {
+        this.indexName = indexName == null ? null : indexName.trim();
     }
 
     public String getMethodType() {
