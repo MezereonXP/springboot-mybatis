@@ -2,99 +2,100 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.SampleDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Sample">
-    <id column="baseId" jdbcType="INTEGER" property="baseId"/>
-    <result column="waterId" jdbcType="INTEGER" property="waterId"/>
-    <result column="waterTypeId" jdbcType="INTEGER" property="waterTypeId"/>
-    <result column="validationId" jdbcType="INTEGER" property="validationId"/>
-    <result column="locationId" jdbcType="INTEGER" property="locationId"/>
-    <result column="cycleTeamId" jdbcType="INTEGER" property="cycleTeamId"/>
-    <result column="drinkingWaterId" jdbcType="INTEGER" property="drinkingWaterId"/>
-    <result column="waterSourceTypeId" jdbcType="INTEGER" property="waterSourceTypeId"/>
-    <result column="deliveryMethodId" jdbcType="INTEGER" property="deliveryMethodId"/>
-    <result column="inTakeMethodId" jdbcType="INTEGER" property="inTakeMethodId"/>
-    <result column="centralizedWaterTreatmentMethodId" jdbcType="INTEGER" property="centralizedWaterTreatmentMethodId"/>
-    <result column="treatmentMethodId" jdbcType="INTEGER" property="treatmentMethodId"/>
-    <result column="waterStorageId" jdbcType="INTEGER" property="waterStorageId"/>
-    <result column="waterShortage" jdbcType="VARCHAR" property="waterShortage"/>
-    <result column="potentialContamination" jdbcType="VARCHAR" property="potentialContamination"/>
-    <result column="potentialContaminationDistance" jdbcType="INTEGER" property="potentialContaminationDistance"/>
-    <result column="populationServedBySource" jdbcType="INTEGER" property="populationServedBySource"/>
-    <result column="physicalIndicators" jdbcType="INTEGER" property="physicalIndicators"/>
-    <result column="temp" jdbcType="REAL" property="temp"/>
-    <result column="smellId" jdbcType="INTEGER" property="smellId"/>
-    <result column="visualId" jdbcType="INTEGER" property="visualId"/>
-    <result column="otherInformation" jdbcType="VARCHAR" property="otherInformation"/>
-    <result column="turbidityId" jdbcType="INTEGER" property="turbidityId"/>
-    <result column="feElement" jdbcType="REAL" property="feElement"/>
-    <result column="feMethod" jdbcType="VARCHAR" property="feMethod"/>
-    <result column="cr6Element" jdbcType="REAL" property="cr6Element"/>
-    <result column="cr6Method" jdbcType="VARCHAR" property="cr6Method"/>
-    <result column="asElement" jdbcType="REAL" property="asElement"/>
-    <result column="asMethod" jdbcType="VARCHAR" property="asMethod"/>
-    <result column="mnElement" jdbcType="REAL" property="mnElement"/>
-    <result column="mnMethod" jdbcType="VARCHAR" property="mnMethod"/>
-    <result column="residualChlorineElement" jdbcType="REAL" property="residualChlorineElement"/>
-    <result column="residualChlorineMethod" jdbcType="VARCHAR" property="residualChlorineMethod"/>
-    <result column="dissolvedOxygenElement" jdbcType="REAL" property="dissolvedOxygenElement"/>
-    <result column="dissolvedOxygenMethod" jdbcType="VARCHAR" property="dissolvedOxygenMethod"/>
-    <result column="no2Element" jdbcType="REAL" property="no2Element"/>
-    <result column="no2Method" jdbcType="VARCHAR" property="no2Method"/>
-    <result column="no3Element" jdbcType="REAL" property="no3Element"/>
-    <result column="no3Dilutionrate" jdbcType="INTEGER" property="no3Dilutionrate"/>
-    <result column="no3Original" jdbcType="REAL" property="no3Original"/>
-    <result column="no3Method" jdbcType="VARCHAR" property="no3Method"/>
-    <result column="codElement" jdbcType="REAL" property="codElement"/>
-    <result column="codMethod" jdbcType="VARCHAR" property="codMethod"/>
-    <result column="fElement" jdbcType="REAL" property="fElement"/>
-    <result column="fDilutionrate" jdbcType="INTEGER" property="fDilutionrate"/>
-    <result column="fOriginal" jdbcType="REAL" property="fOriginal"/>
-    <result column="fMethod" jdbcType="VARCHAR" property="fMethod"/>
-    <result column="nh3Element" jdbcType="REAL" property="nh3Element"/>
-    <result column="nh3Dilutionrate" jdbcType="INTEGER" property="nh3Dilutionrate"/>
-    <result column="nh3Original" jdbcType="REAL" property="nh3Original"/>
-    <result column="nh3Method" jdbcType="VARCHAR" property="nh3Method"/>
-    <result column="phElement" jdbcType="REAL" property="phElement"/>
-    <result column="phMethod" jdbcType="VARCHAR" property="phMethod"/>
-    <result column="tdsElement" jdbcType="REAL" property="tdsElement"/>
-    <result column="tdsMethod" jdbcType="VARCHAR" property="tdsMethod"/>
-    <result column="ecoilElement" jdbcType="REAL" property="ecoilElement"/>
-    <result column="ecoilMethod" jdbcType="VARCHAR" property="ecoilMethod"/>
-    <result column="ammoniaNitrogenElement" jdbcType="REAL" property="ammoniaNitrogenElement"/>
-    <result column="ammoniaNitrogenMethod" jdbcType="VARCHAR" property="ammoniaNitrogenMethod"/>
-    <result column="tetcNumberElement" jdbcType="REAL" property="tetcNumberElement"/>
-    <result column="tetcNumberDescription" jdbcType="VARCHAR" property="tetcNumberDescription"/>
-    <result column="additionalParameter1" jdbcType="VARCHAR" property="additionalParameter1"/>
-    <result column="additionalValue1" jdbcType="REAL" property="additionalValue1"/>
-    <result column="additionalUnit1" jdbcType="VARCHAR" property="additionalUnit1"/>
-    <result column="additionalParameter2" jdbcType="VARCHAR" property="additionalParameter2"/>
-    <result column="additionalValue2" jdbcType="REAL" property="additionalValue2"/>
-    <result column="additionalUnit2" jdbcType="VARCHAR" property="additionalUnit2"/>
-    <result column="sanitaryScore1" jdbcType="INTEGER" property="sanitaryScore1"/>
-    <result column="sanitaryScore2" jdbcType="INTEGER" property="sanitaryScore2"/>
-    <result column="sanitaryScore3" jdbcType="INTEGER" property="sanitaryScore3"/>
-    <result column="sanitaryScore4" jdbcType="INTEGER" property="sanitaryScore4"/>
-    <result column="sanitaryScore5" jdbcType="INTEGER" property="sanitaryScore5"/>
-    <result column="sanitaryScore6" jdbcType="INTEGER" property="sanitaryScore6"/>
-    <result column="sanitaryScore7" jdbcType="INTEGER" property="sanitaryScore7"/>
-    <result column="sanitaryScore8" jdbcType="INTEGER" property="sanitaryScore8"/>
-    <result column="sanitaryScore9" jdbcType="INTEGER" property="sanitaryScore9"/>
-    <result column="sanitaryScore10" jdbcType="INTEGER" property="sanitaryScore10"/>
-    <result column="sanitaryScore11" jdbcType="INTEGER" property="sanitaryScore11"/>
-    <result column="sanitaryTypeId" jdbcType="INTEGER" property="sanitaryTypeId"/>
-    <result column="samplingDate" jdbcType="DATE" property="samplingDate"/>
-    <result column="detectDate" jdbcType="DATE" property="detectDate"/>
+      <id column="baseId" jdbcType="INTEGER" property="baseId"/>
+      <result column="waterId" jdbcType="INTEGER" property="waterId"/>
+      <result column="waterTypeId" jdbcType="INTEGER" property="waterTypeId"/>
+      <result column="validationId" jdbcType="INTEGER" property="validationId"/>
+      <result column="locationId" jdbcType="INTEGER" property="locationId"/>
+      <result column="cycleTeamId" jdbcType="INTEGER" property="cycleTeamId"/>
+      <result column="drinkingWaterId" jdbcType="INTEGER" property="drinkingWaterId"/>
+      <result column="waterSourceTypeId" jdbcType="INTEGER" property="waterSourceTypeId"/>
+      <result column="waterSourceDetails" jdbcType="VARCHAR" property="waterSourceDetails"/>
+      <result column="deliveryMethodId" jdbcType="INTEGER" property="deliveryMethodId"/>
+      <result column="inTakeMethodId" jdbcType="INTEGER" property="inTakeMethodId"/>
+      <result column="centralizedWaterTreatmentMethodId" jdbcType="INTEGER" property="centralizedWaterTreatmentMethodId"/>
+      <result column="treatmentMethodId" jdbcType="INTEGER" property="treatmentMethodId"/>
+      <result column="waterStorageId" jdbcType="INTEGER" property="waterStorageId"/>
+      <result column="waterShortage" jdbcType="VARCHAR" property="waterShortage"/>
+      <result column="potentialContamination" jdbcType="VARCHAR" property="potentialContamination"/>
+      <result column="potentialContaminationDistance" jdbcType="INTEGER" property="potentialContaminationDistance"/>
+      <result column="populationServedBySource" jdbcType="INTEGER" property="populationServedBySource"/>
+      <result column="physicalIndicators" jdbcType="INTEGER" property="physicalIndicators"/>
+      <result column="temp" jdbcType="REAL" property="temp"/>
+      <result column="smellId" jdbcType="INTEGER" property="smellId"/>
+      <result column="visualId" jdbcType="INTEGER" property="visualId"/>
+      <result column="otherInformation" jdbcType="VARCHAR" property="otherInformation"/>
+      <result column="turbidityId" jdbcType="INTEGER" property="turbidityId"/>
+      <result column="feElement" jdbcType="REAL" property="feElement"/>
+      <result column="feMethod" jdbcType="VARCHAR" property="feMethod"/>
+      <result column="cr6Element" jdbcType="REAL" property="cr6Element"/>
+      <result column="cr6Method" jdbcType="VARCHAR" property="cr6Method"/>
+      <result column="asElement" jdbcType="REAL" property="asElement"/>
+      <result column="asMethod" jdbcType="VARCHAR" property="asMethod"/>
+      <result column="mnElement" jdbcType="REAL" property="mnElement"/>
+      <result column="mnMethod" jdbcType="VARCHAR" property="mnMethod"/>
+      <result column="residualChlorineElement" jdbcType="REAL" property="residualChlorineElement"/>
+      <result column="residualChlorineMethod" jdbcType="VARCHAR" property="residualChlorineMethod"/>
+      <result column="dissolvedOxygenElement" jdbcType="REAL" property="dissolvedOxygenElement"/>
+      <result column="dissolvedOxygenMethod" jdbcType="VARCHAR" property="dissolvedOxygenMethod"/>
+      <result column="no2Element" jdbcType="REAL" property="no2Element"/>
+      <result column="no2Method" jdbcType="VARCHAR" property="no2Method"/>
+      <result column="no3Element" jdbcType="REAL" property="no3Element"/>
+      <result column="no3Dilutionrate" jdbcType="INTEGER" property="no3Dilutionrate"/>
+      <result column="no3Original" jdbcType="REAL" property="no3Original"/>
+      <result column="no3Method" jdbcType="VARCHAR" property="no3Method"/>
+      <result column="codElement" jdbcType="REAL" property="codElement"/>
+      <result column="codMethod" jdbcType="VARCHAR" property="codMethod"/>
+      <result column="fElement" jdbcType="REAL" property="fElement"/>
+      <result column="fDilutionrate" jdbcType="INTEGER" property="fDilutionrate"/>
+      <result column="fOriginal" jdbcType="REAL" property="fOriginal"/>
+      <result column="fMethod" jdbcType="VARCHAR" property="fMethod"/>
+      <result column="nh3Element" jdbcType="REAL" property="nh3Element"/>
+      <result column="nh3Dilutionrate" jdbcType="INTEGER" property="nh3Dilutionrate"/>
+      <result column="nh3Original" jdbcType="REAL" property="nh3Original"/>
+      <result column="nh3Method" jdbcType="VARCHAR" property="nh3Method"/>
+      <result column="phElement" jdbcType="REAL" property="phElement"/>
+      <result column="phMethod" jdbcType="VARCHAR" property="phMethod"/>
+      <result column="tdsElement" jdbcType="REAL" property="tdsElement"/>
+      <result column="tdsMethod" jdbcType="VARCHAR" property="tdsMethod"/>
+      <result column="ecoilElement" jdbcType="REAL" property="ecoilElement"/>
+      <result column="ecoilMethod" jdbcType="VARCHAR" property="ecoilMethod"/>
+      <result column="ammoniaNitrogenElement" jdbcType="REAL" property="ammoniaNitrogenElement"/>
+      <result column="ammoniaNitrogenMethod" jdbcType="VARCHAR" property="ammoniaNitrogenMethod"/>
+      <result column="tetcNumberElement" jdbcType="REAL" property="tetcNumberElement"/>
+      <result column="tetcNumberDescription" jdbcType="VARCHAR" property="tetcNumberDescription"/>
+      <result column="additionalParameter1" jdbcType="VARCHAR" property="additionalParameter1"/>
+      <result column="additionalValue1" jdbcType="REAL" property="additionalValue1"/>
+      <result column="additionalUnit1" jdbcType="VARCHAR" property="additionalUnit1"/>
+      <result column="additionalParameter2" jdbcType="VARCHAR" property="additionalParameter2"/>
+      <result column="additionalValue2" jdbcType="REAL" property="additionalValue2"/>
+      <result column="additionalUnit2" jdbcType="VARCHAR" property="additionalUnit2"/>
+      <result column="sanitaryScore1" jdbcType="INTEGER" property="sanitaryScore1"/>
+      <result column="sanitaryScore2" jdbcType="INTEGER" property="sanitaryScore2"/>
+      <result column="sanitaryScore3" jdbcType="INTEGER" property="sanitaryScore3"/>
+      <result column="sanitaryScore4" jdbcType="INTEGER" property="sanitaryScore4"/>
+      <result column="sanitaryScore5" jdbcType="INTEGER" property="sanitaryScore5"/>
+      <result column="sanitaryScore6" jdbcType="INTEGER" property="sanitaryScore6"/>
+      <result column="sanitaryScore7" jdbcType="INTEGER" property="sanitaryScore7"/>
+      <result column="sanitaryScore8" jdbcType="INTEGER" property="sanitaryScore8"/>
+      <result column="sanitaryScore9" jdbcType="INTEGER" property="sanitaryScore9"/>
+      <result column="sanitaryScore10" jdbcType="INTEGER" property="sanitaryScore10"/>
+      <result column="sanitaryScore11" jdbcType="INTEGER" property="sanitaryScore11"/>
+      <result column="sanitaryTypeId" jdbcType="INTEGER" property="sanitaryTypeId"/>
+      <result column="samplingDate" jdbcType="DATE" property="samplingDate"/>
+      <result column="detectDate" jdbcType="DATE" property="detectDate"/>
     <result column="picture" jdbcType="VARCHAR" property="picture" />
-    <result column="generalComments" jdbcType="VARCHAR" property="generalComments"/>
-    <result column="waterQDeterminationComments" jdbcType="VARCHAR" property="waterQDeterminationComments"/>
-    <result column="probComments" jdbcType="VARCHAR" property="probComments"/>
-    <result column="challengesComments" jdbcType="VARCHAR" property="challengesComments"/>
-    <result column="needsComments" jdbcType="VARCHAR" property="needsComments"/>
-    <result column="healthCenterId" jdbcType="VARCHAR" property="healthCenterId"/>
-    <result column="waterCollector" jdbcType="VARCHAR" property="waterCollector"/>
-    <result column="distanceWaterCollection" jdbcType="INTEGER" property="distanceWaterCollection"/>
-    <result column="waterWaitTime" jdbcType="INTEGER" property="waterWaitTime"/>
-    <result column="diarrheaCause" jdbcType="VARCHAR" property="diarrheaCause"/>
-    <result column="waterSatisfaction" jdbcType="INTEGER" property="waterSatisfaction"/>
+      <result column="generalComments" jdbcType="VARCHAR" property="generalComments"/>
+      <result column="waterQDeterminationComments" jdbcType="VARCHAR" property="waterQDeterminationComments"/>
+      <result column="probComments" jdbcType="VARCHAR" property="probComments"/>
+      <result column="challengesComments" jdbcType="VARCHAR" property="challengesComments"/>
+      <result column="needsComments" jdbcType="VARCHAR" property="needsComments"/>
+      <result column="healthCenterId" jdbcType="VARCHAR" property="healthCenterId"/>
+      <result column="waterCollector" jdbcType="VARCHAR" property="waterCollector"/>
+      <result column="distanceWaterCollection" jdbcType="INTEGER" property="distanceWaterCollection"/>
+      <result column="waterWaitTime" jdbcType="INTEGER" property="waterWaitTime"/>
+      <result column="diarrheaCause" jdbcType="VARCHAR" property="diarrheaCause"/>
+      <result column="waterSatisfaction" jdbcType="INTEGER" property="waterSatisfaction"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -156,7 +157,7 @@
   </sql>
   <sql id="Base_Column_List">
     baseId, waterId, waterTypeId, validationId, locationId, cycleTeamId, drinkingWaterId, 
-    waterSourceTypeId, deliveryMethodId, inTakeMethodId, centralizedWaterTreatmentMethodId, 
+    waterSourceTypeId, waterSourceDetails, deliveryMethodId, inTakeMethodId, centralizedWaterTreatmentMethodId, 
     treatmentMethodId, waterStorageId, waterShortage, potentialContamination, potentialContaminationDistance, 
     populationServedBySource, physicalIndicators, temp, smellId, visualId, otherInformation, 
     turbidityId, feElement, feMethod, cr6Element, cr6Method, asElement, asMethod, mnElement, 
@@ -179,10 +180,10 @@
       distinct
     </if>
     'true' as QUERYID,
-    <include refid="Base_Column_List"/>
+      <include refid="Base_Column_List"/>
     from sample
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
@@ -201,14 +202,14 @@
   <delete id="deleteByExample" parameterType="org.spring.springboot.domain.SampleExample">
     delete from sample
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Sample">
     insert into sample (baseId, waterId, waterTypeId, 
       validationId, locationId, cycleTeamId, 
-      drinkingWaterId, waterSourceTypeId, deliveryMethodId, 
-      inTakeMethodId, centralizedWaterTreatmentMethodId, 
+      drinkingWaterId, waterSourceTypeId, waterSourceDetails, 
+      deliveryMethodId, inTakeMethodId, centralizedWaterTreatmentMethodId, 
       treatmentMethodId, waterStorageId, waterShortage, 
       potentialContamination, potentialContaminationDistance, 
       populationServedBySource, physicalIndicators, 
@@ -241,8 +242,8 @@
       )
     values (#{baseId,jdbcType=INTEGER}, #{waterId,jdbcType=INTEGER}, #{waterTypeId,jdbcType=INTEGER}, 
       #{validationId,jdbcType=INTEGER}, #{locationId,jdbcType=INTEGER}, #{cycleTeamId,jdbcType=INTEGER}, 
-      #{drinkingWaterId,jdbcType=INTEGER}, #{waterSourceTypeId,jdbcType=INTEGER}, #{deliveryMethodId,jdbcType=INTEGER}, 
-      #{inTakeMethodId,jdbcType=INTEGER}, #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER}, 
+      #{drinkingWaterId,jdbcType=INTEGER}, #{waterSourceTypeId,jdbcType=INTEGER}, #{waterSourceDetails,jdbcType=VARCHAR}, 
+      #{deliveryMethodId,jdbcType=INTEGER}, #{inTakeMethodId,jdbcType=INTEGER}, #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER}, 
       #{treatmentMethodId,jdbcType=INTEGER}, #{waterStorageId,jdbcType=INTEGER}, #{waterShortage,jdbcType=VARCHAR}, 
       #{potentialContamination,jdbcType=VARCHAR}, #{potentialContaminationDistance,jdbcType=INTEGER}, 
       #{populationServedBySource,jdbcType=INTEGER}, #{physicalIndicators,jdbcType=INTEGER}, 
@@ -301,6 +302,9 @@
       <if test="waterSourceTypeId != null">
         waterSourceTypeId,
       </if>
+        <if test="waterSourceDetails != null">
+            waterSourceDetails,
+        </if>
       <if test="deliveryMethodId != null">
         deliveryMethodId,
       </if>
@@ -582,6 +586,9 @@
       <if test="waterSourceTypeId != null">
         #{waterSourceTypeId,jdbcType=INTEGER},
       </if>
+        <if test="waterSourceDetails != null">
+            #{waterSourceDetails,jdbcType=VARCHAR},
+        </if>
       <if test="deliveryMethodId != null">
         #{deliveryMethodId,jdbcType=INTEGER},
       </if>
@@ -842,7 +849,7 @@
   <select id="countByExample" parameterType="org.spring.springboot.domain.SampleExample" resultType="java.lang.Long">
     select count(*) from sample
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
@@ -872,6 +879,9 @@
       <if test="record.waterSourceTypeId != null">
         waterSourceTypeId = #{record.waterSourceTypeId,jdbcType=INTEGER},
       </if>
+        <if test="record.waterSourceDetails != null">
+            waterSourceDetails = #{record.waterSourceDetails,jdbcType=VARCHAR},
+        </if>
       <if test="record.deliveryMethodId != null">
         deliveryMethodId = #{record.deliveryMethodId,jdbcType=INTEGER},
       </if>
@@ -1129,7 +1139,7 @@
       </if>
     </set>
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
+        <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
@@ -1137,11 +1147,12 @@
     set baseId = #{record.baseId,jdbcType=INTEGER},
       waterId = #{record.waterId,jdbcType=INTEGER},
       waterTypeId = #{record.waterTypeId,jdbcType=INTEGER},
-    validationId = #{record.validationId,jdbcType=INTEGER},
+      validationId = #{record.validationId,jdbcType=INTEGER},
       locationId = #{record.locationId,jdbcType=INTEGER},
       cycleTeamId = #{record.cycleTeamId,jdbcType=INTEGER},
       drinkingWaterId = #{record.drinkingWaterId,jdbcType=INTEGER},
       waterSourceTypeId = #{record.waterSourceTypeId,jdbcType=INTEGER},
+      waterSourceDetails = #{record.waterSourceDetails,jdbcType=VARCHAR},
       deliveryMethodId = #{record.deliveryMethodId,jdbcType=INTEGER},
       inTakeMethodId = #{record.inTakeMethodId,jdbcType=INTEGER},
       centralizedWaterTreatmentMethodId = #{record.centralizedWaterTreatmentMethodId,jdbcType=INTEGER},
@@ -1228,7 +1239,7 @@
       diarrheaCause = #{record.diarrheaCause,jdbcType=VARCHAR},
       waterSatisfaction = #{record.waterSatisfaction,jdbcType=INTEGER}
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
+        <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Sample">
@@ -1255,6 +1266,9 @@
       <if test="waterSourceTypeId != null">
         waterSourceTypeId = #{waterSourceTypeId,jdbcType=INTEGER},
       </if>
+        <if test="waterSourceDetails != null">
+            waterSourceDetails = #{waterSourceDetails,jdbcType=VARCHAR},
+        </if>
       <if test="deliveryMethodId != null">
         deliveryMethodId = #{deliveryMethodId,jdbcType=INTEGER},
       </if>
@@ -1522,6 +1536,7 @@
       cycleTeamId = #{cycleTeamId,jdbcType=INTEGER},
       drinkingWaterId = #{drinkingWaterId,jdbcType=INTEGER},
       waterSourceTypeId = #{waterSourceTypeId,jdbcType=INTEGER},
+      waterSourceDetails = #{waterSourceDetails,jdbcType=VARCHAR},
       deliveryMethodId = #{deliveryMethodId,jdbcType=INTEGER},
       inTakeMethodId = #{inTakeMethodId,jdbcType=INTEGER},
       centralizedWaterTreatmentMethodId = #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER},

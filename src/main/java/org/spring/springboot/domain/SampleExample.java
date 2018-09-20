@@ -612,6 +612,76 @@ public class SampleExample {
             return (Criteria) this;
         }
 
+        public Criteria andWaterSourceDetailsIsNull() {
+            addCriterion("waterSourceDetails is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsIsNotNull() {
+            addCriterion("waterSourceDetails is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsEqualTo(String value) {
+            addCriterion("waterSourceDetails =", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsNotEqualTo(String value) {
+            addCriterion("waterSourceDetails <>", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsGreaterThan(String value) {
+            addCriterion("waterSourceDetails >", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsGreaterThanOrEqualTo(String value) {
+            addCriterion("waterSourceDetails >=", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsLessThan(String value) {
+            addCriterion("waterSourceDetails <", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsLessThanOrEqualTo(String value) {
+            addCriterion("waterSourceDetails <=", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsLike(String value) {
+            addCriterion("waterSourceDetails like", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsNotLike(String value) {
+            addCriterion("waterSourceDetails not like", value, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsIn(List<String> values) {
+            addCriterion("waterSourceDetails in", values, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsNotIn(List<String> values) {
+            addCriterion("waterSourceDetails not in", values, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsBetween(String value1, String value2) {
+            addCriterion("waterSourceDetails between", value1, value2, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterSourceDetailsNotBetween(String value1, String value2) {
+            addCriterion("waterSourceDetails not between", value1, value2, "waterSourceDetails");
+            return (Criteria) this;
+        }
+
         public Criteria andDeliveryMethodIdIsNull() {
             addCriterion("deliveryMethodId is null");
             return (Criteria) this;

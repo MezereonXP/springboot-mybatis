@@ -19,6 +19,8 @@ public class Sample {
 
     private Integer waterSourceTypeId;
 
+    private String waterSourceDetails;
+
     private Integer deliveryMethodId;
 
     private Integer inTakeMethodId;
@@ -251,6 +253,14 @@ public class Sample {
 
     public void setWaterSourceTypeId(Integer waterSourceTypeId) {
         this.waterSourceTypeId = waterSourceTypeId;
+    }
+
+    public String getWaterSourceDetails() {
+        return waterSourceDetails;
+    }
+
+    public void setWaterSourceDetails(String waterSourceDetails) {
+        this.waterSourceDetails = waterSourceDetails == null ? null : waterSourceDetails.trim();
     }
 
     public Integer getDeliveryMethodId() {
