@@ -45,11 +45,17 @@ public class Sample {
 
     private Integer smellId;
 
+    private String smellDetail;
+
     private Integer visualId;
+
+    private String visualDetail;
 
     private String otherInformation;
 
     private Integer turbidityId;
+
+    private String turbidityDetail;
 
     private Float feElement;
 
@@ -123,6 +129,8 @@ public class Sample {
 
     private String ammoniaNitrogenMethod;
 
+    private String ammoniaNitrogenDescription;
+
     private Float tetcNumberElement;
 
     private String tetcNumberDescription;
@@ -131,11 +139,15 @@ public class Sample {
 
     private Float additionalValue1;
 
+    private String additionalMethod1;
+
     private String additionalUnit1;
 
     private String additionalParameter2;
 
     private Float additionalValue2;
+
+    private String additionalMethod2;
 
     private String additionalUnit2;
 
@@ -162,6 +174,8 @@ public class Sample {
     private Integer sanitaryScore11;
 
     private Integer sanitaryTypeId;
+
+    private Integer sanitaryScore;
 
     private Date samplingDate;
 
@@ -190,6 +204,10 @@ public class Sample {
     private String diarrheaCause;
 
     private Integer waterSatisfaction;
+
+    private String notes;
+
+    private String averageStorageHours;
 
     public Integer getBaseId() {
         return baseId;
@@ -359,12 +377,28 @@ public class Sample {
         this.smellId = smellId;
     }
 
+    public String getSmellDetail() {
+        return smellDetail;
+    }
+
+    public void setSmellDetail(String smellDetail) {
+        this.smellDetail = smellDetail == null ? null : smellDetail.trim();
+    }
+
     public Integer getVisualId() {
         return visualId;
     }
 
     public void setVisualId(Integer visualId) {
         this.visualId = visualId;
+    }
+
+    public String getVisualDetail() {
+        return visualDetail;
+    }
+
+    public void setVisualDetail(String visualDetail) {
+        this.visualDetail = visualDetail == null ? null : visualDetail.trim();
     }
 
     public String getOtherInformation() {
@@ -381,6 +415,14 @@ public class Sample {
 
     public void setTurbidityId(Integer turbidityId) {
         this.turbidityId = turbidityId;
+    }
+
+    public String getTurbidityDetail() {
+        return turbidityDetail;
+    }
+
+    public void setTurbidityDetail(String turbidityDetail) {
+        this.turbidityDetail = turbidityDetail == null ? null : turbidityDetail.trim();
     }
 
     public Float getFeElement() {
@@ -671,6 +713,14 @@ public class Sample {
         this.ammoniaNitrogenMethod = ammoniaNitrogenMethod == null ? null : ammoniaNitrogenMethod.trim();
     }
 
+    public String getAmmoniaNitrogenDescription() {
+        return ammoniaNitrogenDescription;
+    }
+
+    public void setAmmoniaNitrogenDescription(String ammoniaNitrogenDescription) {
+        this.ammoniaNitrogenDescription = ammoniaNitrogenDescription == null ? null : ammoniaNitrogenDescription.trim();
+    }
+
     public Float getTetcNumberElement() {
         return tetcNumberElement;
     }
@@ -703,6 +753,14 @@ public class Sample {
         this.additionalValue1 = additionalValue1;
     }
 
+    public String getAdditionalMethod1() {
+        return additionalMethod1;
+    }
+
+    public void setAdditionalMethod1(String additionalMethod1) {
+        this.additionalMethod1 = additionalMethod1 == null ? null : additionalMethod1.trim();
+    }
+
     public String getAdditionalUnit1() {
         return additionalUnit1;
     }
@@ -725,6 +783,14 @@ public class Sample {
 
     public void setAdditionalValue2(Float additionalValue2) {
         this.additionalValue2 = additionalValue2;
+    }
+
+    public String getAdditionalMethod2() {
+        return additionalMethod2;
+    }
+
+    public void setAdditionalMethod2(String additionalMethod2) {
+        this.additionalMethod2 = additionalMethod2 == null ? null : additionalMethod2.trim();
     }
 
     public String getAdditionalUnit2() {
@@ -829,6 +895,14 @@ public class Sample {
 
     public void setSanitaryTypeId(Integer sanitaryTypeId) {
         this.sanitaryTypeId = sanitaryTypeId;
+    }
+
+    public Integer getSanitaryScore() {
+        return sanitaryScore;
+    }
+
+    public void setSanitaryScore(Integer sanitaryScore) {
+        this.sanitaryScore = sanitaryScore;
     }
 
     public Date getSamplingDate() {
@@ -941,5 +1015,21 @@ public class Sample {
 
     public void setWaterSatisfaction(Integer waterSatisfaction) {
         this.waterSatisfaction = waterSatisfaction;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes == null ? null : notes.trim();
+    }
+
+    public String getAverageStorageHours() {
+        return averageStorageHours;
+    }
+
+    public void setAverageStorageHours(String averageStorageHours) {
+        this.averageStorageHours = averageStorageHours == null ? null : averageStorageHours.trim();
     }
 }

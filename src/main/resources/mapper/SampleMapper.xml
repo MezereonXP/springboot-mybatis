@@ -23,9 +23,12 @@
       <result column="physicalIndicators" jdbcType="INTEGER" property="physicalIndicators"/>
       <result column="temp" jdbcType="REAL" property="temp"/>
       <result column="smellId" jdbcType="INTEGER" property="smellId"/>
+      <result column="smellDetail" jdbcType="VARCHAR" property="smellDetail"/>
       <result column="visualId" jdbcType="INTEGER" property="visualId"/>
+      <result column="visualDetail" jdbcType="VARCHAR" property="visualDetail"/>
       <result column="otherInformation" jdbcType="VARCHAR" property="otherInformation"/>
       <result column="turbidityId" jdbcType="INTEGER" property="turbidityId"/>
+      <result column="turbidityDetail" jdbcType="VARCHAR" property="turbidityDetail"/>
       <result column="feElement" jdbcType="REAL" property="feElement"/>
       <result column="feMethod" jdbcType="VARCHAR" property="feMethod"/>
       <result column="cr6Element" jdbcType="REAL" property="cr6Element"/>
@@ -62,13 +65,16 @@
       <result column="ecoilMethod" jdbcType="VARCHAR" property="ecoilMethod"/>
       <result column="ammoniaNitrogenElement" jdbcType="REAL" property="ammoniaNitrogenElement"/>
       <result column="ammoniaNitrogenMethod" jdbcType="VARCHAR" property="ammoniaNitrogenMethod"/>
+      <result column="ammoniaNitrogenDescription" jdbcType="VARCHAR" property="ammoniaNitrogenDescription"/>
       <result column="tetcNumberElement" jdbcType="REAL" property="tetcNumberElement"/>
       <result column="tetcNumberDescription" jdbcType="VARCHAR" property="tetcNumberDescription"/>
       <result column="additionalParameter1" jdbcType="VARCHAR" property="additionalParameter1"/>
       <result column="additionalValue1" jdbcType="REAL" property="additionalValue1"/>
+      <result column="additionalMethod1" jdbcType="VARCHAR" property="additionalMethod1"/>
       <result column="additionalUnit1" jdbcType="VARCHAR" property="additionalUnit1"/>
       <result column="additionalParameter2" jdbcType="VARCHAR" property="additionalParameter2"/>
       <result column="additionalValue2" jdbcType="REAL" property="additionalValue2"/>
+      <result column="additionalMethod2" jdbcType="VARCHAR" property="additionalMethod2"/>
       <result column="additionalUnit2" jdbcType="VARCHAR" property="additionalUnit2"/>
       <result column="sanitaryScore1" jdbcType="INTEGER" property="sanitaryScore1"/>
       <result column="sanitaryScore2" jdbcType="INTEGER" property="sanitaryScore2"/>
@@ -82,6 +88,7 @@
       <result column="sanitaryScore10" jdbcType="INTEGER" property="sanitaryScore10"/>
       <result column="sanitaryScore11" jdbcType="INTEGER" property="sanitaryScore11"/>
       <result column="sanitaryTypeId" jdbcType="INTEGER" property="sanitaryTypeId"/>
+      <result column="sanitaryScore" jdbcType="INTEGER" property="sanitaryScore"/>
       <result column="samplingDate" jdbcType="DATE" property="samplingDate"/>
       <result column="detectDate" jdbcType="DATE" property="detectDate"/>
     <result column="picture" jdbcType="VARCHAR" property="picture" />
@@ -96,6 +103,8 @@
       <result column="waterWaitTime" jdbcType="INTEGER" property="waterWaitTime"/>
       <result column="diarrheaCause" jdbcType="VARCHAR" property="diarrheaCause"/>
       <result column="waterSatisfaction" jdbcType="INTEGER" property="waterSatisfaction"/>
+      <result column="notes" jdbcType="VARCHAR" property="notes"/>
+      <result column="averageStorageHours" jdbcType="VARCHAR" property="averageStorageHours"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -159,20 +168,22 @@
     baseId, waterId, waterTypeId, validationId, locationId, cycleTeamId, drinkingWaterId, 
     waterSourceTypeId, waterSourceDetails, deliveryMethodId, inTakeMethodId, centralizedWaterTreatmentMethodId, 
     treatmentMethodId, waterStorageId, waterShortage, potentialContamination, potentialContaminationDistance, 
-    populationServedBySource, physicalIndicators, temp, smellId, visualId, otherInformation, 
-    turbidityId, feElement, feMethod, cr6Element, cr6Method, asElement, asMethod, mnElement, 
-    mnMethod, residualChlorineElement, residualChlorineMethod, dissolvedOxygenElement, 
-    dissolvedOxygenMethod, no2Element, no2Method, no3Element, no3Dilutionrate, no3Original, 
-    no3Method, codElement, codMethod, fElement, fDilutionrate, fOriginal, fMethod, nh3Element, 
-    nh3Dilutionrate, nh3Original, nh3Method, phElement, phMethod, tdsElement, tdsMethod, 
-    ecoilElement, ecoilMethod, ammoniaNitrogenElement, ammoniaNitrogenMethod, tetcNumberElement, 
-    tetcNumberDescription, additionalParameter1, additionalValue1, additionalUnit1, additionalParameter2, 
-    additionalValue2, additionalUnit2, sanitaryScore1, sanitaryScore2, sanitaryScore3, 
-    sanitaryScore4, sanitaryScore5, sanitaryScore6, sanitaryScore7, sanitaryScore8, sanitaryScore9, 
-    sanitaryScore10, sanitaryScore11, sanitaryTypeId, samplingDate, detectDate, picture, 
-    generalComments, waterQDeterminationComments, probComments, challengesComments, needsComments, 
-    healthCenterId, waterCollector, distanceWaterCollection, waterWaitTime, diarrheaCause, 
-    waterSatisfaction
+    populationServedBySource, physicalIndicators, temp, smellId, smellDetail, visualId, 
+    visualDetail, otherInformation, turbidityId, turbidityDetail, feElement, feMethod, 
+    cr6Element, cr6Method, asElement, asMethod, mnElement, mnMethod, residualChlorineElement, 
+    residualChlorineMethod, dissolvedOxygenElement, dissolvedOxygenMethod, no2Element, 
+    no2Method, no3Element, no3Dilutionrate, no3Original, no3Method, codElement, codMethod, 
+    fElement, fDilutionrate, fOriginal, fMethod, nh3Element, nh3Dilutionrate, nh3Original, 
+    nh3Method, phElement, phMethod, tdsElement, tdsMethod, ecoilElement, ecoilMethod, 
+    ammoniaNitrogenElement, ammoniaNitrogenMethod, ammoniaNitrogenDescription, tetcNumberElement, 
+    tetcNumberDescription, additionalParameter1, additionalValue1, additionalMethod1, 
+    additionalUnit1, additionalParameter2, additionalValue2, additionalMethod2, additionalUnit2, 
+    sanitaryScore1, sanitaryScore2, sanitaryScore3, sanitaryScore4, sanitaryScore5, sanitaryScore6, 
+    sanitaryScore7, sanitaryScore8, sanitaryScore9, sanitaryScore10, sanitaryScore11, 
+    sanitaryTypeId, sanitaryScore, samplingDate, detectDate, picture, generalComments, 
+    waterQDeterminationComments, probComments, challengesComments, needsComments, healthCenterId, 
+    waterCollector, distanceWaterCollection, waterWaitTime, diarrheaCause, waterSatisfaction, 
+    notes, averageStorageHours
   </sql>
   <select id="selectByExample" parameterType="org.spring.springboot.domain.SampleExample" resultMap="BaseResultMap">
     select
@@ -213,8 +224,9 @@
       treatmentMethodId, waterStorageId, waterShortage, 
       potentialContamination, potentialContaminationDistance, 
       populationServedBySource, physicalIndicators, 
-      temp, smellId, visualId, 
-      otherInformation, turbidityId, feElement, 
+      temp, smellId, smellDetail, 
+      visualId, visualDetail, otherInformation, 
+      turbidityId, turbidityDetail, feElement, 
       feMethod, cr6Element, cr6Method, 
       asElement, asMethod, mnElement, 
       mnMethod, residualChlorineElement, residualChlorineMethod, 
@@ -227,19 +239,21 @@
       nh3Method, phElement, phMethod, 
       tdsElement, tdsMethod, ecoilElement, 
       ecoilMethod, ammoniaNitrogenElement, ammoniaNitrogenMethod, 
-      tetcNumberElement, tetcNumberDescription, 
-      additionalParameter1, additionalValue1, additionalUnit1, 
-      additionalParameter2, additionalValue2, additionalUnit2, 
-      sanitaryScore1, sanitaryScore2, sanitaryScore3, 
-      sanitaryScore4, sanitaryScore5, sanitaryScore6, 
-      sanitaryScore7, sanitaryScore8, sanitaryScore9, 
-      sanitaryScore10, sanitaryScore11, sanitaryTypeId, 
-      samplingDate, detectDate, picture, 
-      generalComments, waterQDeterminationComments, 
-      probComments, challengesComments, needsComments, 
-      healthCenterId, waterCollector, distanceWaterCollection, 
-      waterWaitTime, diarrheaCause, waterSatisfaction
-      )
+      ammoniaNitrogenDescription, tetcNumberElement, 
+      tetcNumberDescription, additionalParameter1, 
+      additionalValue1, additionalMethod1, additionalUnit1, 
+      additionalParameter2, additionalValue2, additionalMethod2, 
+      additionalUnit2, sanitaryScore1, sanitaryScore2, 
+      sanitaryScore3, sanitaryScore4, sanitaryScore5, 
+      sanitaryScore6, sanitaryScore7, sanitaryScore8, 
+      sanitaryScore9, sanitaryScore10, sanitaryScore11, 
+      sanitaryTypeId, sanitaryScore, samplingDate, 
+      detectDate, picture, generalComments, 
+      waterQDeterminationComments, probComments, 
+      challengesComments, needsComments, healthCenterId, 
+      waterCollector, distanceWaterCollection, 
+      waterWaitTime, diarrheaCause, waterSatisfaction, 
+      notes, averageStorageHours)
     values (#{baseId,jdbcType=INTEGER}, #{waterId,jdbcType=INTEGER}, #{waterTypeId,jdbcType=INTEGER}, 
       #{validationId,jdbcType=INTEGER}, #{locationId,jdbcType=INTEGER}, #{cycleTeamId,jdbcType=INTEGER}, 
       #{drinkingWaterId,jdbcType=INTEGER}, #{waterSourceTypeId,jdbcType=INTEGER}, #{waterSourceDetails,jdbcType=VARCHAR}, 
@@ -247,8 +261,9 @@
       #{treatmentMethodId,jdbcType=INTEGER}, #{waterStorageId,jdbcType=INTEGER}, #{waterShortage,jdbcType=VARCHAR}, 
       #{potentialContamination,jdbcType=VARCHAR}, #{potentialContaminationDistance,jdbcType=INTEGER}, 
       #{populationServedBySource,jdbcType=INTEGER}, #{physicalIndicators,jdbcType=INTEGER}, 
-      #{temp,jdbcType=REAL}, #{smellId,jdbcType=INTEGER}, #{visualId,jdbcType=INTEGER}, 
-      #{otherInformation,jdbcType=VARCHAR}, #{turbidityId,jdbcType=INTEGER}, #{feElement,jdbcType=REAL}, 
+      #{temp,jdbcType=REAL}, #{smellId,jdbcType=INTEGER}, #{smellDetail,jdbcType=VARCHAR}, 
+      #{visualId,jdbcType=INTEGER}, #{visualDetail,jdbcType=VARCHAR}, #{otherInformation,jdbcType=VARCHAR}, 
+      #{turbidityId,jdbcType=INTEGER}, #{turbidityDetail,jdbcType=VARCHAR}, #{feElement,jdbcType=REAL}, 
       #{feMethod,jdbcType=VARCHAR}, #{cr6Element,jdbcType=REAL}, #{cr6Method,jdbcType=VARCHAR}, 
       #{asElement,jdbcType=REAL}, #{asMethod,jdbcType=VARCHAR}, #{mnElement,jdbcType=REAL}, 
       #{mnMethod,jdbcType=VARCHAR}, #{residualChlorineElement,jdbcType=REAL}, #{residualChlorineMethod,jdbcType=VARCHAR}, 
@@ -261,19 +276,21 @@
       #{nh3Method,jdbcType=VARCHAR}, #{phElement,jdbcType=REAL}, #{phMethod,jdbcType=VARCHAR}, 
       #{tdsElement,jdbcType=REAL}, #{tdsMethod,jdbcType=VARCHAR}, #{ecoilElement,jdbcType=REAL}, 
       #{ecoilMethod,jdbcType=VARCHAR}, #{ammoniaNitrogenElement,jdbcType=REAL}, #{ammoniaNitrogenMethod,jdbcType=VARCHAR}, 
-      #{tetcNumberElement,jdbcType=REAL}, #{tetcNumberDescription,jdbcType=VARCHAR}, 
-      #{additionalParameter1,jdbcType=VARCHAR}, #{additionalValue1,jdbcType=REAL}, #{additionalUnit1,jdbcType=VARCHAR}, 
-      #{additionalParameter2,jdbcType=VARCHAR}, #{additionalValue2,jdbcType=REAL}, #{additionalUnit2,jdbcType=VARCHAR}, 
-      #{sanitaryScore1,jdbcType=INTEGER}, #{sanitaryScore2,jdbcType=INTEGER}, #{sanitaryScore3,jdbcType=INTEGER}, 
-      #{sanitaryScore4,jdbcType=INTEGER}, #{sanitaryScore5,jdbcType=INTEGER}, #{sanitaryScore6,jdbcType=INTEGER}, 
-      #{sanitaryScore7,jdbcType=INTEGER}, #{sanitaryScore8,jdbcType=INTEGER}, #{sanitaryScore9,jdbcType=INTEGER}, 
-      #{sanitaryScore10,jdbcType=INTEGER}, #{sanitaryScore11,jdbcType=INTEGER}, #{sanitaryTypeId,jdbcType=INTEGER}, 
-      #{samplingDate,jdbcType=DATE}, #{detectDate,jdbcType=DATE}, #{picture,jdbcType=VARCHAR}, 
-      #{generalComments,jdbcType=VARCHAR}, #{waterQDeterminationComments,jdbcType=VARCHAR}, 
-      #{probComments,jdbcType=VARCHAR}, #{challengesComments,jdbcType=VARCHAR}, #{needsComments,jdbcType=VARCHAR}, 
-      #{healthCenterId,jdbcType=VARCHAR}, #{waterCollector,jdbcType=VARCHAR}, #{distanceWaterCollection,jdbcType=INTEGER}, 
-      #{waterWaitTime,jdbcType=INTEGER}, #{diarrheaCause,jdbcType=VARCHAR}, #{waterSatisfaction,jdbcType=INTEGER}
-      )
+      #{ammoniaNitrogenDescription,jdbcType=VARCHAR}, #{tetcNumberElement,jdbcType=REAL}, 
+      #{tetcNumberDescription,jdbcType=VARCHAR}, #{additionalParameter1,jdbcType=VARCHAR}, 
+      #{additionalValue1,jdbcType=REAL}, #{additionalMethod1,jdbcType=VARCHAR}, #{additionalUnit1,jdbcType=VARCHAR}, 
+      #{additionalParameter2,jdbcType=VARCHAR}, #{additionalValue2,jdbcType=REAL}, #{additionalMethod2,jdbcType=VARCHAR}, 
+      #{additionalUnit2,jdbcType=VARCHAR}, #{sanitaryScore1,jdbcType=INTEGER}, #{sanitaryScore2,jdbcType=INTEGER}, 
+      #{sanitaryScore3,jdbcType=INTEGER}, #{sanitaryScore4,jdbcType=INTEGER}, #{sanitaryScore5,jdbcType=INTEGER}, 
+      #{sanitaryScore6,jdbcType=INTEGER}, #{sanitaryScore7,jdbcType=INTEGER}, #{sanitaryScore8,jdbcType=INTEGER}, 
+      #{sanitaryScore9,jdbcType=INTEGER}, #{sanitaryScore10,jdbcType=INTEGER}, #{sanitaryScore11,jdbcType=INTEGER}, 
+      #{sanitaryTypeId,jdbcType=INTEGER}, #{sanitaryScore,jdbcType=INTEGER}, #{samplingDate,jdbcType=DATE}, 
+      #{detectDate,jdbcType=DATE}, #{picture,jdbcType=VARCHAR}, #{generalComments,jdbcType=VARCHAR}, 
+      #{waterQDeterminationComments,jdbcType=VARCHAR}, #{probComments,jdbcType=VARCHAR}, 
+      #{challengesComments,jdbcType=VARCHAR}, #{needsComments,jdbcType=VARCHAR}, #{healthCenterId,jdbcType=VARCHAR}, 
+      #{waterCollector,jdbcType=VARCHAR}, #{distanceWaterCollection,jdbcType=INTEGER}, 
+      #{waterWaitTime,jdbcType=INTEGER}, #{diarrheaCause,jdbcType=VARCHAR}, #{waterSatisfaction,jdbcType=INTEGER}, 
+      #{notes,jdbcType=VARCHAR}, #{averageStorageHours,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Sample">
     insert into sample
@@ -341,15 +358,24 @@
       <if test="smellId != null">
         smellId,
       </if>
+        <if test="smellDetail != null">
+            smellDetail,
+        </if>
       <if test="visualId != null">
         visualId,
       </if>
+        <if test="visualDetail != null">
+            visualDetail,
+        </if>
       <if test="otherInformation != null">
         otherInformation,
       </if>
       <if test="turbidityId != null">
         turbidityId,
       </if>
+        <if test="turbidityDetail != null">
+            turbidityDetail,
+        </if>
       <if test="feElement != null">
         feElement,
       </if>
@@ -458,6 +484,9 @@
       <if test="ammoniaNitrogenMethod != null">
         ammoniaNitrogenMethod,
       </if>
+        <if test="ammoniaNitrogenDescription != null">
+            ammoniaNitrogenDescription,
+        </if>
       <if test="tetcNumberElement != null">
         tetcNumberElement,
       </if>
@@ -470,6 +499,9 @@
       <if test="additionalValue1 != null">
         additionalValue1,
       </if>
+        <if test="additionalMethod1 != null">
+            additionalMethod1,
+        </if>
       <if test="additionalUnit1 != null">
         additionalUnit1,
       </if>
@@ -479,6 +511,9 @@
       <if test="additionalValue2 != null">
         additionalValue2,
       </if>
+        <if test="additionalMethod2 != null">
+            additionalMethod2,
+        </if>
       <if test="additionalUnit2 != null">
         additionalUnit2,
       </if>
@@ -518,6 +553,9 @@
       <if test="sanitaryTypeId != null">
         sanitaryTypeId,
       </if>
+        <if test="sanitaryScore != null">
+            sanitaryScore,
+        </if>
       <if test="samplingDate != null">
         samplingDate,
       </if>
@@ -560,6 +598,12 @@
       <if test="waterSatisfaction != null">
         waterSatisfaction,
       </if>
+        <if test="notes != null">
+            notes,
+        </if>
+        <if test="averageStorageHours != null">
+            averageStorageHours,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="baseId != null">
@@ -625,15 +669,24 @@
       <if test="smellId != null">
         #{smellId,jdbcType=INTEGER},
       </if>
+        <if test="smellDetail != null">
+            #{smellDetail,jdbcType=VARCHAR},
+        </if>
       <if test="visualId != null">
         #{visualId,jdbcType=INTEGER},
       </if>
+        <if test="visualDetail != null">
+            #{visualDetail,jdbcType=VARCHAR},
+        </if>
       <if test="otherInformation != null">
         #{otherInformation,jdbcType=VARCHAR},
       </if>
       <if test="turbidityId != null">
         #{turbidityId,jdbcType=INTEGER},
       </if>
+        <if test="turbidityDetail != null">
+            #{turbidityDetail,jdbcType=VARCHAR},
+        </if>
       <if test="feElement != null">
         #{feElement,jdbcType=REAL},
       </if>
@@ -742,6 +795,9 @@
       <if test="ammoniaNitrogenMethod != null">
         #{ammoniaNitrogenMethod,jdbcType=VARCHAR},
       </if>
+        <if test="ammoniaNitrogenDescription != null">
+            #{ammoniaNitrogenDescription,jdbcType=VARCHAR},
+        </if>
       <if test="tetcNumberElement != null">
         #{tetcNumberElement,jdbcType=REAL},
       </if>
@@ -754,6 +810,9 @@
       <if test="additionalValue1 != null">
         #{additionalValue1,jdbcType=REAL},
       </if>
+        <if test="additionalMethod1 != null">
+            #{additionalMethod1,jdbcType=VARCHAR},
+        </if>
       <if test="additionalUnit1 != null">
         #{additionalUnit1,jdbcType=VARCHAR},
       </if>
@@ -763,6 +822,9 @@
       <if test="additionalValue2 != null">
         #{additionalValue2,jdbcType=REAL},
       </if>
+        <if test="additionalMethod2 != null">
+            #{additionalMethod2,jdbcType=VARCHAR},
+        </if>
       <if test="additionalUnit2 != null">
         #{additionalUnit2,jdbcType=VARCHAR},
       </if>
@@ -802,6 +864,9 @@
       <if test="sanitaryTypeId != null">
         #{sanitaryTypeId,jdbcType=INTEGER},
       </if>
+        <if test="sanitaryScore != null">
+            #{sanitaryScore,jdbcType=INTEGER},
+        </if>
       <if test="samplingDate != null">
         #{samplingDate,jdbcType=DATE},
       </if>
@@ -844,6 +909,12 @@
       <if test="waterSatisfaction != null">
         #{waterSatisfaction,jdbcType=INTEGER},
       </if>
+        <if test="notes != null">
+            #{notes,jdbcType=VARCHAR},
+        </if>
+        <if test="averageStorageHours != null">
+            #{averageStorageHours,jdbcType=VARCHAR},
+        </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="org.spring.springboot.domain.SampleExample" resultType="java.lang.Long">
@@ -918,15 +989,24 @@
       <if test="record.smellId != null">
         smellId = #{record.smellId,jdbcType=INTEGER},
       </if>
+        <if test="record.smellDetail != null">
+            smellDetail = #{record.smellDetail,jdbcType=VARCHAR},
+        </if>
       <if test="record.visualId != null">
         visualId = #{record.visualId,jdbcType=INTEGER},
       </if>
+        <if test="record.visualDetail != null">
+            visualDetail = #{record.visualDetail,jdbcType=VARCHAR},
+        </if>
       <if test="record.otherInformation != null">
         otherInformation = #{record.otherInformation,jdbcType=VARCHAR},
       </if>
       <if test="record.turbidityId != null">
         turbidityId = #{record.turbidityId,jdbcType=INTEGER},
       </if>
+        <if test="record.turbidityDetail != null">
+            turbidityDetail = #{record.turbidityDetail,jdbcType=VARCHAR},
+        </if>
       <if test="record.feElement != null">
         feElement = #{record.feElement,jdbcType=REAL},
       </if>
@@ -1035,6 +1115,9 @@
       <if test="record.ammoniaNitrogenMethod != null">
         ammoniaNitrogenMethod = #{record.ammoniaNitrogenMethod,jdbcType=VARCHAR},
       </if>
+        <if test="record.ammoniaNitrogenDescription != null">
+            ammoniaNitrogenDescription = #{record.ammoniaNitrogenDescription,jdbcType=VARCHAR},
+        </if>
       <if test="record.tetcNumberElement != null">
         tetcNumberElement = #{record.tetcNumberElement,jdbcType=REAL},
       </if>
@@ -1047,6 +1130,9 @@
       <if test="record.additionalValue1 != null">
         additionalValue1 = #{record.additionalValue1,jdbcType=REAL},
       </if>
+        <if test="record.additionalMethod1 != null">
+            additionalMethod1 = #{record.additionalMethod1,jdbcType=VARCHAR},
+        </if>
       <if test="record.additionalUnit1 != null">
         additionalUnit1 = #{record.additionalUnit1,jdbcType=VARCHAR},
       </if>
@@ -1056,6 +1142,9 @@
       <if test="record.additionalValue2 != null">
         additionalValue2 = #{record.additionalValue2,jdbcType=REAL},
       </if>
+        <if test="record.additionalMethod2 != null">
+            additionalMethod2 = #{record.additionalMethod2,jdbcType=VARCHAR},
+        </if>
       <if test="record.additionalUnit2 != null">
         additionalUnit2 = #{record.additionalUnit2,jdbcType=VARCHAR},
       </if>
@@ -1095,6 +1184,9 @@
       <if test="record.sanitaryTypeId != null">
         sanitaryTypeId = #{record.sanitaryTypeId,jdbcType=INTEGER},
       </if>
+        <if test="record.sanitaryScore != null">
+            sanitaryScore = #{record.sanitaryScore,jdbcType=INTEGER},
+        </if>
       <if test="record.samplingDate != null">
         samplingDate = #{record.samplingDate,jdbcType=DATE},
       </if>
@@ -1137,6 +1229,12 @@
       <if test="record.waterSatisfaction != null">
         waterSatisfaction = #{record.waterSatisfaction,jdbcType=INTEGER},
       </if>
+        <if test="record.notes != null">
+            notes = #{record.notes,jdbcType=VARCHAR},
+        </if>
+        <if test="record.averageStorageHours != null">
+            averageStorageHours = #{record.averageStorageHours,jdbcType=VARCHAR},
+        </if>
     </set>
     <if test="_parameter != null">
         <include refid="Update_By_Example_Where_Clause"/>
@@ -1165,9 +1263,12 @@
       physicalIndicators = #{record.physicalIndicators,jdbcType=INTEGER},
       temp = #{record.temp,jdbcType=REAL},
       smellId = #{record.smellId,jdbcType=INTEGER},
+      smellDetail = #{record.smellDetail,jdbcType=VARCHAR},
       visualId = #{record.visualId,jdbcType=INTEGER},
+      visualDetail = #{record.visualDetail,jdbcType=VARCHAR},
       otherInformation = #{record.otherInformation,jdbcType=VARCHAR},
       turbidityId = #{record.turbidityId,jdbcType=INTEGER},
+      turbidityDetail = #{record.turbidityDetail,jdbcType=VARCHAR},
       feElement = #{record.feElement,jdbcType=REAL},
       feMethod = #{record.feMethod,jdbcType=VARCHAR},
       cr6Element = #{record.cr6Element,jdbcType=REAL},
@@ -1204,13 +1305,16 @@
       ecoilMethod = #{record.ecoilMethod,jdbcType=VARCHAR},
       ammoniaNitrogenElement = #{record.ammoniaNitrogenElement,jdbcType=REAL},
       ammoniaNitrogenMethod = #{record.ammoniaNitrogenMethod,jdbcType=VARCHAR},
+      ammoniaNitrogenDescription = #{record.ammoniaNitrogenDescription,jdbcType=VARCHAR},
       tetcNumberElement = #{record.tetcNumberElement,jdbcType=REAL},
       tetcNumberDescription = #{record.tetcNumberDescription,jdbcType=VARCHAR},
       additionalParameter1 = #{record.additionalParameter1,jdbcType=VARCHAR},
       additionalValue1 = #{record.additionalValue1,jdbcType=REAL},
+      additionalMethod1 = #{record.additionalMethod1,jdbcType=VARCHAR},
       additionalUnit1 = #{record.additionalUnit1,jdbcType=VARCHAR},
       additionalParameter2 = #{record.additionalParameter2,jdbcType=VARCHAR},
       additionalValue2 = #{record.additionalValue2,jdbcType=REAL},
+      additionalMethod2 = #{record.additionalMethod2,jdbcType=VARCHAR},
       additionalUnit2 = #{record.additionalUnit2,jdbcType=VARCHAR},
       sanitaryScore1 = #{record.sanitaryScore1,jdbcType=INTEGER},
       sanitaryScore2 = #{record.sanitaryScore2,jdbcType=INTEGER},
@@ -1224,6 +1328,7 @@
       sanitaryScore10 = #{record.sanitaryScore10,jdbcType=INTEGER},
       sanitaryScore11 = #{record.sanitaryScore11,jdbcType=INTEGER},
       sanitaryTypeId = #{record.sanitaryTypeId,jdbcType=INTEGER},
+      sanitaryScore = #{record.sanitaryScore,jdbcType=INTEGER},
       samplingDate = #{record.samplingDate,jdbcType=DATE},
       detectDate = #{record.detectDate,jdbcType=DATE},
       picture = #{record.picture,jdbcType=VARCHAR},
@@ -1237,7 +1342,9 @@
       distanceWaterCollection = #{record.distanceWaterCollection,jdbcType=INTEGER},
       waterWaitTime = #{record.waterWaitTime,jdbcType=INTEGER},
       diarrheaCause = #{record.diarrheaCause,jdbcType=VARCHAR},
-      waterSatisfaction = #{record.waterSatisfaction,jdbcType=INTEGER}
+      waterSatisfaction = #{record.waterSatisfaction,jdbcType=INTEGER},
+      notes = #{record.notes,jdbcType=VARCHAR},
+      averageStorageHours = #{record.averageStorageHours,jdbcType=VARCHAR}
     <if test="_parameter != null">
         <include refid="Update_By_Example_Where_Clause"/>
     </if>
@@ -1305,15 +1412,24 @@
       <if test="smellId != null">
         smellId = #{smellId,jdbcType=INTEGER},
       </if>
+        <if test="smellDetail != null">
+            smellDetail = #{smellDetail,jdbcType=VARCHAR},
+        </if>
       <if test="visualId != null">
         visualId = #{visualId,jdbcType=INTEGER},
       </if>
+        <if test="visualDetail != null">
+            visualDetail = #{visualDetail,jdbcType=VARCHAR},
+        </if>
       <if test="otherInformation != null">
         otherInformation = #{otherInformation,jdbcType=VARCHAR},
       </if>
       <if test="turbidityId != null">
         turbidityId = #{turbidityId,jdbcType=INTEGER},
       </if>
+        <if test="turbidityDetail != null">
+            turbidityDetail = #{turbidityDetail,jdbcType=VARCHAR},
+        </if>
       <if test="feElement != null">
         feElement = #{feElement,jdbcType=REAL},
       </if>
@@ -1422,6 +1538,9 @@
       <if test="ammoniaNitrogenMethod != null">
         ammoniaNitrogenMethod = #{ammoniaNitrogenMethod,jdbcType=VARCHAR},
       </if>
+        <if test="ammoniaNitrogenDescription != null">
+            ammoniaNitrogenDescription = #{ammoniaNitrogenDescription,jdbcType=VARCHAR},
+        </if>
       <if test="tetcNumberElement != null">
         tetcNumberElement = #{tetcNumberElement,jdbcType=REAL},
       </if>
@@ -1434,6 +1553,9 @@
       <if test="additionalValue1 != null">
         additionalValue1 = #{additionalValue1,jdbcType=REAL},
       </if>
+        <if test="additionalMethod1 != null">
+            additionalMethod1 = #{additionalMethod1,jdbcType=VARCHAR},
+        </if>
       <if test="additionalUnit1 != null">
         additionalUnit1 = #{additionalUnit1,jdbcType=VARCHAR},
       </if>
@@ -1443,6 +1565,9 @@
       <if test="additionalValue2 != null">
         additionalValue2 = #{additionalValue2,jdbcType=REAL},
       </if>
+        <if test="additionalMethod2 != null">
+            additionalMethod2 = #{additionalMethod2,jdbcType=VARCHAR},
+        </if>
       <if test="additionalUnit2 != null">
         additionalUnit2 = #{additionalUnit2,jdbcType=VARCHAR},
       </if>
@@ -1482,6 +1607,9 @@
       <if test="sanitaryTypeId != null">
         sanitaryTypeId = #{sanitaryTypeId,jdbcType=INTEGER},
       </if>
+        <if test="sanitaryScore != null">
+            sanitaryScore = #{sanitaryScore,jdbcType=INTEGER},
+        </if>
       <if test="samplingDate != null">
         samplingDate = #{samplingDate,jdbcType=DATE},
       </if>
@@ -1524,6 +1652,12 @@
       <if test="waterSatisfaction != null">
         waterSatisfaction = #{waterSatisfaction,jdbcType=INTEGER},
       </if>
+        <if test="notes != null">
+            notes = #{notes,jdbcType=VARCHAR},
+        </if>
+        <if test="averageStorageHours != null">
+            averageStorageHours = #{averageStorageHours,jdbcType=VARCHAR},
+        </if>
     </set>
     where baseId = #{baseId,jdbcType=INTEGER}
   </update>
@@ -1549,9 +1683,12 @@
       physicalIndicators = #{physicalIndicators,jdbcType=INTEGER},
       temp = #{temp,jdbcType=REAL},
       smellId = #{smellId,jdbcType=INTEGER},
+      smellDetail = #{smellDetail,jdbcType=VARCHAR},
       visualId = #{visualId,jdbcType=INTEGER},
+      visualDetail = #{visualDetail,jdbcType=VARCHAR},
       otherInformation = #{otherInformation,jdbcType=VARCHAR},
       turbidityId = #{turbidityId,jdbcType=INTEGER},
+      turbidityDetail = #{turbidityDetail,jdbcType=VARCHAR},
       feElement = #{feElement,jdbcType=REAL},
       feMethod = #{feMethod,jdbcType=VARCHAR},
       cr6Element = #{cr6Element,jdbcType=REAL},
@@ -1588,13 +1725,16 @@
       ecoilMethod = #{ecoilMethod,jdbcType=VARCHAR},
       ammoniaNitrogenElement = #{ammoniaNitrogenElement,jdbcType=REAL},
       ammoniaNitrogenMethod = #{ammoniaNitrogenMethod,jdbcType=VARCHAR},
+      ammoniaNitrogenDescription = #{ammoniaNitrogenDescription,jdbcType=VARCHAR},
       tetcNumberElement = #{tetcNumberElement,jdbcType=REAL},
       tetcNumberDescription = #{tetcNumberDescription,jdbcType=VARCHAR},
       additionalParameter1 = #{additionalParameter1,jdbcType=VARCHAR},
       additionalValue1 = #{additionalValue1,jdbcType=REAL},
+      additionalMethod1 = #{additionalMethod1,jdbcType=VARCHAR},
       additionalUnit1 = #{additionalUnit1,jdbcType=VARCHAR},
       additionalParameter2 = #{additionalParameter2,jdbcType=VARCHAR},
       additionalValue2 = #{additionalValue2,jdbcType=REAL},
+      additionalMethod2 = #{additionalMethod2,jdbcType=VARCHAR},
       additionalUnit2 = #{additionalUnit2,jdbcType=VARCHAR},
       sanitaryScore1 = #{sanitaryScore1,jdbcType=INTEGER},
       sanitaryScore2 = #{sanitaryScore2,jdbcType=INTEGER},
@@ -1608,6 +1748,7 @@
       sanitaryScore10 = #{sanitaryScore10,jdbcType=INTEGER},
       sanitaryScore11 = #{sanitaryScore11,jdbcType=INTEGER},
       sanitaryTypeId = #{sanitaryTypeId,jdbcType=INTEGER},
+      sanitaryScore = #{sanitaryScore,jdbcType=INTEGER},
       samplingDate = #{samplingDate,jdbcType=DATE},
       detectDate = #{detectDate,jdbcType=DATE},
       picture = #{picture,jdbcType=VARCHAR},
@@ -1621,7 +1762,9 @@
       distanceWaterCollection = #{distanceWaterCollection,jdbcType=INTEGER},
       waterWaitTime = #{waterWaitTime,jdbcType=INTEGER},
       diarrheaCause = #{diarrheaCause,jdbcType=VARCHAR},
-      waterSatisfaction = #{waterSatisfaction,jdbcType=INTEGER}
+      waterSatisfaction = #{waterSatisfaction,jdbcType=INTEGER},
+      notes = #{notes,jdbcType=VARCHAR},
+      averageStorageHours = #{averageStorageHours,jdbcType=VARCHAR}
     where baseId = #{baseId,jdbcType=INTEGER}
   </update>
   <select id="getSamplesByCycleTeamid" resultType="org.spring.springboot.domain.Sample">
