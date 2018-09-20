@@ -2,7 +2,6 @@ package org.spring.springboot.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class SampleExample {
@@ -104,32 +103,6 @@ public class SampleExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andBaseIdIsNull() {
@@ -5663,52 +5636,52 @@ public class SampleExample {
         }
 
         public Criteria andSamplingDateEqualTo(Date value) {
-            addCriterionForJDBCDate("samplingDate =", value, "samplingDate");
+            addCriterion("samplingDate =", value, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("samplingDate <>", value, "samplingDate");
+            addCriterion("samplingDate <>", value, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("samplingDate >", value, "samplingDate");
+            addCriterion("samplingDate >", value, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("samplingDate >=", value, "samplingDate");
+            addCriterion("samplingDate >=", value, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateLessThan(Date value) {
-            addCriterionForJDBCDate("samplingDate <", value, "samplingDate");
+            addCriterion("samplingDate <", value, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("samplingDate <=", value, "samplingDate");
+            addCriterion("samplingDate <=", value, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateIn(List<Date> values) {
-            addCriterionForJDBCDate("samplingDate in", values, "samplingDate");
+            addCriterion("samplingDate in", values, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("samplingDate not in", values, "samplingDate");
+            addCriterion("samplingDate not in", values, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("samplingDate between", value1, value2, "samplingDate");
+            addCriterion("samplingDate between", value1, value2, "samplingDate");
             return (Criteria) this;
         }
 
         public Criteria andSamplingDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("samplingDate not between", value1, value2, "samplingDate");
+            addCriterion("samplingDate not between", value1, value2, "samplingDate");
             return (Criteria) this;
         }
 
@@ -5723,52 +5696,52 @@ public class SampleExample {
         }
 
         public Criteria andDetectDateEqualTo(Date value) {
-            addCriterionForJDBCDate("detectDate =", value, "detectDate");
+            addCriterion("detectDate =", value, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("detectDate <>", value, "detectDate");
+            addCriterion("detectDate <>", value, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("detectDate >", value, "detectDate");
+            addCriterion("detectDate >", value, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("detectDate >=", value, "detectDate");
+            addCriterion("detectDate >=", value, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateLessThan(Date value) {
-            addCriterionForJDBCDate("detectDate <", value, "detectDate");
+            addCriterion("detectDate <", value, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("detectDate <=", value, "detectDate");
+            addCriterion("detectDate <=", value, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateIn(List<Date> values) {
-            addCriterionForJDBCDate("detectDate in", values, "detectDate");
+            addCriterion("detectDate in", values, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("detectDate not in", values, "detectDate");
+            addCriterion("detectDate not in", values, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("detectDate between", value1, value2, "detectDate");
+            addCriterion("detectDate between", value1, value2, "detectDate");
             return (Criteria) this;
         }
 
         public Criteria andDetectDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("detectDate not between", value1, value2, "detectDate");
+            addCriterion("detectDate not between", value1, value2, "detectDate");
             return (Criteria) this;
         }
 

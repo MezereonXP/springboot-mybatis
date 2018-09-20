@@ -89,8 +89,8 @@
       <result column="sanitaryScore11" jdbcType="INTEGER" property="sanitaryScore11"/>
       <result column="sanitaryTypeId" jdbcType="INTEGER" property="sanitaryTypeId"/>
       <result column="sanitaryScore" jdbcType="INTEGER" property="sanitaryScore"/>
-      <result column="samplingDate" jdbcType="DATE" property="samplingDate"/>
-      <result column="detectDate" jdbcType="DATE" property="detectDate"/>
+      <result column="samplingDate" jdbcType="TIMESTAMP" property="samplingDate"/>
+      <result column="detectDate" jdbcType="TIMESTAMP" property="detectDate"/>
     <result column="picture" jdbcType="VARCHAR" property="picture" />
       <result column="generalComments" jdbcType="VARCHAR" property="generalComments"/>
       <result column="waterQDeterminationComments" jdbcType="VARCHAR" property="waterQDeterminationComments"/>
@@ -284,8 +284,8 @@
       #{sanitaryScore3,jdbcType=INTEGER}, #{sanitaryScore4,jdbcType=INTEGER}, #{sanitaryScore5,jdbcType=INTEGER}, 
       #{sanitaryScore6,jdbcType=INTEGER}, #{sanitaryScore7,jdbcType=INTEGER}, #{sanitaryScore8,jdbcType=INTEGER}, 
       #{sanitaryScore9,jdbcType=INTEGER}, #{sanitaryScore10,jdbcType=INTEGER}, #{sanitaryScore11,jdbcType=INTEGER}, 
-      #{sanitaryTypeId,jdbcType=INTEGER}, #{sanitaryScore,jdbcType=INTEGER}, #{samplingDate,jdbcType=DATE}, 
-      #{detectDate,jdbcType=DATE}, #{picture,jdbcType=VARCHAR}, #{generalComments,jdbcType=VARCHAR}, 
+      #{sanitaryTypeId,jdbcType=INTEGER}, #{sanitaryScore,jdbcType=INTEGER}, #{samplingDate,jdbcType=TIMESTAMP}, 
+      #{detectDate,jdbcType=TIMESTAMP}, #{picture,jdbcType=VARCHAR}, #{generalComments,jdbcType=VARCHAR}, 
       #{waterQDeterminationComments,jdbcType=VARCHAR}, #{probComments,jdbcType=VARCHAR}, 
       #{challengesComments,jdbcType=VARCHAR}, #{needsComments,jdbcType=VARCHAR}, #{healthCenterId,jdbcType=VARCHAR}, 
       #{waterCollector,jdbcType=VARCHAR}, #{distanceWaterCollection,jdbcType=INTEGER}, 
@@ -868,10 +868,10 @@
             #{sanitaryScore,jdbcType=INTEGER},
         </if>
       <if test="samplingDate != null">
-        #{samplingDate,jdbcType=DATE},
+          #{samplingDate,jdbcType=TIMESTAMP},
       </if>
       <if test="detectDate != null">
-        #{detectDate,jdbcType=DATE},
+          #{detectDate,jdbcType=TIMESTAMP},
       </if>
       <if test="picture != null">
         #{picture,jdbcType=VARCHAR},
@@ -1188,10 +1188,10 @@
             sanitaryScore = #{record.sanitaryScore,jdbcType=INTEGER},
         </if>
       <if test="record.samplingDate != null">
-        samplingDate = #{record.samplingDate,jdbcType=DATE},
+          samplingDate = #{record.samplingDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.detectDate != null">
-        detectDate = #{record.detectDate,jdbcType=DATE},
+          detectDate = #{record.detectDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.picture != null">
         picture = #{record.picture,jdbcType=VARCHAR},
@@ -1329,8 +1329,8 @@
       sanitaryScore11 = #{record.sanitaryScore11,jdbcType=INTEGER},
       sanitaryTypeId = #{record.sanitaryTypeId,jdbcType=INTEGER},
       sanitaryScore = #{record.sanitaryScore,jdbcType=INTEGER},
-      samplingDate = #{record.samplingDate,jdbcType=DATE},
-      detectDate = #{record.detectDate,jdbcType=DATE},
+      samplingDate = #{record.samplingDate,jdbcType=TIMESTAMP},
+      detectDate = #{record.detectDate,jdbcType=TIMESTAMP},
       picture = #{record.picture,jdbcType=VARCHAR},
       generalComments = #{record.generalComments,jdbcType=VARCHAR},
       waterQDeterminationComments = #{record.waterQDeterminationComments,jdbcType=VARCHAR},
@@ -1611,10 +1611,10 @@
             sanitaryScore = #{sanitaryScore,jdbcType=INTEGER},
         </if>
       <if test="samplingDate != null">
-        samplingDate = #{samplingDate,jdbcType=DATE},
+          samplingDate = #{samplingDate,jdbcType=TIMESTAMP},
       </if>
       <if test="detectDate != null">
-        detectDate = #{detectDate,jdbcType=DATE},
+          detectDate = #{detectDate,jdbcType=TIMESTAMP},
       </if>
       <if test="picture != null">
         picture = #{picture,jdbcType=VARCHAR},
@@ -1749,8 +1749,8 @@
       sanitaryScore11 = #{sanitaryScore11,jdbcType=INTEGER},
       sanitaryTypeId = #{sanitaryTypeId,jdbcType=INTEGER},
       sanitaryScore = #{sanitaryScore,jdbcType=INTEGER},
-      samplingDate = #{samplingDate,jdbcType=DATE},
-      detectDate = #{detectDate,jdbcType=DATE},
+      samplingDate = #{samplingDate,jdbcType=TIMESTAMP},
+      detectDate = #{detectDate,jdbcType=TIMESTAMP},
       picture = #{picture,jdbcType=VARCHAR},
       generalComments = #{generalComments,jdbcType=VARCHAR},
       waterQDeterminationComments = #{waterQDeterminationComments,jdbcType=VARCHAR},
