@@ -233,6 +233,76 @@ public class MethodExample {
             addCriterion("methodType not between", value1, value2, "methodType");
             return (Criteria) this;
         }
+
+        public Criteria andMethodValueIsNull() {
+            addCriterion("methodValue is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueIsNotNull() {
+            addCriterion("methodValue is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueEqualTo(String value) {
+            addCriterion("methodValue =", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueNotEqualTo(String value) {
+            addCriterion("methodValue <>", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueGreaterThan(String value) {
+            addCriterion("methodValue >", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueGreaterThanOrEqualTo(String value) {
+            addCriterion("methodValue >=", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueLessThan(String value) {
+            addCriterion("methodValue <", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueLessThanOrEqualTo(String value) {
+            addCriterion("methodValue <=", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueLike(String value) {
+            addCriterion("methodValue like", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueNotLike(String value) {
+            addCriterion("methodValue not like", value, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueIn(List<String> values) {
+            addCriterion("methodValue in", values, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueNotIn(List<String> values) {
+            addCriterion("methodValue not in", values, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueBetween(String value1, String value2) {
+            addCriterion("methodValue between", value1, value2, "methodValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodValueNotBetween(String value1, String value2) {
+            addCriterion("methodValue not between", value1, value2, "methodValue");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

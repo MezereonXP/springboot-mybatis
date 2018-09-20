@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Method">
       <id column="methodId" jdbcType="INTEGER" property="methodId"/>
       <result column="methodType" jdbcType="VARCHAR" property="methodType"/>
+      <result column="methodValue" jdbcType="VARCHAR" property="methodValue"/>
   </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -64,7 +65,7 @@
         </where>
     </sql>
   <sql id="Base_Column_List">
-    methodId, methodType
+    methodId, methodType, methodValue
   </sql>
     <select id="selectByExample" parameterType="org.spring.springboot.domain.MethodExample" resultMap="BaseResultMap">
         select
@@ -98,8 +99,10 @@
         </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Method">
-    insert into method (methodId, methodType)
-    values (#{methodId,jdbcType=INTEGER}, #{methodType,jdbcType=VARCHAR})
+    insert into method (methodId, methodType, methodValue
+      )
+    values (#{methodId,jdbcType=INTEGER}, #{methodType,jdbcType=VARCHAR}, #{methodValue,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Method">
     insert into method
@@ -109,6 +112,9 @@
       </if>
         <if test="methodType != null">
             methodType,
+        </if>
+        <if test="methodValue != null">
+            methodValue,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -118,6 +124,9 @@
         <if test="methodType != null">
             #{methodType,jdbcType=VARCHAR},
       </if>
+        <if test="methodValue != null">
+            #{methodValue,jdbcType=VARCHAR},
+        </if>
     </trim>
   </insert>
     <select id="countByExample" parameterType="org.spring.springboot.domain.MethodExample" resultType="java.lang.Long">
@@ -135,6 +144,9 @@
         <if test="record.methodType != null">
             methodType = #{record.methodType,jdbcType=VARCHAR},
         </if>
+        <if test="record.methodValue != null">
+            methodValue = #{record.methodValue,jdbcType=VARCHAR},
+        </if>
     </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
@@ -143,7 +155,8 @@
     <update id="updateByExample" parameterType="map">
         update method
         set methodId = #{record.methodId,jdbcType=INTEGER},
-        methodType = #{record.methodType,jdbcType=VARCHAR}
+        methodType = #{record.methodType,jdbcType=VARCHAR},
+        methodValue = #{record.methodValue,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -154,12 +167,16 @@
             <if test="methodType != null">
                 methodType = #{methodType,jdbcType=VARCHAR},
       </if>
+            <if test="methodValue != null">
+                methodValue = #{methodValue,jdbcType=VARCHAR},
+            </if>
     </set>
         where methodId = #{methodId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Method">
     update method
-    set methodType = #{methodType,jdbcType=VARCHAR}
+    set methodType = #{methodType,jdbcType=VARCHAR},
+      methodValue = #{methodValue,jdbcType=VARCHAR}
     where methodId = #{methodId,jdbcType=INTEGER}
   </update>
 </mapper>
