@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.LocationDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Location">
-    <id column="locationId" jdbcType="INTEGER" property="locationId"/>
-    <result column="villageId" jdbcType="INTEGER" property="villageId"/>
-    <result column="locationName" jdbcType="VARCHAR" property="locationName"/>
+      <id column="locationId" jdbcType="INTEGER" property="locationId"/>
+      <result column="villageId" jdbcType="INTEGER" property="villageId"/>
+      <result column="locationName" jdbcType="VARCHAR" property="locationName"/>
     <result column="lat" jdbcType="DOUBLE" property="lat" />
-    <result column="log" jdbcType="DOUBLE" property="log"/>
+      <result column="log" jdbcType="DOUBLE" property="log"/>
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="createdAt" jdbcType="DATE" property="createdAt"/>
-    <result column="updatedAt" jdbcType="DATE" property="updatedAt"/>
-    <result column="blogId" jdbcType="INTEGER" property="blogId"/>
+      <result column="createdAt" jdbcType="DATE" property="createdAt"/>
+      <result column="updatedAt" jdbcType="DATE" property="updatedAt"/>
+      <result column="blogId" jdbcType="INTEGER" property="blogId"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -79,10 +79,10 @@
       distinct
     </if>
     'true' as QUERYID,
-    <include refid="Base_Column_List"/>
+      <include refid="Base_Column_List"/>
     from location
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
@@ -101,7 +101,7 @@
   <delete id="deleteByExample" parameterType="org.spring.springboot.domain.LocationExample">
     delete from location
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Location">
@@ -176,7 +176,7 @@
   <select id="countByExample" parameterType="org.spring.springboot.domain.LocationExample" resultType="java.lang.Long">
     select count(*) from location
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause"/>
+        <include refid="Example_Where_Clause"/>
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
@@ -211,22 +211,22 @@
       </if>
     </set>
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
+        <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update location
     set locationId = #{record.locationId,jdbcType=INTEGER},
-    villageId = #{record.villageId,jdbcType=INTEGER},
-    locationName = #{record.locationName,jdbcType=VARCHAR},
-    lat = #{record.lat,jdbcType=DOUBLE},
-    log = #{record.log,jdbcType=DOUBLE},
-    status = #{record.status,jdbcType=INTEGER},
-    createdAt = #{record.createdAt,jdbcType=DATE},
-    updatedAt = #{record.updatedAt,jdbcType=DATE},
-    blogId = #{record.blogId,jdbcType=INTEGER}
+      villageId = #{record.villageId,jdbcType=INTEGER},
+      locationName = #{record.locationName,jdbcType=VARCHAR},
+      lat = #{record.lat,jdbcType=DOUBLE},
+      log = #{record.log,jdbcType=DOUBLE},
+      status = #{record.status,jdbcType=INTEGER},
+      createdAt = #{record.createdAt,jdbcType=DATE},
+      updatedAt = #{record.updatedAt,jdbcType=DATE},
+      blogId = #{record.blogId,jdbcType=INTEGER}
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause"/>
+        <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Location">
