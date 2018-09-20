@@ -1,5 +1,9 @@
 package org.spring.springboot.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.spring.springboot.util.CustomJsonDateDeserializer;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Sample {
@@ -909,6 +913,7 @@ public class Sample {
         return samplingDate;
     }
 
+    @JsonDeserialize(using = CustomJsonDateDeserializer.class)
     public void setSamplingDate(Date samplingDate) {
         this.samplingDate = samplingDate;
     }
@@ -917,6 +922,7 @@ public class Sample {
         return detectDate;
     }
 
+    @JsonDeserialize(using = CustomJsonDateDeserializer.class)
     public void setDetectDate(Date detectDate) {
         this.detectDate = detectDate;
     }
