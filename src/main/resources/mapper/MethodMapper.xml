@@ -2,196 +2,228 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.MethodMapper">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Method">
-      <id column="methodId" jdbcType="INTEGER" property="methodId"/>
-      <result column="indexName" jdbcType="VARCHAR" property="indexName"/>
-      <result column="methodType" jdbcType="VARCHAR" property="methodType"/>
-      <result column="methodValue" jdbcType="VARCHAR" property="methodValue"/>
+    <id column="methodId" jdbcType="INTEGER" property="methodId"/>
+    <result column="indexName" jdbcType="VARCHAR" property="indexName"/>
+    <result column="methodType" jdbcType="VARCHAR" property="methodType"/>
+    <result column="methodName" jdbcType="VARCHAR" property="methodName"/>
+    <result column="methodValue" jdbcType="VARCHAR" property="methodValue"/>
+    <result column="unit" jdbcType="VARCHAR" property="unit"/>
   </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" prefixOverrides="and" suffix=")">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" prefixOverrides="and" suffix=")">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
-            </foreach>
-        </where>
-    </sql>
-  <sql id="Base_Column_List">
-    methodId, indexName, methodType, methodValue
+          </trim>
+        </if>
+      </foreach>
+    </where>
   </sql>
-    <select id="selectByExample" parameterType="org.spring.springboot.domain.MethodExample" resultMap="BaseResultMap">
-        select
-        <if test="distinct">
-            distinct
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
         </if>
-        'true' as QUERYID,
-        <include refid="Base_Column_List"/>
-        from method
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    methodId, indexName, methodType, methodName, methodValue, unit
+  </sql>
+  <select id="selectByExample" parameterType="org.spring.springboot.domain.MethodExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List"/>
+    from method
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from method
-      where methodId = #{methodId,jdbcType=INTEGER}
+    where methodId = #{methodId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from method
     where methodId = #{methodId,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="org.spring.springboot.domain.MethodExample">
-        delete from method
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
+  <delete id="deleteByExample" parameterType="org.spring.springboot.domain.MethodExample">
+    delete from method
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Method">
     insert into method (methodId, indexName, methodType, 
-      methodValue)
+      methodName, methodValue, unit
+      )
     values (#{methodId,jdbcType=INTEGER}, #{indexName,jdbcType=VARCHAR}, #{methodType,jdbcType=VARCHAR}, 
-      #{methodValue,jdbcType=VARCHAR})
+      #{methodName,jdbcType=VARCHAR}, #{methodValue,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Method">
     insert into method
     <trim prefix="(" suffix=")" suffixOverrides=",">
-        <if test="methodId != null">
-            methodId,
-        </if>
-        <if test="indexName != null">
-            indexName,
-        </if>
-        <if test="methodType != null">
-            methodType,
-        </if>
-        <if test="methodValue != null">
-            methodValue,
+      <if test="methodId != null">
+        methodId,
+      </if>
+      <if test="indexName != null">
+        indexName,
+      </if>
+      <if test="methodType != null">
+        methodType,
+      </if>
+      <if test="methodName != null">
+        methodName,
+      </if>
+      <if test="methodValue != null">
+        methodValue,
+      </if>
+      <if test="unit != null">
+        unit,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-        <if test="methodId != null">
-            #{methodId,jdbcType=INTEGER},
+      <if test="methodId != null">
+        #{methodId,jdbcType=INTEGER},
       </if>
-        <if test="indexName != null">
-            #{indexName,jdbcType=VARCHAR},
-        </if>
-        <if test="methodType != null">
-            #{methodType,jdbcType=VARCHAR},
+      <if test="indexName != null">
+        #{indexName,jdbcType=VARCHAR},
       </if>
-        <if test="methodValue != null">
-            #{methodValue,jdbcType=VARCHAR},
-        </if>
+      <if test="methodType != null">
+        #{methodType,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodValue != null">
+        #{methodValue,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-    <select id="countByExample" parameterType="org.spring.springboot.domain.MethodExample" resultType="java.lang.Long">
-        select count(*) from method
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </select>
-    <update id="updateByExampleSelective" parameterType="map">
+  <select id="countByExample" parameterType="org.spring.springboot.domain.MethodExample" resultType="java.lang.Long">
+    select count(*) from method
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
     update method
     <set>
-        <if test="record.methodId != null">
-            methodId = #{record.methodId,jdbcType=INTEGER},
-        </if>
-        <if test="record.indexName != null">
-            indexName = #{record.indexName,jdbcType=VARCHAR},
-        </if>
-        <if test="record.methodType != null">
-            methodType = #{record.methodType,jdbcType=VARCHAR},
-        </if>
-        <if test="record.methodValue != null">
-            methodValue = #{record.methodValue,jdbcType=VARCHAR},
-        </if>
-    </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update method
-        set methodId = #{record.methodId,jdbcType=INTEGER},
-        indexName = #{record.indexName,jdbcType=VARCHAR},
-        methodType = #{record.methodType,jdbcType=VARCHAR},
-        methodValue = #{record.methodValue,jdbcType=VARCHAR}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Method">
-        update method
-        <set>
-            <if test="indexName != null">
-                indexName = #{indexName,jdbcType=VARCHAR},
-            </if>
-            <if test="methodType != null">
-                methodType = #{methodType,jdbcType=VARCHAR},
+      <if test="record.methodId != null">
+        methodId = #{record.methodId,jdbcType=INTEGER},
       </if>
-            <if test="methodValue != null">
-                methodValue = #{methodValue,jdbcType=VARCHAR},
-            </if>
+      <if test="record.indexName != null">
+        indexName = #{record.indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.methodType != null">
+        methodType = #{record.methodType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.methodName != null">
+        methodName = #{record.methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.methodValue != null">
+        methodValue = #{record.methodValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
     </set>
-        where methodId = #{methodId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update method
+    set methodId = #{record.methodId,jdbcType=INTEGER},
+    indexName = #{record.indexName,jdbcType=VARCHAR},
+    methodType = #{record.methodType,jdbcType=VARCHAR},
+    methodName = #{record.methodName,jdbcType=VARCHAR},
+    methodValue = #{record.methodValue,jdbcType=VARCHAR},
+    unit = #{record.unit,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Method">
+    update method
+    <set>
+      <if test="indexName != null">
+        indexName = #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodType != null">
+        methodType = #{methodType,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null">
+        methodName = #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodValue != null">
+        methodValue = #{methodValue,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where methodId = #{methodId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Method">
     update method
     set indexName = #{indexName,jdbcType=VARCHAR},
       methodType = #{methodType,jdbcType=VARCHAR},
-      methodValue = #{methodValue,jdbcType=VARCHAR}
+      methodName = #{methodName,jdbcType=VARCHAR},
+      methodValue = #{methodValue,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR}
     where methodId = #{methodId,jdbcType=INTEGER}
   </update>
 </mapper>

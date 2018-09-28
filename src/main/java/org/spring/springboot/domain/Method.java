@@ -7,7 +7,11 @@ public class Method {
 
     private String methodType;
 
+    private String methodName;
+
     private String methodValue;
+
+    private String unit;
 
     public Integer getMethodId() {
         return methodId;
@@ -33,11 +37,27 @@ public class Method {
         this.methodType = methodType == null ? null : methodType.trim();
     }
 
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName == null ? null : methodName.trim();
+    }
+
     public String getMethodValue() {
         return methodValue;
     }
 
     public void setMethodValue(String methodValue) {
         this.methodValue = methodValue == null ? null : methodValue.trim();
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit == null ? null : unit.trim();
     }
 }
