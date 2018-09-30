@@ -55,7 +55,7 @@ public class SetSampleDetails {
         ArrayList<HealthCenter> healthCenters = new ArrayList<>();
         String healthCenterIds = sampleDetails.getSample().getHealthCenterId();
         if (healthCenterIds != null) {
-            StringTokenizer stringTokenizer = new StringTokenizer(healthCenterIds, ",");
+            StringTokenizer stringTokenizer = new StringTokenizer(healthCenterIds, ";");
             while (stringTokenizer.hasMoreElements()) {
                 int healthCenterId = Integer.parseInt(stringTokenizer.nextToken());
                 HealthCenter healthCenter = healthCenterMapper.selectByPrimaryKey(healthCenterId);
@@ -122,7 +122,7 @@ public class SetSampleDetails {
         }
         String healthCenterDesc = "";
         for (HealthCenter healthCenter : healthCenters) {
-            healthCenterDesc += healthCenter.getHealthCenterDesc() + ",";
+            healthCenterDesc += healthCenter.getHealthCenterDesc() + ";";
         }
         if (healthCenterDesc == "") {
             sampleDetails.setHealthCenterDesc(DEFAULT);

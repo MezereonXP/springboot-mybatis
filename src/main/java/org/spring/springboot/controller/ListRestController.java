@@ -36,6 +36,10 @@ public class ListRestController {
     SanitaryMapper sanitaryMapper;
     @Autowired
     HealthCenterMapper healthCenterMapper;
+    @Autowired
+    DiarrheaCauseMapper diarrheaCauseMapper;
+    @Autowired
+    MethodMapper methodMapper;
 
     @RequestMapping(value = "/api/getAllDeliveryMethods", method = RequestMethod.GET)
     @CrossOrigin
@@ -224,7 +228,7 @@ public class ListRestController {
         }
     }
 
-    @RequestMapping(value = "/api/getAllSHealthCenters", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/getAllHealthCenters", method = RequestMethod.GET)
     @CrossOrigin
     public Response getAllHealthCenters() {
         Response response = new Response();
@@ -235,6 +239,40 @@ public class ListRestController {
             response.setData(healthCenterMapper.selectByExample(healthCenterExample));
             return response;
         } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/getAllMethods", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response getAllMethods() {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            MethodExample methodExample = new MethodExample();
+            methodExample.createCriteria();
+            response.setData(methodMapper.selectByExample(methodExample));
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/getAllDiarrheacauses", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response getAllDiarrheacauses() {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            DiarrheaCauseExample diarrheaCauseExample = new DiarrheaCauseExample();
+            diarrheaCauseExample.createCriteria();
+            response.setData(diarrheaCauseMapper.selectByExample(diarrheaCauseExample));
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;

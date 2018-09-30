@@ -2,6 +2,7 @@ package org.spring.springboot.controller;
 
 import org.spring.springboot.dao.CentralizedTreatmentMethodMapper;
 import org.spring.springboot.dao.LocationDao;
+import org.spring.springboot.dao.SampleDao;
 import org.spring.springboot.domain.*;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.SampleService;
@@ -29,6 +30,9 @@ public class SampleRestController {
 
     @Autowired
     private SetSampleDetails setSampleDetails;
+
+    @Autowired
+    private SampleDao sampleDao;
 
 
     @RequestMapping(value = "/api/sample", method = RequestMethod.GET)
@@ -171,5 +175,34 @@ public class SampleRestController {
         }
     }
 
+    @RequestMapping(value = "/api/updateMutiResopnse", method = RequestMethod.GET)
+    public Response updateMutiResopnse() {
+        Response response = new Response();
+        try {
+            SampleExample sampleExample = new SampleExample();
+            sampleExample.createCriteria();
+            List<Sample> samples = sampleDao.selectByExample(sampleExample);
+            for (int i = 0; i < samples.size(); i++) {
+                String healthCenter = samples.get(i).getHealthCenterId();
+                String dh = samples.get(i).getDiarrheaCause();
+                if (healthCenter != null) {
+                    String realH = healthCenter.replace("；", ";");
+                    samples.get(i).setHealthCenterId(realH);
+                }
+                if (dh != null) {
+                    String realDh = dh.replace("；", ";");
+                    samples.get(i).setDiarrheaCause(realDh);
+                }
+                samplesService.updateSample(samples.get(i));
+            }
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            //response.setData(new Sample());
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
 
 }
