@@ -192,6 +192,246 @@ public class LocationExample {
             return (Criteria) this;
         }
 
+        public Criteria andProvinceIdIsNull() {
+            addCriterion("provinceId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdIsNotNull() {
+            addCriterion("provinceId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdEqualTo(Integer value) {
+            addCriterion("provinceId =", value, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdNotEqualTo(Integer value) {
+            addCriterion("provinceId <>", value, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdGreaterThan(Integer value) {
+            addCriterion("provinceId >", value, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("provinceId >=", value, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdLessThan(Integer value) {
+            addCriterion("provinceId <", value, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdLessThanOrEqualTo(Integer value) {
+            addCriterion("provinceId <=", value, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdIn(List<Integer> values) {
+            addCriterion("provinceId in", values, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdNotIn(List<Integer> values) {
+            addCriterion("provinceId not in", values, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdBetween(Integer value1, Integer value2) {
+            addCriterion("provinceId between", value1, value2, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProvinceIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("provinceId not between", value1, value2, "provinceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdIsNull() {
+            addCriterion("prefectureId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdIsNotNull() {
+            addCriterion("prefectureId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdEqualTo(Integer value) {
+            addCriterion("prefectureId =", value, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdNotEqualTo(Integer value) {
+            addCriterion("prefectureId <>", value, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdGreaterThan(Integer value) {
+            addCriterion("prefectureId >", value, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("prefectureId >=", value, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdLessThan(Integer value) {
+            addCriterion("prefectureId <", value, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdLessThanOrEqualTo(Integer value) {
+            addCriterion("prefectureId <=", value, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdIn(List<Integer> values) {
+            addCriterion("prefectureId in", values, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdNotIn(List<Integer> values) {
+            addCriterion("prefectureId not in", values, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdBetween(Integer value1, Integer value2) {
+            addCriterion("prefectureId between", value1, value2, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrefectureIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("prefectureId not between", value1, value2, "prefectureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdIsNull() {
+            addCriterion("countyId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdIsNotNull() {
+            addCriterion("countyId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdEqualTo(Integer value) {
+            addCriterion("countyId =", value, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdNotEqualTo(Integer value) {
+            addCriterion("countyId <>", value, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdGreaterThan(Integer value) {
+            addCriterion("countyId >", value, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("countyId >=", value, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdLessThan(Integer value) {
+            addCriterion("countyId <", value, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdLessThanOrEqualTo(Integer value) {
+            addCriterion("countyId <=", value, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdIn(List<Integer> values) {
+            addCriterion("countyId in", values, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdNotIn(List<Integer> values) {
+            addCriterion("countyId not in", values, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdBetween(Integer value1, Integer value2) {
+            addCriterion("countyId between", value1, value2, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountyIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("countyId not between", value1, value2, "countyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdIsNull() {
+            addCriterion("townshipId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdIsNotNull() {
+            addCriterion("townshipId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdEqualTo(Integer value) {
+            addCriterion("townshipId =", value, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdNotEqualTo(Integer value) {
+            addCriterion("townshipId <>", value, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdGreaterThan(Integer value) {
+            addCriterion("townshipId >", value, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("townshipId >=", value, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdLessThan(Integer value) {
+            addCriterion("townshipId <", value, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdLessThanOrEqualTo(Integer value) {
+            addCriterion("townshipId <=", value, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdIn(List<Integer> values) {
+            addCriterion("townshipId in", values, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdNotIn(List<Integer> values) {
+            addCriterion("townshipId not in", values, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdBetween(Integer value1, Integer value2) {
+            addCriterion("townshipId between", value1, value2, "townshipId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownshipIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("townshipId not between", value1, value2, "townshipId");
+            return (Criteria) this;
+        }
+
         public Criteria andVillageIdIsNull() {
             addCriterion("villageId is null");
             return (Criteria) this;

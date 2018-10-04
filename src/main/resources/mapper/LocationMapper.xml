@@ -3,6 +3,10 @@
 <mapper namespace="org.spring.springboot.dao.LocationDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Location">
       <id column="locationId" jdbcType="INTEGER" property="locationId"/>
+      <result column="provinceId" jdbcType="INTEGER" property="provinceId"/>
+      <result column="prefectureId" jdbcType="INTEGER" property="prefectureId"/>
+      <result column="countyId" jdbcType="INTEGER" property="countyId"/>
+      <result column="townshipId" jdbcType="INTEGER" property="townshipId"/>
       <result column="villageId" jdbcType="INTEGER" property="villageId"/>
       <result column="locationName" jdbcType="VARCHAR" property="locationName"/>
     <result column="lat" jdbcType="DOUBLE" property="lat" />
@@ -71,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    locationId, villageId, locationName, lat, log, status, createdAt, updatedAt, blogId
+    locationId, provinceId, prefectureId, countyId, townshipId, villageId, locationName, 
+    lat, log, status, createdAt, updatedAt, blogId
   </sql>
   <select id="selectByExample" parameterType="org.spring.springboot.domain.LocationExample" resultMap="BaseResultMap">
     select
@@ -105,12 +110,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Location">
-    insert into location (locationId, villageId, locationName, 
-      lat, log, status, createdAt, 
-      updatedAt, blogId)
-    values (#{locationId,jdbcType=INTEGER}, #{villageId,jdbcType=INTEGER}, #{locationName,jdbcType=VARCHAR}, 
-      #{lat,jdbcType=DOUBLE}, #{log,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{createdAt,jdbcType=DATE}, 
-      #{updatedAt,jdbcType=DATE}, #{blogId,jdbcType=INTEGER})
+    insert into location (locationId, provinceId, prefectureId, 
+      countyId, townshipId, villageId, 
+      locationName, lat, log, 
+      status, createdAt, updatedAt, 
+      blogId)
+    values (#{locationId,jdbcType=INTEGER}, #{provinceId,jdbcType=INTEGER}, #{prefectureId,jdbcType=INTEGER}, 
+      #{countyId,jdbcType=INTEGER}, #{townshipId,jdbcType=INTEGER}, #{villageId,jdbcType=INTEGER}, 
+      #{locationName,jdbcType=VARCHAR}, #{lat,jdbcType=DOUBLE}, #{log,jdbcType=DOUBLE}, 
+      #{status,jdbcType=INTEGER}, #{createdAt,jdbcType=DATE}, #{updatedAt,jdbcType=DATE}, 
+      #{blogId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Location">
     insert into location
@@ -118,6 +127,18 @@
       <if test="locationId != null">
         locationId,
       </if>
+        <if test="provinceId != null">
+            provinceId,
+        </if>
+        <if test="prefectureId != null">
+            prefectureId,
+        </if>
+        <if test="countyId != null">
+            countyId,
+        </if>
+        <if test="townshipId != null">
+            townshipId,
+        </if>
       <if test="villageId != null">
         villageId,
       </if>
@@ -147,6 +168,18 @@
       <if test="locationId != null">
         #{locationId,jdbcType=INTEGER},
       </if>
+        <if test="provinceId != null">
+            #{provinceId,jdbcType=INTEGER},
+        </if>
+        <if test="prefectureId != null">
+            #{prefectureId,jdbcType=INTEGER},
+        </if>
+        <if test="countyId != null">
+            #{countyId,jdbcType=INTEGER},
+        </if>
+        <if test="townshipId != null">
+            #{townshipId,jdbcType=INTEGER},
+        </if>
       <if test="villageId != null">
         #{villageId,jdbcType=INTEGER},
       </if>
@@ -185,6 +218,18 @@
       <if test="record.locationId != null">
         locationId = #{record.locationId,jdbcType=INTEGER},
       </if>
+        <if test="record.provinceId != null">
+            provinceId = #{record.provinceId,jdbcType=INTEGER},
+        </if>
+        <if test="record.prefectureId != null">
+            prefectureId = #{record.prefectureId,jdbcType=INTEGER},
+        </if>
+        <if test="record.countyId != null">
+            countyId = #{record.countyId,jdbcType=INTEGER},
+        </if>
+        <if test="record.townshipId != null">
+            townshipId = #{record.townshipId,jdbcType=INTEGER},
+        </if>
       <if test="record.villageId != null">
         villageId = #{record.villageId,jdbcType=INTEGER},
       </if>
@@ -217,6 +262,10 @@
   <update id="updateByExample" parameterType="map">
     update location
     set locationId = #{record.locationId,jdbcType=INTEGER},
+      provinceId = #{record.provinceId,jdbcType=INTEGER},
+      prefectureId = #{record.prefectureId,jdbcType=INTEGER},
+      countyId = #{record.countyId,jdbcType=INTEGER},
+      townshipId = #{record.townshipId,jdbcType=INTEGER},
       villageId = #{record.villageId,jdbcType=INTEGER},
       locationName = #{record.locationName,jdbcType=VARCHAR},
       lat = #{record.lat,jdbcType=DOUBLE},
@@ -232,6 +281,18 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Location">
     update location
     <set>
+        <if test="provinceId != null">
+            provinceId = #{provinceId,jdbcType=INTEGER},
+        </if>
+        <if test="prefectureId != null">
+            prefectureId = #{prefectureId,jdbcType=INTEGER},
+        </if>
+        <if test="countyId != null">
+            countyId = #{countyId,jdbcType=INTEGER},
+        </if>
+        <if test="townshipId != null">
+            townshipId = #{townshipId,jdbcType=INTEGER},
+        </if>
       <if test="villageId != null">
         villageId = #{villageId,jdbcType=INTEGER},
       </if>
@@ -261,7 +322,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.Location">
     update location
-    set villageId = #{villageId,jdbcType=INTEGER},
+    set provinceId = #{provinceId,jdbcType=INTEGER},
+      prefectureId = #{prefectureId,jdbcType=INTEGER},
+      countyId = #{countyId,jdbcType=INTEGER},
+      townshipId = #{townshipId,jdbcType=INTEGER},
+      villageId = #{villageId,jdbcType=INTEGER},
       locationName = #{locationName,jdbcType=VARCHAR},
       lat = #{lat,jdbcType=DOUBLE},
       log = #{log,jdbcType=DOUBLE},

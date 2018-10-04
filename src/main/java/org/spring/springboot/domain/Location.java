@@ -5,6 +5,14 @@ import java.util.Date;
 public class Location {
     private Integer locationId;
 
+    private Integer provinceId;
+
+    private Integer prefectureId;
+
+    private Integer countyId;
+
+    private Integer townshipId;
+
     private Integer villageId;
 
     private String locationName;
@@ -27,6 +35,38 @@ public class Location {
 
     public void setLocationId(Integer locationId) {
         this.locationId = locationId;
+    }
+
+    public Integer getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public Integer getPrefectureId() {
+        return prefectureId;
+    }
+
+    public void setPrefectureId(Integer prefectureId) {
+        this.prefectureId = prefectureId;
+    }
+
+    public Integer getCountyId() {
+        return countyId;
+    }
+
+    public void setCountyId(Integer countyId) {
+        this.countyId = countyId;
+    }
+
+    public Integer getTownshipId() {
+        return townshipId;
+    }
+
+    public void setTownshipId(Integer townshipId) {
+        this.townshipId = townshipId;
     }
 
     public Integer getVillageId() {
