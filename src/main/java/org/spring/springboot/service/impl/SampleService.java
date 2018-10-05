@@ -148,7 +148,7 @@ public class SampleService {
         for (CycleTeam cycleTeam : list) {
             Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
             for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
-                if (sample.getSamplingDate().before(new Date(Integer.parseInt(year) + 1, 1, 1))) {
+                if (sample.getSamplingDate() != null && sample.getSamplingDate().before(new Date(Integer.parseInt(year) + 1, 1, 1))) {
                     WaterSourceType waterSourceType;
                     waterSourceType = waterSourceTypeMapper.selectByPrimaryKey(sample.getWaterSourceTypeId());
                     if (waterSourceType == null) {
