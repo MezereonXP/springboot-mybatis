@@ -208,6 +208,37 @@ public class SampleRestController {
         return newList;
     }
 
+    @RequestMapping(value = "/auth/getStatisticsForIndexWithYear", method = RequestMethod.GET)
+    public Response getStatisticsForIndexWithYear(@RequestParam(value = "testCycleId") Integer testCycleId,
+                                                  @RequestParam(value = "year") String year) {
+        Response response = new Response();
+        List<TestCycle> testCycleList = getTestCycleListDistinct(testCycleId);
+        try {
+            Statistics statistics = new Statistics();
+            statistics.setCountyCount(0);
+            statistics.setPrefectureCount(0);
+            statistics.setProvinceCount(0);
+            statistics.setSampleCount(0);
+            statistics.setTeamCount(0);
+            Set<Integer> provinceSet = new HashSet<>();
+            Set<Integer> prefectureSet = new HashSet<>();
+            Set<Integer> countySet = new HashSet<>();
+            Set<Integer> sampleSet = new HashSet<>();
+            Set<Integer> teamSet = new HashSet<>();
+            for (TestCycle testCycle : testCycleList) {
+                samplesService.getDetailForIndexWithYear(testCycle.getTestCycleId(), year, statistics,
+                        provinceSet, prefectureSet, countySet, sampleSet, teamSet);
+            }
+            response.setData(statistics);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
     @RequestMapping(value = "/api/getSamppleDetailsById", method = RequestMethod.GET)
     public Response getSamppleDetailsById(@RequestParam(value = "baseid") Integer baseid) {
         Response response = new Response();

@@ -8,11 +8,13 @@ import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.dao.WaterSourceTypeMapper;
 import org.spring.springboot.domain.CycleTeam;
+import org.spring.springboot.domain.Location;
 import org.spring.springboot.domain.Sample;
 import org.spring.springboot.domain.SampleWithBLOBs;
 import org.spring.springboot.domain.ShowForIndex;
 import org.spring.springboot.domain.ShowSamples;
 import org.spring.springboot.domain.SingleChoose;
+import org.spring.springboot.domain.Statistics;
 import org.spring.springboot.domain.Team;
 import org.spring.springboot.domain.TestCycle;
 import org.spring.springboot.domain.WaterSourceType;
@@ -23,9 +25,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2018/4/14.
@@ -162,6 +166,42 @@ public class SampleService {
             }
         }
         return showForIndexList;
+    }
+
+    public Statistics getDetailForIndexWithYear(Integer testCycleId, String year, Statistics statistics, Set<Integer> provinceSet, Set<Integer> prefectureSet, Set<Integer> countySet, Set<Integer> sampleSet, Set<Integer> teamSet) {
+
+        List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
+        for (CycleTeam cycleTeam : list) {
+            Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
+            if (!teamSet.contains(team.getTeamId())) {
+                teamSet.add(team.getTeamId());
+                statistics.setTeamCount(statistics.getTeamCount() + 1);
+            }
+            for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
+                if (team != null && sample.getSamplingDate() != null && sample.getSamplingDate().before(new Date(Integer.parseInt(year) + 1, 1, 1))) {
+                    Location location = locationDao.selectByPrimaryKey(sample.getLocationId());
+                    if (location != null) {
+                        if (!provinceSet.contains(location.getProvinceId())) {
+                            provinceSet.add(location.getProvinceId());
+                            statistics.setProvinceCount(statistics.getProvinceCount() + 1);
+                        }
+                        if (!prefectureSet.contains(location.getPrefectureId())) {
+                            prefectureSet.add(location.getPrefectureId());
+                            statistics.setPrefectureCount(statistics.getPrefectureCount() + 1);
+                        }
+                        if (!countySet.contains(location.getCountyId())) {
+                            countySet.add(location.getCountyId());
+                            statistics.setCountyCount(statistics.getCountyCount() + 1);
+                        }
+                        if (!sampleSet.contains(sample.getBaseId())) {
+                            sampleSet.add(sample.getBaseId());
+                            statistics.setSampleCount(statistics.getSampleCount() + 1);
+                        }
+                    }
+                }
+            }
+        }
+        return statistics;
     }
 
 }
