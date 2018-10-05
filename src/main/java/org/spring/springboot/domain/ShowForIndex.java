@@ -12,6 +12,7 @@ import java.util.Map;
  * @create: 2018/5/13
  **/
 public class ShowForIndex {
+    private int id;
   private double lat;
   private double lon;
   private String teamName;
@@ -94,4 +95,12 @@ public class ShowForIndex {
   public void setSourceType(String sourceType) {
     this.sourceType = sourceType;
   }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

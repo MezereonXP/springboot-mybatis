@@ -175,6 +175,11 @@ public class SampleRestController {
             for (TestCycle testCycle : testCycleList) {
                 result.addAll(samplesService.getShowForIndexWithYear(testCycle.getTestCycleId(), year));
             }
+            int i = 1;
+            for (ShowForIndex showForIndex : result) {
+                showForIndex.setId(i);
+                i++;
+            }
             response.setData(result);
             response.setStatus(true);
             return response;
