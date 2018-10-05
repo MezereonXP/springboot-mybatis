@@ -1,8 +1,10 @@
 package org.spring.springboot.controller;
 
+import org.junit.Test;
 import org.spring.springboot.dao.CentralizedTreatmentMethodMapper;
 import org.spring.springboot.dao.LocationDao;
 import org.spring.springboot.dao.SampleDao;
+import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.domain.*;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.SampleService;
@@ -11,7 +13,10 @@ import org.spring.springboot.util.SetSampleDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2018/4/14.
@@ -33,6 +38,9 @@ public class SampleRestController {
 
     @Autowired
     private SampleDao sampleDao;
+
+    @Autowired
+    private TestCycleDao testCycleDao;
 
 
     @RequestMapping(value = "/api/sample", method = RequestMethod.GET)
@@ -161,8 +169,13 @@ public class SampleRestController {
     public Response getShowForIndexWithYear(@RequestParam(value = "testCycleId") Integer testCycleId,
                                             @RequestParam(value = "year") String year) {
         Response response = new Response();
+        List<TestCycle> testCycleList = getTestCycleListDistinct(testCycleId);
+        List<ShowForIndex> result = new ArrayList<>();
         try {
-            response.setData(samplesService.getShowForIndexWithYear(testCycleId, year));
+            for (TestCycle testCycle : testCycleList) {
+                result.addAll(samplesService.getShowForIndexWithYear(testCycle.getTestCycleId(), year));
+            }
+            response.setData(result);
             response.setStatus(true);
             return response;
         } catch (Exception e) {
@@ -170,6 +183,24 @@ public class SampleRestController {
             response.setStatus(false);
             return response;
         }
+    }
+
+    /**
+     * 返回相同描述的TestCycle列表
+     *
+     * @param testCycleId
+     * @return
+     */
+    private List<TestCycle> getTestCycleListDistinct(Integer testCycleId) {
+        List<TestCycle> newList = new ArrayList<>();
+        String desc = testCycleDao.selectByPrimaryKey(testCycleId).getTestCycleDescribe();
+        List<TestCycle> list = testCycleService.getAllTestCycle();
+        for (TestCycle testCycle : list) {
+            if (testCycle.getTestCycleDescribe().equals(desc)) {
+                newList.add(testCycle);
+            }
+        }
+        return newList;
     }
 
     @RequestMapping(value = "/api/getSamppleDetailsById", method = RequestMethod.GET)

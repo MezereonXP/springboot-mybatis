@@ -1,6 +1,10 @@
 package org.spring.springboot.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.domain.CycleTeamWithBLOBs;
@@ -33,6 +37,29 @@ public class TestCycleController {
             response.setStatus(true);
             return response;
         } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/auth/getTestCycleDistinct", method = RequestMethod.GET)
+    public Response getTestCycleDistinct() {
+        Response response = new Response();
+        try {
+            List<TestCycle> newList = new ArrayList<>();
+            Set<String> nameSet = new HashSet<>();
+            List<TestCycle> list = testCycleService.getAllTestCycle();
+            for (TestCycle testCycle : list) {
+                if (!nameSet.contains(testCycle.getTestCycleDescribe())) {
+                    newList.add(testCycle);
+                    nameSet.add(testCycle.getTestCycleDescribe());
+                }
+            }
+            response.setData(newList);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
