@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -135,6 +136,29 @@ public class SampleService {
                 showForIndexList.add(new ShowForIndex(team.getTeamName(),
                         locationDao.selectByPrimaryKey(sample.getLocationId()),
                         sample, waterSourceType.getWaterSourceDesc()));
+            }
+        }
+        return showForIndexList;
+    }
+
+    public List<ShowForIndex> getShowForIndexWithYear(Integer testCycleId, String year) {
+        List<ShowForIndex> showForIndexList = new ArrayList<ShowForIndex>();
+
+        List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
+        for (CycleTeam cycleTeam : list) {
+            Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
+            for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
+                if (sample.getSamplingDate().before(new Date(Integer.parseInt(year) + 1, 1, 1))) {
+                    WaterSourceType waterSourceType;
+                    waterSourceType = waterSourceTypeMapper.selectByPrimaryKey(sample.getWaterSourceTypeId());
+                    if (waterSourceType == null) {
+                        waterSourceType = new WaterSourceType();
+                        waterSourceType.setWaterSourceDesc("暂无");
+                    }
+                    showForIndexList.add(new ShowForIndex(team.getTeamName(),
+                            locationDao.selectByPrimaryKey(sample.getLocationId()),
+                            sample, waterSourceType.getWaterSourceDesc()));
+                }
             }
         }
         return showForIndexList;

@@ -157,6 +157,21 @@ public class SampleRestController {
         }
     }
 
+    @RequestMapping(value = "/auth/getShowForIndexWithYear", method = RequestMethod.GET)
+    public Response getShowForIndexWithYear(@RequestParam(value = "testCycleId") Integer testCycleId,
+                                            @RequestParam(value = "year") String year) {
+        Response response = new Response();
+        try {
+            response.setData(samplesService.getShowForIndexWithYear(testCycleId, year));
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
     @RequestMapping(value = "/api/getSamppleDetailsById", method = RequestMethod.GET)
     public Response getSamppleDetailsById(@RequestParam(value = "baseid") Integer baseid) {
         Response response = new Response();
