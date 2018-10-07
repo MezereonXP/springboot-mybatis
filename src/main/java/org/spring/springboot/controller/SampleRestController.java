@@ -267,6 +267,11 @@ public class SampleRestController {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+            pool.close();
         }
     }
 
