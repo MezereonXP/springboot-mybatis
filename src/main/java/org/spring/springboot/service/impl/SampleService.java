@@ -148,14 +148,16 @@ public class SampleService {
         return showForIndexList;
     }
 
-    public List<ShowForIndex> getShowForIndexWithYear(Integer testCycleId, String year) {
+    public List<ShowForIndex> getShowForIndexWithYear(Integer testCycleId, String year) throws ParseException {
         List<ShowForIndex> showForIndexList = new ArrayList<ShowForIndex>();
 
         List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
         for (CycleTeam cycleTeam : list) {
             Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
             for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
-                if (team != null && sample.getSamplingDate() != null && sample.getSamplingDate().before(new Date(Integer.parseInt(year) + 1, 1, 1))) {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                Date oldDate = format.parse((Integer.parseInt(year) + 1) + "-01-01 00:00:00");
+                if (team != null && sample.getSamplingDate() != null && sample.getSamplingDate().before(oldDate)) {
                     WaterSourceType waterSourceType;
                     waterSourceType = waterSourceTypeMapper.selectByPrimaryKey(sample.getWaterSourceTypeId());
                     if (waterSourceType == null) {
