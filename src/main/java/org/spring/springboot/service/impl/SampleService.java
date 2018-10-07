@@ -22,12 +22,15 @@ import org.spring.springboot.util.ListConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -168,7 +171,8 @@ public class SampleService {
         return showForIndexList;
     }
 
-    public Statistics getDetailForIndexWithYear(Integer testCycleId, String year, Statistics statistics, Set<Integer> provinceSet, Set<Integer> prefectureSet, Set<Integer> countySet, Set<Integer> sampleSet, Set<Integer> teamSet) {
+    public Statistics getDetailForIndexWithYear(Integer testCycleId, String year, Statistics statistics, Set<Integer> provinceSet, Set<Integer> prefectureSet, Set<Integer> countySet, Set<Integer> sampleSet, Set<Integer> teamSet)
+            throws ParseException {
 
         List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
         for (CycleTeam cycleTeam : list) {
@@ -178,7 +182,9 @@ public class SampleService {
                 statistics.setTeamCount(statistics.getTeamCount() + 1);
             }
             for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
-                if (team != null && sample.getSamplingDate() != null && sample.getSamplingDate().before(new Date(Integer.parseInt(year) + 1, 1, 1))) {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                Date oldDate = format.parse((Integer.parseInt(year) + 1) + "-01-01 00:00:00");
+                if (team != null && sample.getSamplingDate() != null && sample.getSamplingDate().before(oldDate)) {
                     Location location = locationDao.selectByPrimaryKey(sample.getLocationId());
                     if (location != null) {
                         if (!provinceSet.contains(location.getProvinceId())) {
