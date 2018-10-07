@@ -1,9 +1,12 @@
 package org.spring.springboot.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.junit.Test;
 import org.spring.springboot.dao.CentralizedTreatmentMethodMapper;
 import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.dao.LocationDao;
+import org.spring.springboot.dao.QuickMapMapper;
 import org.spring.springboot.dao.SampleDao;
 import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.domain.*;
@@ -49,6 +52,9 @@ public class SampleRestController {
 
     @Autowired
     private CycleTeamDao cycleTeamDao;
+
+    @Autowired
+    private QuickMapMapper quickMapMapper;
 
     @RequestMapping(value = "/auth/setPicForSample", method = RequestMethod.GET)
     public Response setPicForSample() {
@@ -225,20 +231,40 @@ public class SampleRestController {
     public Response getShowForIndexWithYear(@RequestParam(value = "testCycleId") Integer testCycleId,
                                             @RequestParam(value = "year") String year) {
         Response response = new Response();
-        List<TestCycle> testCycleList = getTestCycleListDistinct(testCycleId);
-        List<ShowForIndex> result = new ArrayList<>();
+        Gson gson = new Gson();
         try {
-            for (TestCycle testCycle : testCycleList) {
-                result.addAll(samplesService.getShowForIndexWithYear(testCycle.getTestCycleId(), year));
+            QuickMapExample quickMapExample = new QuickMapExample();
+            quickMapExample.createCriteria().andTcidEqualTo(testCycleId).andYearEqualTo(year);
+            List<QuickMap> quickMapList = quickMapMapper.selectByExample(quickMapExample);
+
+            if (quickMapList.size() == 0) {
+                List<TestCycle> testCycleList = getTestCycleListDistinct(testCycleId);
+                List<ShowForIndex> result = new ArrayList<>();
+                for (TestCycle testCycle : testCycleList) {
+                    result.addAll(samplesService.getShowForIndexWithYear(testCycle.getTestCycleId(), year));
+                }
+                int i = 1;
+                for (ShowForIndex showForIndex : result) {
+                    showForIndex.setId(i);
+                    i++;
+                }
+                QuickMap quickMap = new QuickMap();
+                quickMap.setTcid(testCycleId);
+                quickMap.setYear(year);
+                quickMap.setData(gson.toJson(result));
+                quickMapMapper.insert(quickMap);
+                response.setData(result);
+                response.setStatus(true);
+                return response;
+            } else {
+                QuickMap quickMap = quickMapMapper.selectByPrimaryKey(quickMapList.get(0).getId());
+                ShowForIndex[] result = gson.fromJson(quickMap.getData(), ShowForIndex[].class);
+                System.out.println(result.length);
+                response.setData(result);
+                response.setStatus(true);
+                return response;
             }
-            int i = 1;
-            for (ShowForIndex showForIndex : result) {
-                showForIndex.setId(i);
-                i++;
-            }
-            response.setData(result);
-            response.setStatus(true);
-            return response;
+
         } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
