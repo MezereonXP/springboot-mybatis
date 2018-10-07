@@ -17,6 +17,9 @@ import org.spring.springboot.util.SetSampleDetails;
 import org.spring.springboot.util.ValueUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -55,6 +58,8 @@ public class SampleRestController {
 
     @Autowired
     private QuickMapMapper quickMapMapper;
+
+    private static final String HOST = "47.93.11.200";
 
     @RequestMapping(value = "/auth/setPicForSample", method = RequestMethod.GET)
     public Response setPicForSample() {
@@ -232,12 +237,11 @@ public class SampleRestController {
                                             @RequestParam(value = "year") String year) {
         Response response = new Response();
         Gson gson = new Gson();
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), HOST);
+        Jedis jedis = null;
         try {
-            QuickMapExample quickMapExample = new QuickMapExample();
-            quickMapExample.createCriteria().andTcidEqualTo(testCycleId).andYearEqualTo(year);
-            List<QuickMap> quickMapList = quickMapMapper.selectByExample(quickMapExample);
-
-            if (quickMapList.size() == 0) {
+            jedis = pool.getResource();
+            if (!jedis.exists(testCycleId + ":" + year)) {
                 List<TestCycle> testCycleList = getTestCycleListDistinct(testCycleId);
                 List<ShowForIndex> result = new ArrayList<>();
                 for (TestCycle testCycle : testCycleList) {
@@ -248,18 +252,12 @@ public class SampleRestController {
                     showForIndex.setId(i);
                     i++;
                 }
-                QuickMap quickMap = new QuickMap();
-                quickMap.setTcid(testCycleId);
-                quickMap.setYear(year);
-                quickMap.setData(gson.toJson(result));
-                quickMapMapper.insert(quickMap);
+                jedis.set(testCycleId + ":" + year, gson.toJson(result));
                 response.setData(result);
                 response.setStatus(true);
                 return response;
             } else {
-                QuickMap quickMap = quickMapMapper.selectByPrimaryKey(quickMapList.get(0).getId());
-                ShowForIndex[] result = gson.fromJson(quickMap.getData(), ShowForIndex[].class);
-                System.out.println(result.length);
+                ShowForIndex[] result = gson.fromJson(jedis.get(testCycleId + ":" + year), ShowForIndex[].class);
                 response.setData(result);
                 response.setStatus(true);
                 return response;
