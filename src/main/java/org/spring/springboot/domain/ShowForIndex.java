@@ -12,7 +12,7 @@ import java.util.Map;
  * @create: 2018/5/13
  **/
 public class ShowForIndex {
-    private int id;
+  private int id;
   private double lat;
   private double lon;
   private String teamName;
@@ -21,15 +21,17 @@ public class ShowForIndex {
   private Date samplingDate;
   private String generalComments;
   private String probComment;
+  private String picture;
 
   public ShowForIndex(String teamName, Location location, Sample sample, String sourceType) {
     this.lat = location.getLat();
-        this.lon = location.getLog();
+    this.lon = location.getLog();
     this.teamName = teamName;
-        this.positionName = location.getLocationName();
-        this.samplingDate = sample.getSamplingDate();
-        this.generalComments = sample.getGeneralComments();
+    this.positionName = location.getLocationName();
+    this.samplingDate = sample.getSamplingDate();
+    this.generalComments = sample.getGeneralComments();
     this.sourceType = sourceType;
+    this.picture = sample.getPicture();
   }
 
   public String getProbComment() {
@@ -103,4 +105,12 @@ public class ShowForIndex {
     public void setId(int id) {
         this.id = id;
     }
+
+  public String getPicture() {
+    return picture;
+  }
+
+  public void setPicture(String picture) {
+    this.picture = picture;
+  }
 }

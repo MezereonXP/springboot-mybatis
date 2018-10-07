@@ -2,6 +2,7 @@ package org.spring.springboot.controller;
 
 import org.junit.Test;
 import org.spring.springboot.dao.CentralizedTreatmentMethodMapper;
+import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.dao.LocationDao;
 import org.spring.springboot.dao.SampleDao;
 import org.spring.springboot.dao.TestCycleDao;
@@ -10,9 +11,13 @@ import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.SampleService;
 import org.spring.springboot.service.impl.TestCycleService;
 import org.spring.springboot.util.SetSampleDetails;
+import org.spring.springboot.util.ValueUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -41,6 +46,57 @@ public class SampleRestController {
 
     @Autowired
     private TestCycleDao testCycleDao;
+
+    @Autowired
+    private CycleTeamDao cycleTeamDao;
+
+    @RequestMapping(value = "/auth/setPicForSample", method = RequestMethod.GET)
+    public Response setPicForSample() {
+        Response response = new Response();
+        try {
+            SampleExample sample = new SampleExample();
+            sample.createCriteria();
+            List<Sample> list = sampleDao.selectByExample(sample);
+            for (int i = 0; i < list.size(); i++) {
+                CycleTeam cycleTeam = cycleTeamDao.selectByPrimaryKey(list.get(i).getCycleTeamId());
+                String url = "http://static.myh2o.org.cn/pic/0" + cycleTeam.getTestCycleId() + "_"
+                        + (cycleTeam.getTeamId() > 9 ? "" : "0") + cycleTeam.getTeamId() + "_"
+                        + list.get(i).getBaseId() + "_1.JPG";
+                if (isImagesTrue(url).equals("200")) {
+                    list.get(i).setPicture(url);
+                    sampleDao.updateByPrimaryKeySelective(list.get(i));
+                }
+            }
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    /**
+     * 判断网络图片是否存在
+     * posturl 图片地址链接
+     */
+    public static String isImagesTrue(String posturl) throws IOException {
+        URL url = new URL(posturl);
+        HttpURLConnection urlcon = (HttpURLConnection) url.openConnection();
+        urlcon.setRequestMethod("POST");
+        urlcon.setRequestProperty("Content-type",
+                "application/x-www-form-urlencoded");
+        if (urlcon.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            System.out.println(HttpURLConnection.HTTP_OK + posturl
+                    + ":posted ok!");
+            return "200";
+        } else {
+            System.out.println(urlcon.getResponseCode() + posturl
+                    + ":Bad post...");
+            return "404";
+        }
+    }
+
 
 
     @RequestMapping(value = "/api/sample", method = RequestMethod.GET)
