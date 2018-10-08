@@ -40,6 +40,8 @@ public class ListRestController {
     DiarrheaCauseMapper diarrheaCauseMapper;
     @Autowired
     MethodMapper methodMapper;
+    @Autowired
+    UniversityMapper universityMapper;
 
     @RequestMapping(value = "/api/getAllDeliveryMethods", method = RequestMethod.GET)
     @CrossOrigin
@@ -271,6 +273,23 @@ public class ListRestController {
             DiarrheaCauseExample diarrheaCauseExample = new DiarrheaCauseExample();
             diarrheaCauseExample.createCriteria();
             response.setData(diarrheaCauseMapper.selectByExample(diarrheaCauseExample));
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/auth/getAllUniversities", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response getAllUniversities() {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            UniversityExample universityExample = new UniversityExample();
+            universityExample.createCriteria();
+            response.setData(universityMapper.selectByExample(universityExample));
             return response;
         } catch (Exception e) {
             response.setMsg(e.getMessage());
