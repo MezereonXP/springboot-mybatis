@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -290,6 +291,21 @@ public class ListRestController {
             UniversityExample universityExample = new UniversityExample();
             universityExample.createCriteria();
             response.setData(universityMapper.selectByExample(universityExample));
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/auth/getAllUniversityById", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response getAllUniversityById(@RequestParam(value = "id") Integer id) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            response.setData(universityMapper.selectByPrimaryKey(id));
             return response;
         } catch (Exception e) {
             response.setMsg(e.getMessage());
