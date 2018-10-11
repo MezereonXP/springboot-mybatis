@@ -7,6 +7,8 @@ import org.spring.springboot.dao.SingleChooseDao;
 import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.dao.WaterSourceTypeMapper;
+import org.spring.springboot.domain.CleanShowCycle;
+import org.spring.springboot.domain.CleanShowSamples;
 import org.spring.springboot.domain.CycleTeam;
 import org.spring.springboot.domain.Location;
 import org.spring.springboot.domain.Sample;
@@ -19,6 +21,7 @@ import org.spring.springboot.domain.Team;
 import org.spring.springboot.domain.TestCycle;
 import org.spring.springboot.domain.WaterSourceType;
 import org.spring.springboot.util.ListConverter;
+import org.spring.springboot.util.ValueUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -88,15 +91,15 @@ public class SampleService {
     }
 
     //需要修改
-    public ShowSamples getShowSamples(Integer teamId) {
-        ShowSamples showSamples = new ShowSamples();
-        List<ShowSamples.ShowCycle> showCycles = new ArrayList<ShowSamples.ShowCycle>();
+    public CleanShowSamples getShowSamples(Integer teamId) {
+        CleanShowSamples showSamples = new CleanShowSamples();
+        List<CleanShowCycle> showCycles = new ArrayList<>();
         List<CycleTeam> cycleTeams = cycleTeamDao.selectByTeamId(teamId);
         for(CycleTeam cycleTeam : cycleTeams){
-            ShowSamples.ShowCycle showCycle = new ShowSamples.ShowCycle();
-            showCycle.setSample(sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId()));
-            showCycle.setTestCycle(testCycleDao.selectByPrimaryKey(cycleTeam.getTestCycleId()));
-            showCycles.add(showCycle);
+            CleanShowCycle cleanShowCycle = new CleanShowCycle();
+            cleanShowCycle.setSample(ValueUtil.toCleanSampleList(sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId()), locationDao));
+            cleanShowCycle.setTestCycle(testCycleDao.selectByPrimaryKey(cycleTeam.getTestCycleId()));
+            showCycles.add(cleanShowCycle);
         }
         showSamples.setShowCycles(showCycles);
         return showSamples;

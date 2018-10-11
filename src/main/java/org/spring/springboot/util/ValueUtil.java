@@ -1,12 +1,18 @@
 package org.spring.springboot.util;
 
+import org.spring.springboot.dao.CleanSample;
+import org.spring.springboot.dao.LocationDao;
+import org.spring.springboot.domain.Sample;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,5 +50,13 @@ public class ValueUtil {
             }
         }
         return result;
+    }
+
+    public static List<CleanSample> toCleanSampleList(List<Sample> samplesByCycleTeamid, LocationDao locationDao) {
+        List<CleanSample> list = new ArrayList<>();
+        for (Sample sample : samplesByCycleTeamid) {
+            list.add(new CleanSample(sample, locationDao.selectByPrimaryKey(sample.getLocationId())));
+        }
+        return list;
     }
 }
