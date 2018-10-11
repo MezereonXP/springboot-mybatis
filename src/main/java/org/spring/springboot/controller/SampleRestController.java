@@ -130,7 +130,9 @@ public class SampleRestController {
     public Response addSample(@RequestBody Sample sample) {
         Response response = new Response();
         try {
-            response.setStatus(samplesService.addSample(sample));
+            sampleDao.insertSelective(sample);
+            response.setData(sample);
+            response.setStatus(sample.getBaseId() != null);
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

@@ -216,7 +216,7 @@
         <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Sample">
+  <insert id="insert" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true" keyProperty="baseId">
     insert into sample (baseId, waterId, waterTypeId, 
       validationId, locationId, cycleTeamId, 
       drinkingWaterId, waterSourceTypeId, waterSourceDetails, 
@@ -292,7 +292,7 @@
       #{waterWaitTime,jdbcType=INTEGER}, #{diarrheaCause,jdbcType=VARCHAR}, #{waterSatisfaction,jdbcType=INTEGER}, 
       #{notes,jdbcType=VARCHAR}, #{averageStorageHours,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Sample">
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true" keyProperty="baseId">
     insert into sample
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="baseId != null">
