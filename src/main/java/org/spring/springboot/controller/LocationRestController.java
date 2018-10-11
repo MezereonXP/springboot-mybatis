@@ -51,6 +51,22 @@ public class LocationRestController {
         }
     }
 
+    @RequestMapping(value = "/api/updateLocation", method = RequestMethod.POST)
+    @ResponseBody
+    public Response updateLocation(@RequestBody Location location) {
+        Response response = new Response();
+        try {
+            locationDao.updateByPrimaryKeySelective(location);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+
     /**
      * 按周期获取所有的样本点以及位置信息
      *
