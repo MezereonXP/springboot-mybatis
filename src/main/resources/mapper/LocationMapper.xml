@@ -109,7 +109,7 @@
         <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Location">
+  <insert id="insert" parameterType="org.spring.springboot.domain.Location" useGeneratedKeys="true" keyProperty="locationId">
     insert into location (locationId, provinceId, prefectureId, 
       countyId, townshipId, villageId, 
       locationName, lat, log, 
@@ -121,7 +121,7 @@
       #{status,jdbcType=INTEGER}, #{createdAt,jdbcType=DATE}, #{updatedAt,jdbcType=DATE}, 
       #{blogId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Location">
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Location" useGeneratedKeys="true" keyProperty="locationId">
     insert into location
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="locationId != null">

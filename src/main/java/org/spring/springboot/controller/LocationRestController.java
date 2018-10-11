@@ -1,5 +1,6 @@
 package org.spring.springboot.controller;
 
+import org.spring.springboot.dao.LocationDao;
 import org.spring.springboot.domain.Location;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.LocationService;
@@ -25,6 +26,9 @@ public class LocationRestController {
     @Autowired
     private LocationService locationService;
 
+    @Autowired
+    private LocationDao locationDao;
+
     /**
      * 添加Location
      *
@@ -36,8 +40,9 @@ public class LocationRestController {
     public Response addLocation(@RequestBody Location location) {
         Response response = new Response();
         try {
-            response.setStatus(locationService.addLocation(location)!=-1);
-            response.setData(location.getLocationId());
+            locationDao.insertSelective(location);
+            response.setStatus(location.getLocationId() != null);
+            response.setData(location);
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());
