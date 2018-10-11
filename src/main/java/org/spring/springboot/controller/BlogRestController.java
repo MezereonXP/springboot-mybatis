@@ -1,5 +1,6 @@
 package org.spring.springboot.controller;
 
+import org.spring.springboot.dao.BlogDao;
 import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.domain.Blog;
 import org.spring.springboot.domain.BlogWithBLOBs;
@@ -25,6 +26,9 @@ public class BlogRestController {
 
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private BlogDao blogDao;
 
     /**
      * 利用id来获取博客
@@ -73,8 +77,9 @@ public class BlogRestController {
                             @RequestBody BlogWithBLOBs blogWithBLOBs) {
         Response response = new Response();
         try {
-            blogService.addBlog(blogWithBLOBs);
+            blogDao.insertSelective(blogWithBLOBs);
             response.setStatus(true);
+            response.setData(blogWithBLOBs);
             response.setMsg(String.valueOf(blogWithBLOBs.getBlogId()));
             return response;
         } catch (Exception e){

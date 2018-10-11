@@ -124,13 +124,13 @@
       <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Blog">
+  <insert id="insert" parameterType="org.spring.springboot.domain.Blog" useGeneratedKeys="true" keyProperty="blogId">
     insert into blog (blogId, picture, locationId, 
       teamId, text)
     values (#{blogId,jdbcType=INTEGER}, #{picture,jdbcType=VARCHAR}, #{locationId,jdbcType=INTEGER}, 
       #{teamId,jdbcType=INTEGER}, #{text,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Blog">
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Blog" useGeneratedKeys="true" keyProperty="blogId">
     insert into blog
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="blogId != null">
