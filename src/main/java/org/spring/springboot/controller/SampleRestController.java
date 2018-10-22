@@ -59,7 +59,7 @@ public class SampleRestController {
     @Autowired
     private QuickMapMapper quickMapMapper;
 
-    private static final String HOST = "47.93.11.200";
+    private static final String HOST = "47.92.254.221";
 
     @RequestMapping(value = "/auth/setPicForSample", method = RequestMethod.GET)
     public Response setPicForSample() {
