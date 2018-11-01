@@ -29,7 +29,7 @@ public class TeamRestController {
 
     private static final String HOST = "47.92.254.221";
 
-    private static final String EMAIL_HOST = "smtp.myh2o.org";
+    private static final String EMAIL_HOST = "smtp.myh2o.org.cn";
     private static final String EMAIL_USERNAME = "dataaccount@myh2o.org";
     private static final String EMAIL_PWD = "dddAAA123";
 
