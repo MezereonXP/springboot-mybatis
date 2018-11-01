@@ -313,4 +313,21 @@ public class ListRestController {
             return response;
         }
     }
+
+    @RequestMapping(value = "/auth/searchUniversityByName", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response searchUniversityByName(@RequestParam(value = "name") String name) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            UniversityExample universityExample = new UniversityExample();
+            universityExample.createCriteria().andUniversityNameLike("%" + name + "%");
+            response.setData(universityMapper.selectByExample(universityExample));
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.University;
 import org.spring.springboot.domain.UniversityExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface UniversityMapper {
     long countByExample(UniversityExample example);
 
