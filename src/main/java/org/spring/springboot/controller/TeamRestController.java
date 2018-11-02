@@ -7,6 +7,7 @@ import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
 import org.spring.springboot.util.Token;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
@@ -30,11 +31,15 @@ public class TeamRestController {
     private static final String HOST = "47.92.254.221";
 
     private static final String EMAIL_HOST = "smtp.myh2o.org.cn";
-    private static final String EMAIL_USERNAME = "dataaccount@myh2o.org";
+    private static final String EMAIL_USERNAME = "dataaccount";
+    private static final String EMAIL_FROM = "dataaccount@myh2o.org";
     private static final String EMAIL_PWD = "dddAAA123";
 
     @Autowired
     private TeamService teamService;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @RequestMapping(value = "/api/team", method = RequestMethod.GET)
     public Team findOneTeam(@RequestParam(value = "email", required = true) String email) {
@@ -186,14 +191,10 @@ public class TeamRestController {
                     response.setMsg("短时间内请勿重复获取验证码");
                 } else {
                     int number = (int) (Math.random() * 899998 + 100001);
-                    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-                    mailSender.setHost(EMAIL_HOST);
-                    mailSender.setPassword(EMAIL_PWD);
-                    mailSender.setUsername(EMAIL_USERNAME);
                     MimeMessage mimeMailMessage = mailSender.createMimeMessage();
                     MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMailMessage, false, "utf-8");
                     mimeMessageHelper.setTo(email);
-                    mimeMessageHelper.setFrom(EMAIL_USERNAME);
+                    mimeMessageHelper.setFrom(EMAIL_FROM);
                     // 设置邮件发送内容的主题
                     mimeMessageHelper.setSubject("注册验证");
                     // true 表示启动HTML格式的邮件
@@ -211,6 +212,48 @@ public class TeamRestController {
             response.setMsg("注册失败原因是Exception:" + e.getMessage());
             response.setStatus(false);
             logger.info("用户Email:" + "注册失败了,原因是Exception:" + e.getMessage());
+            return response;
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+            pool.close();
+        }
+    }
+
+    @RequestMapping(value = "auth/checkCode", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response checkCode(HttpServletRequest req,
+                              HttpServletResponse resp,
+                              @RequestParam(value = "email", required = true) String email,
+                              @RequestParam(value = "code", required = true) String code) {
+        Response response = new Response();
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), HOST);
+        Jedis jedis = null;
+        try {
+            if (teamService.findTeamByEmail(email) == null) {
+                response.setStatus(true);
+                jedis = pool.getResource();
+                if (jedis.exists(email)) {
+                    String realCode = jedis.get(email);
+                    response.setStatus(realCode.equals(code));
+                    response.setMsg(realCode.equals(code) ? "验证码通过" : "验证码错误");
+                    if (realCode.equals(code)) {
+                        jedis.del(email);
+                    }
+                } else {
+                    response.setStatus(false);
+                    response.setMsg("验证码可能已过期请重新获取或者您未曾获取过验证码");
+                }
+            } else {
+                response.setStatus(false);
+                response.setMsg("邮箱名已存在, 请勿重复注册");
+            }
+            return response;
+        } catch (Exception e) {
+            response.setMsg("验证失败原因是Exception:" + e.getMessage());
+            response.setStatus(false);
+            logger.info("用户Email:" + email + "验证失败了,原因是Exception:" + e.getMessage());
             return response;
         } finally {
             if (jedis != null) {
