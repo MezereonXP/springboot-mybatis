@@ -32,7 +32,7 @@
                 <spring-boot-admin.version>2.0.1</spring-boot-admin.version>
                 <host>47.92.254.221</host>
                 <port>3306</port>
-                <pwd>root</pwd>
+                <pwd>fsRkz6yIE+tVR7ZV/43p5w==</pwd>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -47,7 +47,7 @@
                 <spring-boot-admin.version>2.0.1</spring-boot-admin.version>
                 <host>localhost</host>
                 <port>3306</port>
-                <pwd>root</pwd>
+                <pwd>fsRkz6yIE+tVR7ZV/43p5w==</pwd>
             </properties>
         </profile>
     </profiles>
@@ -145,5 +145,10 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
     </dependencies>
 </project>
