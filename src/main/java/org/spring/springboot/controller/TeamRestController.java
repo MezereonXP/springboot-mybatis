@@ -2,7 +2,9 @@ package org.spring.springboot.controller;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.domain.Team;
+import org.spring.springboot.domain.TeamExample;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
 import org.spring.springboot.util.Token;
@@ -19,6 +21,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/4/12.
@@ -37,6 +40,9 @@ public class TeamRestController {
 
     @Autowired
     private TeamService teamService;
+
+    @Autowired
+    private TeamDao teamDao;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -218,6 +224,34 @@ public class TeamRestController {
                 jedis.close();
             }
             pool.close();
+        }
+    }
+
+    @RequestMapping(value = "auth/checkTeamName", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response checkTeamName(HttpServletRequest req,
+                                  HttpServletResponse resp,
+                                  @RequestParam(value = "teamName", required = true) String teamName,
+                                  @RequestParam(value = "uid", required = true) Integer uid) {
+        Response response = new Response();
+        try {
+            TeamExample teamExample = new TeamExample();
+            teamExample.createCriteria().andUniversityIdEqualTo(uid);
+            List<Team> teamList = teamDao.selectByExample(teamExample);
+            for (Team team : teamList) {
+                if (team.getTeamName().equals(teamName)) {
+                    response.setMsg("相同学校出现重复队伍名称");
+                    response.setStatus(false);
+                    return response;
+                }
+            }
+            response.setMsg("队伍名称合法");
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg("验证失败原因是Exception:" + e.getMessage());
+            response.setStatus(false);
+            return response;
         }
     }
 
