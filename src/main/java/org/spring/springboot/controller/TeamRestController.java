@@ -32,11 +32,10 @@ public class TeamRestController {
     private static Logger logger = LogManager.getLogger(TeamRestController.class);
 
     private static final String HOST = "47.92.254.221";
+    private static final String STRING_PWD = "PWD:";
 
-    private static final String EMAIL_HOST = "smtp.myh2o.org.cn";
-    private static final String EMAIL_USERNAME = "dataaccount";
     private static final String EMAIL_FROM = "dataaccount@myh2o.org";
-    private static final String EMAIL_PWD = "dddAAA123";
+
 
     @Autowired
     private TeamService teamService;
@@ -282,6 +281,99 @@ public class TeamRestController {
             } else {
                 response.setStatus(false);
                 response.setMsg("邮箱名已存在, 请勿重复注册");
+            }
+            return response;
+        } catch (Exception e) {
+            response.setMsg("验证失败原因是Exception:" + e.getMessage());
+            response.setStatus(false);
+            logger.info("用户Email:" + email + "验证失败了,原因是Exception:" + e.getMessage());
+            return response;
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+            pool.close();
+        }
+    }
+
+    @RequestMapping(value = "auth/getCodeForPWD", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response getCodeFowPWD(HttpServletRequest req,
+                                  HttpServletResponse resp,
+                                  @RequestParam(value = "email", required = true) String email) {
+        Response response = new Response();
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), HOST);
+        Jedis jedis = null;
+        try {
+            if (teamService.findTeamByEmail(email) != null) {
+                response.setStatus(true);
+                jedis = pool.getResource();
+                if (jedis.exists(STRING_PWD + email)) {
+                    response.setStatus(false);
+                    response.setMsg("短时间内请勿重复获取验证码");
+                } else {
+                    int number = (int) (Math.random() * 899998 + 100001);
+                    MimeMessage mimeMailMessage = mailSender.createMimeMessage();
+                    MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMailMessage, false, "utf-8");
+                    mimeMessageHelper.setTo(email);
+                    mimeMessageHelper.setFrom(EMAIL_FROM);
+                    // 设置邮件发送内容的主题
+                    mimeMessageHelper.setSubject("找回密码验证");
+                    // true 表示启动HTML格式的邮件
+                    mimeMessageHelper.setText("<html><title>这是一封用于找回的邮件</title><body>感谢您使用MyH2O系统, 您的验证码为:"
+                            + number + ", 有效期为一个小时, 请及时完成注册!</body></html>", true);
+                    mailSender.send(mimeMailMessage);
+                    jedis.setex(STRING_PWD + email, 3600, String.valueOf(number));
+                }
+            } else {
+                response.setStatus(false);
+                response.setMsg("邮箱名未曾注册过!");
+            }
+            return response;
+        } catch (Exception e) {
+            response.setMsg("找回失败原因是Exception:" + e.getMessage());
+            response.setStatus(false);
+            logger.info("用户Email:" + "找回失败了,原因是Exception:" + e.getMessage());
+            return response;
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+            pool.close();
+        }
+    }
+
+    @RequestMapping(value = "auth/changePwdWithCode", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response changePwdWithCode(HttpServletRequest req,
+                                      HttpServletResponse resp,
+                                      @RequestParam(value = "email", required = true) String email,
+                                      @RequestParam(value = "code", required = true) String code,
+                                      @RequestParam(value = "newpwd", required = true) String newpwd) {
+        Response response = new Response();
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), HOST);
+        Jedis jedis = null;
+        try {
+            if (teamService.findTeamByEmail(email) != null) {
+                response.setStatus(true);
+                jedis = pool.getResource();
+                if (jedis.exists(STRING_PWD + email)) {
+                    String realCode = jedis.get(STRING_PWD + email);
+                    response.setStatus(realCode.equals(code));
+                    response.setMsg(realCode.equals(code) ? "验证码通过" : "验证码错误");
+                    if (realCode.equals(code)) {
+                        jedis.del(STRING_PWD + email);
+                    }
+                    Team team = teamService.findTeamByEmail(email);
+                    team.setPassword(newpwd);
+                    teamDao.updateByPrimaryKey(team);
+                } else {
+                    response.setStatus(false);
+                    response.setMsg("验证码可能已过期请重新获取或者您未曾获取过验证码");
+                }
+            } else {
+                response.setStatus(false);
+                response.setMsg("邮箱名未曾注册过!");
             }
             return response;
         } catch (Exception e) {
