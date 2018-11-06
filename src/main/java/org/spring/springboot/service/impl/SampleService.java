@@ -182,6 +182,9 @@ public class SampleService {
         List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
         for (CycleTeam cycleTeam : list) {
             Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
+            if (team == null) {
+                continue;
+            }
             if (!teamSet.contains(team.getTeamId())) {
                 teamSet.add(team.getTeamId());
                 statistics.setTeamCount(statistics.getTeamCount() + 1);
