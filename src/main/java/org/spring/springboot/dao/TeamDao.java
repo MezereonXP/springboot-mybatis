@@ -42,11 +42,4 @@ public interface TeamDao {
 
     int updateByPrimaryKey(Team record);
 
-    Team findByEmail(@Param("email") String mail);
-
-    Team login(@Param("email") String email);
-
-    boolean updatePassword(@Param("email") String email,
-                           @Param("password") String password);
-
 }

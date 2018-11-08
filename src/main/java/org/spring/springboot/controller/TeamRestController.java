@@ -21,6 +21,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -70,6 +71,9 @@ public class TeamRestController {
                 resp.addCookie(emailCookie);
                 resp.addCookie(tokenCookie);
                 resp.addCookie(teamidCookie);
+                Team team = teamDao.selectByPrimaryKey(Integer.valueOf(teamid));
+                team.setLastLoginTime(new Date());
+                teamDao.updateByPrimaryKey(team);
                 logger.info("用户Email:" + email + "登陆成功了");
             }else {
                 response.setStatus(false);
@@ -365,6 +369,7 @@ public class TeamRestController {
                         jedis.del(STRING_PWD + email);
                     }
                     Team team = teamService.findTeamByEmail(email);
+                    team.setUpdateTime(new Date());
                     team.setPassword(newpwd);
                     teamDao.updateByPrimaryKey(team);
                 } else {

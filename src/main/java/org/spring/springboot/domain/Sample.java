@@ -1,9 +1,5 @@
 package org.spring.springboot.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import org.spring.springboot.util.CustomJsonDateDeserializer;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 public class Sample {
@@ -212,6 +208,10 @@ public class Sample {
     private String notes;
 
     private String averageStorageHours;
+
+    private Date createTime;
+
+    private Date updateTime;
 
     public Integer getBaseId() {
         return baseId;
@@ -913,7 +913,6 @@ public class Sample {
         return samplingDate;
     }
 
-    @JsonDeserialize(using = CustomJsonDateDeserializer.class)
     public void setSamplingDate(Date samplingDate) {
         this.samplingDate = samplingDate;
     }
@@ -922,7 +921,6 @@ public class Sample {
         return detectDate;
     }
 
-    @JsonDeserialize(using = CustomJsonDateDeserializer.class)
     public void setDetectDate(Date detectDate) {
         this.detectDate = detectDate;
     }
@@ -1037,5 +1035,21 @@ public class Sample {
 
     public void setAverageStorageHours(String averageStorageHours) {
         this.averageStorageHours = averageStorageHours == null ? null : averageStorageHours.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

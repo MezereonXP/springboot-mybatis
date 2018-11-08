@@ -5,6 +5,8 @@
     <id column="cycleTeamId" jdbcType="INTEGER" property="cycleTeamId"/>
     <result column="testCycleId" jdbcType="INTEGER" property="testCycleId"/>
     <result column="teamId" jdbcType="INTEGER" property="teamId"/>
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.CycleTeamWithBLOBs">
     <result column="report" jdbcType="LONGVARCHAR" property="report"/>
@@ -69,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    cycleTeamId, testCycleId, teamId
+    cycleTeamId, testCycleId, teamId, createTime, updateTime
   </sql>
   <sql id="Blob_Column_List">
     report, cycleTeamDescription
@@ -126,9 +128,11 @@
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.CycleTeamWithBLOBs">
     insert into cycleteam (cycleTeamId, testCycleId, teamId, 
-      report, cycleTeamDescription)
+      createTime, updateTime, report, 
+      cycleTeamDescription)
     values (#{cycleTeamId,jdbcType=INTEGER}, #{testCycleId,jdbcType=INTEGER}, #{teamId,jdbcType=INTEGER}, 
-      #{report,jdbcType=LONGVARCHAR}, #{cycleTeamDescription,jdbcType=LONGVARCHAR})
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{report,jdbcType=LONGVARCHAR}, 
+      #{cycleTeamDescription,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.CycleTeamWithBLOBs">
     insert into cycleteam
@@ -141,6 +145,12 @@
       </if>
       <if test="teamId != null">
         teamId,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
       </if>
       <if test="report != null">
         report,
@@ -158,6 +168,12 @@
       </if>
       <if test="teamId != null">
         #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="report != null">
         #{report,jdbcType=LONGVARCHAR},
@@ -185,6 +201,12 @@
       <if test="record.teamId != null">
         teamId = #{record.teamId,jdbcType=INTEGER},
       </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.report != null">
         report = #{record.report,jdbcType=LONGVARCHAR},
       </if>
@@ -201,6 +223,8 @@
     set cycleTeamId = #{record.cycleTeamId,jdbcType=INTEGER},
     testCycleId = #{record.testCycleId,jdbcType=INTEGER},
     teamId = #{record.teamId,jdbcType=INTEGER},
+    createTime = #{record.createTime,jdbcType=TIMESTAMP},
+    updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
     report = #{record.report,jdbcType=LONGVARCHAR},
     cycleTeamDescription = #{record.cycleTeamDescription,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -211,7 +235,9 @@
     update cycleteam
     set cycleTeamId = #{record.cycleTeamId,jdbcType=INTEGER},
     testCycleId = #{record.testCycleId,jdbcType=INTEGER},
-    teamId = #{record.teamId,jdbcType=INTEGER}
+    teamId = #{record.teamId,jdbcType=INTEGER},
+    createTime = #{record.createTime,jdbcType=TIMESTAMP},
+    updateTime = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause"/>
     </if>
@@ -224,6 +250,12 @@
       </if>
       <if test="teamId != null">
         teamId = #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="report != null">
         report = #{report,jdbcType=LONGVARCHAR},
@@ -238,6 +270,8 @@
     update cycleteam
     set testCycleId = #{testCycleId,jdbcType=INTEGER},
       teamId = #{teamId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
       report = #{report,jdbcType=LONGVARCHAR},
       cycleTeamDescription = #{cycleTeamDescription,jdbcType=LONGVARCHAR}
     where cycleTeamId = #{cycleTeamId,jdbcType=INTEGER}
@@ -245,32 +279,9 @@
   <update id="updateByPrimaryKey" parameterType="org.spring.springboot.domain.CycleTeam">
     update cycleteam
     set testCycleId = #{testCycleId,jdbcType=INTEGER},
-      teamId = #{teamId,jdbcType=INTEGER}
+      teamId = #{teamId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
     where cycleTeamId = #{cycleTeamId,jdbcType=INTEGER}
   </update>
-  <select id="selectByTeamId" parameterType="java.lang.Integer"
-          resultType="org.spring.springboot.domain.CycleTeam">
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from cycleteam
-    where teamid = #{teamid,jdbcType=INTEGER}
-  </select>
-  <select id="selectByTestCycleId" resultType="org.spring.springboot.domain.CycleTeam">
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from cycleteam
-    where testcycleid = #{testcycleid,jdbcType=INTEGER}
-  </select>
-  <select id="selectByCycleTeamId" resultType="org.spring.springboot.domain.CycleTeam">
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from cycleteam
-    where cycleteamid = #{cycleteamid,jdbcType=INTEGER}
-  </select>
 </mapper>

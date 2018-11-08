@@ -1,15 +1,9 @@
 package org.spring.springboot.controller;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.spring.springboot.dao.CycleTeamDao;
-import org.spring.springboot.domain.CycleTeam;
-import org.spring.springboot.domain.CycleTeamWithBLOBs;
-import org.spring.springboot.domain.Team;
-import org.spring.springboot.domain.TestCycle;
+import org.spring.springboot.domain.*;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
 import org.spring.springboot.service.impl.TestCycleService;
@@ -71,7 +65,9 @@ public class TestCycleController {
         Response response = new Response();
         try {
 //            response.setData(testCycleService.findTestCycleByTeamId(teamid));
-            List<CycleTeam> list = cycleTeamDao.selectByTeamId(Integer.parseInt(teamid));
+            CycleTeamExample cycleTeamExample = new CycleTeamExample();
+            cycleTeamExample.createCriteria().andTeamIdEqualTo(Integer.parseInt(teamid));
+            List<CycleTeam> list = cycleTeamDao.selectByExample(cycleTeamExample);
             response.setData(list);
             response.setStatus(true);
             return response;
@@ -89,10 +85,28 @@ public class TestCycleController {
         try {
             CycleTeamWithBLOBs cycleTeam = cycleTeamDao.selectByPrimaryKey(cycleteamid);
             cycleTeam.setReport(report);
+            cycleTeam.setUpdateTime(new Date());
             cycleTeamDao.updateByPrimaryKeyWithBLOBs(cycleTeam);
             response.setStatus(true);
             return response;
         } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addCycleTeam", method = RequestMethod.POST)
+    @ResponseBody
+    public Response uploadReport(@RequestBody CycleTeamWithBLOBs cycleTeam) {
+        Response response = new Response();
+        try {
+            cycleTeam.setCreateTime(new Date());
+            cycleTeam.setUpdateTime(new Date());
+            cycleTeamDao.insertSelective(cycleTeam);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;

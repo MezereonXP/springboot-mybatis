@@ -5,10 +5,7 @@ import org.spring.springboot.dao.BlogDao;
 import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.dao.LocationDao;
 import org.spring.springboot.dao.SampleDao;
-import org.spring.springboot.domain.Blog;
-import org.spring.springboot.domain.BlogWithBLOBs;
-import org.spring.springboot.domain.Sample;
-import org.spring.springboot.domain.SampleWithBLOBs;
+import org.spring.springboot.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +36,9 @@ public class BlogService {
 
     public List<Blog> getBlogsByCycleTeamId(Integer cycleTeamId) {
         List<Blog> result = new ArrayList<Blog>();
-        List<Sample> list = sampleDao.getSamplesByCycleTeamid(cycleTeamId);
+        SampleExample sampleExample = new SampleExample();
+        sampleExample.createCriteria().andCycleTeamIdEqualTo(cycleTeamId);
+        List<Sample> list = sampleDao.selectByExample(sampleExample);
         ArrayList idList = new ArrayList();//为了防止id相同的博客多次被加
         for (Sample sample : list) {
             Integer tempId = locationDao.selectByPrimaryKey(sample.getLocationId()).getBlogId();

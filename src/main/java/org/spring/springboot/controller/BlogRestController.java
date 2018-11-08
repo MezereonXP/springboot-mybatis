@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -74,13 +75,15 @@ public class BlogRestController {
     @RequestMapping(value = "/api/addBlog", method = RequestMethod.POST)
     @ResponseBody
     public Response addBlog(@CookieValue(value = "teamid", required = true) Integer teamid,
-                            @RequestBody BlogWithBLOBs blogWithBLOBs) {
+                            @RequestBody Blog blog) {
         Response response = new Response();
         try {
-            blogDao.insertSelective(blogWithBLOBs);
+            blog.setCreateTime(new Date());
+            blog.setUpdateTime(new Date());
+            blogDao.insertSelective(blog);
             response.setStatus(true);
-            response.setData(blogWithBLOBs);
-            response.setMsg(String.valueOf(blogWithBLOBs.getBlogId()));
+            response.setData(blog);
+            response.setMsg(String.valueOf(blog.getBlogId()));
             return response;
         } catch (Exception e){
             response.setMsg(e.getMessage());

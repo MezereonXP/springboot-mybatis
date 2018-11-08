@@ -7,19 +7,7 @@ import org.spring.springboot.dao.SingleChooseDao;
 import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.dao.TestCycleDao;
 import org.spring.springboot.dao.WaterSourceTypeMapper;
-import org.spring.springboot.domain.CleanShowCycle;
-import org.spring.springboot.domain.CleanShowSamples;
-import org.spring.springboot.domain.CycleTeam;
-import org.spring.springboot.domain.Location;
-import org.spring.springboot.domain.Sample;
-import org.spring.springboot.domain.SampleWithBLOBs;
-import org.spring.springboot.domain.ShowForIndex;
-import org.spring.springboot.domain.ShowSamples;
-import org.spring.springboot.domain.SingleChoose;
-import org.spring.springboot.domain.Statistics;
-import org.spring.springboot.domain.Team;
-import org.spring.springboot.domain.TestCycle;
-import org.spring.springboot.domain.WaterSourceType;
+import org.spring.springboot.domain.*;
 import org.spring.springboot.util.ListConverter;
 import org.spring.springboot.util.ValueUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +57,9 @@ public class SampleService {
     }
 
     public List<Sample> selectByCycleTeamId(Integer cycleTeamId) {
-        return sampleDao.getSamplesByCycleTeamid(cycleTeamId);
+        SampleExample sampleExample = new SampleExample();
+        sampleExample.createCriteria().andCycleTeamIdEqualTo(cycleTeamId);
+        return sampleDao.selectByExample(sampleExample);
     }
 
     public boolean addSample(Sample sample) {
@@ -94,10 +84,12 @@ public class SampleService {
     public CleanShowSamples getShowSamples(Integer teamId) {
         CleanShowSamples showSamples = new CleanShowSamples();
         List<CleanShowCycle> showCycles = new ArrayList<>();
-        List<CycleTeam> cycleTeams = cycleTeamDao.selectByTeamId(teamId);
+        CycleTeamExample cycleTeamExample = new CycleTeamExample();
+        cycleTeamExample.createCriteria().andTeamIdEqualTo(teamId);
+        List<CycleTeam> cycleTeams = cycleTeamDao.selectByExample(cycleTeamExample);
         for(CycleTeam cycleTeam : cycleTeams){
             CleanShowCycle cleanShowCycle = new CleanShowCycle();
-            cleanShowCycle.setSample(ValueUtil.toCleanSampleList(sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId()), locationDao));
+            cleanShowCycle.setSample(ValueUtil.toCleanSampleList(selectByCycleTeamId(cycleTeam.getCycleTeamId()), locationDao));
             cleanShowCycle.setTestCycle(testCycleDao.selectByPrimaryKey(cycleTeam.getTestCycleId()));
             showCycles.add(cleanShowCycle);
         }
@@ -117,9 +109,11 @@ public class SampleService {
                 map.get(testCycle.getTestCycleId()).setTestCycle(testCycle);
             }
             ShowSamples.ShowCycle showCycle = map.get(testCycle.getTestCycleId());
-            List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycle.getTestCycleId());
+            CycleTeamExample cycleTeamExample = new CycleTeamExample();
+            cycleTeamExample.createCriteria().andTestCycleIdEqualTo(testCycle.getTestCycleId());
+            List<CycleTeam> list = cycleTeamDao.selectByExample(cycleTeamExample);
             for (CycleTeam cycleTeam:list) {
-                for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
+                for (Sample sample : selectByCycleTeamId(cycleTeam.getCycleTeamId())) {
                     showCycle.getSample().add(sample);
                 }
             }
@@ -132,11 +126,12 @@ public class SampleService {
 
     public List<ShowForIndex> getShowForIndex(Integer testCycleId){
         List<ShowForIndex> showForIndexList = new ArrayList<ShowForIndex>();
-
-        List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
+        CycleTeamExample cycleTeamExample = new CycleTeamExample();
+        cycleTeamExample.createCriteria().andTestCycleIdEqualTo(testCycleId);
+        List<CycleTeam> list = cycleTeamDao.selectByExample(cycleTeamExample);
         for (CycleTeam cycleTeam:list) {
             Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
-            for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
+            for (Sample sample : selectByCycleTeamId(cycleTeam.getCycleTeamId())) {
                 WaterSourceType waterSourceType;
                 waterSourceType = waterSourceTypeMapper.selectByPrimaryKey(sample.getWaterSourceTypeId());
                 if (waterSourceType == null) {
@@ -153,11 +148,12 @@ public class SampleService {
 
     public List<ShowForIndex> getShowForIndexWithYear(Integer testCycleId, String year) throws ParseException {
         List<ShowForIndex> showForIndexList = new ArrayList<ShowForIndex>();
-
-        List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
+        CycleTeamExample cycleTeamExample = new CycleTeamExample();
+        cycleTeamExample.createCriteria().andTestCycleIdEqualTo(testCycleId);
+        List<CycleTeam> list = cycleTeamDao.selectByExample(cycleTeamExample);
         for (CycleTeam cycleTeam : list) {
             Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
-            for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
+            for (Sample sample : selectByCycleTeamId(cycleTeam.getCycleTeamId())) {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 Date oldDate = format.parse((Integer.parseInt(year) + 1) + "-01-01 00:00:00");
                 if (team != null && sample.getSamplingDate() != null && sample.getSamplingDate().before(oldDate)) {
@@ -178,8 +174,9 @@ public class SampleService {
 
     public Statistics getDetailForIndexWithYear(Integer testCycleId, String year, Statistics statistics, Set<Integer> provinceSet, Set<Integer> prefectureSet, Set<Integer> countySet, Set<Integer> sampleSet, Set<Integer> teamSet)
             throws ParseException {
-
-        List<CycleTeam> list = cycleTeamDao.selectByTestCycleId(testCycleId);
+        CycleTeamExample cycleTeamExample = new CycleTeamExample();
+        cycleTeamExample.createCriteria().andTestCycleIdEqualTo(testCycleId);
+        List<CycleTeam> list = cycleTeamDao.selectByExample(cycleTeamExample);
         for (CycleTeam cycleTeam : list) {
             Team team = teamDao.selectByPrimaryKey(cycleTeam.getTeamId());
             if (team == null) {
@@ -189,7 +186,7 @@ public class SampleService {
                 teamSet.add(team.getTeamId());
                 statistics.setTeamCount(statistics.getTeamCount() + 1);
             }
-            for (Sample sample : sampleDao.getSamplesByCycleTeamid(cycleTeam.getCycleTeamId())) {
+            for (Sample sample : selectByCycleTeamId(cycleTeam.getCycleTeamId())) {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 Date oldDate = format.parse((Integer.parseInt(year) + 1) + "-01-01 00:00:00");
                 if (team != null && sample.getSamplingDate() != null && sample.getSamplingDate().before(oldDate)) {

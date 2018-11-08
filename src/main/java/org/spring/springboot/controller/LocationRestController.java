@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +41,8 @@ public class LocationRestController {
     public Response addLocation(@RequestBody Location location) {
         Response response = new Response();
         try {
+            location.setCreatedAt(new Date());
+            location.setUpdatedAt(new Date());
             locationDao.insertSelective(location);
             response.setStatus(location.getLocationId() != null);
             response.setData(location);
@@ -56,6 +59,7 @@ public class LocationRestController {
     public Response updateLocation(@RequestBody Location location) {
         Response response = new Response();
         try {
+            location.setUpdatedAt(new Date());
             locationDao.updateByPrimaryKeySelective(location);
             response.setStatus(true);
             return response;

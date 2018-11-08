@@ -33,6 +33,4 @@ public interface SampleDao {
     int updateByPrimaryKeySelective(Sample record);
 
     int updateByPrimaryKey(Sample record);
-
-    List<Sample> getSamplesByCycleTeamid(Integer cycleTeamid);
 }

@@ -24,10 +24,7 @@ import redis.clients.jedis.JedisPoolConfig;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 2018/4/14.
@@ -130,6 +127,8 @@ public class SampleRestController {
     public Response addSample(@RequestBody Sample sample) {
         Response response = new Response();
         try {
+            sample.setCreateTime(new Date());
+            sample.setUpdateTime(new Date());
             sampleDao.insertSelective(sample);
             response.setData(sample);
             response.setStatus(sample.getBaseId() != null);
@@ -146,6 +145,7 @@ public class SampleRestController {
     public Response updateSample(@RequestBody Sample sample) {
         Response response = new Response();
         try {
+            sample.setUpdateTime(new Date());
             response.setStatus(samplesService.updateSample(sample));
             return response;
         } catch (Exception e){

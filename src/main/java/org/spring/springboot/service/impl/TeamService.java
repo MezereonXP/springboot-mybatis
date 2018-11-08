@@ -22,7 +22,13 @@ public class TeamService {
     private TeamDao teamDao;
 
     public Team findTeamByEmail(String email) {
-        return teamDao.findByEmail(email);
+        TeamExample teamExample = new TeamExample();
+        teamExample.createCriteria().andEmailEqualTo(email);
+        List<Team> result = teamDao.selectByExample(teamExample);
+        if (result != null && result.size() != 0) {
+            return result.get(0);
+        }
+        return null;
     }
 
     public Team login(String email) {
@@ -45,11 +51,14 @@ public class TeamService {
         team.setDetails(detail);
         team.setUniversityId(universityId);
         team.setPriority(priority);
-        return teamDao.insert(team)!=-1;
+        team.setCreateTime(new Date());
+        team.setUpdateTime(new Date());
+        team.setLastLoginTime(new Date());
+        return teamDao.insert(team) != -1;
     }
 
     public boolean checkAuth(String email, String token, String teamid) {
-        if (Token.checkToken(token,email,teamid)) {
+        if (Token.checkToken(token, email, teamid)) {
             System.out.println("Token True");
             return true;
         } else {
@@ -58,10 +67,13 @@ public class TeamService {
         }
     }
 
-    public boolean updatePassword (String email ,String oldPassword ,String newPassword) {
-        if(login(email).getPassword().equals(oldPassword)){
-            return teamDao.updatePassword(email , newPassword);
-        }else{
+    public boolean updatePassword(String email, String oldPassword, String newPassword) {
+        if (login(email).getPassword().equals(oldPassword)) {
+            Team team = findTeamByEmail(email);
+            team.setPassword(newPassword);
+            team.setUpdateTime(new Date());
+            return teamDao.updateByPrimaryKey(team) != 0;
+        } else {
             return false;
         }
     }

@@ -1,5 +1,7 @@
 package org.spring.springboot.domain;
 
+import java.util.Date;
+
 public class Blog {
     private Integer blogId;
 
@@ -8,6 +10,10 @@ public class Blog {
     private Integer locationId;
 
     private Integer teamId;
+
+    private Date createTime;
+
+    private Date updateTime;
 
     private String text;
 
@@ -41,6 +47,22 @@ public class Blog {
 
     public void setTeamId(Integer teamId) {
         this.teamId = teamId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getText() {

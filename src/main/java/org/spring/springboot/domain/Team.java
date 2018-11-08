@@ -1,5 +1,7 @@
 package org.spring.springboot.domain;
 
+import java.util.Date;
+
 public class Team {
     private Integer teamId;
 
@@ -12,6 +14,12 @@ public class Team {
     private String password;
 
     private Integer priority;
+
+    private Date createTime;
+
+    private Date lastLoginTime;
+
+    private Date updateTime;
 
     private String details;
 
@@ -61,6 +69,30 @@ public class Team {
 
     public void setPriority(Integer priority) {
         this.priority = priority;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getDetails() {

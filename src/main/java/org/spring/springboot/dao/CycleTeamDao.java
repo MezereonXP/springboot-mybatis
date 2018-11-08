@@ -37,10 +37,4 @@ public interface CycleTeamDao {
     int updateByPrimaryKeyWithBLOBs(CycleTeamWithBLOBs record);
 
     int updateByPrimaryKey(CycleTeam record);
-
-    List<CycleTeam> selectByTeamId(Integer teamid);
-
-    List<CycleTeam> selectByCycleTeamId(Integer cycleteamid);
-
-    List<CycleTeam> selectByTestCycleId(Integer testcycleid);
 }

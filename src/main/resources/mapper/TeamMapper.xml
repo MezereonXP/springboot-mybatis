@@ -2,15 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.spring.springboot.dao.TeamDao">
   <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Team">
-      <id column="teamId" jdbcType="INTEGER" property="teamId"/>
-      <result column="universityId" jdbcType="INTEGER" property="universityId"/>
-      <result column="teamName" jdbcType="VARCHAR" property="teamName"/>
+    <id column="teamId" jdbcType="INTEGER" property="teamId"/>
+    <result column="universityId" jdbcType="INTEGER" property="universityId"/>
+    <result column="teamName" jdbcType="VARCHAR" property="teamName"/>
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-      <result column="priority" jdbcType="INTEGER" property="priority"/>
+    <result column="priority" jdbcType="INTEGER" property="priority"/>
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="lastLoginTime" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.Team">
-      <result column="details" jdbcType="LONGVARCHAR" property="details"/>
+    <result column="details" jdbcType="LONGVARCHAR" property="details"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    teamId, universityId, teamName, email, password, priority
+    teamId, universityId, teamName, email, password, priority, createTime, lastLoginTime, 
+    updateTime
   </sql>
   <sql id="Blob_Column_List">
     details
@@ -82,12 +86,12 @@
       distinct
     </if>
     'true' as QUERYID,
-      <include refid="Base_Column_List"/>
+    <include refid="Base_Column_List"/>
     ,
-      <include refid="Blob_Column_List"/>
+    <include refid="Blob_Column_List"/>
     from team
     <if test="_parameter != null">
-        <include refid="Example_Where_Clause"/>
+      <include refid="Example_Where_Clause"/>
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
@@ -99,10 +103,10 @@
       distinct
     </if>
     'true' as QUERYID,
-      <include refid="Base_Column_List"/>
+    <include refid="Base_Column_List"/>
     from team
     <if test="_parameter != null">
-        <include refid="Example_Where_Clause"/>
+      <include refid="Example_Where_Clause"/>
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
@@ -123,15 +127,17 @@
   <delete id="deleteByExample" parameterType="org.spring.springboot.domain.TeamExample">
     delete from team
     <if test="_parameter != null">
-        <include refid="Example_Where_Clause"/>
+      <include refid="Example_Where_Clause"/>
     </if>
   </delete>
   <insert id="insert" parameterType="org.spring.springboot.domain.Team">
     insert into team (teamId, universityId, teamName, 
       email, password, priority, 
+      createTime, lastLoginTime, updateTime, 
       details)
     values (#{teamId,jdbcType=INTEGER}, #{universityId,jdbcType=INTEGER}, #{teamName,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{details,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.spring.springboot.domain.Team">
@@ -140,8 +146,8 @@
       <if test="teamId != null">
         teamId,
       </if>
-        <if test="universityId != null">
-            universityId,
+      <if test="universityId != null">
+        universityId,
       </if>
       <if test="teamName != null">
         teamName,
@@ -155,6 +161,15 @@
       <if test="priority != null">
         priority,
       </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="lastLoginTime != null">
+        lastLoginTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
       <if test="details != null">
         details,
       </if>
@@ -163,8 +178,8 @@
       <if test="teamId != null">
         #{teamId,jdbcType=INTEGER},
       </if>
-        <if test="universityId != null">
-            #{universityId,jdbcType=INTEGER},
+      <if test="universityId != null">
+        #{universityId,jdbcType=INTEGER},
       </if>
       <if test="teamName != null">
         #{teamName,jdbcType=VARCHAR},
@@ -178,6 +193,15 @@
       <if test="priority != null">
         #{priority,jdbcType=INTEGER},
       </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="details != null">
         #{details,jdbcType=LONGVARCHAR},
       </if>
@@ -186,7 +210,7 @@
   <select id="countByExample" parameterType="org.spring.springboot.domain.TeamExample" resultType="java.lang.Long">
     select count(*) from team
     <if test="_parameter != null">
-        <include refid="Example_Where_Clause"/>
+      <include refid="Example_Where_Clause"/>
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
@@ -195,8 +219,8 @@
       <if test="record.teamId != null">
         teamId = #{record.teamId,jdbcType=INTEGER},
       </if>
-        <if test="record.universityId != null">
-            universityId = #{record.universityId,jdbcType=INTEGER},
+      <if test="record.universityId != null">
+        universityId = #{record.universityId,jdbcType=INTEGER},
       </if>
       <if test="record.teamName != null">
         teamName = #{record.teamName,jdbcType=VARCHAR},
@@ -210,12 +234,21 @@
       <if test="record.priority != null">
         priority = #{record.priority,jdbcType=INTEGER},
       </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastLoginTime != null">
+        lastLoginTime = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.details != null">
         details = #{record.details,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
-        <include refid="Update_By_Example_Where_Clause"/>
+      <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
@@ -226,9 +259,12 @@
       email = #{record.email,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       priority = #{record.priority,jdbcType=INTEGER},
+    createTime = #{record.createTime,jdbcType=TIMESTAMP},
+    lastLoginTime = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+    updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
       details = #{record.details,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
-        <include refid="Update_By_Example_Where_Clause"/>
+      <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
@@ -238,16 +274,19 @@
       teamName = #{record.teamName,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      priority = #{record.priority,jdbcType=INTEGER}
+    priority = #{record.priority,jdbcType=INTEGER},
+    createTime = #{record.createTime,jdbcType=TIMESTAMP},
+    lastLoginTime = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+    updateTime = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
-        <include refid="Update_By_Example_Where_Clause"/>
+      <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.spring.springboot.domain.Team">
     update team
     <set>
-        <if test="universityId != null">
-            universityId = #{universityId,jdbcType=INTEGER},
+      <if test="universityId != null">
+        universityId = #{universityId,jdbcType=INTEGER},
       </if>
       <if test="teamName != null">
         teamName = #{teamName,jdbcType=VARCHAR},
@@ -260,6 +299,15 @@
       </if>
       <if test="priority != null">
         priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        lastLoginTime = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="details != null">
         details = #{details,jdbcType=LONGVARCHAR},
@@ -274,6 +322,9 @@
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       priority = #{priority,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      lastLoginTime = #{lastLoginTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
       details = #{details,jdbcType=LONGVARCHAR}
     where teamId = #{teamId,jdbcType=INTEGER}
   </update>
@@ -283,30 +334,10 @@
       teamName = #{teamName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      priority = #{priority,jdbcType=INTEGER}
+      priority = #{priority,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      lastLoginTime = #{lastLoginTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
     where teamId = #{teamId,jdbcType=INTEGER}
-  </update>
-  <select id="findByEmail" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    ,
-    <include refid="Blob_Column_List"/>
-    from team
-    where email = #{email}
-  </select>
-
-  <select id="login" resultType="org.spring.springboot.domain.Team">
-    select
-    <include refid="Base_Column_List"/>
-    ,
-    <include refid="Blob_Column_List"/>
-    from team
-    where email = #{email}
-  </select>
-
-  <update id="updatePassword">
-        UPDATE team
-        SET password = #{password}
-        where email = #{email}
   </update>
 </mapper>
