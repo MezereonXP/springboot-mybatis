@@ -4,11 +4,7 @@ import org.spring.springboot.dao.*;
 import org.spring.springboot.domain.*;
 import org.spring.springboot.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ListRestController {
@@ -89,6 +85,23 @@ public class ListRestController {
             response.setData(waterTypeMapper.selectByExample(waterTypeExample));
             return response;
         } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addWaterType", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response getAllWaterTypes(@RequestBody WaterType waterType) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            waterTypeMapper.insertSelective(waterType);
+            response.setData(waterType);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
