@@ -265,6 +265,24 @@ public class ListRestController {
         }
     }
 
+    @RequestMapping(value = "/api/getMethodsByName", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response getMethodsByName(@RequestParam(value = "name") String name) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            name = name.replace(" ", "+");
+            MethodExample methodExample = new MethodExample();
+            methodExample.createCriteria().andIndexNameEqualTo(name);
+            response.setData(methodMapper.selectByExample(methodExample));
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
     @RequestMapping(value = "/api/getAllDiarrheacauses", method = RequestMethod.GET)
     @CrossOrigin
     public Response getAllDiarrheacauses() {
