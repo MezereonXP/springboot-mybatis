@@ -56,13 +56,17 @@ public class LoginInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        if (Token.checkToken(token,email,teamid)) {
-            System.out.println("Token True");
-            return true;
+        if (!request.getMethod().equalsIgnoreCase("OPTIONS")) {
+            if (Token.checkToken(token, email, teamid)) {
+                System.out.println("Token True");
+                return true;
+            } else {
+                System.out.println("Token False");
+                response.getWriter().print("{\"code\":401}");
+                return false;
+            }
         } else {
-            System.out.println("Token False");
-            response.getWriter().print("{\"code\":401}");
-            return false;
+            return true;
         }
     }
 
