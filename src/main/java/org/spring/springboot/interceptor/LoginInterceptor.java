@@ -27,7 +27,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         // TODO Auto-generated method stub
 
         //跨域访问CORS
-        response.addHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS,PUT,DELETE,HEAD");
         response.addHeader("Access-Control-Allow-Headers", "S_ID,content-type");
         response.addHeader("Access-Control-Max-Age", "3600000");
