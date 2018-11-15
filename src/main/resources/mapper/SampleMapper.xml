@@ -18,7 +18,7 @@
     <result column="waterStorageId" jdbcType="INTEGER" property="waterStorageId"/>
     <result column="waterShortage" jdbcType="VARCHAR" property="waterShortage"/>
     <result column="potentialContamination" jdbcType="VARCHAR" property="potentialContamination"/>
-    <result column="potentialContaminationDistance" jdbcType="INTEGER" property="potentialContaminationDistance"/>
+    <result column="potentialContaminationDistance" jdbcType="VARCHAR" property="potentialContaminationDistance"/>
     <result column="populationServedBySource" jdbcType="INTEGER" property="populationServedBySource"/>
     <result column="physicalIndicators" jdbcType="INTEGER" property="physicalIndicators"/>
     <result column="temp" jdbcType="REAL" property="temp"/>
@@ -218,8 +218,8 @@
       <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true"
-            keyProperty="baseId">
+  <insert id="insert" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true"
+          keyProperty="baseId">
     insert into sample (baseId, waterId, waterTypeId, 
       validationId, locationId, cycleTeamId, 
       drinkingWaterId, waterSourceTypeId, waterSourceDetails, 
@@ -263,7 +263,7 @@
       #{drinkingWaterId,jdbcType=INTEGER}, #{waterSourceTypeId,jdbcType=INTEGER}, #{waterSourceDetails,jdbcType=VARCHAR}, 
       #{deliveryMethodId,jdbcType=INTEGER}, #{inTakeMethodId,jdbcType=INTEGER}, #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER}, 
       #{treatmentMethodId,jdbcType=INTEGER}, #{waterStorageId,jdbcType=INTEGER}, #{waterShortage,jdbcType=VARCHAR}, 
-      #{potentialContamination,jdbcType=VARCHAR}, #{potentialContaminationDistance,jdbcType=INTEGER}, 
+      #{potentialContamination,jdbcType=VARCHAR}, #{potentialContaminationDistance,jdbcType=VARCHAR}, 
       #{populationServedBySource,jdbcType=INTEGER}, #{physicalIndicators,jdbcType=INTEGER}, 
       #{temp,jdbcType=REAL}, #{smellId,jdbcType=INTEGER}, #{smellDetail,jdbcType=VARCHAR}, 
       #{visualId,jdbcType=INTEGER}, #{visualDetail,jdbcType=VARCHAR}, #{otherInformation,jdbcType=VARCHAR}, 
@@ -297,8 +297,8 @@
       #{notes,jdbcType=VARCHAR}, #{averageStorageHours,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true"
-            keyProperty="baseId">
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true"
+          keyProperty="baseId">
     insert into sample
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="baseId != null">
@@ -667,7 +667,7 @@
         #{potentialContamination,jdbcType=VARCHAR},
       </if>
       <if test="potentialContaminationDistance != null">
-        #{potentialContaminationDistance,jdbcType=INTEGER},
+        #{potentialContaminationDistance,jdbcType=VARCHAR},
       </if>
       <if test="populationServedBySource != null">
         #{populationServedBySource,jdbcType=INTEGER},
@@ -993,7 +993,7 @@
         potentialContamination = #{record.potentialContamination,jdbcType=VARCHAR},
       </if>
       <if test="record.potentialContaminationDistance != null">
-        potentialContaminationDistance = #{record.potentialContaminationDistance,jdbcType=INTEGER},
+        potentialContaminationDistance = #{record.potentialContaminationDistance,jdbcType=VARCHAR},
       </if>
       <if test="record.populationServedBySource != null">
         populationServedBySource = #{record.populationServedBySource,jdbcType=INTEGER},
@@ -1282,7 +1282,7 @@
       waterStorageId = #{record.waterStorageId,jdbcType=INTEGER},
       waterShortage = #{record.waterShortage,jdbcType=VARCHAR},
       potentialContamination = #{record.potentialContamination,jdbcType=VARCHAR},
-      potentialContaminationDistance = #{record.potentialContaminationDistance,jdbcType=INTEGER},
+    potentialContaminationDistance = #{record.potentialContaminationDistance,jdbcType=VARCHAR},
       populationServedBySource = #{record.populationServedBySource,jdbcType=INTEGER},
       physicalIndicators = #{record.physicalIndicators,jdbcType=INTEGER},
       temp = #{record.temp,jdbcType=REAL},
@@ -1424,7 +1424,7 @@
         potentialContamination = #{potentialContamination,jdbcType=VARCHAR},
       </if>
       <if test="potentialContaminationDistance != null">
-        potentialContaminationDistance = #{potentialContaminationDistance,jdbcType=INTEGER},
+        potentialContaminationDistance = #{potentialContaminationDistance,jdbcType=VARCHAR},
       </if>
       <if test="populationServedBySource != null">
         populationServedBySource = #{populationServedBySource,jdbcType=INTEGER},
@@ -1710,7 +1710,7 @@
       waterStorageId = #{waterStorageId,jdbcType=INTEGER},
       waterShortage = #{waterShortage,jdbcType=VARCHAR},
       potentialContamination = #{potentialContamination,jdbcType=VARCHAR},
-      potentialContaminationDistance = #{potentialContaminationDistance,jdbcType=INTEGER},
+      potentialContaminationDistance = #{potentialContaminationDistance,jdbcType=VARCHAR},
       populationServedBySource = #{populationServedBySource,jdbcType=INTEGER},
       physicalIndicators = #{physicalIndicators,jdbcType=INTEGER},
       temp = #{temp,jdbcType=REAL},

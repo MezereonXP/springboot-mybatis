@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.PotentialContam;
 import org.spring.springboot.domain.PotentialContamExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface PotentialContamMapper {
     long countByExample(PotentialContamExample example);
 

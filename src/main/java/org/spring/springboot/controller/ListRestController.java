@@ -40,6 +40,9 @@ public class ListRestController {
     @Autowired
     UniversityMapper universityMapper;
 
+    @Autowired
+    PotentialContamMapper potentialContamMapper;
+
     @RequestMapping(value = "/api/getAllDeliveryMethods", method = RequestMethod.GET)
     @CrossOrigin
     public Response getAllDeliveryMethods() {
@@ -255,6 +258,23 @@ public class ListRestController {
             response.setData(healthCenterMapper.selectByExample(healthCenterExample));
             return response;
         } catch (Exception e){
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/getAllPotentialContams", method = RequestMethod.GET)
+    @CrossOrigin
+    public Response getAllPotentialContams() {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            PotentialContamExample potentialContam = new PotentialContamExample();
+            potentialContam.createCriteria();
+            response.setData(potentialContamMapper.selectByExample(potentialContam));
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;

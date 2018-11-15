@@ -35,7 +35,7 @@ public class Sample {
 
     private String potentialContamination;
 
-    private Integer potentialContaminationDistance;
+    private String potentialContaminationDistance;
 
     private Integer populationServedBySource;
 
@@ -341,12 +341,12 @@ public class Sample {
         this.potentialContamination = potentialContamination == null ? null : potentialContamination.trim();
     }
 
-    public Integer getPotentialContaminationDistance() {
+    public String getPotentialContaminationDistance() {
         return potentialContaminationDistance;
     }
 
-    public void setPotentialContaminationDistance(Integer potentialContaminationDistance) {
-        this.potentialContaminationDistance = potentialContaminationDistance;
+    public void setPotentialContaminationDistance(String potentialContaminationDistance) {
+        this.potentialContaminationDistance = potentialContaminationDistance == null ? null : potentialContaminationDistance.trim();
     }
 
     public Integer getPopulationServedBySource() {

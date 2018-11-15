@@ -1105,52 +1105,62 @@ public class SampleExample {
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceEqualTo(Integer value) {
+        public Criteria andPotentialContaminationDistanceEqualTo(String value) {
             addCriterion("potentialContaminationDistance =", value, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceNotEqualTo(Integer value) {
+        public Criteria andPotentialContaminationDistanceNotEqualTo(String value) {
             addCriterion("potentialContaminationDistance <>", value, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceGreaterThan(Integer value) {
+        public Criteria andPotentialContaminationDistanceGreaterThan(String value) {
             addCriterion("potentialContaminationDistance >", value, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPotentialContaminationDistanceGreaterThanOrEqualTo(String value) {
             addCriterion("potentialContaminationDistance >=", value, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceLessThan(Integer value) {
+        public Criteria andPotentialContaminationDistanceLessThan(String value) {
             addCriterion("potentialContaminationDistance <", value, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceLessThanOrEqualTo(Integer value) {
+        public Criteria andPotentialContaminationDistanceLessThanOrEqualTo(String value) {
             addCriterion("potentialContaminationDistance <=", value, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceIn(List<Integer> values) {
+        public Criteria andPotentialContaminationDistanceLike(String value) {
+            addCriterion("potentialContaminationDistance like", value, "potentialContaminationDistance");
+            return (Criteria) this;
+        }
+
+        public Criteria andPotentialContaminationDistanceNotLike(String value) {
+            addCriterion("potentialContaminationDistance not like", value, "potentialContaminationDistance");
+            return (Criteria) this;
+        }
+
+        public Criteria andPotentialContaminationDistanceIn(List<String> values) {
             addCriterion("potentialContaminationDistance in", values, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceNotIn(List<Integer> values) {
+        public Criteria andPotentialContaminationDistanceNotIn(List<String> values) {
             addCriterion("potentialContaminationDistance not in", values, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceBetween(Integer value1, Integer value2) {
+        public Criteria andPotentialContaminationDistanceBetween(String value1, String value2) {
             addCriterion("potentialContaminationDistance between", value1, value2, "potentialContaminationDistance");
             return (Criteria) this;
         }
 
-        public Criteria andPotentialContaminationDistanceNotBetween(Integer value1, Integer value2) {
+        public Criteria andPotentialContaminationDistanceNotBetween(String value1, String value2) {
             addCriterion("potentialContaminationDistance not between", value1, value2, "potentialContaminationDistance");
             return (Criteria) this;
         }
