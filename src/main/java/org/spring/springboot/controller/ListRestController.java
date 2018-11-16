@@ -145,23 +145,6 @@ public class ListRestController {
         }
     }
 
-    @RequestMapping(value = "/api/addWaterType", method = RequestMethod.POST)
-    @ResponseBody
-    @CrossOrigin
-    public Response getAllWaterTypes(@RequestBody WaterType waterType) {
-        Response response = new Response();
-        try {
-            response.setStatus(true);
-            waterTypeMapper.insertSelective(waterType);
-            response.setData(waterType);
-            return response;
-        } catch (Exception e) {
-            response.setMsg(e.getMessage());
-            response.setStatus(false);
-            return response;
-        }
-    }
-
     @RequestMapping(value = "/api/getAllWaterSourceTypes", method = RequestMethod.GET)
     @CrossOrigin
     public Response getAllWaterSourceTypes() {
