@@ -98,13 +98,15 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.Visual">
+    <insert id="insert" parameterType="org.spring.springboot.domain.Visual" useGeneratedKeys="true"
+            keyProperty="visualID">
     insert into visual (visualID, visualDesc, visualDescDetails
       )
     values (#{visualID,jdbcType=INTEGER}, #{visualDesc,jdbcType=VARCHAR}, #{visualDescDetails,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Visual">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Visual" useGeneratedKeys="true"
+            keyProperty="visualID">
         insert into visual
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="visualID != null">

@@ -97,11 +97,13 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.DrinkingWaterType">
+    <insert id="insert" parameterType="org.spring.springboot.domain.DrinkingWaterType" useGeneratedKeys="true"
+            keyProperty="drinkWaterId">
     insert into drinkingwatertype (drinkWaterId, drinkWaterDesc)
     values (#{drinkWaterId,jdbcType=INTEGER}, #{drinkWaterDesc,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.DrinkingWaterType">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.DrinkingWaterType" useGeneratedKeys="true"
+            keyProperty="drinkWaterId">
         insert into drinkingwatertype
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="drinkWaterId != null">

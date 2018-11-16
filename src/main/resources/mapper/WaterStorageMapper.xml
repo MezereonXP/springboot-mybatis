@@ -98,13 +98,15 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.WaterStorage">
+    <insert id="insert" parameterType="org.spring.springboot.domain.WaterStorage" useGeneratedKeys="true"
+            keyProperty="waterStorageId">
     insert into waterstorage (waterStorageId, waterStorageDesc, 
       AvgStorageHrs)
     values (#{waterStorageId,jdbcType=INTEGER}, #{waterStorageDesc,jdbcType=VARCHAR}, 
       #{avgStorageHrs,jdbcType=INTEGER})
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.WaterStorage">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.WaterStorage" useGeneratedKeys="true"
+            keyProperty="waterStorageId">
         insert into waterstorage
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="waterStorageId != null">

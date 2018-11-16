@@ -97,13 +97,15 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.DeliveryMethod">
+    <insert id="insert" parameterType="org.spring.springboot.domain.DeliveryMethod" useGeneratedKeys="true"
+            keyProperty="deliveryMethodId">
     insert into deliverymethod (deliveryMethodId, deliveryMethodDesc
       )
     values (#{deliveryMethodId,jdbcType=INTEGER}, #{deliveryMethodDesc,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.DeliveryMethod">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.DeliveryMethod" useGeneratedKeys="true"
+            keyProperty="deliveryMethodId">
         insert into deliverymethod
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="deliveryMethodId != null">

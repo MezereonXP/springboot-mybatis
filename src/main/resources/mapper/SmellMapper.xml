@@ -98,13 +98,15 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.Smell">
+    <insert id="insert" parameterType="org.spring.springboot.domain.Smell" useGeneratedKeys="true"
+            keyProperty="smellId">
     insert into smell (smellId, smellDesc, smellDescDetails
       )
     values (#{smellId,jdbcType=INTEGER}, #{smellDesc,jdbcType=VARCHAR}, #{smellDescDetails,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Smell">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Smell" useGeneratedKeys="true"
+            keyProperty="smellId">
         insert into smell
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="smellId != null">

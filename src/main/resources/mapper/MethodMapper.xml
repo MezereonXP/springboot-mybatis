@@ -101,7 +101,8 @@
       <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Method">
+    <insert id="insert" parameterType="org.spring.springboot.domain.Method" useGeneratedKeys="true"
+            keyProperty="methodId">
     insert into method (methodId, indexName, methodType, 
       methodName, methodValue, unit
       )
@@ -109,7 +110,8 @@
       #{methodName,jdbcType=VARCHAR}, #{methodValue,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Method">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Method" useGeneratedKeys="true"
+            keyProperty="methodId">
     insert into method
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="methodId != null">

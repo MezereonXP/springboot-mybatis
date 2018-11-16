@@ -97,11 +97,13 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.HealthCenter">
+    <insert id="insert" parameterType="org.spring.springboot.domain.HealthCenter" useGeneratedKeys="true"
+            keyProperty="healthCenterId">
     insert into healthcenter (healthCenterId, healthCenterDesc)
     values (#{healthCenterId,jdbcType=INTEGER}, #{healthCenterDesc,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.HealthCenter">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.HealthCenter" useGeneratedKeys="true"
+            keyProperty="healthCenterId">
         insert into healthcenter
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="healthCenterId != null">

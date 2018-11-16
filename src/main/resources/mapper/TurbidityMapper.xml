@@ -99,13 +99,15 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.Turbidity">
+    <insert id="insert" parameterType="org.spring.springboot.domain.Turbidity" useGeneratedKeys="true"
+            keyProperty="turbidityId">
     insert into turbidity (turbidityId, turbidityDesc, turbidityValue, 
       turbiditymethod)
     values (#{turbidityId,jdbcType=INTEGER}, #{turbidityDesc,jdbcType=VARCHAR}, #{turbidityValue,jdbcType=REAL}, 
       #{turbiditymethod,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Turbidity">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.Turbidity" useGeneratedKeys="true"
+            keyProperty="turbidityId">
         insert into turbidity
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="turbidityId != null">

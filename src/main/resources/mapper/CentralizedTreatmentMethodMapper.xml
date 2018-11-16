@@ -97,13 +97,15 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.spring.springboot.domain.CentralizedTreatmentMethod">
+    <insert id="insert" parameterType="org.spring.springboot.domain.CentralizedTreatmentMethod" useGeneratedKeys="true"
+            keyProperty="centrTreatmentMethodId">
     insert into centralizedtreatmentmethod (centrTreatmentMethodId, centrTreatmentMethodDesc
       )
     values (#{centrTreatmentMethodId,jdbcType=INTEGER}, #{centrTreatmentMethodDesc,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="org.spring.springboot.domain.CentralizedTreatmentMethod">
+    <insert id="insertSelective" parameterType="org.spring.springboot.domain.CentralizedTreatmentMethod"
+            useGeneratedKeys="true" keyProperty="centrTreatmentMethodId">
         insert into centralizedtreatmentmethod
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="centrTreatmentMethodId != null">

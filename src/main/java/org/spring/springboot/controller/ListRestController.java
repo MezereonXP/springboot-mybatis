@@ -53,7 +53,24 @@ public class ListRestController {
             deliveryMethodExample.createCriteria();
             response.setData(deliveryMethodMapper.selectByExample(deliveryMethodExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addDeliveryMethod", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addDeliveryMethod(@RequestBody DeliveryMethod deliveryMethod) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            deliveryMethodMapper.insertSelective(deliveryMethod);
+            response.setData(deliveryMethod);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -70,7 +87,24 @@ public class ListRestController {
             drinkingWaterTypeExample.createCriteria();
             response.setData(drinkingWaterTypeMapper.selectByExample(drinkingWaterTypeExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addDrinkingWaterType", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addDrinkingWaterType(@RequestBody DrinkingWaterType drinkingWaterType) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
+            response.setData(drinkingWaterType);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -87,7 +121,24 @@ public class ListRestController {
             waterTypeExample.createCriteria();
             response.setData(waterTypeMapper.selectByExample(waterTypeExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addWaterType", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addWaterType(@RequestBody WaterType waterType) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            waterTypeMapper.insertSelective(waterType);
+            response.setData(waterType);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -121,7 +172,24 @@ public class ListRestController {
             waterSourceTypeExample.createCriteria();
             response.setData(waterSourceTypeMapper.selectByExample(waterSourceTypeExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addWaterSourceType", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addWaterSourceType(@RequestBody WaterSourceType waterSourceType) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            waterSourceTypeMapper.insertSelective(waterSourceType);
+            response.setData(waterSourceType);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -138,7 +206,24 @@ public class ListRestController {
             centralizedTreatmentMethodExample.createCriteria();
             response.setData(centralizedTreatmentMethodMapper.selectByExample(centralizedTreatmentMethodExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addCentralizedTreatmentMethod", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addCentralizedTreatmentMethod(@RequestBody CentralizedTreatmentMethod centralizedTreatmentMethod) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
+            response.setData(centralizedTreatmentMethod);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -155,12 +240,30 @@ public class ListRestController {
             treatmentMethodExample.createCriteria();
             response.setData(treatmentMethodMapper.selectByExample(treatmentMethodExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
         }
     }
+
+    @RequestMapping(value = "/api/addTreatmentMethod", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addTreatmentMethod(@RequestBody TreatmentMethod treatmentMethod) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            treatmentMethodMapper.insertSelective(treatmentMethod);
+            response.setData(treatmentMethod);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
 
     @RequestMapping(value = "/api/getAllWaterStorages", method = RequestMethod.GET)
     @CrossOrigin
@@ -168,11 +271,28 @@ public class ListRestController {
         Response response = new Response();
         try {
             response.setStatus(true);
-            WaterStorageExample waterStorageExample= new WaterStorageExample();
+            WaterStorageExample waterStorageExample = new WaterStorageExample();
             waterStorageExample.createCriteria();
             response.setData(waterStorageMapper.selectByExample(waterStorageExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addWaterStorage", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addWaterStorage(@RequestBody WaterStorage waterStorage) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            waterStorageMapper.insertSelective(waterStorage);
+            response.setData(waterStorage);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -189,7 +309,24 @@ public class ListRestController {
             smellExample.createCriteria();
             response.setData(smellMapper.selectByExample(smellExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addSmell", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addSmell(@RequestBody Smell smell) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            smellMapper.insertSelective(smell);
+            response.setData(smell);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -206,7 +343,24 @@ public class ListRestController {
             visualExample.createCriteria();
             response.setData(visualMapper.selectByExample(visualExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addVisual", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addVisual(@RequestBody Visual visual) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            visualMapper.insertSelective(visual);
+            response.setData(visual);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -223,7 +377,24 @@ public class ListRestController {
             turbidityExample.createCriteria();
             response.setData(turbidityMapper.selectByExample(turbidityExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addTurbidity", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addTurbidity(@RequestBody Turbidity turbidity) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            turbidityMapper.insertSelective(turbidity);
+            response.setData(turbidity);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -240,7 +411,24 @@ public class ListRestController {
             sanitaryExample.createCriteria();
             response.setData(sanitaryMapper.selectByExample(sanitaryExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addSanitary", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addSanitary(@RequestBody Sanitary sanitary) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            sanitaryMapper.insertSelective(sanitary);
+            response.setData(sanitary);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -257,7 +445,24 @@ public class ListRestController {
             healthCenterExample.createCriteria();
             response.setData(healthCenterMapper.selectByExample(healthCenterExample));
             return response;
-        } catch (Exception e){
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addHealthCenter", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addHealthCenter(@RequestBody HealthCenter healthCenter) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            healthCenterMapper.insertSelective(healthCenter);
+            response.setData(healthCenter);
+            return response;
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
@@ -309,6 +514,22 @@ public class ListRestController {
             methodExample.createCriteria().andIndexNameEqualTo(name);
             response.setData(methodMapper.selectByExample(methodExample));
             return response;
+        }catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+    @RequestMapping(value = "/api/addMethod", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addMethod(@RequestBody Method method) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            methodMapper.insertSelective(method);
+            response.setData(method);
+            return response;
         } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
@@ -316,7 +537,7 @@ public class ListRestController {
         }
     }
 
-    @RequestMapping(value = "/api/getAllDiarrheacauses", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/getAllDiarrheaCauses", method = RequestMethod.GET)
     @CrossOrigin
     public Response getAllDiarrheacauses() {
         Response response = new Response();
@@ -374,6 +595,22 @@ public class ListRestController {
             UniversityExample universityExample = new UniversityExample();
             universityExample.createCriteria().andUniversityNameLike("%" + name + "%");
             response.setData(universityMapper.selectByExample(universityExample));
+            return response;
+        }catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+    @RequestMapping(value = "/api/addDiarrheacause", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addDiarrheacause(@RequestBody DiarrheaCause diarrheaCause) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            diarrheaCauseMapper.insertSelective(diarrheaCause);
+            response.setData(diarrheaCause);
             return response;
         } catch (Exception e) {
             response.setMsg(e.getMessage());
