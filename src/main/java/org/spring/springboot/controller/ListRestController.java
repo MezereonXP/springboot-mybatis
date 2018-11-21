@@ -45,6 +45,9 @@ public class ListRestController {
     @Autowired
     PotentialContamMapper potentialContamMapper;
 
+    @Autowired
+    SampleDao sampleDao;
+
 
     @RequestMapping(value = "/api/getAllDeliveryMethods", method = RequestMethod.GET)
     @CrossOrigin
@@ -597,6 +600,26 @@ public class ListRestController {
             response.setStatus(true);
             diarrheaCauseMapper.insertSelective(diarrheaCause);
             response.setData(diarrheaCause);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addSuperSample", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response addSuperSample(@RequestBody SuperSample sample) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            for (int i = 1; i <= 11; i++) {
+                checkAndInsert(sample, i);
+            }
+            sampleDao.insertSelective(sample);
+            response.setData(sample);
             return response;
         } catch (Exception e) {
             response.setMsg(e.getMessage());
