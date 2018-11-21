@@ -5,6 +5,8 @@ public class PotentialContam {
 
     private String contamDesc;
 
+    private Integer visible;
+
     public Integer getContamId() {
         return contamId;
     }
@@ -19,5 +21,13 @@ public class PotentialContam {
 
     public void setContamDesc(String contamDesc) {
         this.contamDesc = contamDesc == null ? null : contamDesc.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

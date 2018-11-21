@@ -7,6 +7,8 @@ public class WaterStorage {
 
     private Integer avgStorageHrs;
 
+    private Integer visible;
+
     public Integer getWaterStorageId() {
         return waterStorageId;
     }
@@ -29,5 +31,13 @@ public class WaterStorage {
 
     public void setAvgStorageHrs(Integer avgStorageHrs) {
         this.avgStorageHrs = avgStorageHrs;
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

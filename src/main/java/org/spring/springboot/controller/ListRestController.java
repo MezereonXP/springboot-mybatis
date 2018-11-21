@@ -8,6 +8,8 @@ import org.spring.springboot.util.ValueUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 public class ListRestController {
 
@@ -618,6 +620,8 @@ public class ListRestController {
             for (int i = 1; i <= 11; i++) {
                 checkAndInsert(sample, i);
             }
+            sample.setCreateTime(new Date());
+            sample.setUpdateTime(new Date());
             sampleDao.insertSelective(sample);
             response.setData(sample);
             return response;

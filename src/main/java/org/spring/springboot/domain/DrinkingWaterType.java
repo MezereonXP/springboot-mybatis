@@ -5,6 +5,8 @@ public class DrinkingWaterType {
 
     private String drinkWaterDesc;
 
+    private Integer visible;
+
     public Integer getDrinkWaterId() {
         return drinkWaterId;
     }
@@ -19,5 +21,13 @@ public class DrinkingWaterType {
 
     public void setDrinkWaterDesc(String drinkWaterDesc) {
         this.drinkWaterDesc = drinkWaterDesc == null ? null : drinkWaterDesc.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

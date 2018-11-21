@@ -5,6 +5,8 @@ public class Sanitary {
 
     private String sanitaryTypeDesc;
 
+    private Integer visible;
+
     public Integer getSanitaryTypeId() {
         return sanitaryTypeId;
     }
@@ -19,5 +21,13 @@ public class Sanitary {
 
     public void setSanitaryTypeDesc(String sanitaryTypeDesc) {
         this.sanitaryTypeDesc = sanitaryTypeDesc == null ? null : sanitaryTypeDesc.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

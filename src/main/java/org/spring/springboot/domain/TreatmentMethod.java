@@ -5,6 +5,8 @@ public class TreatmentMethod {
 
     private String treatmentMethodDesc;
 
+    private Integer visible;
+
     public Integer getTreatmentMethodId() {
         return treatmentMethodId;
     }
@@ -19,5 +21,13 @@ public class TreatmentMethod {
 
     public void setTreatmentMethodDesc(String treatmentMethodDesc) {
         this.treatmentMethodDesc = treatmentMethodDesc == null ? null : treatmentMethodDesc.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

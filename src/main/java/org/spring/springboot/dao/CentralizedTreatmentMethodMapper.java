@@ -1,7 +1,6 @@
 package org.spring.springboot.dao;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.CentralizedTreatmentMethod;
 import org.spring.springboot.domain.CentralizedTreatmentMethodExample;

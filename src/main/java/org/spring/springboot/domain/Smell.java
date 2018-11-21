@@ -7,6 +7,8 @@ public class Smell {
 
     private String smellDescDetails;
 
+    private Integer visible;
+
     public Integer getSmellId() {
         return smellId;
     }
@@ -29,5 +31,13 @@ public class Smell {
 
     public void setSmellDescDetails(String smellDescDetails) {
         this.smellDescDetails = smellDescDetails == null ? null : smellDescDetails.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

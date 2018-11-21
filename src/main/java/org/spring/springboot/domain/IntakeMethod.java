@@ -5,6 +5,8 @@ public class IntakeMethod {
 
     private String intakeMethodDesc;
 
+    private Integer visible;
+
     public Integer getIntakeMethodId() {
         return intakeMethodId;
     }
@@ -19,5 +21,13 @@ public class IntakeMethod {
 
     public void setIntakeMethodDesc(String intakeMethodDesc) {
         this.intakeMethodDesc = intakeMethodDesc == null ? null : intakeMethodDesc.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

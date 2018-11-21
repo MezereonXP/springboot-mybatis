@@ -5,6 +5,8 @@ public class WaterType {
 
     private String waterTypeDesc;
 
+    private Integer visible;
+
     public Integer getWaterTypeId() {
         return waterTypeId;
     }
@@ -19,5 +21,13 @@ public class WaterType {
 
     public void setWaterTypeDesc(String waterTypeDesc) {
         this.waterTypeDesc = waterTypeDesc == null ? null : waterTypeDesc.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

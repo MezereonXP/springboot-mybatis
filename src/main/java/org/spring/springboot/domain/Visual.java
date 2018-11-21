@@ -7,6 +7,8 @@ public class Visual {
 
     private String visualDescDetails;
 
+    private Integer visible;
+
     public Integer getVisualID() {
         return visualID;
     }
@@ -29,5 +31,13 @@ public class Visual {
 
     public void setVisualDescDetails(String visualDescDetails) {
         this.visualDescDetails = visualDescDetails == null ? null : visualDescDetails.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

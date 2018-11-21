@@ -9,6 +9,8 @@ public class Turbidity {
 
     private String turbiditymethod;
 
+    private Integer visible;
+
     public Integer getTurbidityId() {
         return turbidityId;
     }
@@ -39,5 +41,13 @@ public class Turbidity {
 
     public void setTurbiditymethod(String turbiditymethod) {
         this.turbiditymethod = turbiditymethod == null ? null : turbiditymethod.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

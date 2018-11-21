@@ -5,6 +5,8 @@ public class DiarrheaCause {
 
     private String DHDesc;
 
+    private Integer visible;
+
     public Integer getDHcauseID() {
         return DHcauseID;
     }
@@ -19,5 +21,13 @@ public class DiarrheaCause {
 
     public void setDHDesc(String DHDesc) {
         this.DHDesc = DHDesc == null ? null : DHDesc.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }

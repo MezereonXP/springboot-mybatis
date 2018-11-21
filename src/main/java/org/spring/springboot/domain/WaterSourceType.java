@@ -7,6 +7,8 @@ public class WaterSourceType {
 
     private String waterSourceDetails;
 
+    private Integer visible;
+
     public Integer getWaterSourceId() {
         return waterSourceId;
     }
@@ -29,5 +31,13 @@ public class WaterSourceType {
 
     public void setWaterSourceDetails(String waterSourceDetails) {
         this.waterSourceDetails = waterSourceDetails == null ? null : waterSourceDetails.trim();
+    }
+
+    public Integer getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Integer visible) {
+        this.visible = visible;
     }
 }
