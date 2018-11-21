@@ -618,8 +618,9 @@ public class ListRestController {
         try {
             response.setStatus(true);
             for (int i = 1; i <= 11; i++) {
-                checkAndInsert(sample, i);
+                check(sample, i);
             }
+            insert(sample);
             sample.setCreateTime(new Date());
             sample.setUpdateTime(new Date());
             sampleDao.insertSelective(sample);
@@ -632,17 +633,12 @@ public class ListRestController {
         }
     }
 
-    public void checkAndInsert(SuperSample sample, int flag) throws MyException {
+    public void check(SuperSample sample, int flag) throws MyException {
         switch (flag) {
             case ValueUtil.WATERTYPE_FLAG:
-                if (sample.getWaterId() == null) {
+                if (sample.getWaterTypeId() == null) {
                     if (sample.getWaterTypeDesc() == null) {
                         throw new MyException("缺少水类型信息");
-                    } else {
-                        WaterType waterType = new WaterType();
-                        waterType.setWaterTypeDesc(sample.getWaterTypeDesc());
-                        waterTypeMapper.insertSelective(waterType);
-                        sample.setWaterId(waterType.getWaterTypeId());
                     }
                 }
                 break;
@@ -650,11 +646,6 @@ public class ListRestController {
                 if (sample.getCentralizedWaterTreatmentMethodId() == null) {
                     if (sample.getCentrTreatmentMethodDesc() == null) {
                         throw new MyException("缺少中央处理方法信息");
-                    } else {
-                        CentralizedTreatmentMethod centralizedTreatmentMethod = new CentralizedTreatmentMethod();
-                        centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
-                        centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
-                        sample.setCentralizedWaterTreatmentMethodId(centralizedTreatmentMethod.getCentrTreatmentMethodId());
                     }
                 }
                 break;
@@ -662,11 +653,6 @@ public class ListRestController {
                 if (sample.getDeliveryMethodId() == null) {
                     if (sample.getDeliveryMethodDesc() == null) {
                         throw new MyException("缺少运输方式信息");
-                    } else {
-                        DeliveryMethod deliveryMethod = new DeliveryMethod();
-                        deliveryMethod.setDeliveryMethodDesc(sample.getDeliveryMethodDesc());
-                        deliveryMethodMapper.insertSelective(deliveryMethod);
-                        sample.setDeliveryMethodId(deliveryMethod.getDeliveryMethodId());
                     }
                 }
                 break;
@@ -674,11 +660,6 @@ public class ListRestController {
                 if (sample.getDrinkingWaterId() == null) {
                     if (sample.getDrinkWaterDesc() == null) {
                         throw new MyException("缺少饮用水类型信息");
-                    } else {
-                        DrinkingWaterType drinkingWaterType = new DrinkingWaterType();
-                        drinkingWaterType.setDrinkWaterDesc(sample.getDrinkWaterDesc());
-                        drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
-                        sample.setDrinkingWaterId(drinkingWaterType.getDrinkWaterId());
                     }
                 }
                 break;
@@ -686,11 +667,6 @@ public class ListRestController {
                 if (sample.getPotentialContamination() == null) {
                     if (sample.getContamDesc()  == null) {
                         throw new MyException("缺少潜在污染源信息");
-                    } else {
-                        PotentialContam potentialContam = new PotentialContam();
-                        potentialContam.setContamDesc(sample.getPotentialContaminationDistance());
-                        potentialContamMapper.insertSelective(potentialContam);
-                        sample.setPotentialContamination(potentialContam.getContamId() + "");
                     }
                 }
                 break;
@@ -698,11 +674,6 @@ public class ListRestController {
                 if (sample.getSanitaryTypeId() == null) {
                     if (sample.getSanitaryTypeDesc() == null) {
                         throw new MyException("缺少饮用水卫生情况信息");
-                    } else {
-                        Sanitary sanitary = new Sanitary();
-                        sanitary.setSanitaryTypeDesc(sample.getSanitaryTypeDesc());
-                        sanitaryMapper.insertSelective(sanitary);
-                        sample.setSanitaryTypeId(sanitary.getSanitaryTypeId());
                     }
                 }
                 break;
@@ -710,12 +681,6 @@ public class ListRestController {
                 if (sample.getSmellId() == null) {
                     if (sample.getSmellDescDetails() == null) {
                         throw new MyException("缺少气味类型信息");
-                    } else {
-                        Smell smell = new Smell();
-                        smell.setSmellDesc(sample.getSmellDetail());
-                        smell.setSmellDescDetails(sample.getSmellDescDetails());
-                        smellMapper.insertSelective(smell);
-                        sample.setSmellId(smell.getSmellId());
                     }
                 }
                 break;
@@ -723,11 +688,6 @@ public class ListRestController {
                 if (sample.getTreatmentMethodId() == null) {
                     if (sample.getTreatmentMethodDesc() == null) {
                         throw new MyException("缺少饮用水卫生情况信息");
-                    } else {
-                        TreatmentMethod treatmentMethod = new TreatmentMethod();
-                        treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
-                        treatmentMethodMapper.insertSelective(treatmentMethod);
-                        sample.setTreatmentMethodId(treatmentMethod.getTreatmentMethodId());
                     }
                 }
                 break;
@@ -735,12 +695,6 @@ public class ListRestController {
                 if (sample.getVisualId() == null) {
                     if (sample.getVisualDesc() == null) {
                         throw new MyException("缺少水样描述信息");
-                    } else {
-                        Visual visual = new Visual();
-                        visual.setVisualDesc(sample.getVisualDesc());
-                        visual.setVisualDescDetails(sample.getVisualDetail());
-                        visualMapper.insertSelective(visual);
-                        sample.setVisualId(visual.getVisualID());
                     }
                 }
                 break;
@@ -748,11 +702,6 @@ public class ListRestController {
                 if (sample.getWaterSourceTypeId() == null) {
                     if (sample.getWaterSourceDesc() == null) {
                         throw new MyException("缺少水样水源类型信息");
-                    } else {
-                        WaterSourceType waterSourceType = new WaterSourceType();
-                        waterSourceType.setWaterSourceDesc(sample.getWaterSourceDesc());
-                        waterSourceTypeMapper.insertSelective(waterSourceType);
-                        sample.setWaterSourceTypeId(waterSourceType.getWaterSourceId());
                     }
                 }
                 break;
@@ -760,12 +709,6 @@ public class ListRestController {
                 if (sample.getWaterStorageId() == null) {
                     if (sample.getWaterStorageDesc() == null && sample.getAvgStorageHrs() == null) {
                         throw new MyException("缺少家庭储水容器信息");
-                    } else {
-                        WaterStorage waterStorage = new WaterStorage();
-                        waterStorage.setWaterStorageDesc(sample.getWaterStorageDesc());
-                        waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
-                        waterStorageMapper.insertSelective(waterStorage);
-                        sample.setWaterStorageId(waterStorage.getWaterStorageId());
                     }
                 }
                 break;
@@ -773,4 +716,77 @@ public class ListRestController {
                 break;
         }
     }
+    public void insert(SuperSample sample) throws MyException {
+
+                if (sample.getWaterTypeId() == null) {
+                        WaterType waterType = new WaterType();
+                        waterType.setWaterTypeDesc(sample.getWaterTypeDesc());
+                        waterTypeMapper.insertSelective(waterType);
+                        sample.setWaterTypeId(waterType.getWaterTypeId());
+                }
+                if (sample.getCentralizedWaterTreatmentMethodId() == null) {
+                        CentralizedTreatmentMethod centralizedTreatmentMethod = new CentralizedTreatmentMethod();
+                        centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
+                        centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
+                        sample.setCentralizedWaterTreatmentMethodId(centralizedTreatmentMethod.getCentrTreatmentMethodId());
+                }
+                if (sample.getDeliveryMethodId() == null) {
+
+                        DeliveryMethod deliveryMethod = new DeliveryMethod();
+                        deliveryMethod.setDeliveryMethodDesc(sample.getDeliveryMethodDesc());
+                        deliveryMethodMapper.insertSelective(deliveryMethod);
+                        sample.setDeliveryMethodId(deliveryMethod.getDeliveryMethodId());
+                }
+                if (sample.getDrinkingWaterId() == null) {
+                        DrinkingWaterType drinkingWaterType = new DrinkingWaterType();
+                        drinkingWaterType.setDrinkWaterDesc(sample.getDrinkWaterDesc());
+                        drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
+                        sample.setDrinkingWaterId(drinkingWaterType.getDrinkWaterId());
+                }
+                if (sample.getPotentialContamination() == null) {
+                        PotentialContam potentialContam = new PotentialContam();
+                        potentialContam.setContamDesc(sample.getContamDesc());
+                        potentialContamMapper.insertSelective(potentialContam);
+                        sample.setPotentialContamination(potentialContam.getContamId() + "");
+                }
+                if (sample.getSanitaryTypeId() == null) {
+                        Sanitary sanitary = new Sanitary();
+                        sanitary.setSanitaryTypeDesc(sample.getSanitaryTypeDesc());
+                        sanitaryMapper.insertSelective(sanitary);
+                        sample.setSanitaryTypeId(sanitary.getSanitaryTypeId());
+                }
+                if (sample.getSmellId() == null) {
+                        Smell smell = new Smell();
+                        smell.setSmellDesc(sample.getSmellDetail());
+                        smell.setSmellDescDetails(sample.getSmellDescDetails());
+                        smellMapper.insertSelective(smell);
+                        sample.setSmellId(smell.getSmellId());
+                }
+                if (sample.getTreatmentMethodId() == null) {
+                        TreatmentMethod treatmentMethod = new TreatmentMethod();
+                        treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
+                        treatmentMethodMapper.insertSelective(treatmentMethod);
+                        sample.setTreatmentMethodId(treatmentMethod.getTreatmentMethodId());
+                }
+                if (sample.getVisualId() == null) {
+                        Visual visual = new Visual();
+                        visual.setVisualDesc(sample.getVisualDesc());
+                        visual.setVisualDescDetails(sample.getVisualDetail());
+                        visualMapper.insertSelective(visual);
+                        sample.setVisualId(visual.getVisualID());
+                }
+                if (sample.getWaterSourceTypeId() == null) {
+                        WaterSourceType waterSourceType = new WaterSourceType();
+                        waterSourceType.setWaterSourceDesc(sample.getWaterSourceDesc());
+                        waterSourceTypeMapper.insertSelective(waterSourceType);
+                        sample.setWaterSourceTypeId(waterSourceType.getWaterSourceId());
+                }
+                if (sample.getWaterStorageId() == null) {
+                        WaterStorage waterStorage = new WaterStorage();
+                        waterStorage.setWaterStorageDesc(sample.getWaterStorageDesc());
+                        waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
+                        waterStorageMapper.insertSelective(waterStorage);
+                        sample.setWaterStorageId(waterStorage.getWaterStorageId());
+                }
+        }
 }

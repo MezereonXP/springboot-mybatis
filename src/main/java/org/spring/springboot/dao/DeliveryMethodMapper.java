@@ -4,7 +4,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.DeliveryMethod;
 import org.spring.springboot.domain.DeliveryMethodExample;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface DeliveryMethodMapper {
     long countByExample(DeliveryMethodExample example);
 
