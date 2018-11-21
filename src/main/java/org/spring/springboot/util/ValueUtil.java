@@ -22,6 +22,17 @@ import java.util.Map;
  * @create: 2018/10/7
  **/
 public class ValueUtil {
+    public static final int WATERTYPE_FLAG = 1;
+    public static final int DRINKINGWATER_FLAG = 2;
+    public static final int WATERSOURCE_FLAG = 3;
+    public static final int DELIVERYMETHOD_FLAG = 4;
+    public static final int CENTRALIZEDWATERMETHOD_FLAG = 5;
+    public static final int WATERSTORAGE_FLAG = 6;
+    public static final int TREATMENTMETHOD_FLAG = 7;
+    public static final int POTENTIAL_FLAG = 8;
+    public static final int SMELL_FLAG = 9;
+    public static final int VISUAL_FLAG = 10;
+    public static final int SANITARYTYPE_FLAG = 11;
     public static Map<String, String> getMap() {
         String fileName = "C:\\Users\\Administrator\\Desktop\\data.txt";
         File file = new File(fileName);
