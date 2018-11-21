@@ -684,7 +684,7 @@ public class ListRestController {
                 break;
             case ValueUtil.POTENTIAL_FLAG:
                 if (sample.getPotentialContamination() == null) {
-                    if (sample.getPotentialContaminationDistance() == null) {
+                    if (sample.getContamDesc()  == null) {
                         throw new MyException("缺少潜在污染源信息");
                     } else {
                         PotentialContam potentialContam = new PotentialContam();
@@ -712,6 +712,7 @@ public class ListRestController {
                         throw new MyException("缺少气味类型信息");
                     } else {
                         Smell smell = new Smell();
+                        smell.setSmellDesc(sample.getSmellDetail());
                         smell.setSmellDescDetails(sample.getSmellDescDetails());
                         smellMapper.insertSelective(smell);
                         sample.setSmellId(smell.getSmellId());
@@ -732,7 +733,7 @@ public class ListRestController {
                 break;
             case ValueUtil.VISUAL_FLAG:
                 if (sample.getVisualId() == null) {
-                    if (sample.getVisualDesc() == null && sample.getVisualDetail() == null) {
+                    if (sample.getVisualDesc() == null) {
                         throw new MyException("缺少水样描述信息");
                     } else {
                         Visual visual = new Visual();
