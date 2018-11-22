@@ -33,6 +33,7 @@ public class ValueUtil {
     public static final int SMELL_FLAG = 9;
     public static final int VISUAL_FLAG = 10;
     public static final int SANITARYTYPE_FLAG = 11;
+    public static final int LOCATION_FLAG = 12;
     public static Map<String, String> getMap() {
         String fileName = "C:\\Users\\Administrator\\Desktop\\data.txt";
         File file = new File(fileName);

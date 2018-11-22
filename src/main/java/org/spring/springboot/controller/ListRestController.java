@@ -49,6 +49,8 @@ public class ListRestController {
 
     @Autowired
     SampleDao sampleDao;
+    @Autowired
+    LocationDao locationDao;
 
 
     @RequestMapping(value = "/api/getAllDeliveryMethods", method = RequestMethod.GET)
@@ -617,7 +619,7 @@ public class ListRestController {
         Response response = new Response();
         try {
             response.setStatus(true);
-            for (int i = 1; i <= 11; i++) {
+            for (int i = 1; i <= 12; i++) {
                 check(sample, i);
             }
             insert(sample);
@@ -712,12 +714,41 @@ public class ListRestController {
                     }
                 }
                 break;
+            case ValueUtil.LOCATION_FLAG:
+                if (sample.getProvinceId() == null) {
+                    throw new MyException("缺少provinceId信息");
+                }else if(sample.getPrefectureId() == null){
+                    throw new MyException("缺少prefectureId信息");
+                }else if(sample.getCountyId() == null){
+                    throw new MyException("缺少countyId信息");
+                }else if(sample.getTownshipId() == null){
+                    throw new MyException("缺少townshipId信息");
+                }else if(sample.getVillageId() == null){
+                    throw new MyException("缺少villageId信息");
+                }else if(sample.getLocationName() == null){
+                    throw new MyException("缺少locationName信息");
+                }else if(sample.getLat() == null){
+                    throw new MyException("缺少lat信息");
+                }else if(sample.getLog() == null){
+                    throw new MyException("缺少log信息");
+                }
+                break;
             default:
                 break;
         }
     }
     public void insert(SuperSample sample) throws MyException {
-
+                Location location = new Location();
+                location.setProvinceId(sample.getProvinceId());
+                location.setPrefectureId(sample.getPrefectureId());
+                location.setCountyId(sample.getCountyId());
+                location.setTownshipId(sample.getTownshipId());
+                location.setVillageId(sample.getVillageId());
+                location.setLocationName(sample.getLocationName());
+                location.setLat(sample.getLat());
+                location.setLog(sample.getLog());
+                locationDao.insertSelective(location);
+                sample.setLocationId(location.getLocationId());
                 if (sample.getWaterTypeId() == null) {
                         WaterType waterType = new WaterType();
                         waterType.setWaterTypeDesc(sample.getWaterTypeDesc());
