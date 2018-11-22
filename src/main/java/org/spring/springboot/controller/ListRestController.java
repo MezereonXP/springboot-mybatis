@@ -507,12 +507,13 @@ public class ListRestController {
             methodExample.createCriteria().andIndexNameEqualTo(name);
             response.setData(methodMapper.selectByExample(methodExample));
             return response;
-        }catch (Exception e) {
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
         }
     }
+
     @RequestMapping(value = "/api/addMethod", method = RequestMethod.POST)
     @ResponseBody
     @CrossOrigin
@@ -589,12 +590,13 @@ public class ListRestController {
             universityExample.createCriteria().andUniversityNameLike("%" + name + "%");
             response.setData(universityMapper.selectByExample(universityExample));
             return response;
-        }catch (Exception e) {
+        } catch (Exception e) {
             response.setMsg(e.getMessage());
             response.setStatus(false);
             return response;
         }
     }
+
     @RequestMapping(value = "/api/addDiarrheacause", method = RequestMethod.POST)
     @ResponseBody
     @CrossOrigin
@@ -667,7 +669,7 @@ public class ListRestController {
                 break;
             case ValueUtil.POTENTIAL_FLAG:
                 if (sample.getPotentialContamination() == null) {
-                    if (sample.getContamDesc()  == null) {
+                    if (sample.getContamDesc() == null) {
                         throw new MyException("缺少潜在污染源信息");
                     }
                 }
@@ -717,19 +719,19 @@ public class ListRestController {
             case ValueUtil.LOCATION_FLAG:
                 if (sample.getProvinceId() == null) {
                     throw new MyException("缺少provinceId信息");
-                }else if(sample.getPrefectureId() == null){
+                } else if (sample.getPrefectureId() == null) {
                     throw new MyException("缺少prefectureId信息");
-                }else if(sample.getCountyId() == null){
+                } else if (sample.getCountyId() == null) {
                     throw new MyException("缺少countyId信息");
-                }else if(sample.getTownshipId() == null){
+                } else if (sample.getTownshipId() == null) {
                     throw new MyException("缺少townshipId信息");
-                }else if(sample.getVillageId() == null){
+                } else if (sample.getVillageId() == null) {
                     throw new MyException("缺少villageId信息");
-                }else if(sample.getLocationName() == null){
+                } else if (sample.getLocationName() == null) {
                     throw new MyException("缺少locationName信息");
-                }else if(sample.getLat() == null){
+                } else if (sample.getLat() == null) {
                     throw new MyException("缺少lat信息");
-                }else if(sample.getLog() == null){
+                } else if (sample.getLog() == null) {
                     throw new MyException("缺少log信息");
                 }
                 break;
@@ -737,87 +739,90 @@ public class ListRestController {
                 break;
         }
     }
-    public void insert(SuperSample sample) throws MyException {
-                Location location = new Location();
-                location.setProvinceId(sample.getProvinceId());
-                location.setPrefectureId(sample.getPrefectureId());
-                location.setCountyId(sample.getCountyId());
-                location.setTownshipId(sample.getTownshipId());
-                location.setVillageId(sample.getVillageId());
-                location.setLocationName(sample.getLocationName());
-                location.setLat(sample.getLat());
-                location.setLog(sample.getLog());
-                locationDao.insertSelective(location);
-                sample.setLocationId(location.getLocationId());
-                if (sample.getWaterTypeId() == null) {
-                        WaterType waterType = new WaterType();
-                        waterType.setWaterTypeDesc(sample.getWaterTypeDesc());
-                        waterTypeMapper.insertSelective(waterType);
-                        sample.setWaterTypeId(waterType.getWaterTypeId());
-                }
-                if (sample.getCentralizedWaterTreatmentMethodId() == null) {
-                        CentralizedTreatmentMethod centralizedTreatmentMethod = new CentralizedTreatmentMethod();
-                        centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
-                        centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
-                        sample.setCentralizedWaterTreatmentMethodId(centralizedTreatmentMethod.getCentrTreatmentMethodId());
-                }
-                if (sample.getDeliveryMethodId() == null) {
 
-                        DeliveryMethod deliveryMethod = new DeliveryMethod();
-                        deliveryMethod.setDeliveryMethodDesc(sample.getDeliveryMethodDesc());
-                        deliveryMethodMapper.insertSelective(deliveryMethod);
-                        sample.setDeliveryMethodId(deliveryMethod.getDeliveryMethodId());
-                }
-                if (sample.getDrinkingWaterId() == null) {
-                        DrinkingWaterType drinkingWaterType = new DrinkingWaterType();
-                        drinkingWaterType.setDrinkWaterDesc(sample.getDrinkWaterDesc());
-                        drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
-                        sample.setDrinkingWaterId(drinkingWaterType.getDrinkWaterId());
-                }
-                if (sample.getPotentialContamination() == null) {
-                        PotentialContam potentialContam = new PotentialContam();
-                        potentialContam.setContamDesc(sample.getContamDesc());
-                        potentialContamMapper.insertSelective(potentialContam);
-                        sample.setPotentialContamination(potentialContam.getContamId() + "");
-                }
-                if (sample.getSanitaryTypeId() == null) {
-                        Sanitary sanitary = new Sanitary();
-                        sanitary.setSanitaryTypeDesc(sample.getSanitaryTypeDesc());
-                        sanitaryMapper.insertSelective(sanitary);
-                        sample.setSanitaryTypeId(sanitary.getSanitaryTypeId());
-                }
-                if (sample.getSmellId() == null) {
-                        Smell smell = new Smell();
-                        smell.setSmellDesc(sample.getSmellDetail());
-                        smell.setSmellDescDetails(sample.getSmellDescDetails());
-                        smellMapper.insertSelective(smell);
-                        sample.setSmellId(smell.getSmellId());
-                }
-                if (sample.getTreatmentMethodId() == null) {
-                        TreatmentMethod treatmentMethod = new TreatmentMethod();
-                        treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
-                        treatmentMethodMapper.insertSelective(treatmentMethod);
-                        sample.setTreatmentMethodId(treatmentMethod.getTreatmentMethodId());
-                }
-                if (sample.getVisualId() == null) {
-                        Visual visual = new Visual();
-                        visual.setVisualDesc(sample.getVisualDesc());
-                        visual.setVisualDescDetails(sample.getVisualDetail());
-                        visualMapper.insertSelective(visual);
-                        sample.setVisualId(visual.getVisualID());
-                }
-                if (sample.getWaterSourceTypeId() == null) {
-                        WaterSourceType waterSourceType = new WaterSourceType();
-                        waterSourceType.setWaterSourceDesc(sample.getWaterSourceDesc());
-                        waterSourceTypeMapper.insertSelective(waterSourceType);
-                        sample.setWaterSourceTypeId(waterSourceType.getWaterSourceId());
-                }
-                if (sample.getWaterStorageId() == null) {
-                        WaterStorage waterStorage = new WaterStorage();
-                        waterStorage.setWaterStorageDesc(sample.getWaterStorageDesc());
-                        waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
-                        waterStorageMapper.insertSelective(waterStorage);
-                        sample.setWaterStorageId(waterStorage.getWaterStorageId());
-                }
+    public void insert(SuperSample sample) throws MyException {
+        Location location = new Location();
+        location.setProvinceId(sample.getProvinceId());
+        location.setPrefectureId(sample.getPrefectureId());
+        location.setCountyId(sample.getCountyId());
+        location.setTownshipId(sample.getTownshipId());
+        location.setVillageId(sample.getVillageId());
+        location.setLocationName(sample.getLocationName());
+        location.setLat(sample.getLat());
+        location.setLog(sample.getLog());
+        location.setCreatedAt(new Date());
+        location.setUpdatedAt(new Date());
+        locationDao.insertSelective(location);
+        sample.setLocationId(location.getLocationId());
+        if (sample.getWaterTypeId() == null) {
+            WaterType waterType = new WaterType();
+            waterType.setWaterTypeDesc(sample.getWaterTypeDesc());
+            waterTypeMapper.insertSelective(waterType);
+            sample.setWaterTypeId(waterType.getWaterTypeId());
         }
+        if (sample.getCentralizedWaterTreatmentMethodId() == null) {
+            CentralizedTreatmentMethod centralizedTreatmentMethod = new CentralizedTreatmentMethod();
+            centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
+            centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
+            sample.setCentralizedWaterTreatmentMethodId(centralizedTreatmentMethod.getCentrTreatmentMethodId());
+        }
+        if (sample.getDeliveryMethodId() == null) {
+
+            DeliveryMethod deliveryMethod = new DeliveryMethod();
+            deliveryMethod.setDeliveryMethodDesc(sample.getDeliveryMethodDesc());
+            deliveryMethodMapper.insertSelective(deliveryMethod);
+            sample.setDeliveryMethodId(deliveryMethod.getDeliveryMethodId());
+        }
+        if (sample.getDrinkingWaterId() == null) {
+            DrinkingWaterType drinkingWaterType = new DrinkingWaterType();
+            drinkingWaterType.setDrinkWaterDesc(sample.getDrinkWaterDesc());
+            drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
+            sample.setDrinkingWaterId(drinkingWaterType.getDrinkWaterId());
+        }
+        if (sample.getPotentialContamination() == null) {
+            PotentialContam potentialContam = new PotentialContam();
+            potentialContam.setContamDesc(sample.getContamDesc());
+            potentialContamMapper.insertSelective(potentialContam);
+            sample.setPotentialContamination(potentialContam.getContamId() + "");
+        }
+        if (sample.getSanitaryTypeId() == null) {
+            Sanitary sanitary = new Sanitary();
+            sanitary.setSanitaryTypeDesc(sample.getSanitaryTypeDesc());
+            sanitaryMapper.insertSelective(sanitary);
+            sample.setSanitaryTypeId(sanitary.getSanitaryTypeId());
+        }
+        if (sample.getSmellId() == null) {
+            Smell smell = new Smell();
+            smell.setSmellDesc(sample.getSmellDetail());
+            smell.setSmellDescDetails(sample.getSmellDescDetails());
+            smellMapper.insertSelective(smell);
+            sample.setSmellId(smell.getSmellId());
+        }
+        if (sample.getTreatmentMethodId() == null) {
+            TreatmentMethod treatmentMethod = new TreatmentMethod();
+            treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
+            treatmentMethodMapper.insertSelective(treatmentMethod);
+            sample.setTreatmentMethodId(treatmentMethod.getTreatmentMethodId());
+        }
+        if (sample.getVisualId() == null) {
+            Visual visual = new Visual();
+            visual.setVisualDesc(sample.getVisualDesc());
+            visual.setVisualDescDetails(sample.getVisualDetail());
+            visualMapper.insertSelective(visual);
+            sample.setVisualId(visual.getVisualID());
+        }
+        if (sample.getWaterSourceTypeId() == null) {
+            WaterSourceType waterSourceType = new WaterSourceType();
+            waterSourceType.setWaterSourceDesc(sample.getWaterSourceDesc());
+            waterSourceTypeMapper.insertSelective(waterSourceType);
+            sample.setWaterSourceTypeId(waterSourceType.getWaterSourceId());
+        }
+        if (sample.getWaterStorageId() == null) {
+            WaterStorage waterStorage = new WaterStorage();
+            waterStorage.setWaterStorageDesc(sample.getWaterStorageDesc());
+            waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
+            waterStorageMapper.insertSelective(waterStorage);
+            sample.setWaterStorageId(waterStorage.getWaterStorageId());
+        }
+    }
 }
