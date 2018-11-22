@@ -60,7 +60,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             DeliveryMethodExample deliveryMethodExample = new DeliveryMethodExample();
-            deliveryMethodExample.createCriteria();
+            deliveryMethodExample.createCriteria().andVisibleEqualTo(0);
             response.setData(deliveryMethodMapper.selectByExample(deliveryMethodExample));
             return response;
         } catch (Exception e) {
@@ -94,7 +94,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             DrinkingWaterTypeExample drinkingWaterTypeExample = new DrinkingWaterTypeExample();
-            drinkingWaterTypeExample.createCriteria();
+            drinkingWaterTypeExample.createCriteria().andVisibleEqualTo(0);
             response.setData(drinkingWaterTypeMapper.selectByExample(drinkingWaterTypeExample));
             return response;
         } catch (Exception e) {
@@ -128,7 +128,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             WaterTypeExample waterTypeExample = new WaterTypeExample();
-            waterTypeExample.createCriteria();
+            waterTypeExample.createCriteria().andVisibleEqualTo(0);
             response.setData(waterTypeMapper.selectByExample(waterTypeExample));
             return response;
         } catch (Exception e) {
@@ -162,7 +162,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             WaterSourceTypeExample waterSourceTypeExample = new WaterSourceTypeExample();
-            waterSourceTypeExample.createCriteria();
+            waterSourceTypeExample.createCriteria().andVisibleEqualTo(0);
             response.setData(waterSourceTypeMapper.selectByExample(waterSourceTypeExample));
             return response;
         } catch (Exception e) {
@@ -196,7 +196,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             CentralizedTreatmentMethodExample centralizedTreatmentMethodExample = new CentralizedTreatmentMethodExample();
-            centralizedTreatmentMethodExample.createCriteria();
+            centralizedTreatmentMethodExample.createCriteria().andVisibleEqualTo(0);
             response.setData(centralizedTreatmentMethodMapper.selectByExample(centralizedTreatmentMethodExample));
             return response;
         } catch (Exception e) {
@@ -230,7 +230,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             TreatmentMethodExample treatmentMethodExample = new TreatmentMethodExample();
-            treatmentMethodExample.createCriteria();
+            treatmentMethodExample.createCriteria().andVisibleEqualTo(0);
             response.setData(treatmentMethodMapper.selectByExample(treatmentMethodExample));
             return response;
         } catch (Exception e) {
@@ -265,7 +265,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             WaterStorageExample waterStorageExample = new WaterStorageExample();
-            waterStorageExample.createCriteria();
+            waterStorageExample.createCriteria().andVisibleEqualTo(0);
             response.setData(waterStorageMapper.selectByExample(waterStorageExample));
             return response;
         } catch (Exception e) {
@@ -299,7 +299,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             SmellExample smellExample = new SmellExample();
-            smellExample.createCriteria();
+            smellExample.createCriteria().andVisibleEqualTo(0);
             response.setData(smellMapper.selectByExample(smellExample));
             return response;
         } catch (Exception e) {
@@ -333,7 +333,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             VisualExample visualExample = new VisualExample();
-            visualExample.createCriteria();
+            visualExample.createCriteria().andVisibleEqualTo(0);
             response.setData(visualMapper.selectByExample(visualExample));
             return response;
         } catch (Exception e) {
@@ -401,7 +401,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             SanitaryExample sanitaryExample = new SanitaryExample();
-            sanitaryExample.createCriteria();
+            sanitaryExample.createCriteria().andVisibleEqualTo(0);
             response.setData(sanitaryMapper.selectByExample(sanitaryExample));
             return response;
         } catch (Exception e) {
@@ -469,7 +469,7 @@ public class ListRestController {
         try {
             response.setStatus(true);
             PotentialContamExample potentialContam = new PotentialContamExample();
-            potentialContam.createCriteria();
+            potentialContam.createCriteria().andVisibleEqualTo(0);
             response.setData(potentialContamMapper.selectByExample(potentialContam));
             return response;
         } catch (Exception e) {
