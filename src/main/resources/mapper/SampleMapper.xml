@@ -13,9 +13,9 @@
     <result column="waterSourceDetails" jdbcType="VARCHAR" property="waterSourceDetails"/>
     <result column="deliveryMethodId" jdbcType="INTEGER" property="deliveryMethodId"/>
     <result column="inTakeMethodId" jdbcType="INTEGER" property="inTakeMethodId"/>
-    <result column="centralizedWaterTreatmentMethodId" jdbcType="INTEGER" property="centralizedWaterTreatmentMethodId"/>
-    <result column="treatmentMethodId" jdbcType="INTEGER" property="treatmentMethodId"/>
-    <result column="waterStorageId" jdbcType="INTEGER" property="waterStorageId"/>
+    <result column="centralizedWaterTreatmentMethodId" jdbcType="VARCHAR" property="centralizedWaterTreatmentMethodId"/>
+    <result column="treatmentMethodId" jdbcType="VARCHAR" property="treatmentMethodId"/>
+    <result column="waterStorageId" jdbcType="VARCHAR" property="waterStorageId"/>
     <result column="waterShortage" jdbcType="VARCHAR" property="waterShortage"/>
     <result column="potentialContamination" jdbcType="VARCHAR" property="potentialContamination"/>
     <result column="potentialContaminationDistance" jdbcType="VARCHAR" property="potentialContaminationDistance"/>
@@ -261,8 +261,8 @@
     values (#{baseId,jdbcType=INTEGER}, #{waterId,jdbcType=INTEGER}, #{waterTypeId,jdbcType=INTEGER}, 
       #{validationId,jdbcType=INTEGER}, #{locationId,jdbcType=INTEGER}, #{cycleTeamId,jdbcType=INTEGER}, 
       #{drinkingWaterId,jdbcType=INTEGER}, #{waterSourceTypeId,jdbcType=INTEGER}, #{waterSourceDetails,jdbcType=VARCHAR}, 
-      #{deliveryMethodId,jdbcType=INTEGER}, #{inTakeMethodId,jdbcType=INTEGER}, #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER}, 
-      #{treatmentMethodId,jdbcType=INTEGER}, #{waterStorageId,jdbcType=INTEGER}, #{waterShortage,jdbcType=VARCHAR}, 
+      #{deliveryMethodId,jdbcType=INTEGER}, #{inTakeMethodId,jdbcType=INTEGER}, #{centralizedWaterTreatmentMethodId,jdbcType=VARCHAR}, 
+      #{treatmentMethodId,jdbcType=VARCHAR}, #{waterStorageId,jdbcType=VARCHAR}, #{waterShortage,jdbcType=VARCHAR}, 
       #{potentialContamination,jdbcType=VARCHAR}, #{potentialContaminationDistance,jdbcType=VARCHAR}, 
       #{populationServedBySource,jdbcType=INTEGER}, #{physicalIndicators,jdbcType=INTEGER}, 
       #{temp,jdbcType=REAL}, #{smellId,jdbcType=INTEGER}, #{smellDetail,jdbcType=VARCHAR}, 
@@ -652,13 +652,13 @@
         #{inTakeMethodId,jdbcType=INTEGER},
       </if>
       <if test="centralizedWaterTreatmentMethodId != null">
-        #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER},
+        #{centralizedWaterTreatmentMethodId,jdbcType=VARCHAR},
       </if>
       <if test="treatmentMethodId != null">
-        #{treatmentMethodId,jdbcType=INTEGER},
+        #{treatmentMethodId,jdbcType=VARCHAR},
       </if>
       <if test="waterStorageId != null">
-        #{waterStorageId,jdbcType=INTEGER},
+        #{waterStorageId,jdbcType=VARCHAR},
       </if>
       <if test="waterShortage != null">
         #{waterShortage,jdbcType=VARCHAR},
@@ -978,13 +978,13 @@
         inTakeMethodId = #{record.inTakeMethodId,jdbcType=INTEGER},
       </if>
       <if test="record.centralizedWaterTreatmentMethodId != null">
-        centralizedWaterTreatmentMethodId = #{record.centralizedWaterTreatmentMethodId,jdbcType=INTEGER},
+        centralizedWaterTreatmentMethodId = #{record.centralizedWaterTreatmentMethodId,jdbcType=VARCHAR},
       </if>
       <if test="record.treatmentMethodId != null">
-        treatmentMethodId = #{record.treatmentMethodId,jdbcType=INTEGER},
+        treatmentMethodId = #{record.treatmentMethodId,jdbcType=VARCHAR},
       </if>
       <if test="record.waterStorageId != null">
-        waterStorageId = #{record.waterStorageId,jdbcType=INTEGER},
+        waterStorageId = #{record.waterStorageId,jdbcType=VARCHAR},
       </if>
       <if test="record.waterShortage != null">
         waterShortage = #{record.waterShortage,jdbcType=VARCHAR},
@@ -1277,9 +1277,9 @@
       waterSourceDetails = #{record.waterSourceDetails,jdbcType=VARCHAR},
       deliveryMethodId = #{record.deliveryMethodId,jdbcType=INTEGER},
       inTakeMethodId = #{record.inTakeMethodId,jdbcType=INTEGER},
-      centralizedWaterTreatmentMethodId = #{record.centralizedWaterTreatmentMethodId,jdbcType=INTEGER},
-      treatmentMethodId = #{record.treatmentMethodId,jdbcType=INTEGER},
-      waterStorageId = #{record.waterStorageId,jdbcType=INTEGER},
+    centralizedWaterTreatmentMethodId = #{record.centralizedWaterTreatmentMethodId,jdbcType=VARCHAR},
+    treatmentMethodId = #{record.treatmentMethodId,jdbcType=VARCHAR},
+    waterStorageId = #{record.waterStorageId,jdbcType=VARCHAR},
       waterShortage = #{record.waterShortage,jdbcType=VARCHAR},
       potentialContamination = #{record.potentialContamination,jdbcType=VARCHAR},
     potentialContaminationDistance = #{record.potentialContaminationDistance,jdbcType=VARCHAR},
@@ -1409,13 +1409,13 @@
         inTakeMethodId = #{inTakeMethodId,jdbcType=INTEGER},
       </if>
       <if test="centralizedWaterTreatmentMethodId != null">
-        centralizedWaterTreatmentMethodId = #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER},
+        centralizedWaterTreatmentMethodId = #{centralizedWaterTreatmentMethodId,jdbcType=VARCHAR},
       </if>
       <if test="treatmentMethodId != null">
-        treatmentMethodId = #{treatmentMethodId,jdbcType=INTEGER},
+        treatmentMethodId = #{treatmentMethodId,jdbcType=VARCHAR},
       </if>
       <if test="waterStorageId != null">
-        waterStorageId = #{waterStorageId,jdbcType=INTEGER},
+        waterStorageId = #{waterStorageId,jdbcType=VARCHAR},
       </if>
       <if test="waterShortage != null">
         waterShortage = #{waterShortage,jdbcType=VARCHAR},
@@ -1705,9 +1705,9 @@
       waterSourceDetails = #{waterSourceDetails,jdbcType=VARCHAR},
       deliveryMethodId = #{deliveryMethodId,jdbcType=INTEGER},
       inTakeMethodId = #{inTakeMethodId,jdbcType=INTEGER},
-      centralizedWaterTreatmentMethodId = #{centralizedWaterTreatmentMethodId,jdbcType=INTEGER},
-      treatmentMethodId = #{treatmentMethodId,jdbcType=INTEGER},
-      waterStorageId = #{waterStorageId,jdbcType=INTEGER},
+      centralizedWaterTreatmentMethodId = #{centralizedWaterTreatmentMethodId,jdbcType=VARCHAR},
+      treatmentMethodId = #{treatmentMethodId,jdbcType=VARCHAR},
+      waterStorageId = #{waterStorageId,jdbcType=VARCHAR},
       waterShortage = #{waterShortage,jdbcType=VARCHAR},
       potentialContamination = #{potentialContamination,jdbcType=VARCHAR},
       potentialContaminationDistance = #{potentialContaminationDistance,jdbcType=VARCHAR},

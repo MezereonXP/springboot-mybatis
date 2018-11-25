@@ -25,11 +25,11 @@ public class Sample {
 
     private Integer inTakeMethodId;
 
-    private Integer centralizedWaterTreatmentMethodId;
+    private String centralizedWaterTreatmentMethodId;
 
-    private Integer treatmentMethodId;
+    private String treatmentMethodId;
 
-    private Integer waterStorageId;
+    private String waterStorageId;
 
     private String waterShortage;
 
@@ -301,28 +301,28 @@ public class Sample {
         this.inTakeMethodId = inTakeMethodId;
     }
 
-    public Integer getCentralizedWaterTreatmentMethodId() {
+    public String getCentralizedWaterTreatmentMethodId() {
         return centralizedWaterTreatmentMethodId;
     }
 
-    public void setCentralizedWaterTreatmentMethodId(Integer centralizedWaterTreatmentMethodId) {
-        this.centralizedWaterTreatmentMethodId = centralizedWaterTreatmentMethodId;
+    public void setCentralizedWaterTreatmentMethodId(String centralizedWaterTreatmentMethodId) {
+        this.centralizedWaterTreatmentMethodId = centralizedWaterTreatmentMethodId == null ? null : centralizedWaterTreatmentMethodId.trim();
     }
 
-    public Integer getTreatmentMethodId() {
+    public String getTreatmentMethodId() {
         return treatmentMethodId;
     }
 
-    public void setTreatmentMethodId(Integer treatmentMethodId) {
-        this.treatmentMethodId = treatmentMethodId;
+    public void setTreatmentMethodId(String treatmentMethodId) {
+        this.treatmentMethodId = treatmentMethodId == null ? null : treatmentMethodId.trim();
     }
 
-    public Integer getWaterStorageId() {
+    public String getWaterStorageId() {
         return waterStorageId;
     }
 
-    public void setWaterStorageId(Integer waterStorageId) {
-        this.waterStorageId = waterStorageId;
+    public void setWaterStorageId(String waterStorageId) {
+        this.waterStorageId = waterStorageId == null ? null : waterStorageId.trim();
     }
 
     public String getWaterShortage() {

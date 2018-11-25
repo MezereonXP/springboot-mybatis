@@ -785,52 +785,62 @@ public class SampleExample {
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdEqualTo(Integer value) {
+        public Criteria andCentralizedWaterTreatmentMethodIdEqualTo(String value) {
             addCriterion("centralizedWaterTreatmentMethodId =", value, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdNotEqualTo(Integer value) {
+        public Criteria andCentralizedWaterTreatmentMethodIdNotEqualTo(String value) {
             addCriterion("centralizedWaterTreatmentMethodId <>", value, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdGreaterThan(Integer value) {
+        public Criteria andCentralizedWaterTreatmentMethodIdGreaterThan(String value) {
             addCriterion("centralizedWaterTreatmentMethodId >", value, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCentralizedWaterTreatmentMethodIdGreaterThanOrEqualTo(String value) {
             addCriterion("centralizedWaterTreatmentMethodId >=", value, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdLessThan(Integer value) {
+        public Criteria andCentralizedWaterTreatmentMethodIdLessThan(String value) {
             addCriterion("centralizedWaterTreatmentMethodId <", value, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdLessThanOrEqualTo(Integer value) {
+        public Criteria andCentralizedWaterTreatmentMethodIdLessThanOrEqualTo(String value) {
             addCriterion("centralizedWaterTreatmentMethodId <=", value, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdIn(List<Integer> values) {
+        public Criteria andCentralizedWaterTreatmentMethodIdLike(String value) {
+            addCriterion("centralizedWaterTreatmentMethodId like", value, "centralizedWaterTreatmentMethodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCentralizedWaterTreatmentMethodIdNotLike(String value) {
+            addCriterion("centralizedWaterTreatmentMethodId not like", value, "centralizedWaterTreatmentMethodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCentralizedWaterTreatmentMethodIdIn(List<String> values) {
             addCriterion("centralizedWaterTreatmentMethodId in", values, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdNotIn(List<Integer> values) {
+        public Criteria andCentralizedWaterTreatmentMethodIdNotIn(List<String> values) {
             addCriterion("centralizedWaterTreatmentMethodId not in", values, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdBetween(Integer value1, Integer value2) {
+        public Criteria andCentralizedWaterTreatmentMethodIdBetween(String value1, String value2) {
             addCriterion("centralizedWaterTreatmentMethodId between", value1, value2, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andCentralizedWaterTreatmentMethodIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andCentralizedWaterTreatmentMethodIdNotBetween(String value1, String value2) {
             addCriterion("centralizedWaterTreatmentMethodId not between", value1, value2, "centralizedWaterTreatmentMethodId");
             return (Criteria) this;
         }
@@ -845,52 +855,62 @@ public class SampleExample {
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdEqualTo(Integer value) {
+        public Criteria andTreatmentMethodIdEqualTo(String value) {
             addCriterion("treatmentMethodId =", value, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdNotEqualTo(Integer value) {
+        public Criteria andTreatmentMethodIdNotEqualTo(String value) {
             addCriterion("treatmentMethodId <>", value, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdGreaterThan(Integer value) {
+        public Criteria andTreatmentMethodIdGreaterThan(String value) {
             addCriterion("treatmentMethodId >", value, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTreatmentMethodIdGreaterThanOrEqualTo(String value) {
             addCriterion("treatmentMethodId >=", value, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdLessThan(Integer value) {
+        public Criteria andTreatmentMethodIdLessThan(String value) {
             addCriterion("treatmentMethodId <", value, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTreatmentMethodIdLessThanOrEqualTo(String value) {
             addCriterion("treatmentMethodId <=", value, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdIn(List<Integer> values) {
+        public Criteria andTreatmentMethodIdLike(String value) {
+            addCriterion("treatmentMethodId like", value, "treatmentMethodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentMethodIdNotLike(String value) {
+            addCriterion("treatmentMethodId not like", value, "treatmentMethodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentMethodIdIn(List<String> values) {
             addCriterion("treatmentMethodId in", values, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdNotIn(List<Integer> values) {
+        public Criteria andTreatmentMethodIdNotIn(List<String> values) {
             addCriterion("treatmentMethodId not in", values, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdBetween(Integer value1, Integer value2) {
+        public Criteria andTreatmentMethodIdBetween(String value1, String value2) {
             addCriterion("treatmentMethodId between", value1, value2, "treatmentMethodId");
             return (Criteria) this;
         }
 
-        public Criteria andTreatmentMethodIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTreatmentMethodIdNotBetween(String value1, String value2) {
             addCriterion("treatmentMethodId not between", value1, value2, "treatmentMethodId");
             return (Criteria) this;
         }
@@ -905,52 +925,62 @@ public class SampleExample {
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdEqualTo(Integer value) {
+        public Criteria andWaterStorageIdEqualTo(String value) {
             addCriterion("waterStorageId =", value, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdNotEqualTo(Integer value) {
+        public Criteria andWaterStorageIdNotEqualTo(String value) {
             addCriterion("waterStorageId <>", value, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdGreaterThan(Integer value) {
+        public Criteria andWaterStorageIdGreaterThan(String value) {
             addCriterion("waterStorageId >", value, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andWaterStorageIdGreaterThanOrEqualTo(String value) {
             addCriterion("waterStorageId >=", value, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdLessThan(Integer value) {
+        public Criteria andWaterStorageIdLessThan(String value) {
             addCriterion("waterStorageId <", value, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdLessThanOrEqualTo(Integer value) {
+        public Criteria andWaterStorageIdLessThanOrEqualTo(String value) {
             addCriterion("waterStorageId <=", value, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdIn(List<Integer> values) {
+        public Criteria andWaterStorageIdLike(String value) {
+            addCriterion("waterStorageId like", value, "waterStorageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterStorageIdNotLike(String value) {
+            addCriterion("waterStorageId not like", value, "waterStorageId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWaterStorageIdIn(List<String> values) {
             addCriterion("waterStorageId in", values, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdNotIn(List<Integer> values) {
+        public Criteria andWaterStorageIdNotIn(List<String> values) {
             addCriterion("waterStorageId not in", values, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdBetween(Integer value1, Integer value2) {
+        public Criteria andWaterStorageIdBetween(String value1, String value2) {
             addCriterion("waterStorageId between", value1, value2, "waterStorageId");
             return (Criteria) this;
         }
 
-        public Criteria andWaterStorageIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andWaterStorageIdNotBetween(String value1, String value2) {
             addCriterion("waterStorageId not between", value1, value2, "waterStorageId");
             return (Criteria) this;
         }

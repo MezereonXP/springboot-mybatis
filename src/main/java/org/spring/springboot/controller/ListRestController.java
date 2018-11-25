@@ -728,7 +728,7 @@ public class ListRestController {
                         CentralizedTreatmentMethod centralizedTreatmentMethod = new CentralizedTreatmentMethod();
                         centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
                         centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
-                        sample.setCentralizedWaterTreatmentMethodId(centralizedTreatmentMethod.getCentrTreatmentMethodId());
+                    sample.setCentralizedWaterTreatmentMethodId(sample.getCentralizedWaterTreatmentMethodId() + ";" + centralizedTreatmentMethod.getCentrTreatmentMethodId());
                 }
                 if (sample.getDeliveryMethodId() == null) {
 
@@ -747,7 +747,7 @@ public class ListRestController {
                         PotentialContam potentialContam = new PotentialContam();
                         potentialContam.setContamDesc(sample.getContamDesc());
                         potentialContamMapper.insertSelective(potentialContam);
-                        sample.setPotentialContamination(potentialContam.getContamId() + "");
+                    sample.setPotentialContamination(sample.getPotentialContamination() + ";" + potentialContam.getContamId());
                 }
                 if (sample.getSanitaryTypeId() == null) {
                         Sanitary sanitary = new Sanitary();
@@ -766,7 +766,7 @@ public class ListRestController {
                         TreatmentMethod treatmentMethod = new TreatmentMethod();
                         treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
                         treatmentMethodMapper.insertSelective(treatmentMethod);
-                        sample.setTreatmentMethodId(treatmentMethod.getTreatmentMethodId());
+                    sample.setTreatmentMethodId(sample.getTreatmentMethodId() + ";" + treatmentMethod.getTreatmentMethodId());
                 }
                 if (sample.getVisualId() == null) {
                         Visual visual = new Visual();
@@ -786,7 +786,7 @@ public class ListRestController {
                         waterStorage.setWaterStorageDesc(sample.getWaterStorageDesc());
                         waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
                         waterStorageMapper.insertSelective(waterStorage);
-                        sample.setWaterStorageId(waterStorage.getWaterStorageId());
+                    sample.setWaterStorageId(sample.getWaterStorageId() + ";" + waterStorage.getWaterStorageId());
                 }
         }
 }
