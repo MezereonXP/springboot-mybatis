@@ -760,11 +760,15 @@ public class ListRestController {
             waterTypeMapper.insertSelective(waterType);
             sample.setWaterTypeId(waterType.getWaterTypeId());
         }
-        if (sample.getCentralizedWaterTreatmentMethodId() == null) {
+        if (sample.getCentrTreatmentMethodDesc() != null) {
             CentralizedTreatmentMethod centralizedTreatmentMethod = new CentralizedTreatmentMethod();
             centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
             centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
-            sample.setCentralizedWaterTreatmentMethodId(sample.getCentralizedWaterTreatmentMethodId() + ";" + centralizedTreatmentMethod.getCentrTreatmentMethodId());
+            String temp = "";
+            if(sample.getCentralizedWaterTreatmentMethodId() != null){
+                temp = sample.getCentralizedWaterTreatmentMethodId() + ";";
+            }
+            sample.setCentralizedWaterTreatmentMethodId(temp  + centralizedTreatmentMethod.getCentrTreatmentMethodId());
         }
         if (sample.getDeliveryMethodId() == null) {
 
@@ -779,11 +783,15 @@ public class ListRestController {
             drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
             sample.setDrinkingWaterId(drinkingWaterType.getDrinkWaterId());
         }
-        if (sample.getPotentialContamination() == null) {
+        if (sample.getContamDesc() == null) {
             PotentialContam potentialContam = new PotentialContam();
             potentialContam.setContamDesc(sample.getContamDesc());
             potentialContamMapper.insertSelective(potentialContam);
-            sample.setPotentialContamination(sample.getPotentialContamination() + ";" + potentialContam.getContamId());
+            String temp = "";
+            if(sample.getPotentialContamination() != null){
+                temp = sample.getPotentialContamination() + ";";
+            }
+            sample.setPotentialContamination(temp  + potentialContam.getContamDesc());
         }
         if (sample.getSanitaryTypeId() == null) {
             Sanitary sanitary = new Sanitary();
@@ -798,11 +806,15 @@ public class ListRestController {
             smellMapper.insertSelective(smell);
             sample.setSmellId(smell.getSmellId());
         }
-        if (sample.getTreatmentMethodId() == null) {
+        if (sample.getTreatmentMethodDesc() != null) {
             TreatmentMethod treatmentMethod = new TreatmentMethod();
             treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
             treatmentMethodMapper.insertSelective(treatmentMethod);
-            sample.setTreatmentMethodId(sample.getTreatmentMethodId() + ";" + treatmentMethod.getTreatmentMethodId());
+            String temp = "";
+            if(sample.getTreatmentMethodId() != null){
+                temp = sample.getTreatmentMethodId() + ";";
+            }
+            sample.setTreatmentMethodId(temp  + treatmentMethod.getTreatmentMethodId());
         }
         if (sample.getVisualId() == null) {
             Visual visual = new Visual();
@@ -817,12 +829,16 @@ public class ListRestController {
             waterSourceTypeMapper.insertSelective(waterSourceType);
             sample.setWaterSourceTypeId(waterSourceType.getWaterSourceId());
         }
-        if (sample.getWaterStorageId() == null) {
+        if (sample.getWaterStorageDesc() != null) {
             WaterStorage waterStorage = new WaterStorage();
             waterStorage.setWaterStorageDesc(sample.getWaterStorageDesc());
             waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
             waterStorageMapper.insertSelective(waterStorage);
-            sample.setWaterStorageId(sample.getWaterStorageId() + ";" + waterStorage.getWaterStorageId());
+            String temp = "";
+            if(sample.getWaterStorageId() != null){
+                temp = sample.getWaterStorageId() + ";";
+            }
+            sample.setTreatmentMethodId(temp  + waterStorage.getWaterStorageId());
         }
     }
 }
