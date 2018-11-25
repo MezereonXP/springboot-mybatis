@@ -791,7 +791,7 @@ public class ListRestController {
             if(sample.getPotentialContamination() != null){
                 temp = sample.getPotentialContamination() + ";";
             }
-            sample.setPotentialContamination(temp  + potentialContam.getContamDesc());
+            sample.setPotentialContamination(temp  + potentialContam.getContamId());
         }
         if (sample.getSanitaryTypeId() == null) {
             Sanitary sanitary = new Sanitary();
