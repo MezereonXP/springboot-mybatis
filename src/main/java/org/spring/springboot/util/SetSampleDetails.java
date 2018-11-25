@@ -40,14 +40,14 @@ public class SetSampleDetails {
     private final static String DEFAULT = "暂无";
 
     public void setSampleDetails(SampleDetails sampleDetails) {
-        CentralizedTreatmentMethod centralizedTreatmentMethod = centralizedTreatmentMethodMapper.selectByPrimaryKey(sampleDetails.getSample().getCentralizedWaterTreatmentMethodId());
+//        CentralizedTreatmentMethod centralizedTreatmentMethod = centralizedTreatmentMethodMapper.selectByPrimaryKey(sampleDetails.getSample().getCentralizedWaterTreatmentMethodId());
         WaterType waterType = waterTypeMapper.selectByPrimaryKey(sampleDetails.getSample().getWaterTypeId());
         WaterSourceType waterSourceType = waterSourceTypeMapper.selectByPrimaryKey(sampleDetails.getSample().getWaterSourceTypeId());
         DeliveryMethod deliveryMethod = deliveryMethodMapper.selectByPrimaryKey(sampleDetails.getSample().getDeliveryMethodId());
         DrinkingWaterType drinkingWaterType = drinkingWaterTypeMapper.selectByPrimaryKey(sampleDetails.getSample().getDrinkingWaterId());
         IntakeMethod intakeMethod = intakeMethodMapper.selectByPrimaryKey(sampleDetails.getSample().getInTakeMethodId());
-        TreatmentMethod treatmentMethod = treatmentMethodMapper.selectByPrimaryKey(sampleDetails.getSample().getTreatmentMethodId());
-        WaterStorage waterStorage = waterStorageMapper.selectByPrimaryKey(sampleDetails.getSample().getWaterStorageId());
+//        TreatmentMethod treatmentMethod = treatmentMethodMapper.selectByPrimaryKey(sampleDetails.getSample().getTreatmentMethodId());
+//        WaterStorage waterStorage = waterStorageMapper.selectByPrimaryKey(sampleDetails.getSample().getWaterStorageId());
         Smell smell = smellMapper.selectByPrimaryKey(sampleDetails.getSample().getSmellId());
         Visual visual = visualMapper.selectByPrimaryKey(sampleDetails.getSample().getVisualId());
         Turbidity turbidity = turbidityMapper.selectByPrimaryKey(sampleDetails.getSample().getTurbidityId());
@@ -64,11 +64,11 @@ public class SetSampleDetails {
                 }
             }
         }
-        if (centralizedTreatmentMethod != null) {
-            sampleDetails.setCentralizedWaterTreatmentMethodDesc(centralizedTreatmentMethod.getCentrTreatmentMethodDesc());
-        } else {
-            sampleDetails.setCentralizedWaterTreatmentMethodDesc(DEFAULT);
-        }
+//        if (centralizedTreatmentMethod != null) {
+//            sampleDetails.setCentralizedWaterTreatmentMethodDesc(centralizedTreatmentMethod.getCentrTreatmentMethodDesc());
+//        } else {
+//            sampleDetails.setCentralizedWaterTreatmentMethodDesc(DEFAULT);
+//        }
         if (waterType != null) {
             sampleDetails.setWaterTypeDesc(waterType.getWaterTypeDesc());
         } else {
@@ -94,16 +94,16 @@ public class SetSampleDetails {
         } else {
             sampleDetails.setInTakeMethodDesc(DEFAULT);
         }
-        if (treatmentMethod != null) {
-            sampleDetails.setTreatmentMethodDesc(treatmentMethod.getTreatmentMethodDesc());
-        } else {
-            sampleDetails.setTreatmentMethodDesc(DEFAULT);
-        }
-        if (waterStorage != null) {
-            sampleDetails.setWaterStorageDesc(waterStorage.getWaterStorageDesc());
-        } else {
-            sampleDetails.setWaterStorageDesc(DEFAULT);
-        }
+//        if (treatmentMethod != null) {
+//            sampleDetails.setTreatmentMethodDesc(treatmentMethod.getTreatmentMethodDesc());
+//        } else {
+//            sampleDetails.setTreatmentMethodDesc(DEFAULT);
+//        }
+//        if (waterStorage != null) {
+//            sampleDetails.setWaterStorageDesc(waterStorage.getWaterStorageDesc());
+//        } else {
+//            sampleDetails.setWaterStorageDesc(DEFAULT);
+//        }
         if (smell != null) {
             sampleDetails.setSmellDesc(smell.getSmellDesc());
         } else {
