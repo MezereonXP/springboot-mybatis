@@ -344,6 +344,76 @@ public class HistoryExample {
             addCriterion("date not between", value1, value2, "date");
             return (Criteria) this;
         }
+
+        public Criteria andIpAddressIsNull() {
+            addCriterion("ipAddress is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressIsNotNull() {
+            addCriterion("ipAddress is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressEqualTo(String value) {
+            addCriterion("ipAddress =", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressNotEqualTo(String value) {
+            addCriterion("ipAddress <>", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressGreaterThan(String value) {
+            addCriterion("ipAddress >", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("ipAddress >=", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressLessThan(String value) {
+            addCriterion("ipAddress <", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressLessThanOrEqualTo(String value) {
+            addCriterion("ipAddress <=", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressLike(String value) {
+            addCriterion("ipAddress like", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressNotLike(String value) {
+            addCriterion("ipAddress not like", value, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressIn(List<String> values) {
+            addCriterion("ipAddress in", values, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressNotIn(List<String> values) {
+            addCriterion("ipAddress not in", values, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressBetween(String value1, String value2) {
+            addCriterion("ipAddress between", value1, value2, "ipAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpAddressNotBetween(String value1, String value2) {
+            addCriterion("ipAddress not between", value1, value2, "ipAddress");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

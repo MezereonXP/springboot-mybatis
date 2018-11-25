@@ -11,6 +11,8 @@ public class History {
 
     private Date date;
 
+    private String ipAddress;
+
     private String adminComment;
 
     public Integer getHistoryId() {
@@ -43,6 +45,14 @@ public class History {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress == null ? null : ipAddress.trim();
     }
 
     public String getAdminComment() {

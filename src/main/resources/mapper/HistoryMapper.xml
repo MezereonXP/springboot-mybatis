@@ -6,6 +6,7 @@
         <result column="sampleId" jdbcType="INTEGER" property="sampleId"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="date" jdbcType="TIMESTAMP" property="date"/>
+        <result column="ipAddress" jdbcType="VARCHAR" property="ipAddress"/>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.spring.springboot.domain.History">
         <result column="adminComment" jdbcType="LONGVARCHAR" property="adminComment"/>
@@ -28,7 +29,8 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
                                         #{listItem}
                                     </foreach>
                                 </when>
@@ -57,7 +59,8 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
                                         #{listItem}
                                     </foreach>
                                 </when>
@@ -69,12 +72,13 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    historyId, sampleId, status, date
+    historyId, sampleId, status, date, ipAddress
   </sql>
     <sql id="Blob_Column_List">
     adminComment
   </sql>
-    <select id="selectByExampleWithBLOBs" parameterType="org.spring.springboot.domain.HistoryExample" resultMap="ResultMapWithBLOBs">
+    <select id="selectByExampleWithBLOBs" parameterType="org.spring.springboot.domain.HistoryExample"
+            resultMap="ResultMapWithBLOBs">
         select
         <if test="distinct">
             distinct
@@ -126,9 +130,11 @@
     </delete>
     <insert id="insert" parameterType="org.spring.springboot.domain.History">
     insert into history (historyId, sampleId, status, 
-      date, adminComment)
+      date, ipAddress, adminComment
+      )
     values (#{historyId,jdbcType=INTEGER}, #{sampleId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{date,jdbcType=TIMESTAMP}, #{adminComment,jdbcType=LONGVARCHAR})
+      #{date,jdbcType=TIMESTAMP}, #{ipAddress,jdbcType=VARCHAR}, #{adminComment,jdbcType=LONGVARCHAR}
+      )
   </insert>
     <insert id="insertSelective" parameterType="org.spring.springboot.domain.History">
         insert into history
@@ -144,6 +150,9 @@
             </if>
             <if test="date != null">
                 date,
+            </if>
+            <if test="ipAddress != null">
+                ipAddress,
             </if>
             <if test="adminComment != null">
                 adminComment,
@@ -161,6 +170,9 @@
             </if>
             <if test="date != null">
                 #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ipAddress != null">
+                #{ipAddress,jdbcType=VARCHAR},
             </if>
             <if test="adminComment != null">
                 #{adminComment,jdbcType=LONGVARCHAR},
@@ -188,6 +200,9 @@
             <if test="record.date != null">
                 date = #{record.date,jdbcType=TIMESTAMP},
             </if>
+            <if test="record.ipAddress != null">
+                ipAddress = #{record.ipAddress,jdbcType=VARCHAR},
+            </if>
             <if test="record.adminComment != null">
                 adminComment = #{record.adminComment,jdbcType=LONGVARCHAR},
             </if>
@@ -202,6 +217,7 @@
         sampleId = #{record.sampleId,jdbcType=INTEGER},
         status = #{record.status,jdbcType=INTEGER},
         date = #{record.date,jdbcType=TIMESTAMP},
+        ipAddress = #{record.ipAddress,jdbcType=VARCHAR},
         adminComment = #{record.adminComment,jdbcType=LONGVARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
@@ -212,7 +228,8 @@
         set historyId = #{record.historyId,jdbcType=INTEGER},
         sampleId = #{record.sampleId,jdbcType=INTEGER},
         status = #{record.status,jdbcType=INTEGER},
-        date = #{record.date,jdbcType=TIMESTAMP}
+        date = #{record.date,jdbcType=TIMESTAMP},
+        ipAddress = #{record.ipAddress,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -229,6 +246,9 @@
             <if test="date != null">
                 date = #{date,jdbcType=TIMESTAMP},
             </if>
+            <if test="ipAddress != null">
+                ipAddress = #{ipAddress,jdbcType=VARCHAR},
+            </if>
             <if test="adminComment != null">
                 adminComment = #{adminComment,jdbcType=LONGVARCHAR},
             </if>
@@ -240,6 +260,7 @@
     set sampleId = #{sampleId,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       date = #{date,jdbcType=TIMESTAMP},
+      ipAddress = #{ipAddress,jdbcType=VARCHAR},
       adminComment = #{adminComment,jdbcType=LONGVARCHAR}
     where historyId = #{historyId,jdbcType=INTEGER}
   </update>
@@ -247,7 +268,8 @@
     update history
     set sampleId = #{sampleId,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
-      date = #{date,jdbcType=TIMESTAMP}
+      date = #{date,jdbcType=TIMESTAMP},
+      ipAddress = #{ipAddress,jdbcType=VARCHAR}
     where historyId = #{historyId,jdbcType=INTEGER}
   </update>
 </mapper>

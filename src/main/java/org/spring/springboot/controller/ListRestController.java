@@ -8,6 +8,8 @@ import org.spring.springboot.util.ValueUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 @RestController
@@ -51,6 +53,9 @@ public class ListRestController {
     SampleDao sampleDao;
     @Autowired
     LocationDao locationDao;
+
+    @Autowired
+    HistoryMapper historyMapper;
 
 
     @RequestMapping(value = "/api/getAllDeliveryMethods", method = RequestMethod.GET)
@@ -614,10 +619,37 @@ public class ListRestController {
         }
     }
 
+    @RequestMapping(value = "/api/updateSuperSample", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public Response updateSuperSample(HttpServletRequest req,
+                                      HttpServletResponse resp,
+                                      @RequestBody SuperSample sample) {
+        Response response = new Response();
+        try {
+            response.setStatus(true);
+            for (int i = 1; i <= 12; i++) {
+                check(sample, i);
+            }
+            insert(sample);
+            sample.setUpdateTime(new Date());
+            sampleDao.updateByPrimaryKeySelective(sample);
+            ValueUtil.setHistory(historyMapper, sample, req, ValueUtil.UPDATE_FLAG);
+            response.setData(sample);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
     @RequestMapping(value = "/api/addSuperSample", method = RequestMethod.POST)
     @ResponseBody
     @CrossOrigin
-    public Response addSuperSample(@RequestBody SuperSample sample) {
+    public Response addSuperSample(HttpServletRequest req,
+                                   HttpServletResponse resp,
+                                   @RequestBody SuperSample sample) {
         Response response = new Response();
         try {
             response.setStatus(true);
@@ -628,6 +660,7 @@ public class ListRestController {
             sample.setCreateTime(new Date());
             sample.setUpdateTime(new Date());
             sampleDao.insertSelective(sample);
+            ValueUtil.setHistory(historyMapper, sample, req, ValueUtil.CREATE_FLAG);
             response.setData(sample);
             return response;
         } catch (Exception e) {

@@ -1,19 +1,20 @@
 package org.spring.springboot.util;
 
 import org.spring.springboot.dao.CleanSample;
+import org.spring.springboot.dao.HistoryMapper;
 import org.spring.springboot.dao.LocationDao;
+import org.spring.springboot.domain.History;
 import org.spring.springboot.domain.Sample;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.InetAddress;
+import java.util.*;
 
 /**
  * @program: ValueUtil
@@ -34,6 +35,9 @@ public class ValueUtil {
     public static final int VISUAL_FLAG = 10;
     public static final int SANITARYTYPE_FLAG = 11;
     public static final int LOCATION_FLAG = 12;
+
+    public static final int CREATE_FLAG = 1001;
+    public static final int UPDATE_FLAG = 1002;
     public static Map<String, String> getMap() {
         String fileName = "C:\\Users\\Administrator\\Desktop\\data.txt";
         File file = new File(fileName);
@@ -71,4 +75,47 @@ public class ValueUtil {
         }
         return list;
     }
+
+    /**
+     * @Description: 获取客户端IP地址
+     */
+    public static String getIpAddr(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+            if (ip.equals("127.0.0.1")) {
+                //根据网卡取本机配置的IP
+                InetAddress inet = null;
+                try {
+                    inet = InetAddress.getLocalHost();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                ip = inet.getHostAddress();
+            }
+        }
+        // 多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
+        if (ip != null && ip.length() > 15) {
+            if (ip.indexOf(",") > 0) {
+                ip = ip.substring(0, ip.indexOf(","));
+            }
+        }
+        return ip;
+    }
+
+    public static void setHistory(HistoryMapper historyMapper, Sample sample, HttpServletRequest req, Integer flag) {
+        History history = new History();
+        history.setDate(new Date());
+        history.setSampleId(sample.getBaseId());
+        history.setStatus(flag);
+        history.setIpAddress(ValueUtil.getIpAddr(req));
+        historyMapper.insert(history);
+    }
+
 }
