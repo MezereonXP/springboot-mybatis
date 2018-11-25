@@ -783,7 +783,7 @@ public class ListRestController {
             drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
             sample.setDrinkingWaterId(drinkingWaterType.getDrinkWaterId());
         }
-        if (sample.getContamDesc() == null) {
+        if (sample.getContamDesc() != null) {
             PotentialContam potentialContam = new PotentialContam();
             potentialContam.setContamDesc(sample.getContamDesc());
             potentialContamMapper.insertSelective(potentialContam);
@@ -838,7 +838,7 @@ public class ListRestController {
             if(sample.getWaterStorageId() != null){
                 temp = sample.getWaterStorageId() + ";";
             }
-            sample.setTreatmentMethodId(temp  + waterStorage.getWaterStorageId());
+            sample.setWaterStorageId(temp  + waterStorage.getWaterStorageId());
         }
     }
 }
