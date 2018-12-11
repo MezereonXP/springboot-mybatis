@@ -686,13 +686,13 @@ public class ListRestController {
                     }
                 }
                 break;
-            case ValueUtil.DELIVERYMETHOD_FLAG:
-                if (sample.getDeliveryMethodId() == null) {
-                    if (sample.getDeliveryMethodDesc() == null) {
-                        throw new MyException("缺少运输方式信息");
-                    }
-                }
-                break;
+//            case ValueUtil.DELIVERYMETHOD_FLAG:
+//                if (sample.getDeliveryMethodId() == null) {
+//                    if (sample.getDeliveryMethodDesc() == null) {
+//                        throw new MyException("缺少运输方式信息");
+//                    }
+//                }
+//                break;
             case ValueUtil.DRINKINGWATER_FLAG:
                 if (sample.getDrinkingWaterId() == null) {
                     if (sample.getDrinkWaterDesc() == null) {
@@ -803,8 +803,7 @@ public class ListRestController {
             }
             sample.setCentralizedWaterTreatmentMethodId(temp  + centralizedTreatmentMethod.getCentrTreatmentMethodId());
         }
-        if (sample.getDeliveryMethodId() == null) {
-
+        if (sample.getDeliveryMethodId() == null && sample.getDeliveryMethodDesc() != null) {
             DeliveryMethod deliveryMethod = new DeliveryMethod();
             deliveryMethod.setDeliveryMethodDesc(sample.getDeliveryMethodDesc());
             deliveryMethodMapper.insertSelective(deliveryMethod);
