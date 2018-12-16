@@ -74,6 +74,7 @@ public class TeamRestController {
                 Team team = teamDao.selectByPrimaryKey(Integer.valueOf(teamid));
                 team.setLastLoginTime(new Date());
                 teamDao.updateByPrimaryKey(team);
+                response.setData(team);
                 logger.info("用户Email:" + email + "登陆成功了");
             }else {
                 response.setStatus(false);
