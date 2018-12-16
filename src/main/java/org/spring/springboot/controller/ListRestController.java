@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class ListRestController {
@@ -56,6 +57,11 @@ public class ListRestController {
 
     @Autowired
     HistoryMapper historyMapper;
+
+    @Autowired
+    TestCycleDao testCycleDao;
+    @Autowired
+    CycleTeamDao cycleTeamDao;
 
 
     @RequestMapping(value = "/api/getAllDeliveryMethods", method = RequestMethod.GET)
@@ -653,6 +659,18 @@ public class ListRestController {
         Response response = new Response();
         try {
             response.setStatus(true);
+            TestCycleExample testCycleExample = new TestCycleExample();
+            testCycleExample.createCriteria().andTestCycleIdIsNotNull();
+            List<TestCycle> testCycleList = testCycleDao.selectByExample(testCycleExample);
+            Integer currentCycle = testCycleList.get(testCycleList.size() - 1).getTestCycleId();
+
+            CycleTeam cycleTeam = cycleTeamDao.selectByPrimaryKey(sample.getCycleTeamId());
+            if (cycleTeam == null) {
+                throw new MyException("当前队伍并未报名任何周期");
+            }
+            if (cycleTeam != null && cycleTeam.getTestCycleId() != currentCycle) {
+                throw new MyException("当前上传周期不是最新周期!");
+            }
             for (int i = 1; i <= 12; i++) {
                 check(sample, i);
             }
@@ -798,10 +816,10 @@ public class ListRestController {
             centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
             centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
             String temp = "";
-            if(sample.getCentralizedWaterTreatmentMethodId() != null){
+            if (sample.getCentralizedWaterTreatmentMethodId() != null) {
                 temp = sample.getCentralizedWaterTreatmentMethodId() + ";";
             }
-            sample.setCentralizedWaterTreatmentMethodId(temp  + centralizedTreatmentMethod.getCentrTreatmentMethodId());
+            sample.setCentralizedWaterTreatmentMethodId(temp + centralizedTreatmentMethod.getCentrTreatmentMethodId());
         }
         if (sample.getDeliveryMethodId() == null && sample.getDeliveryMethodDesc() != null) {
             DeliveryMethod deliveryMethod = new DeliveryMethod();
@@ -820,10 +838,10 @@ public class ListRestController {
             potentialContam.setContamDesc(sample.getContamDesc());
             potentialContamMapper.insertSelective(potentialContam);
             String temp = "";
-            if(sample.getPotentialContamination() != null){
+            if (sample.getPotentialContamination() != null) {
                 temp = sample.getPotentialContamination() + ";";
             }
-            sample.setPotentialContamination(temp  + potentialContam.getContamId());
+            sample.setPotentialContamination(temp + potentialContam.getContamId());
         }
         if (sample.getSanitaryTypeId() == null) {
             Sanitary sanitary = new Sanitary();
@@ -843,10 +861,10 @@ public class ListRestController {
             treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
             treatmentMethodMapper.insertSelective(treatmentMethod);
             String temp = "";
-            if(sample.getTreatmentMethodId() != null){
+            if (sample.getTreatmentMethodId() != null) {
                 temp = sample.getTreatmentMethodId() + ";";
             }
-            sample.setTreatmentMethodId(temp  + treatmentMethod.getTreatmentMethodId());
+            sample.setTreatmentMethodId(temp + treatmentMethod.getTreatmentMethodId());
         }
         if (sample.getVisualId() == null) {
             Visual visual = new Visual();
@@ -867,10 +885,10 @@ public class ListRestController {
             waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
             waterStorageMapper.insertSelective(waterStorage);
             String temp = "";
-            if(sample.getWaterStorageId() != null){
+            if (sample.getWaterStorageId() != null) {
                 temp = sample.getWaterStorageId() + ";";
             }
-            sample.setWaterStorageId(temp  + waterStorage.getWaterStorageId());
+            sample.setWaterStorageId(temp + waterStorage.getWaterStorageId());
         }
 
         sample.setTurbidityId(String.valueOf(ValueUtil.getMethodId(ValueUtil.TURBILITY_FLAG, sample.getTurbiditymethod())));

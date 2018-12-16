@@ -130,7 +130,7 @@
       <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Team">
+  <insert id="insert" parameterType="org.spring.springboot.domain.Team" useGeneratedKeys="true" keyProperty="teamId">
     insert into team (teamId, universityId, teamName, 
       email, password, priority, 
       createTime, lastLoginTime, updateTime, 
@@ -140,7 +140,8 @@
       #{createTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{details,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Team">
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Team" useGeneratedKeys="true"
+          keyProperty="teamId">
     insert into team
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="teamId != null">

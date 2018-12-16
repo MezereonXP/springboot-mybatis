@@ -1,8 +1,9 @@
 package org.spring.springboot.service.impl;
 
+import org.spring.springboot.dao.CycleTeamDao;
 import org.spring.springboot.dao.TeamDao;
-import org.spring.springboot.domain.Team;
-import org.spring.springboot.domain.TeamExample;
+import org.spring.springboot.dao.TestCycleDao;
+import org.spring.springboot.domain.*;
 import org.spring.springboot.util.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,12 @@ public class TeamService {
     static final String HASH = "%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&pn=30&oq=%E5%A5%87%E6%80%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&ie=utf-8&rsv_idx=1&rsv_pq=fd9f2b3c00087951&rsv_t=e7c5NJGVFprZOgQdstCngJa5XGCDpWPaa%2BmgHBpTRSXj1O6T%2Bw%2FGAkVd9hM&rsv";
     @Autowired
     private TeamDao teamDao;
+
+    @Autowired
+    private TestCycleDao testCycleDao;
+
+    @Autowired
+    private CycleTeamDao cycleTeamDao;
 
     public Team findTeamByEmail(String email) {
         TeamExample teamExample = new TeamExample();
@@ -54,7 +61,18 @@ public class TeamService {
         team.setCreateTime(new Date());
         team.setUpdateTime(new Date());
         team.setLastLoginTime(new Date());
-        return teamDao.insert(team) != -1;
+        teamDao.insert(team);
+        TestCycleExample testCycleExample = new TestCycleExample();
+        testCycleExample.createCriteria().andTestCycleIdIsNotNull();
+        List<TestCycle> testCycleList = testCycleDao.selectByExample(testCycleExample);
+        Integer currentCycle = testCycleList.get(testCycleList.size() - 1).getTestCycleId();
+        CycleTeamWithBLOBs cycleTeamWithBLOBs = new CycleTeamWithBLOBs();
+        cycleTeamWithBLOBs.setTeamId(team.getTeamId());
+        cycleTeamWithBLOBs.setTestCycleId(currentCycle);
+        cycleTeamWithBLOBs.setCreateTime(new Date());
+        cycleTeamWithBLOBs.setUpdateTime(new Date());
+        cycleTeamDao.insertSelective(cycleTeamWithBLOBs);
+        return team.getTeamId() != null;
     }
 
     public boolean checkAuth(String email, String token, String teamid) {
