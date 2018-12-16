@@ -875,8 +875,8 @@ public class ListRestController {
 
         sample.setTurbidityId(String.valueOf(ValueUtil.getMethodId(ValueUtil.TURBILITY_FLAG, sample.getTurbiditymethod())));
         sample.setTdsMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.TDS_FLAG, sample.getTdsMethod())));
-        sample.setPhMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.NO3_FLAG, sample.getNo3Method())));
-//        sample.setPhMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.NO2_FLAG, sample.getNo2Method())));
+        sample.setNo3Method(String.valueOf(ValueUtil.getMethodId(ValueUtil.NO3_FLAG, sample.getNo3Method())));
+        sample.setPhMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.PH_FLAG, sample.getPhMethod())));
         sample.setfMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.F_FLAG, sample.getfMethod())));
         sample.setAsMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.AS_FLAG, sample.getAsMethod())));
         sample.setEcoilMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.ECOIL_FLAG, sample.getEcoilMethod())));
