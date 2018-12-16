@@ -873,7 +873,7 @@ public class ListRestController {
             sample.setWaterStorageId(temp  + waterStorage.getWaterStorageId());
         }
 
-        sample.setTurbidityId(String.valueOf(ValueUtil.getMethodId(ValueUtil.TURBILITY_FLAG, sample.getTurbidityId())));
+        sample.setTurbidityId(String.valueOf(ValueUtil.getMethodId(ValueUtil.TURBILITY_FLAG, sample.getTurbiditymethod())));
         sample.setTdsMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.TDS_FLAG, sample.getTdsMethod())));
         sample.setPhMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.NO3_FLAG, sample.getNo3Method())));
 //        sample.setPhMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.NO2_FLAG, sample.getNo2Method())));

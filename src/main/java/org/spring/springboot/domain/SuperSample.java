@@ -49,6 +49,8 @@ public class SuperSample extends Sample {
 
     private String sanitaryTypeDesc;
 
+    private String turbiditymethod;
+
     public Integer getProvinceId() {
         return provinceId;
     }
@@ -223,5 +225,13 @@ public class SuperSample extends Sample {
 
     public void setSanitaryTypeDesc(String sanitaryTypeDesc) {
         this.sanitaryTypeDesc = sanitaryTypeDesc;
+    }
+
+    public String getTurbiditymethod() {
+        return turbiditymethod;
+    }
+
+    public void setTurbiditymethod(String turbiditymethod) {
+        this.turbiditymethod = turbiditymethod;
     }
 }
