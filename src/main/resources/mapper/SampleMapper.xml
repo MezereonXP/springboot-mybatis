@@ -27,7 +27,7 @@
     <result column="visualId" jdbcType="INTEGER" property="visualId"/>
     <result column="visualDetail" jdbcType="VARCHAR" property="visualDetail"/>
     <result column="otherInformation" jdbcType="VARCHAR" property="otherInformation"/>
-    <result column="turbidityId" jdbcType="INTEGER" property="turbidityId"/>
+    <result column="turbidityId" jdbcType="VARCHAR" property="turbidityId"/>
     <result column="turbidityDetail" jdbcType="VARCHAR" property="turbidityDetail"/>
     <result column="feElement" jdbcType="REAL" property="feElement"/>
     <result column="feMethod" jdbcType="VARCHAR" property="feMethod"/>
@@ -218,8 +218,7 @@
       <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <insert id="insert" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true"
-          keyProperty="baseId">
+  <insert id="insert" parameterType="org.spring.springboot.domain.Sample">
     insert into sample (baseId, waterId, waterTypeId, 
       validationId, locationId, cycleTeamId, 
       drinkingWaterId, waterSourceTypeId, waterSourceDetails, 
@@ -267,7 +266,7 @@
       #{populationServedBySource,jdbcType=INTEGER}, #{physicalIndicators,jdbcType=INTEGER}, 
       #{temp,jdbcType=REAL}, #{smellId,jdbcType=INTEGER}, #{smellDetail,jdbcType=VARCHAR}, 
       #{visualId,jdbcType=INTEGER}, #{visualDetail,jdbcType=VARCHAR}, #{otherInformation,jdbcType=VARCHAR}, 
-      #{turbidityId,jdbcType=INTEGER}, #{turbidityDetail,jdbcType=VARCHAR}, #{feElement,jdbcType=REAL}, 
+      #{turbidityId,jdbcType=VARCHAR}, #{turbidityDetail,jdbcType=VARCHAR}, #{feElement,jdbcType=REAL}, 
       #{feMethod,jdbcType=VARCHAR}, #{cr6Element,jdbcType=REAL}, #{cr6Method,jdbcType=VARCHAR}, 
       #{asElement,jdbcType=REAL}, #{asMethod,jdbcType=VARCHAR}, #{mnElement,jdbcType=REAL}, 
       #{mnMethod,jdbcType=VARCHAR}, #{residualChlorineElement,jdbcType=REAL}, #{residualChlorineMethod,jdbcType=VARCHAR}, 
@@ -297,8 +296,7 @@
       #{notes,jdbcType=VARCHAR}, #{averageStorageHours,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Sample" useGeneratedKeys="true"
-          keyProperty="baseId">
+  <insert id="insertSelective" parameterType="org.spring.springboot.domain.Sample">
     insert into sample
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="baseId != null">
@@ -694,7 +692,7 @@
         #{otherInformation,jdbcType=VARCHAR},
       </if>
       <if test="turbidityId != null">
-        #{turbidityId,jdbcType=INTEGER},
+        #{turbidityId,jdbcType=VARCHAR},
       </if>
       <if test="turbidityDetail != null">
         #{turbidityDetail,jdbcType=VARCHAR},
@@ -1020,7 +1018,7 @@
         otherInformation = #{record.otherInformation,jdbcType=VARCHAR},
       </if>
       <if test="record.turbidityId != null">
-        turbidityId = #{record.turbidityId,jdbcType=INTEGER},
+        turbidityId = #{record.turbidityId,jdbcType=VARCHAR},
       </if>
       <if test="record.turbidityDetail != null">
         turbidityDetail = #{record.turbidityDetail,jdbcType=VARCHAR},
@@ -1291,7 +1289,7 @@
       visualId = #{record.visualId,jdbcType=INTEGER},
       visualDetail = #{record.visualDetail,jdbcType=VARCHAR},
       otherInformation = #{record.otherInformation,jdbcType=VARCHAR},
-      turbidityId = #{record.turbidityId,jdbcType=INTEGER},
+    turbidityId = #{record.turbidityId,jdbcType=VARCHAR},
       turbidityDetail = #{record.turbidityDetail,jdbcType=VARCHAR},
       feElement = #{record.feElement,jdbcType=REAL},
       feMethod = #{record.feMethod,jdbcType=VARCHAR},
@@ -1451,7 +1449,7 @@
         otherInformation = #{otherInformation,jdbcType=VARCHAR},
       </if>
       <if test="turbidityId != null">
-        turbidityId = #{turbidityId,jdbcType=INTEGER},
+        turbidityId = #{turbidityId,jdbcType=VARCHAR},
       </if>
       <if test="turbidityDetail != null">
         turbidityDetail = #{turbidityDetail,jdbcType=VARCHAR},
@@ -1719,7 +1717,7 @@
       visualId = #{visualId,jdbcType=INTEGER},
       visualDetail = #{visualDetail,jdbcType=VARCHAR},
       otherInformation = #{otherInformation,jdbcType=VARCHAR},
-      turbidityId = #{turbidityId,jdbcType=INTEGER},
+      turbidityId = #{turbidityId,jdbcType=VARCHAR},
       turbidityDetail = #{turbidityDetail,jdbcType=VARCHAR},
       feElement = #{feElement,jdbcType=REAL},
       feMethod = #{feMethod,jdbcType=VARCHAR},

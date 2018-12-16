@@ -38,6 +38,29 @@ public class ValueUtil {
 
     public static final int CREATE_FLAG = 1001;
     public static final int UPDATE_FLAG = 1002;
+
+    public static final int FE_FLAG = 2001;
+    public static final int CR6_FLAG = 2002;
+    public static final int AS_FLAG = 2003;
+    public static final int MN_FLAG = 2004;
+    public static final int RC_FLAG = 2005;
+    public static final int DO_FLAG = 2006;
+    public static final int NO2_FLAG = 2007;
+    public static final int NO3_FLAG = 2008;
+    public static final int NH3_FLAG = 2009;
+    public static final int F_FLAG = 2010;
+    public static final int ECOIL_FLAG = 2011;
+    public static final int TDS_FLAG = 2012;
+    public static final int PH_FLAG = 2013;
+    public static final int AL_FLAG = 2014;
+    public static final int CU_FLAG = 2015;
+    public static final int CD_FLAG = 2016;
+    public static final int PB_FLAG = 2017;
+    public static final int HG_FLAG = 2018;
+    public static final int TETC_FLAG = 2019;
+    public static final int TURBILITY_FLAG = 2020;
+    public static final int COD_FLAG = 2021;
+
     public static Map<String, String> getMap() {
         String fileName = "C:\\Users\\Administrator\\Desktop\\data.txt";
         File file = new File(fileName);
@@ -116,6 +139,106 @@ public class ValueUtil {
         history.setStatus(flag);
         history.setIpAddress(ValueUtil.getIpAddr(req));
         historyMapper.insert(history);
+    }
+
+    /**
+     * 通过FLAG和方法名称返回ID
+     *
+     * @param type
+     * @param name
+     * @return
+     */
+    public static Integer getMethodId(int type, String name) {
+        switch (type) {
+            case FE_FLAG:
+                break;
+            case CR6_FLAG:
+                break;
+            case AS_FLAG:
+                if (name.indexOf("陆") != -1) {
+                    return 5;
+                } else if (name.indexOf("实") != -1) {
+                    return 6;
+                } else if (name.indexOf("中") != -1) {
+                    return 7;
+                }
+                break;
+            case MN_FLAG:
+                break;
+            case RC_FLAG:
+                break;
+            case DO_FLAG:
+                break;
+            case NO2_FLAG:
+                if (name.indexOf("日") != -1) {
+                    return 11;
+                }
+                break;
+            case NO3_FLAG:
+                if (name.indexOf("百") != -1) {
+                    return 13;
+                } else if (name.indexOf("日") != -1) {
+                    return 12;
+                } else if (name.indexOf("实") != -1) {
+                    return 30;
+                }
+                break;
+            case NH3_FLAG:
+                if (name.indexOf("百") != -1) {
+                    return 15;
+                } else if (name.indexOf("日") != -1) {
+                    return 14;
+                }
+                break;
+            case F_FLAG:
+                if (name.indexOf("百") != -1) {
+                    return 17;
+                } else if (name.indexOf("日") != -1) {
+                    return 16;
+                }
+                break;
+            case ECOIL_FLAG:
+                if (name.indexOf("3") != -1) {
+                    return 18;
+                } else if (name.indexOf("实") != -1) {
+                    return 33;
+                }
+                break;
+            case TDS_FLAG:
+                if (name.indexOf("T") != -1) {
+                    return 19;
+                }
+                break;
+            case PH_FLAG:
+                if (name.indexOf("数") != -1) {
+                    return 20;
+                }
+                break;
+            case AL_FLAG:
+                break;
+            case CU_FLAG:
+                break;
+            case CD_FLAG:
+                break;
+            case PB_FLAG:
+                break;
+            case HG_FLAG:
+                break;
+            case TETC_FLAG:
+                break;
+            case TURBILITY_FLAG:
+                if (name.indexOf("百") != -1) {
+                    return 28;
+                } else if (name.indexOf("哈") != -1) {
+                    return 29;
+                }
+                break;
+            case COD_FLAG:
+                break;
+            default:
+                break;
+        }
+        return 0;
     }
 
 }

@@ -872,5 +872,13 @@ public class ListRestController {
             }
             sample.setWaterStorageId(temp  + waterStorage.getWaterStorageId());
         }
+
+        sample.setTurbidityId(String.valueOf(ValueUtil.getMethodId(ValueUtil.TURBILITY_FLAG, sample.getTurbidityId())));
+        sample.setTdsMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.TDS_FLAG, sample.getTdsMethod())));
+        sample.setPhMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.NO3_FLAG, sample.getNo3Method())));
+//        sample.setPhMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.NO2_FLAG, sample.getNo2Method())));
+        sample.setfMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.F_FLAG, sample.getfMethod())));
+        sample.setAsMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.AS_FLAG, sample.getAsMethod())));
+        sample.setEcoilMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.ECOIL_FLAG, sample.getEcoilMethod())));
     }
 }

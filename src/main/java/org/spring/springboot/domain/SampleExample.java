@@ -1715,52 +1715,62 @@ public class SampleExample {
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdEqualTo(Integer value) {
+        public Criteria andTurbidityIdEqualTo(String value) {
             addCriterion("turbidityId =", value, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdNotEqualTo(Integer value) {
+        public Criteria andTurbidityIdNotEqualTo(String value) {
             addCriterion("turbidityId <>", value, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdGreaterThan(Integer value) {
+        public Criteria andTurbidityIdGreaterThan(String value) {
             addCriterion("turbidityId >", value, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTurbidityIdGreaterThanOrEqualTo(String value) {
             addCriterion("turbidityId >=", value, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdLessThan(Integer value) {
+        public Criteria andTurbidityIdLessThan(String value) {
             addCriterion("turbidityId <", value, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTurbidityIdLessThanOrEqualTo(String value) {
             addCriterion("turbidityId <=", value, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdIn(List<Integer> values) {
+        public Criteria andTurbidityIdLike(String value) {
+            addCriterion("turbidityId like", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdNotLike(String value) {
+            addCriterion("turbidityId not like", value, "turbidityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTurbidityIdIn(List<String> values) {
             addCriterion("turbidityId in", values, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdNotIn(List<Integer> values) {
+        public Criteria andTurbidityIdNotIn(List<String> values) {
             addCriterion("turbidityId not in", values, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdBetween(Integer value1, Integer value2) {
+        public Criteria andTurbidityIdBetween(String value1, String value2) {
             addCriterion("turbidityId between", value1, value2, "turbidityId");
             return (Criteria) this;
         }
 
-        public Criteria andTurbidityIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTurbidityIdNotBetween(String value1, String value2) {
             addCriterion("turbidityId not between", value1, value2, "turbidityId");
             return (Criteria) this;
         }

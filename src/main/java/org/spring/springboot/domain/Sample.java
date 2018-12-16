@@ -53,7 +53,7 @@ public class Sample {
 
     private String otherInformation;
 
-    private Integer turbidityId;
+    private String turbidityId;
 
     private String turbidityDetail;
 
@@ -413,12 +413,12 @@ public class Sample {
         this.otherInformation = otherInformation == null ? null : otherInformation.trim();
     }
 
-    public Integer getTurbidityId() {
+    public String getTurbidityId() {
         return turbidityId;
     }
 
-    public void setTurbidityId(Integer turbidityId) {
-        this.turbidityId = turbidityId;
+    public void setTurbidityId(String turbidityId) {
+        this.turbidityId = turbidityId == null ? null : turbidityId.trim();
     }
 
     public String getTurbidityDetail() {
