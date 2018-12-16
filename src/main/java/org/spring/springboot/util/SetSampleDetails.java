@@ -50,7 +50,7 @@ public class SetSampleDetails {
 //        WaterStorage waterStorage = waterStorageMapper.selectByPrimaryKey(sampleDetails.getSample().getWaterStorageId());
         Smell smell = smellMapper.selectByPrimaryKey(sampleDetails.getSample().getSmellId());
         Visual visual = visualMapper.selectByPrimaryKey(sampleDetails.getSample().getVisualId());
-        Turbidity turbidity = turbidityMapper.selectByPrimaryKey(sampleDetails.getSample().getTurbidityId());
+        Turbidity turbidity = turbidityMapper.selectByPrimaryKey(Integer.valueOf(sampleDetails.getSample().getTurbidityId()));
         Sanitary sanitary = sanitaryMapper.selectByPrimaryKey(sampleDetails.getSample().getSanitaryTypeId());
         ArrayList<HealthCenter> healthCenters = new ArrayList<>();
         String healthCenterIds = sampleDetails.getSample().getHealthCenterId();
