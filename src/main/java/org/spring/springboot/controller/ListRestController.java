@@ -880,5 +880,6 @@ public class ListRestController {
         sample.setfMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.F_FLAG, sample.getfMethod())));
         sample.setAsMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.AS_FLAG, sample.getAsMethod())));
         sample.setEcoilMethod(String.valueOf(ValueUtil.getMethodId(ValueUtil.ECOIL_FLAG, sample.getEcoilMethod())));
+        sample.setNh3Method(String.valueOf(ValueUtil.getMethodId(ValueUtil.NH3_FLAG, sample.getNh3Method())));
     }
 }
