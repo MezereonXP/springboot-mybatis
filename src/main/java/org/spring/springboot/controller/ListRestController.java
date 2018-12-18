@@ -777,7 +777,7 @@ public class ListRestController {
                 } else if (sample.getTownshipId() == null) {
                     throw new MyException("缺少townshipId信息");
                 } else if (sample.getVillageId() == null) {
-                    throw new MyException("缺少villageId信息");
+//                    throw new MyException("缺少villageId信息");
                 } else if (sample.getLocationName() == null) {
                     throw new MyException("缺少locationName信息");
                 } else if (sample.getLat() == null) {
