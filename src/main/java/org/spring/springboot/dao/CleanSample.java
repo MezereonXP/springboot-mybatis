@@ -16,6 +16,7 @@ public class CleanSample {
     private Date detectDate;
     private String locationName;
     private String picture;
+    private Integer status;
 
     CleanSample() {
 
@@ -26,6 +27,7 @@ public class CleanSample {
         this.detectDate = sample.getDetectDate();
         this.locationName = location.getLocationName();
         this.picture = sample.getPicture();
+        this.status = sample.getValidationId();
     }
 
     public Date getSamplingDate() {
@@ -58,5 +60,13 @@ public class CleanSample {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
