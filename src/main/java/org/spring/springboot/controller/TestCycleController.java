@@ -3,10 +3,12 @@ package org.spring.springboot.controller;
 import java.util.*;
 
 import org.spring.springboot.dao.CycleTeamDao;
+import org.spring.springboot.dao.TeamDao;
 import org.spring.springboot.domain.*;
 import org.spring.springboot.response.Response;
 import org.spring.springboot.service.impl.TeamService;
 import org.spring.springboot.service.impl.TestCycleService;
+import org.spring.springboot.util.ValueUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,9 @@ public class TestCycleController {
 
     @Autowired
     private CycleTeamDao cycleTeamDao;
+
+    @Autowired
+    private TeamDao teamDao;
 
     @RequestMapping(value = "/getTestCycle", method = RequestMethod.GET)
     public Response getTestCycle() {
@@ -104,6 +109,31 @@ public class TestCycleController {
             cycleTeam.setCreateTime(new Date());
             cycleTeam.setUpdateTime(new Date());
             cycleTeamDao.insertSelective(cycleTeam);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/getTeamForCycle", method = RequestMethod.GET)
+    public Response getTeamForCycle(@RequestParam(value = "testCycleId") Integer testCycleId,
+                                    @CookieValue(value = "teamid") String teamid) {
+        Response response = new Response();
+        try {
+            if (teamDao.selectByPrimaryKey(Integer.valueOf(teamid)).getPriority() <= 1)
+                throw new Exception("权限不够!");
+//            response.setData(testCycleService.findTestCycleByTeamId(teamid));
+            CycleTeamExample cycleTeamExample = new CycleTeamExample();
+            cycleTeamExample.createCriteria().andTestCycleIdEqualTo(testCycleId);
+            List<CycleTeam> list = cycleTeamDao.selectByExample(cycleTeamExample);
+            List<Team> teamList = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                teamList.add(teamDao.selectByPrimaryKey(list.get(i).getTeamId()));
+            }
+            response.setData(teamList);
             response.setStatus(true);
             return response;
         } catch (Exception e) {
