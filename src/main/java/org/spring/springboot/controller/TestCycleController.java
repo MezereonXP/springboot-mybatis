@@ -145,4 +145,49 @@ public class TestCycleController {
         }
     }
 
+    @RequestMapping(value = "/api/getAllTeam", method = RequestMethod.GET)
+    public Response getAllTeam(@CookieValue(value = "teamid") String teamid) {
+        Response response = new Response();
+        try {
+            if (teamDao.selectByPrimaryKey(Integer.valueOf(teamid)).getPriority() <= 1)
+                throw new Exception("权限不够!");
+//            response.setData(testCycleService.findTestCycleByTeamId(teamid));
+            TeamExample teamExample = new TeamExample();
+            teamExample.createCriteria().andCreateTimeIsNotNull();
+            response.setData(teamDao.selectByExample(teamExample));
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+    @RequestMapping(value = "/api/addTestCycleForTeam", method = RequestMethod.GET)
+    public Response addTestCycleForTeam(@RequestParam(value = "cycleId") Integer cycleId,
+                                        @RequestParam(value = "teamId") Integer teamId,
+                                        @CookieValue(value = "teamid") String teamid) {
+        Response response = new Response();
+        try {
+            if (teamDao.selectByPrimaryKey(Integer.valueOf(teamid)).getPriority() <= 1)
+                throw new Exception("权限不够!");
+            CycleTeamWithBLOBs cycleTeam = new CycleTeamWithBLOBs();
+            cycleTeam.setCreateTime(new Date());
+            cycleTeam.setTeamId(teamId);
+            cycleTeam.setTestCycleId(cycleId);
+            cycleTeam.setUpdateTime(new Date());
+            ;
+            cycleTeamDao.insertSelective(cycleTeam);
+            response.setStatus(true);
+            return response;
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            response.setStatus(false);
+            return response;
+        }
+    }
+
+
+
 }
