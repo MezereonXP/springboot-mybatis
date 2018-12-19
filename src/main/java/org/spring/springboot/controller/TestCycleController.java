@@ -174,7 +174,7 @@ public class TestCycleController {
                 throw new Exception("权限不够!");
             CycleTeamExample cycleTeamExample = new CycleTeamExample();
             cycleTeamExample.createCriteria().andTestCycleIdEqualTo(cycleId).andTeamIdEqualTo(teamId);
-            if (cycleTeamDao.selectByExample(cycleTeamExample) != null)
+            if (cycleTeamDao.selectByExample(cycleTeamExample).size() != 0)
                 throw new Exception("队伍已报名过该周期!");
 
             CycleTeamWithBLOBs cycleTeam = new CycleTeamWithBLOBs();
