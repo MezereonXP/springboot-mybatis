@@ -131,7 +131,9 @@ public class TestCycleController {
             List<CycleTeam> list = cycleTeamDao.selectByExample(cycleTeamExample);
             List<Team> teamList = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                teamList.add(teamDao.selectByPrimaryKey(list.get(i).getTeamId()));
+                Team team = teamDao.selectByPrimaryKey(list.get(i).getTeamId());
+                if (team != null)
+                    teamList.add(team);
             }
             response.setData(teamList);
             response.setStatus(true);
