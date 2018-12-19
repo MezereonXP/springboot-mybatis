@@ -172,12 +172,16 @@ public class TestCycleController {
         try {
             if (teamDao.selectByPrimaryKey(Integer.valueOf(teamid)).getPriority() <= 1)
                 throw new Exception("权限不够!");
+            CycleTeamExample cycleTeamExample = new CycleTeamExample();
+            cycleTeamExample.createCriteria().andTestCycleIdEqualTo(cycleId).andTeamIdEqualTo(teamId);
+            if (cycleTeamDao.selectByExample(cycleTeamExample) != null)
+                throw new Exception("队伍已报名过该周期!");
+
             CycleTeamWithBLOBs cycleTeam = new CycleTeamWithBLOBs();
             cycleTeam.setCreateTime(new Date());
             cycleTeam.setTeamId(teamId);
             cycleTeam.setTestCycleId(cycleId);
             cycleTeam.setUpdateTime(new Date());
-            ;
             cycleTeamDao.insertSelective(cycleTeam);
             response.setStatus(true);
             return response;
