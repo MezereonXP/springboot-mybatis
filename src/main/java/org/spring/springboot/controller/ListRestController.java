@@ -696,12 +696,18 @@ public class ListRestController {
                     if (sample.getWaterTypeDesc() == null) {
                         throw new MyException("缺少水类型信息");
                     }
+                    if (sample.getWaterTypeDesc() == "") {
+                        throw new MyException("waterTypeDesc不能为空字符串");
+                    }
                 }
                 break;
             case ValueUtil.CENTRALIZEDWATERMETHOD_FLAG:
                 if (sample.getCentralizedWaterTreatmentMethodId() == null) {
                     if (sample.getCentrTreatmentMethodDesc() == null) {
                         throw new MyException("缺少中央处理方法信息");
+                    }
+                    if (sample.getCentrTreatmentMethodDesc() == "") {
+                        throw new MyException("centrTreatmentMethodDesc不能为空字符串");
                     }
                 }
                 break;
@@ -717,12 +723,18 @@ public class ListRestController {
                     if (sample.getDrinkWaterDesc() == null) {
                         throw new MyException("缺少饮用水类型信息");
                     }
+                    if (sample.getDrinkWaterDesc() == "") {
+                        throw new MyException("drinkWaterDesc不能为空字符串");
+                    }
                 }
                 break;
             case ValueUtil.POTENTIAL_FLAG:
                 if (sample.getPotentialContamination() == null) {
                     if (sample.getContamDesc() == null) {
                         throw new MyException("缺少潜在污染源信息");
+                    }
+                    if (sample.getContamDesc() == "") {
+                        throw new MyException("contamDesc不能为空字符串");
                     }
                 }
                 break;
@@ -731,12 +743,18 @@ public class ListRestController {
                     if (sample.getSanitaryTypeDesc() == null) {
                         throw new MyException("缺少饮用水卫生情况信息");
                     }
+                    if (sample.getSanitaryTypeDesc() == "") {
+                        throw new MyException("sanitaryTypeDesc不能为空字符串");
+                    }
                 }
                 break;
             case ValueUtil.SMELL_FLAG:
                 if (sample.getSmellId() == null) {
                     if (sample.getSmellDescDetails() == null) {
                         throw new MyException("缺少气味类型信息");
+                    }
+                    if (sample.getSmellDescDetails() == "") {
+                        throw new MyException("smellDescDetails不能为空字符串");
                     }
                 }
                 break;
@@ -745,12 +763,18 @@ public class ListRestController {
                     if (sample.getTreatmentMethodDesc() == null) {
                         throw new MyException("缺少饮用水卫生情况信息");
                     }
+                    if (sample.getTreatmentMethodDesc() == "") {
+                        throw new MyException("treatmentMethodDesc不能为空字符串");
+                    }
                 }
                 break;
             case ValueUtil.VISUAL_FLAG:
                 if (sample.getVisualId() == null) {
                     if (sample.getVisualDesc() == null) {
                         throw new MyException("缺少水样描述信息");
+                    }
+                    if (sample.getVisualDesc() == "") {
+                        throw new MyException("visualDesc不能为空字符串");
                     }
                 }
                 break;
@@ -759,12 +783,18 @@ public class ListRestController {
                     if (sample.getWaterSourceDesc() == null) {
                         throw new MyException("缺少水样水源类型信息");
                     }
+                    if (sample.getWaterSourceDesc() == "") {
+                        throw new MyException("waterSourceDesc不能为空字符串");
+                    }
                 }
                 break;
             case ValueUtil.WATERSTORAGE_FLAG:
                 if (sample.getWaterStorageId() == null) {
                     if (sample.getWaterStorageDesc() == null && sample.getAvgStorageHrs() == null) {
                         throw new MyException("缺少家庭储水容器信息");
+                    }
+                    if (sample.getWaterStorageDesc() == "") {
+                        throw new MyException("waterStorageDesc不能为空字符串");
                     }
                 }
                 break;
@@ -778,7 +808,7 @@ public class ListRestController {
                 } else if (sample.getTownshipId() == null) {
                     throw new MyException("缺少townshipId信息");
                 } else if (sample.getVillageId() == null) {
-//                    throw new MyException("缺少villageId信息");
+                    throw new MyException("缺少villageId信息");
                 } else if (sample.getLocationName() == null) {
                     throw new MyException("缺少locationName信息");
                 } else if (sample.getLat() == null) {
