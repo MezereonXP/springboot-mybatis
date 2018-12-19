@@ -842,7 +842,7 @@ public class ListRestController {
             waterTypeMapper.insertSelective(waterType);
             sample.setWaterTypeId(waterType.getWaterTypeId());
         }
-        if (sample.getCentrTreatmentMethodDesc() != null) {
+        if (sample.getCentrTreatmentMethodDesc() != null && sample.getCentrTreatmentMethodDesc() != "") {
             CentralizedTreatmentMethod centralizedTreatmentMethod = new CentralizedTreatmentMethod();
             centralizedTreatmentMethod.setCentrTreatmentMethodDesc(sample.getCentrTreatmentMethodDesc());
             centralizedTreatmentMethodMapper.insertSelective(centralizedTreatmentMethod);
@@ -852,7 +852,7 @@ public class ListRestController {
             }
             sample.setCentralizedWaterTreatmentMethodId(temp + centralizedTreatmentMethod.getCentrTreatmentMethodId());
         }
-        if (sample.getDeliveryMethodId() == null && sample.getDeliveryMethodDesc() != null) {
+        if (sample.getDeliveryMethodId() == null && sample.getDeliveryMethodDesc() != null && sample.getDeliveryMethodDesc() != "") {
             DeliveryMethod deliveryMethod = new DeliveryMethod();
             deliveryMethod.setDeliveryMethodDesc(sample.getDeliveryMethodDesc());
             deliveryMethodMapper.insertSelective(deliveryMethod);
@@ -864,7 +864,7 @@ public class ListRestController {
             drinkingWaterTypeMapper.insertSelective(drinkingWaterType);
             sample.setDrinkingWaterId(drinkingWaterType.getDrinkWaterId());
         }
-        if (sample.getContamDesc() != null) {
+        if (sample.getContamDesc() != null && sample.getContamDesc() != "") {
             PotentialContam potentialContam = new PotentialContam();
             potentialContam.setContamDesc(sample.getContamDesc());
             potentialContamMapper.insertSelective(potentialContam);
@@ -887,7 +887,7 @@ public class ListRestController {
             smellMapper.insertSelective(smell);
             sample.setSmellId(smell.getSmellId());
         }
-        if (sample.getTreatmentMethodDesc() != null) {
+        if (sample.getTreatmentMethodDesc() != null && sample.getTreatmentMethodDesc() != "") {
             TreatmentMethod treatmentMethod = new TreatmentMethod();
             treatmentMethod.setTreatmentMethodDesc(sample.getTreatmentMethodDesc());
             treatmentMethodMapper.insertSelective(treatmentMethod);
@@ -910,7 +910,7 @@ public class ListRestController {
             waterSourceTypeMapper.insertSelective(waterSourceType);
             sample.setWaterSourceTypeId(waterSourceType.getWaterSourceId());
         }
-        if (sample.getWaterStorageDesc() != null) {
+        if (sample.getWaterStorageDesc() != null && sample.getWaterStorageDesc() != "") {
             WaterStorage waterStorage = new WaterStorage();
             waterStorage.setWaterStorageDesc(sample.getWaterStorageDesc());
             waterStorage.setAvgStorageHrs(sample.getAvgStorageHrs());
