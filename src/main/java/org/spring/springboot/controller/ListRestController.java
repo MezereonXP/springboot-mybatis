@@ -675,6 +675,7 @@ public class ListRestController {
                 check(sample, i);
             }
             insert(sample);
+            sample.setValidationId(1);
             sample.setCreateTime(new Date());
             sample.setUpdateTime(new Date());
             sampleDao.insertSelective(sample);
