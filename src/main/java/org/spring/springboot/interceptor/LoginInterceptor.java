@@ -34,7 +34,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 //        }
         response.addHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.addHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS,PUT,DELETE,HEAD");
-        response.addHeader("Access-Control-Allow-Headers", "S_ID,content-type");
+        response.addHeader("Access-Control-Allow-Headers", "authorization,S_ID,content-type");
         response.addHeader("Access-Control-Max-Age", "3600000");
         response.addHeader("Access-Control-Allow-Credentials", "true");
 
